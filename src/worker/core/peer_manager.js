@@ -3,7 +3,7 @@ import { MY_PEER_ID, PacketType } from './constants.js';
 import { createHeader } from './packet.js';
 import { wrapPacket, randomU64String } from './crypto.js';
 
-const WS_OPEN = 1; // WebSocket.OPEN in CF runtime
+const WS_OPEN = 1; // Cloudflare Workers 运行时里 WebSocket.OPEN 的常量值
 
 function parseIpv4ToU32Be(ip) {
   const parts = String(ip).trim().split('.').map(x => Number(x));
@@ -68,17 +68,17 @@ function makeStubPeerInfo(peerId, networkLength) {
 
 export class PeerManager {
   constructor() {
-    this.peersByGroup = new Map(); // groupKey -> Map(peerId -> ws)
-    this.peerInfosByGroup = new Map(); // groupKey -> Map(peerId -> peerInfo)
-    this.routeSessions = new Map(); // groupKey -> peerId -> session state
-    this.peerConnVersions = new Map(); // groupKey -> peerId -> version
+    this.peersByGroup = new Map(); // groupKey -> Map(peerId -> ws)，维护在线连接
+    this.peerInfosByGroup = new Map(); // groupKey -> Map(peerId -> peerInfo)，维护已知 Peer 元数据
+    this.routeSessions = new Map(); // groupKey -> peerId -> session state，记录路由同步会话状态
+    this.peerConnVersions = new Map(); // groupKey -> peerId -> version，连接拓扑变化版本号
     this.types = null;
 
     this.allowVirtualIP = false;
     this.ipConfiguredByEnv = !!process.env.EASYTIER_IPV4_ADDR;
     this.netConfiguredByEnv = process.env.EASYTIER_NETWORK_LENGTH !== undefined;
     this.ipAutoAssigned = false;
-    this.myInfo = null; // lazily initialized to avoid random in global scope
+    this.myInfo = null; // 延迟初始化，避免模块加载阶段就生成随机值
     this.sessionTtlMs = Number(process.env.EASYTIER_SESSION_TTL_MS || 3 * 60 * 1000);
     this.lastSessionCleanup = 0;
 
@@ -91,6 +91,7 @@ export class PeerManager {
 
   ensureMyInfo() {
     if (this.myInfo) return this.myInfo;
+    // 生成当前 Worker 对外广播的“我是谁”信息。
     const myInfo = {
       peerId: MY_PEER_ID,
       instId: makeInstId(),
@@ -117,6 +118,7 @@ export class PeerManager {
         myInfo.ipv4Addr = { addr: parseIpv4ToU32Be(ipEnv) };
         this.ipAutoAssigned = false;
       } else if (process.env.EASYTIER_AUTO_IPV4_ADDR === '1') {
+        // 如果允许自动分配，就基于服务端 Peer ID 派生一个相对稳定的地址。
         const lastOctet = (Number(MY_PEER_ID) % 250) + 2;
         myInfo.ipv4Addr = { addr: parseIpv4ToU32Be(`10.0.0.${lastOctet}`) };
         this.ipAutoAssigned = true;
@@ -221,6 +223,7 @@ export class PeerManager {
 
   _getSession(groupKey, peerId, create = false) {
     const now = Date.now();
+    // 在按需取 session 时顺手做一次过期清理，避免状态无限增长。
     if (now - this.lastSessionCleanup > Math.max(30_000, Math.min(this.sessionTtlMs / 2, 120_000))) {
       this.cleanupSessions(now);
     }
@@ -339,6 +342,7 @@ export class PeerManager {
     }
 
     if (this.allowVirtualIP && !this.ipConfiguredByEnv && this.ipAutoAssigned) {
+      // 当服务端地址是自动分配的，尽量跟随已知 Peer 的网段，避免路由信息不一致。
       const myInfo = this.ensureMyInfo();
       const peerIpv4 = info && info.ipv4Addr && typeof info.ipv4Addr.addr === 'number' ? (info.ipv4Addr.addr >>> 0) : null;
       const peerNetLen = info && (info.networkLength || info.network_length);
@@ -402,7 +406,7 @@ export class PeerManager {
       ws.serverSessionId = randomU64String();
     }
     session.mySessionId = ws.serverSessionId;
-    const forceFullLocal = forceFull || !session.dstSessionId;
+    const forceFullLocal = forceFull || !session.dstSessionId; // 尚未握手完成时默认发全量
 
     const allPeers = new Set(this.listPeerIdsInGroup(groupKey));
     const infos = this._getPeerInfosMap(groupKey, false);
@@ -427,6 +431,7 @@ export class PeerManager {
       const version = info && info.version ? info.version : 1;
       const prev = forceFullLocal ? 0 : (session.peerInfoVerMap.get(pid) || 0);
       if (forceFullLocal || version > prev) {
+        // 只发送版本有变化的 PeerInfo，减少重复同步体积。
         peerInfosItems.push(info);
         session.peerInfoVerMap.set(pid, version);
       }
@@ -472,6 +477,7 @@ export class PeerManager {
       const connVersion = session.connBitmapVerMap.get(targetPeerId) || 0;
       const nextConnVersion = connVersion || Math.max(...peerIdVersions.map(p => p.version));
       if (sig !== session.lastConnBitmapSig) {
+        // 只有连接拓扑真的发生变化时，才把 conn bitmap 发给对端。
         session.connBitmapVerMap.set(targetPeerId, nextConnVersion);
         session.lastConnBitmapSig = sig;
         connBitmap = { peerIds: peerIdVersions, bitmap: bitmapBuf, version: nextConnVersion };
@@ -481,6 +487,7 @@ export class PeerManager {
     const foreignNetworkInfos = (() => {
       const mode = (process.env.EASYTIER_HANDSHAKE_MODE || 'foreign').toLowerCase();
       if (mode === 'same' || mode === 'same_network') return null;
+      // 默认按“公网中继网络”模式回传一份 foreign network 视图。
       const version = session.foreignNetVer + 1;
       session.foreignNetVer = version;
       return {
@@ -544,7 +551,7 @@ export class PeerManager {
     try {
       ws.send(wrapPacket(createHeader, MY_PEER_ID, targetPeerId, PacketType.RpcReq, rpcPacketBytes, ws));
     } catch (e) {
-      // ignore
+      // 连接可能刚好关闭，这里吞掉异常，交给上层连接管理处理。
     }
   }
 }

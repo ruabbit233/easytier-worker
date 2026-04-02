@@ -92,18 +92,43 @@ wrangler deploy
 
 ## 项目结构
 
+下面按“目录 + 文件职责”展开说明，便于快速定位问题和理解数据流。
+
 ```text
 easytier-worker/
-├── protos/                 # Protocol Buffers 定义
+├── protos/
+│   ├── common.proto                    # 公共消息结构、RPC 包装体、压缩信息等基础协议定义
+│   ├── error.proto                     # RPC 错误类型定义
+│   ├── peer_rpc.proto                  # EasyTier 相关 RPC、握手包、路由同步协议定义
+│   └── google/protobuf/timestamp.proto # protobuf 时间戳依赖
 ├── src/
-│   ├── worker/             # Worker 实现
-│   │   ├── core/           # Worker 核心功能
-│   │   └── relay_room.js   # 中继房间实现
-│   └── worker.js           # Worker 入口文件
-├── package.json            # 项目配置
-├── wrangler.toml           # Cloudflare Workers 配置
-└── README.md               # 项目说明
+│   ├── worker.js                       # Cloudflare Worker 入口；处理 HTTP 路由并把 WebSocket 请求分发到 Durable Object
+│   └── worker/
+│       ├── relay_room.js               # Durable Object 房间实例；管理单个 room 内的 WebSocket 会话、消息分发和心跳
+│       └── core/
+│           ├── basic_handlers.js       # 握手、Ping/Pong、普通包转发等基础协议处理
+│           ├── compress.js             # RPC 负载压缩与解压的兼容封装
+│           ├── constants.js            # 协议常量、包类型枚举、包头长度等基础常量
+│           ├── crypto.js               # 摘要、密钥派生、AES-GCM 加解密、封包辅助方法
+│           ├── packet.js               # EasyTier 自定义包头的解析与构造
+│           ├── peer_manager.js         # 房间内 Peer 状态中心；维护连接、路由会话、PeerInfo 和路由广播
+│           ├── protos.js               # protobuf 类型装载入口；统一暴露运行时要用到的消息类型
+│           ├── protos_generated.js     # 由 `.proto` 自动生成的 JS 类型文件，一般不直接手改
+│           └── rpc_handler.js          # RPC 请求/响应处理；负责 PeerCenter 与路由同步等核心逻辑
+├── package.json                        # Node 依赖、脚本命令、项目元信息
+├── package-lock.json                   # npm 依赖锁定文件
+├── wrangler.toml                       # Cloudflare Worker / Durable Object 部署配置与环境变量
+├── LICENSE                             # MIT 许可证
+└── README.md                           # 项目说明与使用文档
 ```
+
+### 代码主链路
+
+1. 客户端访问 `src/worker.js` 暴露的 `WS_PATH`，Worker 根据 `room` 参数定位对应的 `RelayRoom`。
+2. `src/worker/relay_room.js` 接管 WebSocket 生命周期，解析包头并按包类型分发。
+3. 握手、心跳、普通转发由 `core/basic_handlers.js` 处理，RPC 类消息由 `core/rpc_handler.js` 处理。
+4. `core/peer_manager.js` 维护当前房间的 Peer 列表、路由会话和广播状态。
+5. 协议编解码依赖 `protos/*.proto` 与生成出的 `core/protos_generated.js`。
 
 ## 功能特性
 

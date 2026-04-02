@@ -5,21 +5,21 @@ import { wrapPacket, randomU64String, sha256 } from './crypto.js';
 import { gzipMaybe, gunzipMaybe, isCompressionAvailable } from './compress.js';
 import { loadProtos } from './protos.js';
 
-// Helper to convert transactionId to proper format for protobuf int64
+// 把 transactionId 统一转换成 protobuf 可稳定编码的 int64 形式。
 function toLongForProto(value) {
   if (value === null || value === undefined) return value;
 
-  // If it's already a Long-like object with low/high
+  // 已经是 { low, high } 这类 Long-like 结构时直接返回。
   if (value && typeof value === 'object' && typeof value.low === 'number' && typeof value.high === 'number') {
     return value;
   }
 
-  // If it's a Long instance
+  // 如果本来就是 Long 实例，也无需再转换。
   if (value && typeof value === 'object' && value.constructor && value.constructor.name === 'Long') {
     return value;
   }
 
-  // If it's a string, try to parse as BigInt first, then convert
+  // 字符串优先按 BigInt 解析，避免大整数在 Number 中丢精度。
   if (typeof value === 'string') {
     try {
       const big = BigInt(value);
@@ -32,14 +32,14 @@ function toLongForProto(value) {
     }
   }
 
-  // If it's a number, convert to Long
+  // Number 只能安全表示 53 位以内整数，这里按 64 位拆成 low/high。
   if (typeof value === 'number') {
     const low = value | 0;
     const high = Math.floor(value / 4294967296);
     return { low, high, unsigned: false };
   }
 
-  // If it's a BigInt
+  // BigInt 是最理想的来源类型，直接拆分即可。
   if (typeof value === 'bigint') {
     const low = Number(value & 0xffffffffn);
     const high = Number((value >> 32n) & 0xffffffffn);
@@ -129,7 +129,7 @@ function buildPeerCenterResponseMap(groupKey, state) {
 }
 
 function sendRpcResponse(ws, toPeerId, reqRpcPacket, types, responseBodyBytes) {
-  if (!ws || ws.readyState !== 1) { // WS_OPEN
+  if (!ws || ws.readyState !== 1) { // WebSocket 仍未处于可发送状态
     console.error(`sendRpcResponse aborted: socket not open (readyState=${ws ? ws.readyState : 'nil'}) toPeer=${toPeerId}`);
     return;
   }
@@ -152,11 +152,11 @@ function sendRpcResponse(ws, toPeerId, reqRpcPacket, types, responseBodyBytes) {
   };
   const rpcResponseBytes = types.RpcResponse.encode(rpcResponsePayload).finish();
 
-  // Detailed transactionId logging to debug int64 encoding issues
+  // 这里保留详细 transactionId 日志，方便定位 int64 编解码问题。
   const txId = reqRpcPacket.transactionId;
   let txIdValue, txIdType;
   if (txId && typeof txId === 'object' && txId.constructor && txId.constructor.name === 'Long') {
-    // Long object from protobufjs
+    // protobufjs 解码后的 Long 实例
     txIdValue = txId.toString();
     txIdType = 'Long';
   } else if (typeof txId === 'bigint') {
@@ -169,7 +169,7 @@ function sendRpcResponse(ws, toPeerId, reqRpcPacket, types, responseBodyBytes) {
     txIdValue = String(txId);
     txIdType = 'Number';
   } else if (txId && typeof txId === 'object' && typeof txId.low === 'number' && typeof txId.high === 'number') {
-    // Plain Long-like object
+    // 普通的 Long-like 对象
     const combined = (BigInt(txId.high) << 32n) | BigInt(txId.low >>> 0);
     txIdValue = combined.toString();
     txIdType = 'Long-like';
@@ -179,7 +179,7 @@ function sendRpcResponse(ws, toPeerId, reqRpcPacket, types, responseBodyBytes) {
   }
   console.log(`sendRpcResponse: transactionId=${txIdValue} (${txIdType}) raw=${JSON.stringify(txId)}`);
 
-  // Convert transactionId to proper Long format for protobuf encoding
+  // 编码前统一整理 transactionId 格式，避免不同来源类型导致的兼容问题。
   const txIdForEncoding = toLongForProto(txId);
 
   const rpcRespPacket = {
@@ -201,7 +201,7 @@ function sendRpcResponse(ws, toPeerId, reqRpcPacket, types, responseBodyBytes) {
     console.log(`RpcResp -> to=${toPeerId} txLen=${buf.length} txTransaction=${txIdValue} SUCCESS`);
   } catch (e) {
     console.error(`sendRpcResponse to ${toPeerId} failed: ${e.message}`);
-    // Re-throw to ensure caller knows the send failed
+    // 继续抛出，让上层知道这次响应没有真正发出去。
     throw new Error(`Failed to send RPC response to ${toPeerId}: ${e.message}`);
   }
 }
@@ -210,7 +210,7 @@ export function handleRpcReq(ws, header, payload, types) {
   try {
     const rpcPacket = types.RpcPacket.decode(payload);
 
-    // Log transactionId details for debugging int64 issues
+    // 记录 transactionId 的原始形态，方便排查 64 位整数兼容问题。
     const txId = rpcPacket.transactionId;
     let txIdValue, txIdType, txIdDetails;
     if (txId && typeof txId === 'object' && txId.constructor && txId.constructor.name === 'Long') {
@@ -259,7 +259,7 @@ export function handleRpcReq(ws, header, payload, types) {
         innerReqBody = rpcReqWrapper.request;
       }
     } catch (e) {
-      console.log("Failed to decode RpcRequest wrapper, assuming raw body:", e.message);
+      console.log("RpcRequest 外层包装解析失败，按裸 body 继续处理:", e.message);
     }
 
     if ((descriptor.serviceName === 'peer_rpc.PeerCenterRpc' || descriptor.serviceName === 'PeerCenterRpc')
@@ -267,6 +267,7 @@ export function handleRpcReq(ws, header, payload, types) {
       const groupKey = ws && ws.groupKey ? String(ws.groupKey) : '';
       const state = getPeerCenterState(groupKey);
       if (descriptor.methodIndex === 0) {
+        // ReportPeers: 客户端上报自己看到的直连关系，我们合并到房间级视图。
         const req = types.ReportPeersRequest.decode(innerReqBody);
         const myPeerId = req.myPeerId;
         const peers = req.peerInfos || { directPeers: {} };
@@ -288,6 +289,7 @@ export function handleRpcReq(ws, header, payload, types) {
       }
 
       if (descriptor.methodIndex === 1) {
+        // GetGlobalPeerMap: 客户端按 digest 拉取最新快照，未变化时返回空响应节省带宽。
         const req = types.GetGlobalPeerMapRequest.decode(innerReqBody);
         const reqDigest = req.digest !== undefined && req.digest !== null ? String(req.digest) : '0';
         if (reqDigest === state.digest && reqDigest !== '0') {
@@ -340,7 +342,7 @@ export function handleRpcResp(ws, header, payload, types) {
     console.log(`RpcResp <- from=${header.fromPeerId} to=${header.toPeerId} len=${payload.length} packetType=${header.packetType} forwardCounter=${header.forwardCounter}`);
     const rpcPacket = types.RpcPacket.decode(payload);
 
-    // Detailed logging for transactionId debugging
+    // 响应侧同样保留 transactionId 细节，便于请求与响应对应排查。
     const txId = rpcPacket.transactionId;
     let txIdValue, txIdType, txIdDetails;
     if (txId && typeof txId === 'object' && txId.constructor && txId.constructor.name === 'Long') {
@@ -382,16 +384,16 @@ export function handleRpcResp(ws, header, payload, types) {
 
     const descriptor = rpcPacket.descriptor || {};
     let rpcRespBody = rpcPacket.body;
-    // Generic RpcResponse decode first (outer wrapper)
+    // 先尝试按通用 RpcResponse 外层包装解码。
     let rpcResponseDecoded = null;
     try {
       rpcResponseDecoded = types.RpcResponse.decode(rpcRespBody);
       rpcRespBody = rpcResponseDecoded.response || rpcRespBody;
     } catch (e) {
-      // keep raw body for best-effort handling below
+      // 外层解不出来时保留原始 body，尽量继续往下兼容处理。
       console.warn(`RpcResp wrapper decode failed from ${header.fromPeerId}: ${e.message}`);
     }
-    // Handle SyncRouteInfoResponse ack (OspfRouteRpc)
+    // OspfRouteRpc 的响应主要用于确认路由同步会话 sessionId。
     if ((descriptor.serviceName === 'peer_rpc.OspfRouteRpc' || descriptor.serviceName === 'OspfRouteRpc')
       && (descriptor.protoName === 'peer_rpc' || descriptor.protoName === 'peer_rpc.OspfRouteRpc' || descriptor.protoName === 'OspfRouteRpc' || !descriptor.protoName)) {
       try {
@@ -407,7 +409,7 @@ export function handleRpcResp(ws, header, payload, types) {
       return;
     }
 
-    // Generic RpcResponse logging
+    // 其他 RPC 目前只做通用结果记录。
     if (rpcResponseDecoded) {
       if (rpcResponseDecoded.error) {
         console.warn(`RpcResp error from ${header.fromPeerId}:`, rpcResponseDecoded.error);
@@ -434,6 +436,7 @@ function handleSyncRouteInfo(ws, fromPeerId, reqRpcPacket, syncReq, types) {
 
   let hasNewPeers = false;
   if (syncReq.peerInfos && syncReq.peerInfos.items) {
+    // 把对端带来的 PeerInfo 合并进当前房间视图，用于后续继续广播。
     syncReq.peerInfos.items.forEach(info => {
       if (info.peerId !== MY_PEER_ID) {
         const infos = pm()._getPeerInfosMap(groupKey, false);
@@ -456,17 +459,16 @@ function handleSyncRouteInfo(ws, fromPeerId, reqRpcPacket, syncReq, types) {
     console.warn(`Client sent COMPRESSED RPC body (Algo: ${reqRpcPacket.compressionInfo.algo}). We might have failed to decode it correctly if we didn't decompress.`);
   }
 
-  // Respond with SyncRouteInfoResponse - wrapped in try-catch to ensure response always sends
-  // This fixes the "sync_route_info failed timeout" error that prevents DO hibernation
+  // 先回 ACK，避免客户端因为等待超时而认为本次路由同步失败。
   try {
     sendRpcResponse(ws, fromPeerId, reqRpcPacket, types, respBytes);
     console.log(`Sent SyncRouteInfoResponse to peer ${fromPeerId}, transactionId=${reqRpcPacket.transactionId}`);
   } catch (e) {
     console.error(`CRITICAL: Failed to send SyncRouteInfoResponse to peer ${fromPeerId}: ${e.message}`);
-    // Don't rethrow - we want the RPC to complete even if pushRouteUpdateTo fails
+    // 这里不再抛出，尽量让后续流程还能继续推进。
   }
 
-  // After responding, push our current route info back to the requester (mirrors node behavior).
+  // ACK 之后再把当前 Worker 视角下的路由信息推回去，行为上对齐节点端实现。
   try {
     pm().pushRouteUpdateTo(fromPeerId, ws, types, { forceFull: true });
     console.log(`Successfully pushed route update to peer ${fromPeerId}`);

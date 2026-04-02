@@ -4,6 +4,7 @@ import "error.proto";
 
 package common;
 
+// EasyTier 通用配置项，供 PeerInfo / 配置同步等场景复用。
 message FlagsInConfig {
   string default_protocol = 1;
   string dev_name = 2;
@@ -18,52 +19,51 @@ message FlagsInConfig {
   bool disable_p2p = 11;
   bool relay_all_peer_rpc = 12;
   bool disable_udp_hole_punching = 13;
-  // string ipv6_listener = 14; [deprecated = true]; use -l udp://[::]:12345
-  // instead
+  // string ipv6_listener = 14; [deprecated = true]; 改为使用 -l udp://[::]:12345
   bool multi_thread = 15;
   CompressionAlgoPb data_compress_algo = 16;
   bool bind_device = 17;
 
-  // should we convert all tcp streams into kcp streams
+  // 是否把 TCP 流统一转成 KCP 流处理
   bool enable_kcp_proxy = 18;
-  // does this peer allow kcp input
+  // 当前 Peer 是否允许接收 KCP 输入
   bool disable_kcp_input = 19;
-  // disable relay local network kcp packets
+  // 是否禁止中继本网络内的 KCP 数据
   bool disable_relay_kcp = 20;
   bool proxy_forward_by_system = 21;
 
-  // enable magic dns or not
+  // 是否启用 Magic DNS
   bool accept_dns = 22;
-  // enable private mode
+  // 是否启用私有模式
   bool private_mode = 23;
 
-  // should we convert all tcp streams into quic streams
+  // 是否把 TCP 流统一转成 QUIC 流处理
   bool enable_quic_proxy = 24;
-  // does this peer allow quic input
+  // 当前 Peer 是否允许接收 QUIC 输入
   bool disable_quic_input = 25;
-  // quic listen port
+  // QUIC 监听端口
   uint32 quic_listen_port = 33;
 
-  // a global relay limit, only work for foreign network
+  // 全局中继带宽限制，仅对 foreign network 生效
   uint64 foreign_relay_bps_limit = 26;
 
   uint32 multi_thread_count = 27;
 
-  // enable relay foreign network kcp packets
+  // 是否允许中继 foreign network 的 KCP 数据
   bool enable_relay_foreign_network_kcp = 28;
 
-  // encryption algorithm to use, empty string means default (aes-gcm)
+  // 使用的加密算法；空字符串表示默认值（aes-gcm）
   string encryption_algorithm = 29;
 
-  // disable symmetric nat hole punching, treat symmetric as cone when enabled
+  // 是否关闭对称 NAT 打洞；开启后会把 symmetric 按 cone 路径处理
   bool disable_sym_hole_punching = 30;
 
-   // tld dns zone for magic dns
+  // Magic DNS 使用的顶级域后缀
   string tld_dns_zone = 31;
 }
 
 message RpcDescriptor {
-  // allow same service registered multiple times in different domain
+  // 允许同一个 service 在不同 domain 下重复注册
   string domain_name = 1;
 
   string proto_name = 2;
@@ -92,11 +92,10 @@ enum CompressionAlgoPb {
 }
 
 message RpcCompressionInfo {
-  // use this to compress the content
+  // 当前包体实际使用的压缩算法
   CompressionAlgoPb algo = 1;
 
-  // tell the peer which compression algo is used to compress the next
-  // response/request
+  // 告诉对端下一次请求或响应希望使用哪种压缩算法
   CompressionAlgoPb accepted_algo = 2;
 }
 
@@ -127,7 +126,7 @@ message UUID {
 }
 
 enum NatType {
-  // has NAT; but own a single public IP, port is not changed
+  // 存在 NAT，但拥有单独公网 IP，且端口不会被改写
   Unknown = 0;
   OpenInternet = 1;
   NoPAT = 2;
@@ -220,8 +219,8 @@ message ProxyDstInfo { SocketAddr dst_addr = 1; }
 
 message LimiterConfig {
   optional uint64 burst_rate =
-      1; // default 1 means no burst (capacity is same with bps)
-  optional uint64 bps = 2; // default 0 means no limit (unit is B/s)
+      1; // 默认值为 1，表示不额外突发，桶容量与 bps 一致
+  optional uint64 bps = 2; // 默认值为 0，表示不限速，单位为 B/s
   optional uint64 fill_duration_ms =
-      3; // default 10ms, the period to fill the bucket
+      3; // 默认值为 10ms，表示令牌桶补充周期
 }

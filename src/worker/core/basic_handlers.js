@@ -5,7 +5,8 @@ import { wrapPacket, randomU64String } from './crypto.js';
 
 const WS_OPEN = (typeof WebSocket !== 'undefined' && WebSocket.OPEN) ? WebSocket.OPEN : 1;
 
-// Record the first registered digest per network name; later mismatched digest will be rejected
+// 同一个 networkName 只接受第一份摘要；后续摘要不一致的连接会被拒绝，
+// 这样可以避免不同网络意外混进同一个 relay 逻辑分组。
 const networkDigestRegistry = new Map();
 
 export function handleHandshake(ws, header, payload, types) {
@@ -15,7 +16,7 @@ export function handleHandshake(ws, header, payload, types) {
       const dig = req.networkSecretDigrest ? Buffer.from(req.networkSecretDigrest) : Buffer.alloc(0);
       console.log(`Handshake networkSecretDigest(hex)=${dig.toString('hex')}`);
     } catch (_) {
-      // ignore
+      // 这里只是调试日志，不影响正常握手流程。
     }
 
     if (req.magic !== MAGIC) {
@@ -56,6 +57,7 @@ export function handleHandshake(ws, header, payload, types) {
     ws.peerId = req.myPeerId;
     const pm = getPeerManager();
     pm.addPeer(req.myPeerId, ws);
+    // 先注册一份最小可用的 PeerInfo，后续路由同步会再补齐更多字段。
     pm.updatePeerInfo(ws.groupKey, req.myPeerId, {
       peerId: req.myPeerId,
       version: 1,
@@ -76,6 +78,7 @@ export function handleHandshake(ws, header, payload, types) {
       ws.weAreInitiator = false;
     }
 
+    // 握手刚完成时主动推一次全量路由，让新连入节点尽快拿到房间视图。
     setTimeout(() => {
       try {
         if (ws.readyState === WS_OPEN) {
@@ -95,6 +98,7 @@ export function handleHandshake(ws, header, payload, types) {
 }
 
 export function handlePing(ws, header, payload) {
+  // Ping 原样回 Pong，让对端确认链路仍然连通。
   const msg = wrapPacket(createHeader, MY_PEER_ID, header.fromPeerId, PacketType.Pong, payload, ws);
   ws.send(msg);
 }
@@ -108,6 +112,7 @@ export function handleForwarding(sourceWs, header, fullMessage, types) {
     const srcGroup = sourceWs && sourceWs.groupKey;
     const dstGroup = targetWs && targetWs.groupKey;
     if (srcGroup && dstGroup && srcGroup !== dstGroup) {
+      // 不允许跨 group 转发，避免不同网络组串线。
       return;
     }
     try {
@@ -121,6 +126,5 @@ export function handleForwarding(sourceWs, header, fullMessage, types) {
         console.error(`Broadcast after forward failure failed: ${err.message}`);
       }
     }
-  } else {
   }
 }

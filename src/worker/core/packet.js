@@ -1,5 +1,6 @@
 import { HEADER_SIZE } from './constants.js';
 
+// 解析 EasyTier 自定义包头，拿到来源、目标、类型和负载长度。
 export function parseHeader(buffer) {
   if (!buffer || buffer.length < HEADER_SIZE) return null;
   return {
@@ -13,6 +14,7 @@ export function parseHeader(buffer) {
   };
 }
 
+// 组装 16 字节固定包头，供后续拼接真实负载。
 export function createHeader(fromPeerId, toPeerId, packetType, payloadLen) {
   const buffer = Buffer.alloc(HEADER_SIZE);
   buffer.writeUInt32LE(fromPeerId, 0);

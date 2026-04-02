@@ -1,5 +1,5 @@
-// Cloudflare Worker entry for EasyTier WebSocket relay backed by Durable Object
-// Module syntax is required for Durable Objects.
+// EasyTier WebSocket Relay 的 Cloudflare Worker 入口。
+// 这里必须使用 ES Module 写法，Durable Object 才能正常导出和绑定。
 import { RelayRoom } from './worker/relay_room';
 
 export { RelayRoom };
@@ -18,6 +18,7 @@ export default {
     const { pathname, searchParams } = url;
     const wsPath = resolveWsPath(env);
 
+    // 基础健康检查，方便探活和确认当前配置是否生效。
     if (pathname === '/healthz') {
       return Response.json({
         ok: true,
@@ -27,6 +28,7 @@ export default {
       });
     }
 
+    // 返回当前服务的基础信息，便于部署后快速确认入口是否正常。
     if (pathname === '/' || pathname === '/info') {
       return Response.json({
         service: SERVICE_NAME,
@@ -39,6 +41,7 @@ export default {
       });
     }
 
+    // WebSocket 请求会被转交给对应 room 的 Durable Object 处理。
     if (pathname === wsPath || pathname === wsPath + '/') {
       if (request.headers.get('Upgrade') !== 'websocket') {
         return new Response('Expected WebSocket upgrade', { status: 400 });

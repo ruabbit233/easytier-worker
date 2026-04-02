@@ -1,6 +1,7 @@
 syntax = "proto3";
 package error;
 
+// RPC 侧统一错误定义，便于序列化返回给对端。
 message OtherError { string error_message = 1; }
 
 message InvalidMethodIndex {

@@ -9,6 +9,7 @@ import { randomU64String } from './core/crypto.js';
 
 const WS_OPEN = (typeof WebSocket !== 'undefined' && WebSocket.OPEN) ? WebSocket.OPEN : 1;
 
+// 每个 RelayRoom 对应一个 Durable Object 实例，负责单个 room 内的连接和转发。
 function resolveWsPath(env) {
   const rawPath = String(env.WS_PATH || 'ws').trim();
   const normalized = rawPath.replace(/^\/+|\/+$/g, '');
@@ -23,7 +24,7 @@ export class RelayRoom {
     this.peerManager = getPeerManager();
     this.peerManager.setTypes(this.types);
 
-    // Restore sockets after hibernation to keep metadata
+    // Durable Object 从休眠恢复后，把已有 socket 的附加元数据重新挂回内存。
     this.state.getWebSockets().forEach((ws) => this._restoreSocket(ws));
   }
 
@@ -85,10 +86,10 @@ export class RelayRoom {
           break;
         case PacketType.RpcReq:
           if (header.toPeerId !== PacketType.Invalid && header.toPeerId !== undefined && header.toPeerId !== null && header.toPeerId !== 0 && header.toPeerId !== PacketType.Invalid && header.toPeerId !== undefined && header.toPeerId !== null && header.toPeerId !== 0 && header.toPeerId !== PacketType.Invalid) {
-            // fallthrough handled below; guard keeps eslint quiet
+            // 这里只是保留显式判断，真正的处理逻辑在下面分支里完成。
           }
-          if (header.toPeerId === PacketType.Invalid /* never true */) {
-            // no-op
+          if (header.toPeerId === PacketType.Invalid /* 理论上不会命中 */) {
+            // 保留占位分支，不做处理。
           }
           if (header.toPeerId === undefined || header.toPeerId === null) {
             handleRpcReq(ws, header, payload, this.types);
@@ -105,7 +106,7 @@ export class RelayRoom {
             handleRpcResp(ws, header, payload, this.types);
             break;
           }
-          // If toPeerId is not MY_PEER_ID, forward to the target peer
+          // 响应目标不是当前 Worker，就继续在房间内转发给对应 Peer。
           if (header.packetType !== PacketType.Data) {
             console.log(`[ws] -> forward RpcResp type=${header.packetType} from=${header.fromPeerId} to=${header.toPeerId} len=${payload.length}`);
           }
@@ -120,8 +121,7 @@ export class RelayRoom {
       }
     } catch (e) {
       console.error('relay_room message handling error:', e);
-      // Keep the connection alive when possible so transient packet errors do
-      // not immediately force clients to reconnect.
+      // 尽量不要因为单次报文异常就立刻断线，避免客户端频繁重连。
     }
   }
 
@@ -169,7 +169,7 @@ export class RelayRoom {
   _restoreSocket(ws) {
     const meta = ws.deserializeAttachment ? (ws.deserializeAttachment() || {}) : {};
     this._initSocket(ws, meta);
-    
+
     if (ws.peerId && ws.groupKey) {
       this.peerManager.addPeer(ws.peerId, ws);
     }
@@ -194,6 +194,7 @@ export class RelayRoom {
 
         const now = Date.now();
         if (now - ws.lastPingSent >= heartbeatInterval) {
+          // 主动发 Ping，让客户端持续回 Pong，便于判定连接是否仍然可用。
           this._sendPing(ws);
           ws.lastPingSent = now;
         }

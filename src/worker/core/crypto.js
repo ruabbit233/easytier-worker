@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 
+// 这里放的是协议里会用到的摘要、密钥派生和加解密工具函数。
 const U64_MASK = (1n << 64n) - 1n;
 
 function getRandomBytes(len) {
@@ -104,6 +105,7 @@ function u64ToBeBytes(u64) {
 }
 
 export function deriveKeys(networkSecret = '') {
+  // 根据 network secret 派生出 128 位和 256 位两套密钥，便于兼容不同算法。
   const secretBuf = Buffer.from(networkSecret, 'utf8');
 
   const hasher128 = new DefaultHasher();
@@ -154,6 +156,7 @@ export function generateDigestFromStr(str1, str2, digestLen = 32) {
 }
 
 export function encryptAesGcm(payload, key) {
+  // 输出格式为：ciphertext + auth tag + nonce，解密时按同样顺序拆分。
   const nonce = getRandomBytes(12);
   const algo = key.length === 32 ? 'aes-256-gcm' : 'aes-128-gcm';
   const cipher = crypto.createCipheriv(algo, key, nonce);
@@ -177,6 +180,7 @@ export function decryptAesGcm(payload, key) {
 }
 
 export function randomU64String() {
+  // 生成无符号 64 位随机整数，并以字符串形式返回，避免 JS Number 精度问题。
   const b = getRandomBytes(8);
   let x = 0n;
   for (let i = 0; i < 8; i++) {
@@ -205,7 +209,7 @@ export function wrapPacket(createHeader, fromPeerId, toPeerId, packetType, paylo
     } else {
       throw new Error(`Unsupported encryption algorithm: ${algo}`);
     }
-    flags |= 1;
+    flags |= 1; // 标记当前负载已经被加密，接收端按 flags 决定是否解密。
   }
 
   const headerBuf = createHeader(fromPeerId, toPeerId, packetType, body.length);

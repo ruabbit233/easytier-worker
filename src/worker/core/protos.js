@@ -1,10 +1,10 @@
-// 必须放在最前面！
+// 需要先配置 long.js，再加载 protobuf 生成代码，否则 int64 会解析不稳定。
 import Long from 'long';
 import * as protobuf from 'protobufjs/minimal';
 
-// 关键一步：告诉 protobufjs 使用 long.js
+// 显式告诉 protobufjs 使用 long.js 处理 64 位整数。
 protobuf.util.Long = Long;
-protobuf.configure();   // 这一行非常重要，会应用上面的 Long 配置
+protobuf.configure(); // 应用上面的 Long 配置。
 
 import root from './protos_generated.js';
 
@@ -14,6 +14,7 @@ export function loadProtos() {
   if (cachedTypes) return cachedTypes;
   const peerRpc = root.peer_rpc;
   const common = root.common;
+  // 只暴露运行时真正会用到的消息类型，避免业务侧每次都从 root 深层取值。
   return cachedTypes = {
     root,
     HandshakeRequest: peerRpc.HandshakeRequest,
