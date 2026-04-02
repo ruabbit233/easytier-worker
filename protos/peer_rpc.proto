@@ -6,7 +6,7 @@ import "common.proto";
 package peer_rpc;
 
 message RoutePeerInfo {
-  // 表示路由表中的下一跳节点信息。
+  // means next hop in route table.
   uint32 peer_id = 1;
   common.UUID inst_id = 2;
   uint32 cost = 3;
@@ -98,7 +98,7 @@ message SyncRouteInfoResponse {
 }
 
 service OspfRouteRpc {
-  // 交换并同步当前节点看到的路由信息。
+  // Generates a "hello" greeting based on the supplied info.
   rpc SyncRouteInfo(SyncRouteInfoRequest) returns (SyncRouteInfoResponse);
 }
 
@@ -134,11 +134,11 @@ message SendPunchPacketConeRequest {
   common.SocketAddr listener_mapped_addr = 1;
   common.SocketAddr dest_addr = 2;
   uint32 transaction_id = 3;
-  // 每一批发送多少个探测包
+  // send this many packets in a batch
   uint32 packet_count_per_batch = 4;
-  // 总共发送多少批，最终包数 = packet_count_per_batch * packet_batch_count
+  // send total this batch count, total packet count = packet_batch_size * packet_batch_count
   uint32 packet_batch_count = 5;
-  // 每一批之间的发送间隔
+  // interval between each batch
   uint32 packet_interval_ms = 6;
 }
 
@@ -173,7 +173,7 @@ message SendPunchPacketBothEasySymRequest {
 }
 
 message SendPunchPacketBothEasySymResponse {
-  // 当前是否正在和另一个 Peer 执行打洞流程
+  // is doing punch with other peer
   bool is_busy = 1;
   common.SocketAddr base_mapped_addr = 2;
 }
@@ -182,16 +182,16 @@ service UdpHolePunchRpc {
   rpc SelectPunchListener(SelectPunchListenerRequest)
       returns (SelectPunchListenerResponse);
 
-  // 向单个远端地址发包，适用于 nat1-3 到 nat1-3
+  // send packet to one remote_addr, used by nat1-3 to nat1-3
   rpc SendPunchPacketCone(SendPunchPacketConeRequest) returns (common.Void);
 
-  // 向多个远端地址发包（birthday attack），适用于 nat4 到 nat1-3
+  // send packet to multiple remote_addr (birthday attack), used by nat4 to nat1-3
   rpc SendPunchPacketHardSym(SendPunchPacketHardSymRequest)
       returns (SendPunchPacketHardSymResponse);
   rpc SendPunchPacketEasySym(SendPunchPacketEasySymRequest)
       returns (common.Void);
 
-  // nat4 到 nat4 的场景（双方端口变化都可预测）
+  // nat4 to nat4 (both predictably)
   rpc SendPunchPacketBothEasySym(SendPunchPacketBothEasySymRequest)
       returns (SendPunchPacketBothEasySymResponse);
 }

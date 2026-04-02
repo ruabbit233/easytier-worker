@@ -1,6796 +1,11 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
-// 本文件由 `.proto` 自动生成，主要职责是提供 protobuf 编解码类型。
-// 如果需要改协议说明，请优先修改 `protos/*.proto`，再重新生成本文件。
 import $protobuf from "protobufjs/minimal.js";
 
-// protobuf 运行时常用别名
+// Common aliases
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
 
-// 导出的根命名空间
+// Exported root namespace
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
-
-export const common = $root.common = (() => {
-
-    /**
-     * Namespace common.
-     * @exports common
-     * @namespace
-     */
-    const common = {};
-
-    common.FlagsInConfig = (function() {
-
-        /**
-         * Properties of a FlagsInConfig.
-         * @memberof common
-         * @interface IFlagsInConfig
-         * @property {string|null} [defaultProtocol] FlagsInConfig defaultProtocol
-         * @property {string|null} [devName] FlagsInConfig devName
-         * @property {boolean|null} [enableEncryption] FlagsInConfig enableEncryption
-         * @property {boolean|null} [enableIpv6] FlagsInConfig enableIpv6
-         * @property {number|null} [mtu] FlagsInConfig mtu
-         * @property {boolean|null} [latencyFirst] FlagsInConfig latencyFirst
-         * @property {boolean|null} [enableExitNode] FlagsInConfig enableExitNode
-         * @property {boolean|null} [noTun] FlagsInConfig noTun
-         * @property {boolean|null} [useSmoltcp] FlagsInConfig useSmoltcp
-         * @property {string|null} [relayNetworkWhitelist] FlagsInConfig relayNetworkWhitelist
-         * @property {boolean|null} [disableP2p] FlagsInConfig disableP2p
-         * @property {boolean|null} [relayAllPeerRpc] FlagsInConfig relayAllPeerRpc
-         * @property {boolean|null} [disableUdpHolePunching] FlagsInConfig disableUdpHolePunching
-         * @property {boolean|null} [multiThread] FlagsInConfig multiThread
-         * @property {common.CompressionAlgoPb|null} [dataCompressAlgo] FlagsInConfig dataCompressAlgo
-         * @property {boolean|null} [bindDevice] FlagsInConfig bindDevice
-         * @property {boolean|null} [enableKcpProxy] FlagsInConfig enableKcpProxy
-         * @property {boolean|null} [disableKcpInput] FlagsInConfig disableKcpInput
-         * @property {boolean|null} [disableRelayKcp] FlagsInConfig disableRelayKcp
-         * @property {boolean|null} [proxyForwardBySystem] FlagsInConfig proxyForwardBySystem
-         * @property {boolean|null} [acceptDns] FlagsInConfig acceptDns
-         * @property {boolean|null} [privateMode] FlagsInConfig privateMode
-         * @property {boolean|null} [enableQuicProxy] FlagsInConfig enableQuicProxy
-         * @property {boolean|null} [disableQuicInput] FlagsInConfig disableQuicInput
-         * @property {number|null} [quicListenPort] FlagsInConfig quicListenPort
-         * @property {Long|null} [foreignRelayBpsLimit] FlagsInConfig foreignRelayBpsLimit
-         * @property {number|null} [multiThreadCount] FlagsInConfig multiThreadCount
-         * @property {boolean|null} [enableRelayForeignNetworkKcp] FlagsInConfig enableRelayForeignNetworkKcp
-         * @property {string|null} [encryptionAlgorithm] FlagsInConfig encryptionAlgorithm
-         * @property {boolean|null} [disableSymHolePunching] FlagsInConfig disableSymHolePunching
-         * @property {string|null} [tldDnsZone] FlagsInConfig tldDnsZone
-         */
-
-        /**
-         * Constructs a new FlagsInConfig.
-         * @memberof common
-         * @classdesc Represents a FlagsInConfig.
-         * @implements IFlagsInConfig
-         * @constructor
-         * @param {common.IFlagsInConfig=} [properties] Properties to set
-         */
-        function FlagsInConfig(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * FlagsInConfig defaultProtocol.
-         * @member {string} defaultProtocol
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.defaultProtocol = "";
-
-        /**
-         * FlagsInConfig devName.
-         * @member {string} devName
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.devName = "";
-
-        /**
-         * FlagsInConfig enableEncryption.
-         * @member {boolean} enableEncryption
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.enableEncryption = false;
-
-        /**
-         * FlagsInConfig enableIpv6.
-         * @member {boolean} enableIpv6
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.enableIpv6 = false;
-
-        /**
-         * FlagsInConfig mtu.
-         * @member {number} mtu
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.mtu = 0;
-
-        /**
-         * FlagsInConfig latencyFirst.
-         * @member {boolean} latencyFirst
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.latencyFirst = false;
-
-        /**
-         * FlagsInConfig enableExitNode.
-         * @member {boolean} enableExitNode
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.enableExitNode = false;
-
-        /**
-         * FlagsInConfig noTun.
-         * @member {boolean} noTun
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.noTun = false;
-
-        /**
-         * FlagsInConfig useSmoltcp.
-         * @member {boolean} useSmoltcp
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.useSmoltcp = false;
-
-        /**
-         * FlagsInConfig relayNetworkWhitelist.
-         * @member {string} relayNetworkWhitelist
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.relayNetworkWhitelist = "";
-
-        /**
-         * FlagsInConfig disableP2p.
-         * @member {boolean} disableP2p
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.disableP2p = false;
-
-        /**
-         * FlagsInConfig relayAllPeerRpc.
-         * @member {boolean} relayAllPeerRpc
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.relayAllPeerRpc = false;
-
-        /**
-         * FlagsInConfig disableUdpHolePunching.
-         * @member {boolean} disableUdpHolePunching
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.disableUdpHolePunching = false;
-
-        /**
-         * FlagsInConfig multiThread.
-         * @member {boolean} multiThread
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.multiThread = false;
-
-        /**
-         * FlagsInConfig dataCompressAlgo.
-         * @member {common.CompressionAlgoPb} dataCompressAlgo
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.dataCompressAlgo = 0;
-
-        /**
-         * FlagsInConfig bindDevice.
-         * @member {boolean} bindDevice
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.bindDevice = false;
-
-        /**
-         * FlagsInConfig enableKcpProxy.
-         * @member {boolean} enableKcpProxy
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.enableKcpProxy = false;
-
-        /**
-         * FlagsInConfig disableKcpInput.
-         * @member {boolean} disableKcpInput
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.disableKcpInput = false;
-
-        /**
-         * FlagsInConfig disableRelayKcp.
-         * @member {boolean} disableRelayKcp
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.disableRelayKcp = false;
-
-        /**
-         * FlagsInConfig proxyForwardBySystem.
-         * @member {boolean} proxyForwardBySystem
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.proxyForwardBySystem = false;
-
-        /**
-         * FlagsInConfig acceptDns.
-         * @member {boolean} acceptDns
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.acceptDns = false;
-
-        /**
-         * FlagsInConfig privateMode.
-         * @member {boolean} privateMode
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.privateMode = false;
-
-        /**
-         * FlagsInConfig enableQuicProxy.
-         * @member {boolean} enableQuicProxy
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.enableQuicProxy = false;
-
-        /**
-         * FlagsInConfig disableQuicInput.
-         * @member {boolean} disableQuicInput
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.disableQuicInput = false;
-
-        /**
-         * FlagsInConfig quicListenPort.
-         * @member {number} quicListenPort
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.quicListenPort = 0;
-
-        /**
-         * FlagsInConfig foreignRelayBpsLimit.
-         * @member {Long} foreignRelayBpsLimit
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.foreignRelayBpsLimit = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-
-        /**
-         * FlagsInConfig multiThreadCount.
-         * @member {number} multiThreadCount
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.multiThreadCount = 0;
-
-        /**
-         * FlagsInConfig enableRelayForeignNetworkKcp.
-         * @member {boolean} enableRelayForeignNetworkKcp
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.enableRelayForeignNetworkKcp = false;
-
-        /**
-         * FlagsInConfig encryptionAlgorithm.
-         * @member {string} encryptionAlgorithm
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.encryptionAlgorithm = "";
-
-        /**
-         * FlagsInConfig disableSymHolePunching.
-         * @member {boolean} disableSymHolePunching
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.disableSymHolePunching = false;
-
-        /**
-         * FlagsInConfig tldDnsZone.
-         * @member {string} tldDnsZone
-         * @memberof common.FlagsInConfig
-         * @instance
-         */
-        FlagsInConfig.prototype.tldDnsZone = "";
-
-        /**
-         * Creates a new FlagsInConfig instance using the specified properties.
-         * @function create
-         * @memberof common.FlagsInConfig
-         * @static
-         * @param {common.IFlagsInConfig=} [properties] Properties to set
-         * @returns {common.FlagsInConfig} FlagsInConfig instance
-         */
-        FlagsInConfig.create = function create(properties) {
-            return new FlagsInConfig(properties);
-        };
-
-        /**
-         * Encodes the specified FlagsInConfig message. Does not implicitly {@link common.FlagsInConfig.verify|verify} messages.
-         * @function encode
-         * @memberof common.FlagsInConfig
-         * @static
-         * @param {common.IFlagsInConfig} message FlagsInConfig message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        FlagsInConfig.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.defaultProtocol != null && Object.hasOwnProperty.call(message, "defaultProtocol"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.defaultProtocol);
-            if (message.devName != null && Object.hasOwnProperty.call(message, "devName"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.devName);
-            if (message.enableEncryption != null && Object.hasOwnProperty.call(message, "enableEncryption"))
-                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.enableEncryption);
-            if (message.enableIpv6 != null && Object.hasOwnProperty.call(message, "enableIpv6"))
-                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.enableIpv6);
-            if (message.mtu != null && Object.hasOwnProperty.call(message, "mtu"))
-                writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.mtu);
-            if (message.latencyFirst != null && Object.hasOwnProperty.call(message, "latencyFirst"))
-                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.latencyFirst);
-            if (message.enableExitNode != null && Object.hasOwnProperty.call(message, "enableExitNode"))
-                writer.uint32(/* id 7, wireType 0 =*/56).bool(message.enableExitNode);
-            if (message.noTun != null && Object.hasOwnProperty.call(message, "noTun"))
-                writer.uint32(/* id 8, wireType 0 =*/64).bool(message.noTun);
-            if (message.useSmoltcp != null && Object.hasOwnProperty.call(message, "useSmoltcp"))
-                writer.uint32(/* id 9, wireType 0 =*/72).bool(message.useSmoltcp);
-            if (message.relayNetworkWhitelist != null && Object.hasOwnProperty.call(message, "relayNetworkWhitelist"))
-                writer.uint32(/* id 10, wireType 2 =*/82).string(message.relayNetworkWhitelist);
-            if (message.disableP2p != null && Object.hasOwnProperty.call(message, "disableP2p"))
-                writer.uint32(/* id 11, wireType 0 =*/88).bool(message.disableP2p);
-            if (message.relayAllPeerRpc != null && Object.hasOwnProperty.call(message, "relayAllPeerRpc"))
-                writer.uint32(/* id 12, wireType 0 =*/96).bool(message.relayAllPeerRpc);
-            if (message.disableUdpHolePunching != null && Object.hasOwnProperty.call(message, "disableUdpHolePunching"))
-                writer.uint32(/* id 13, wireType 0 =*/104).bool(message.disableUdpHolePunching);
-            if (message.multiThread != null && Object.hasOwnProperty.call(message, "multiThread"))
-                writer.uint32(/* id 15, wireType 0 =*/120).bool(message.multiThread);
-            if (message.dataCompressAlgo != null && Object.hasOwnProperty.call(message, "dataCompressAlgo"))
-                writer.uint32(/* id 16, wireType 0 =*/128).int32(message.dataCompressAlgo);
-            if (message.bindDevice != null && Object.hasOwnProperty.call(message, "bindDevice"))
-                writer.uint32(/* id 17, wireType 0 =*/136).bool(message.bindDevice);
-            if (message.enableKcpProxy != null && Object.hasOwnProperty.call(message, "enableKcpProxy"))
-                writer.uint32(/* id 18, wireType 0 =*/144).bool(message.enableKcpProxy);
-            if (message.disableKcpInput != null && Object.hasOwnProperty.call(message, "disableKcpInput"))
-                writer.uint32(/* id 19, wireType 0 =*/152).bool(message.disableKcpInput);
-            if (message.disableRelayKcp != null && Object.hasOwnProperty.call(message, "disableRelayKcp"))
-                writer.uint32(/* id 20, wireType 0 =*/160).bool(message.disableRelayKcp);
-            if (message.proxyForwardBySystem != null && Object.hasOwnProperty.call(message, "proxyForwardBySystem"))
-                writer.uint32(/* id 21, wireType 0 =*/168).bool(message.proxyForwardBySystem);
-            if (message.acceptDns != null && Object.hasOwnProperty.call(message, "acceptDns"))
-                writer.uint32(/* id 22, wireType 0 =*/176).bool(message.acceptDns);
-            if (message.privateMode != null && Object.hasOwnProperty.call(message, "privateMode"))
-                writer.uint32(/* id 23, wireType 0 =*/184).bool(message.privateMode);
-            if (message.enableQuicProxy != null && Object.hasOwnProperty.call(message, "enableQuicProxy"))
-                writer.uint32(/* id 24, wireType 0 =*/192).bool(message.enableQuicProxy);
-            if (message.disableQuicInput != null && Object.hasOwnProperty.call(message, "disableQuicInput"))
-                writer.uint32(/* id 25, wireType 0 =*/200).bool(message.disableQuicInput);
-            if (message.foreignRelayBpsLimit != null && Object.hasOwnProperty.call(message, "foreignRelayBpsLimit"))
-                writer.uint32(/* id 26, wireType 0 =*/208).uint64(message.foreignRelayBpsLimit);
-            if (message.multiThreadCount != null && Object.hasOwnProperty.call(message, "multiThreadCount"))
-                writer.uint32(/* id 27, wireType 0 =*/216).uint32(message.multiThreadCount);
-            if (message.enableRelayForeignNetworkKcp != null && Object.hasOwnProperty.call(message, "enableRelayForeignNetworkKcp"))
-                writer.uint32(/* id 28, wireType 0 =*/224).bool(message.enableRelayForeignNetworkKcp);
-            if (message.encryptionAlgorithm != null && Object.hasOwnProperty.call(message, "encryptionAlgorithm"))
-                writer.uint32(/* id 29, wireType 2 =*/234).string(message.encryptionAlgorithm);
-            if (message.disableSymHolePunching != null && Object.hasOwnProperty.call(message, "disableSymHolePunching"))
-                writer.uint32(/* id 30, wireType 0 =*/240).bool(message.disableSymHolePunching);
-            if (message.tldDnsZone != null && Object.hasOwnProperty.call(message, "tldDnsZone"))
-                writer.uint32(/* id 31, wireType 2 =*/250).string(message.tldDnsZone);
-            if (message.quicListenPort != null && Object.hasOwnProperty.call(message, "quicListenPort"))
-                writer.uint32(/* id 33, wireType 0 =*/264).uint32(message.quicListenPort);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified FlagsInConfig message, length delimited. Does not implicitly {@link common.FlagsInConfig.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.FlagsInConfig
-         * @static
-         * @param {common.IFlagsInConfig} message FlagsInConfig message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        FlagsInConfig.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a FlagsInConfig message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.FlagsInConfig
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.FlagsInConfig} FlagsInConfig
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        FlagsInConfig.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.FlagsInConfig();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.defaultProtocol = reader.string();
-                        break;
-                    }
-                case 2: {
-                        message.devName = reader.string();
-                        break;
-                    }
-                case 3: {
-                        message.enableEncryption = reader.bool();
-                        break;
-                    }
-                case 4: {
-                        message.enableIpv6 = reader.bool();
-                        break;
-                    }
-                case 5: {
-                        message.mtu = reader.uint32();
-                        break;
-                    }
-                case 6: {
-                        message.latencyFirst = reader.bool();
-                        break;
-                    }
-                case 7: {
-                        message.enableExitNode = reader.bool();
-                        break;
-                    }
-                case 8: {
-                        message.noTun = reader.bool();
-                        break;
-                    }
-                case 9: {
-                        message.useSmoltcp = reader.bool();
-                        break;
-                    }
-                case 10: {
-                        message.relayNetworkWhitelist = reader.string();
-                        break;
-                    }
-                case 11: {
-                        message.disableP2p = reader.bool();
-                        break;
-                    }
-                case 12: {
-                        message.relayAllPeerRpc = reader.bool();
-                        break;
-                    }
-                case 13: {
-                        message.disableUdpHolePunching = reader.bool();
-                        break;
-                    }
-                case 15: {
-                        message.multiThread = reader.bool();
-                        break;
-                    }
-                case 16: {
-                        message.dataCompressAlgo = reader.int32();
-                        break;
-                    }
-                case 17: {
-                        message.bindDevice = reader.bool();
-                        break;
-                    }
-                case 18: {
-                        message.enableKcpProxy = reader.bool();
-                        break;
-                    }
-                case 19: {
-                        message.disableKcpInput = reader.bool();
-                        break;
-                    }
-                case 20: {
-                        message.disableRelayKcp = reader.bool();
-                        break;
-                    }
-                case 21: {
-                        message.proxyForwardBySystem = reader.bool();
-                        break;
-                    }
-                case 22: {
-                        message.acceptDns = reader.bool();
-                        break;
-                    }
-                case 23: {
-                        message.privateMode = reader.bool();
-                        break;
-                    }
-                case 24: {
-                        message.enableQuicProxy = reader.bool();
-                        break;
-                    }
-                case 25: {
-                        message.disableQuicInput = reader.bool();
-                        break;
-                    }
-                case 33: {
-                        message.quicListenPort = reader.uint32();
-                        break;
-                    }
-                case 26: {
-                        message.foreignRelayBpsLimit = reader.uint64();
-                        break;
-                    }
-                case 27: {
-                        message.multiThreadCount = reader.uint32();
-                        break;
-                    }
-                case 28: {
-                        message.enableRelayForeignNetworkKcp = reader.bool();
-                        break;
-                    }
-                case 29: {
-                        message.encryptionAlgorithm = reader.string();
-                        break;
-                    }
-                case 30: {
-                        message.disableSymHolePunching = reader.bool();
-                        break;
-                    }
-                case 31: {
-                        message.tldDnsZone = reader.string();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a FlagsInConfig message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.FlagsInConfig
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.FlagsInConfig} FlagsInConfig
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        FlagsInConfig.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a FlagsInConfig message.
-         * @function verify
-         * @memberof common.FlagsInConfig
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        FlagsInConfig.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.defaultProtocol != null && message.hasOwnProperty("defaultProtocol"))
-                if (!$util.isString(message.defaultProtocol))
-                    return "defaultProtocol: string expected";
-            if (message.devName != null && message.hasOwnProperty("devName"))
-                if (!$util.isString(message.devName))
-                    return "devName: string expected";
-            if (message.enableEncryption != null && message.hasOwnProperty("enableEncryption"))
-                if (typeof message.enableEncryption !== "boolean")
-                    return "enableEncryption: boolean expected";
-            if (message.enableIpv6 != null && message.hasOwnProperty("enableIpv6"))
-                if (typeof message.enableIpv6 !== "boolean")
-                    return "enableIpv6: boolean expected";
-            if (message.mtu != null && message.hasOwnProperty("mtu"))
-                if (!$util.isInteger(message.mtu))
-                    return "mtu: integer expected";
-            if (message.latencyFirst != null && message.hasOwnProperty("latencyFirst"))
-                if (typeof message.latencyFirst !== "boolean")
-                    return "latencyFirst: boolean expected";
-            if (message.enableExitNode != null && message.hasOwnProperty("enableExitNode"))
-                if (typeof message.enableExitNode !== "boolean")
-                    return "enableExitNode: boolean expected";
-            if (message.noTun != null && message.hasOwnProperty("noTun"))
-                if (typeof message.noTun !== "boolean")
-                    return "noTun: boolean expected";
-            if (message.useSmoltcp != null && message.hasOwnProperty("useSmoltcp"))
-                if (typeof message.useSmoltcp !== "boolean")
-                    return "useSmoltcp: boolean expected";
-            if (message.relayNetworkWhitelist != null && message.hasOwnProperty("relayNetworkWhitelist"))
-                if (!$util.isString(message.relayNetworkWhitelist))
-                    return "relayNetworkWhitelist: string expected";
-            if (message.disableP2p != null && message.hasOwnProperty("disableP2p"))
-                if (typeof message.disableP2p !== "boolean")
-                    return "disableP2p: boolean expected";
-            if (message.relayAllPeerRpc != null && message.hasOwnProperty("relayAllPeerRpc"))
-                if (typeof message.relayAllPeerRpc !== "boolean")
-                    return "relayAllPeerRpc: boolean expected";
-            if (message.disableUdpHolePunching != null && message.hasOwnProperty("disableUdpHolePunching"))
-                if (typeof message.disableUdpHolePunching !== "boolean")
-                    return "disableUdpHolePunching: boolean expected";
-            if (message.multiThread != null && message.hasOwnProperty("multiThread"))
-                if (typeof message.multiThread !== "boolean")
-                    return "multiThread: boolean expected";
-            if (message.dataCompressAlgo != null && message.hasOwnProperty("dataCompressAlgo"))
-                switch (message.dataCompressAlgo) {
-                default:
-                    return "dataCompressAlgo: enum value expected";
-                case 0:
-                case 1:
-                case 2:
-                    break;
-                }
-            if (message.bindDevice != null && message.hasOwnProperty("bindDevice"))
-                if (typeof message.bindDevice !== "boolean")
-                    return "bindDevice: boolean expected";
-            if (message.enableKcpProxy != null && message.hasOwnProperty("enableKcpProxy"))
-                if (typeof message.enableKcpProxy !== "boolean")
-                    return "enableKcpProxy: boolean expected";
-            if (message.disableKcpInput != null && message.hasOwnProperty("disableKcpInput"))
-                if (typeof message.disableKcpInput !== "boolean")
-                    return "disableKcpInput: boolean expected";
-            if (message.disableRelayKcp != null && message.hasOwnProperty("disableRelayKcp"))
-                if (typeof message.disableRelayKcp !== "boolean")
-                    return "disableRelayKcp: boolean expected";
-            if (message.proxyForwardBySystem != null && message.hasOwnProperty("proxyForwardBySystem"))
-                if (typeof message.proxyForwardBySystem !== "boolean")
-                    return "proxyForwardBySystem: boolean expected";
-            if (message.acceptDns != null && message.hasOwnProperty("acceptDns"))
-                if (typeof message.acceptDns !== "boolean")
-                    return "acceptDns: boolean expected";
-            if (message.privateMode != null && message.hasOwnProperty("privateMode"))
-                if (typeof message.privateMode !== "boolean")
-                    return "privateMode: boolean expected";
-            if (message.enableQuicProxy != null && message.hasOwnProperty("enableQuicProxy"))
-                if (typeof message.enableQuicProxy !== "boolean")
-                    return "enableQuicProxy: boolean expected";
-            if (message.disableQuicInput != null && message.hasOwnProperty("disableQuicInput"))
-                if (typeof message.disableQuicInput !== "boolean")
-                    return "disableQuicInput: boolean expected";
-            if (message.quicListenPort != null && message.hasOwnProperty("quicListenPort"))
-                if (!$util.isInteger(message.quicListenPort))
-                    return "quicListenPort: integer expected";
-            if (message.foreignRelayBpsLimit != null && message.hasOwnProperty("foreignRelayBpsLimit"))
-                if (!$util.isInteger(message.foreignRelayBpsLimit) && !(message.foreignRelayBpsLimit && $util.isInteger(message.foreignRelayBpsLimit.low) && $util.isInteger(message.foreignRelayBpsLimit.high)))
-                    return "foreignRelayBpsLimit: integer|Long expected";
-            if (message.multiThreadCount != null && message.hasOwnProperty("multiThreadCount"))
-                if (!$util.isInteger(message.multiThreadCount))
-                    return "multiThreadCount: integer expected";
-            if (message.enableRelayForeignNetworkKcp != null && message.hasOwnProperty("enableRelayForeignNetworkKcp"))
-                if (typeof message.enableRelayForeignNetworkKcp !== "boolean")
-                    return "enableRelayForeignNetworkKcp: boolean expected";
-            if (message.encryptionAlgorithm != null && message.hasOwnProperty("encryptionAlgorithm"))
-                if (!$util.isString(message.encryptionAlgorithm))
-                    return "encryptionAlgorithm: string expected";
-            if (message.disableSymHolePunching != null && message.hasOwnProperty("disableSymHolePunching"))
-                if (typeof message.disableSymHolePunching !== "boolean")
-                    return "disableSymHolePunching: boolean expected";
-            if (message.tldDnsZone != null && message.hasOwnProperty("tldDnsZone"))
-                if (!$util.isString(message.tldDnsZone))
-                    return "tldDnsZone: string expected";
-            return null;
-        };
-
-        /**
-         * Creates a FlagsInConfig message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.FlagsInConfig
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.FlagsInConfig} FlagsInConfig
-         */
-        FlagsInConfig.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.FlagsInConfig)
-                return object;
-            let message = new $root.common.FlagsInConfig();
-            if (object.defaultProtocol != null)
-                message.defaultProtocol = String(object.defaultProtocol);
-            if (object.devName != null)
-                message.devName = String(object.devName);
-            if (object.enableEncryption != null)
-                message.enableEncryption = Boolean(object.enableEncryption);
-            if (object.enableIpv6 != null)
-                message.enableIpv6 = Boolean(object.enableIpv6);
-            if (object.mtu != null)
-                message.mtu = object.mtu >>> 0;
-            if (object.latencyFirst != null)
-                message.latencyFirst = Boolean(object.latencyFirst);
-            if (object.enableExitNode != null)
-                message.enableExitNode = Boolean(object.enableExitNode);
-            if (object.noTun != null)
-                message.noTun = Boolean(object.noTun);
-            if (object.useSmoltcp != null)
-                message.useSmoltcp = Boolean(object.useSmoltcp);
-            if (object.relayNetworkWhitelist != null)
-                message.relayNetworkWhitelist = String(object.relayNetworkWhitelist);
-            if (object.disableP2p != null)
-                message.disableP2p = Boolean(object.disableP2p);
-            if (object.relayAllPeerRpc != null)
-                message.relayAllPeerRpc = Boolean(object.relayAllPeerRpc);
-            if (object.disableUdpHolePunching != null)
-                message.disableUdpHolePunching = Boolean(object.disableUdpHolePunching);
-            if (object.multiThread != null)
-                message.multiThread = Boolean(object.multiThread);
-            switch (object.dataCompressAlgo) {
-            default:
-                if (typeof object.dataCompressAlgo === "number") {
-                    message.dataCompressAlgo = object.dataCompressAlgo;
-                    break;
-                }
-                break;
-            case "Invalid":
-            case 0:
-                message.dataCompressAlgo = 0;
-                break;
-            case "None":
-            case 1:
-                message.dataCompressAlgo = 1;
-                break;
-            case "Zstd":
-            case 2:
-                message.dataCompressAlgo = 2;
-                break;
-            }
-            if (object.bindDevice != null)
-                message.bindDevice = Boolean(object.bindDevice);
-            if (object.enableKcpProxy != null)
-                message.enableKcpProxy = Boolean(object.enableKcpProxy);
-            if (object.disableKcpInput != null)
-                message.disableKcpInput = Boolean(object.disableKcpInput);
-            if (object.disableRelayKcp != null)
-                message.disableRelayKcp = Boolean(object.disableRelayKcp);
-            if (object.proxyForwardBySystem != null)
-                message.proxyForwardBySystem = Boolean(object.proxyForwardBySystem);
-            if (object.acceptDns != null)
-                message.acceptDns = Boolean(object.acceptDns);
-            if (object.privateMode != null)
-                message.privateMode = Boolean(object.privateMode);
-            if (object.enableQuicProxy != null)
-                message.enableQuicProxy = Boolean(object.enableQuicProxy);
-            if (object.disableQuicInput != null)
-                message.disableQuicInput = Boolean(object.disableQuicInput);
-            if (object.quicListenPort != null)
-                message.quicListenPort = object.quicListenPort >>> 0;
-            if (object.foreignRelayBpsLimit != null)
-                if ($util.Long)
-                    (message.foreignRelayBpsLimit = $util.Long.fromValue(object.foreignRelayBpsLimit)).unsigned = true;
-                else if (typeof object.foreignRelayBpsLimit === "string")
-                    message.foreignRelayBpsLimit = parseInt(object.foreignRelayBpsLimit, 10);
-                else if (typeof object.foreignRelayBpsLimit === "number")
-                    message.foreignRelayBpsLimit = object.foreignRelayBpsLimit;
-                else if (typeof object.foreignRelayBpsLimit === "object")
-                    message.foreignRelayBpsLimit = new $util.LongBits(object.foreignRelayBpsLimit.low >>> 0, object.foreignRelayBpsLimit.high >>> 0).toNumber(true);
-            if (object.multiThreadCount != null)
-                message.multiThreadCount = object.multiThreadCount >>> 0;
-            if (object.enableRelayForeignNetworkKcp != null)
-                message.enableRelayForeignNetworkKcp = Boolean(object.enableRelayForeignNetworkKcp);
-            if (object.encryptionAlgorithm != null)
-                message.encryptionAlgorithm = String(object.encryptionAlgorithm);
-            if (object.disableSymHolePunching != null)
-                message.disableSymHolePunching = Boolean(object.disableSymHolePunching);
-            if (object.tldDnsZone != null)
-                message.tldDnsZone = String(object.tldDnsZone);
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a FlagsInConfig message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.FlagsInConfig
-         * @static
-         * @param {common.FlagsInConfig} message FlagsInConfig
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        FlagsInConfig.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.defaultProtocol = "";
-                object.devName = "";
-                object.enableEncryption = false;
-                object.enableIpv6 = false;
-                object.mtu = 0;
-                object.latencyFirst = false;
-                object.enableExitNode = false;
-                object.noTun = false;
-                object.useSmoltcp = false;
-                object.relayNetworkWhitelist = "";
-                object.disableP2p = false;
-                object.relayAllPeerRpc = false;
-                object.disableUdpHolePunching = false;
-                object.multiThread = false;
-                object.dataCompressAlgo = options.enums === String ? "Invalid" : 0;
-                object.bindDevice = false;
-                object.enableKcpProxy = false;
-                object.disableKcpInput = false;
-                object.disableRelayKcp = false;
-                object.proxyForwardBySystem = false;
-                object.acceptDns = false;
-                object.privateMode = false;
-                object.enableQuicProxy = false;
-                object.disableQuicInput = false;
-                if ($util.Long) {
-                    let long = new $util.Long(0, 0, true);
-                    object.foreignRelayBpsLimit = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.foreignRelayBpsLimit = options.longs === String ? "0" : 0;
-                object.multiThreadCount = 0;
-                object.enableRelayForeignNetworkKcp = false;
-                object.encryptionAlgorithm = "";
-                object.disableSymHolePunching = false;
-                object.tldDnsZone = "";
-                object.quicListenPort = 0;
-            }
-            if (message.defaultProtocol != null && message.hasOwnProperty("defaultProtocol"))
-                object.defaultProtocol = message.defaultProtocol;
-            if (message.devName != null && message.hasOwnProperty("devName"))
-                object.devName = message.devName;
-            if (message.enableEncryption != null && message.hasOwnProperty("enableEncryption"))
-                object.enableEncryption = message.enableEncryption;
-            if (message.enableIpv6 != null && message.hasOwnProperty("enableIpv6"))
-                object.enableIpv6 = message.enableIpv6;
-            if (message.mtu != null && message.hasOwnProperty("mtu"))
-                object.mtu = message.mtu;
-            if (message.latencyFirst != null && message.hasOwnProperty("latencyFirst"))
-                object.latencyFirst = message.latencyFirst;
-            if (message.enableExitNode != null && message.hasOwnProperty("enableExitNode"))
-                object.enableExitNode = message.enableExitNode;
-            if (message.noTun != null && message.hasOwnProperty("noTun"))
-                object.noTun = message.noTun;
-            if (message.useSmoltcp != null && message.hasOwnProperty("useSmoltcp"))
-                object.useSmoltcp = message.useSmoltcp;
-            if (message.relayNetworkWhitelist != null && message.hasOwnProperty("relayNetworkWhitelist"))
-                object.relayNetworkWhitelist = message.relayNetworkWhitelist;
-            if (message.disableP2p != null && message.hasOwnProperty("disableP2p"))
-                object.disableP2p = message.disableP2p;
-            if (message.relayAllPeerRpc != null && message.hasOwnProperty("relayAllPeerRpc"))
-                object.relayAllPeerRpc = message.relayAllPeerRpc;
-            if (message.disableUdpHolePunching != null && message.hasOwnProperty("disableUdpHolePunching"))
-                object.disableUdpHolePunching = message.disableUdpHolePunching;
-            if (message.multiThread != null && message.hasOwnProperty("multiThread"))
-                object.multiThread = message.multiThread;
-            if (message.dataCompressAlgo != null && message.hasOwnProperty("dataCompressAlgo"))
-                object.dataCompressAlgo = options.enums === String ? $root.common.CompressionAlgoPb[message.dataCompressAlgo] === undefined ? message.dataCompressAlgo : $root.common.CompressionAlgoPb[message.dataCompressAlgo] : message.dataCompressAlgo;
-            if (message.bindDevice != null && message.hasOwnProperty("bindDevice"))
-                object.bindDevice = message.bindDevice;
-            if (message.enableKcpProxy != null && message.hasOwnProperty("enableKcpProxy"))
-                object.enableKcpProxy = message.enableKcpProxy;
-            if (message.disableKcpInput != null && message.hasOwnProperty("disableKcpInput"))
-                object.disableKcpInput = message.disableKcpInput;
-            if (message.disableRelayKcp != null && message.hasOwnProperty("disableRelayKcp"))
-                object.disableRelayKcp = message.disableRelayKcp;
-            if (message.proxyForwardBySystem != null && message.hasOwnProperty("proxyForwardBySystem"))
-                object.proxyForwardBySystem = message.proxyForwardBySystem;
-            if (message.acceptDns != null && message.hasOwnProperty("acceptDns"))
-                object.acceptDns = message.acceptDns;
-            if (message.privateMode != null && message.hasOwnProperty("privateMode"))
-                object.privateMode = message.privateMode;
-            if (message.enableQuicProxy != null && message.hasOwnProperty("enableQuicProxy"))
-                object.enableQuicProxy = message.enableQuicProxy;
-            if (message.disableQuicInput != null && message.hasOwnProperty("disableQuicInput"))
-                object.disableQuicInput = message.disableQuicInput;
-            if (message.foreignRelayBpsLimit != null && message.hasOwnProperty("foreignRelayBpsLimit"))
-                if (typeof message.foreignRelayBpsLimit === "number")
-                    object.foreignRelayBpsLimit = options.longs === String ? String(message.foreignRelayBpsLimit) : message.foreignRelayBpsLimit;
-                else
-                    object.foreignRelayBpsLimit = options.longs === String ? $util.Long.prototype.toString.call(message.foreignRelayBpsLimit) : options.longs === Number ? new $util.LongBits(message.foreignRelayBpsLimit.low >>> 0, message.foreignRelayBpsLimit.high >>> 0).toNumber(true) : message.foreignRelayBpsLimit;
-            if (message.multiThreadCount != null && message.hasOwnProperty("multiThreadCount"))
-                object.multiThreadCount = message.multiThreadCount;
-            if (message.enableRelayForeignNetworkKcp != null && message.hasOwnProperty("enableRelayForeignNetworkKcp"))
-                object.enableRelayForeignNetworkKcp = message.enableRelayForeignNetworkKcp;
-            if (message.encryptionAlgorithm != null && message.hasOwnProperty("encryptionAlgorithm"))
-                object.encryptionAlgorithm = message.encryptionAlgorithm;
-            if (message.disableSymHolePunching != null && message.hasOwnProperty("disableSymHolePunching"))
-                object.disableSymHolePunching = message.disableSymHolePunching;
-            if (message.tldDnsZone != null && message.hasOwnProperty("tldDnsZone"))
-                object.tldDnsZone = message.tldDnsZone;
-            if (message.quicListenPort != null && message.hasOwnProperty("quicListenPort"))
-                object.quicListenPort = message.quicListenPort;
-            return object;
-        };
-
-        /**
-         * Converts this FlagsInConfig to JSON.
-         * @function toJSON
-         * @memberof common.FlagsInConfig
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        FlagsInConfig.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for FlagsInConfig
-         * @function getTypeUrl
-         * @memberof common.FlagsInConfig
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        FlagsInConfig.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.FlagsInConfig";
-        };
-
-        return FlagsInConfig;
-    })();
-
-    common.RpcDescriptor = (function() {
-
-        /**
-         * Properties of a RpcDescriptor.
-         * @memberof common
-         * @interface IRpcDescriptor
-         * @property {string|null} [domainName] RpcDescriptor domainName
-         * @property {string|null} [protoName] RpcDescriptor protoName
-         * @property {string|null} [serviceName] RpcDescriptor serviceName
-         * @property {number|null} [methodIndex] RpcDescriptor methodIndex
-         */
-
-        /**
-         * Constructs a new RpcDescriptor.
-         * @memberof common
-         * @classdesc Represents a RpcDescriptor.
-         * @implements IRpcDescriptor
-         * @constructor
-         * @param {common.IRpcDescriptor=} [properties] Properties to set
-         */
-        function RpcDescriptor(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * RpcDescriptor domainName.
-         * @member {string} domainName
-         * @memberof common.RpcDescriptor
-         * @instance
-         */
-        RpcDescriptor.prototype.domainName = "";
-
-        /**
-         * RpcDescriptor protoName.
-         * @member {string} protoName
-         * @memberof common.RpcDescriptor
-         * @instance
-         */
-        RpcDescriptor.prototype.protoName = "";
-
-        /**
-         * RpcDescriptor serviceName.
-         * @member {string} serviceName
-         * @memberof common.RpcDescriptor
-         * @instance
-         */
-        RpcDescriptor.prototype.serviceName = "";
-
-        /**
-         * RpcDescriptor methodIndex.
-         * @member {number} methodIndex
-         * @memberof common.RpcDescriptor
-         * @instance
-         */
-        RpcDescriptor.prototype.methodIndex = 0;
-
-        /**
-         * Creates a new RpcDescriptor instance using the specified properties.
-         * @function create
-         * @memberof common.RpcDescriptor
-         * @static
-         * @param {common.IRpcDescriptor=} [properties] Properties to set
-         * @returns {common.RpcDescriptor} RpcDescriptor instance
-         */
-        RpcDescriptor.create = function create(properties) {
-            return new RpcDescriptor(properties);
-        };
-
-        /**
-         * Encodes the specified RpcDescriptor message. Does not implicitly {@link common.RpcDescriptor.verify|verify} messages.
-         * @function encode
-         * @memberof common.RpcDescriptor
-         * @static
-         * @param {common.IRpcDescriptor} message RpcDescriptor message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        RpcDescriptor.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.domainName != null && Object.hasOwnProperty.call(message, "domainName"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.domainName);
-            if (message.protoName != null && Object.hasOwnProperty.call(message, "protoName"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.protoName);
-            if (message.serviceName != null && Object.hasOwnProperty.call(message, "serviceName"))
-                writer.uint32(/* id 3, wireType 2 =*/26).string(message.serviceName);
-            if (message.methodIndex != null && Object.hasOwnProperty.call(message, "methodIndex"))
-                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.methodIndex);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified RpcDescriptor message, length delimited. Does not implicitly {@link common.RpcDescriptor.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.RpcDescriptor
-         * @static
-         * @param {common.IRpcDescriptor} message RpcDescriptor message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        RpcDescriptor.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a RpcDescriptor message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.RpcDescriptor
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.RpcDescriptor} RpcDescriptor
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        RpcDescriptor.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.RpcDescriptor();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.domainName = reader.string();
-                        break;
-                    }
-                case 2: {
-                        message.protoName = reader.string();
-                        break;
-                    }
-                case 3: {
-                        message.serviceName = reader.string();
-                        break;
-                    }
-                case 4: {
-                        message.methodIndex = reader.uint32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a RpcDescriptor message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.RpcDescriptor
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.RpcDescriptor} RpcDescriptor
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        RpcDescriptor.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a RpcDescriptor message.
-         * @function verify
-         * @memberof common.RpcDescriptor
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        RpcDescriptor.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.domainName != null && message.hasOwnProperty("domainName"))
-                if (!$util.isString(message.domainName))
-                    return "domainName: string expected";
-            if (message.protoName != null && message.hasOwnProperty("protoName"))
-                if (!$util.isString(message.protoName))
-                    return "protoName: string expected";
-            if (message.serviceName != null && message.hasOwnProperty("serviceName"))
-                if (!$util.isString(message.serviceName))
-                    return "serviceName: string expected";
-            if (message.methodIndex != null && message.hasOwnProperty("methodIndex"))
-                if (!$util.isInteger(message.methodIndex))
-                    return "methodIndex: integer expected";
-            return null;
-        };
-
-        /**
-         * Creates a RpcDescriptor message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.RpcDescriptor
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.RpcDescriptor} RpcDescriptor
-         */
-        RpcDescriptor.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.RpcDescriptor)
-                return object;
-            let message = new $root.common.RpcDescriptor();
-            if (object.domainName != null)
-                message.domainName = String(object.domainName);
-            if (object.protoName != null)
-                message.protoName = String(object.protoName);
-            if (object.serviceName != null)
-                message.serviceName = String(object.serviceName);
-            if (object.methodIndex != null)
-                message.methodIndex = object.methodIndex >>> 0;
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a RpcDescriptor message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.RpcDescriptor
-         * @static
-         * @param {common.RpcDescriptor} message RpcDescriptor
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        RpcDescriptor.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.domainName = "";
-                object.protoName = "";
-                object.serviceName = "";
-                object.methodIndex = 0;
-            }
-            if (message.domainName != null && message.hasOwnProperty("domainName"))
-                object.domainName = message.domainName;
-            if (message.protoName != null && message.hasOwnProperty("protoName"))
-                object.protoName = message.protoName;
-            if (message.serviceName != null && message.hasOwnProperty("serviceName"))
-                object.serviceName = message.serviceName;
-            if (message.methodIndex != null && message.hasOwnProperty("methodIndex"))
-                object.methodIndex = message.methodIndex;
-            return object;
-        };
-
-        /**
-         * Converts this RpcDescriptor to JSON.
-         * @function toJSON
-         * @memberof common.RpcDescriptor
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        RpcDescriptor.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for RpcDescriptor
-         * @function getTypeUrl
-         * @memberof common.RpcDescriptor
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        RpcDescriptor.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.RpcDescriptor";
-        };
-
-        return RpcDescriptor;
-    })();
-
-    common.RpcRequest = (function() {
-
-        /**
-         * Properties of a RpcRequest.
-         * @memberof common
-         * @interface IRpcRequest
-         * @property {common.IRpcDescriptor|null} [descriptor] RpcRequest descriptor
-         * @property {Uint8Array|null} [request] RpcRequest request
-         * @property {number|null} [timeoutMs] RpcRequest timeoutMs
-         */
-
-        /**
-         * Constructs a new RpcRequest.
-         * @memberof common
-         * @classdesc Represents a RpcRequest.
-         * @implements IRpcRequest
-         * @constructor
-         * @param {common.IRpcRequest=} [properties] Properties to set
-         */
-        function RpcRequest(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * RpcRequest descriptor.
-         * @member {common.IRpcDescriptor|null|undefined} descriptor
-         * @memberof common.RpcRequest
-         * @instance
-         */
-        RpcRequest.prototype.descriptor = null;
-
-        /**
-         * RpcRequest request.
-         * @member {Uint8Array} request
-         * @memberof common.RpcRequest
-         * @instance
-         */
-        RpcRequest.prototype.request = $util.newBuffer([]);
-
-        /**
-         * RpcRequest timeoutMs.
-         * @member {number} timeoutMs
-         * @memberof common.RpcRequest
-         * @instance
-         */
-        RpcRequest.prototype.timeoutMs = 0;
-
-        /**
-         * Creates a new RpcRequest instance using the specified properties.
-         * @function create
-         * @memberof common.RpcRequest
-         * @static
-         * @param {common.IRpcRequest=} [properties] Properties to set
-         * @returns {common.RpcRequest} RpcRequest instance
-         */
-        RpcRequest.create = function create(properties) {
-            return new RpcRequest(properties);
-        };
-
-        /**
-         * Encodes the specified RpcRequest message. Does not implicitly {@link common.RpcRequest.verify|verify} messages.
-         * @function encode
-         * @memberof common.RpcRequest
-         * @static
-         * @param {common.IRpcRequest} message RpcRequest message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        RpcRequest.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.descriptor != null && Object.hasOwnProperty.call(message, "descriptor"))
-                $root.common.RpcDescriptor.encode(message.descriptor, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.request != null && Object.hasOwnProperty.call(message, "request"))
-                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.request);
-            if (message.timeoutMs != null && Object.hasOwnProperty.call(message, "timeoutMs"))
-                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.timeoutMs);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified RpcRequest message, length delimited. Does not implicitly {@link common.RpcRequest.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.RpcRequest
-         * @static
-         * @param {common.IRpcRequest} message RpcRequest message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        RpcRequest.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a RpcRequest message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.RpcRequest
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.RpcRequest} RpcRequest
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        RpcRequest.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.RpcRequest();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.descriptor = $root.common.RpcDescriptor.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 2: {
-                        message.request = reader.bytes();
-                        break;
-                    }
-                case 3: {
-                        message.timeoutMs = reader.int32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a RpcRequest message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.RpcRequest
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.RpcRequest} RpcRequest
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        RpcRequest.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a RpcRequest message.
-         * @function verify
-         * @memberof common.RpcRequest
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        RpcRequest.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.descriptor != null && message.hasOwnProperty("descriptor")) {
-                let error = $root.common.RpcDescriptor.verify(message.descriptor);
-                if (error)
-                    return "descriptor." + error;
-            }
-            if (message.request != null && message.hasOwnProperty("request"))
-                if (!(message.request && typeof message.request.length === "number" || $util.isString(message.request)))
-                    return "request: buffer expected";
-            if (message.timeoutMs != null && message.hasOwnProperty("timeoutMs"))
-                if (!$util.isInteger(message.timeoutMs))
-                    return "timeoutMs: integer expected";
-            return null;
-        };
-
-        /**
-         * Creates a RpcRequest message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.RpcRequest
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.RpcRequest} RpcRequest
-         */
-        RpcRequest.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.RpcRequest)
-                return object;
-            let message = new $root.common.RpcRequest();
-            if (object.descriptor != null) {
-                if (typeof object.descriptor !== "object")
-                    throw TypeError(".common.RpcRequest.descriptor: object expected");
-                message.descriptor = $root.common.RpcDescriptor.fromObject(object.descriptor);
-            }
-            if (object.request != null)
-                if (typeof object.request === "string")
-                    $util.base64.decode(object.request, message.request = $util.newBuffer($util.base64.length(object.request)), 0);
-                else if (object.request.length >= 0)
-                    message.request = object.request;
-            if (object.timeoutMs != null)
-                message.timeoutMs = object.timeoutMs | 0;
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a RpcRequest message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.RpcRequest
-         * @static
-         * @param {common.RpcRequest} message RpcRequest
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        RpcRequest.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.descriptor = null;
-                if (options.bytes === String)
-                    object.request = "";
-                else {
-                    object.request = [];
-                    if (options.bytes !== Array)
-                        object.request = $util.newBuffer(object.request);
-                }
-                object.timeoutMs = 0;
-            }
-            if (message.descriptor != null && message.hasOwnProperty("descriptor"))
-                object.descriptor = $root.common.RpcDescriptor.toObject(message.descriptor, options);
-            if (message.request != null && message.hasOwnProperty("request"))
-                object.request = options.bytes === String ? $util.base64.encode(message.request, 0, message.request.length) : options.bytes === Array ? Array.prototype.slice.call(message.request) : message.request;
-            if (message.timeoutMs != null && message.hasOwnProperty("timeoutMs"))
-                object.timeoutMs = message.timeoutMs;
-            return object;
-        };
-
-        /**
-         * Converts this RpcRequest to JSON.
-         * @function toJSON
-         * @memberof common.RpcRequest
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        RpcRequest.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for RpcRequest
-         * @function getTypeUrl
-         * @memberof common.RpcRequest
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        RpcRequest.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.RpcRequest";
-        };
-
-        return RpcRequest;
-    })();
-
-    common.RpcResponse = (function() {
-
-        /**
-         * Properties of a RpcResponse.
-         * @memberof common
-         * @interface IRpcResponse
-         * @property {Uint8Array|null} [response] RpcResponse response
-         * @property {error.IError|null} [error] RpcResponse error
-         * @property {Long|null} [runtimeUs] RpcResponse runtimeUs
-         */
-
-        /**
-         * Constructs a new RpcResponse.
-         * @memberof common
-         * @classdesc Represents a RpcResponse.
-         * @implements IRpcResponse
-         * @constructor
-         * @param {common.IRpcResponse=} [properties] Properties to set
-         */
-        function RpcResponse(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * RpcResponse response.
-         * @member {Uint8Array} response
-         * @memberof common.RpcResponse
-         * @instance
-         */
-        RpcResponse.prototype.response = $util.newBuffer([]);
-
-        /**
-         * RpcResponse error.
-         * @member {error.IError|null|undefined} error
-         * @memberof common.RpcResponse
-         * @instance
-         */
-        RpcResponse.prototype.error = null;
-
-        /**
-         * RpcResponse runtimeUs.
-         * @member {Long} runtimeUs
-         * @memberof common.RpcResponse
-         * @instance
-         */
-        RpcResponse.prototype.runtimeUs = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
-
-        /**
-         * Creates a new RpcResponse instance using the specified properties.
-         * @function create
-         * @memberof common.RpcResponse
-         * @static
-         * @param {common.IRpcResponse=} [properties] Properties to set
-         * @returns {common.RpcResponse} RpcResponse instance
-         */
-        RpcResponse.create = function create(properties) {
-            return new RpcResponse(properties);
-        };
-
-        /**
-         * Encodes the specified RpcResponse message. Does not implicitly {@link common.RpcResponse.verify|verify} messages.
-         * @function encode
-         * @memberof common.RpcResponse
-         * @static
-         * @param {common.IRpcResponse} message RpcResponse message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        RpcResponse.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.response != null && Object.hasOwnProperty.call(message, "response"))
-                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.response);
-            if (message.error != null && Object.hasOwnProperty.call(message, "error"))
-                $root.error.Error.encode(message.error, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.runtimeUs != null && Object.hasOwnProperty.call(message, "runtimeUs"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.runtimeUs);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified RpcResponse message, length delimited. Does not implicitly {@link common.RpcResponse.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.RpcResponse
-         * @static
-         * @param {common.IRpcResponse} message RpcResponse message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        RpcResponse.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a RpcResponse message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.RpcResponse
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.RpcResponse} RpcResponse
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        RpcResponse.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.RpcResponse();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.response = reader.bytes();
-                        break;
-                    }
-                case 2: {
-                        message.error = $root.error.Error.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 3: {
-                        message.runtimeUs = reader.uint64();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a RpcResponse message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.RpcResponse
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.RpcResponse} RpcResponse
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        RpcResponse.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a RpcResponse message.
-         * @function verify
-         * @memberof common.RpcResponse
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        RpcResponse.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.response != null && message.hasOwnProperty("response"))
-                if (!(message.response && typeof message.response.length === "number" || $util.isString(message.response)))
-                    return "response: buffer expected";
-            if (message.error != null && message.hasOwnProperty("error")) {
-                let error = $root.error.Error.verify(message.error);
-                if (error)
-                    return "error." + error;
-            }
-            if (message.runtimeUs != null && message.hasOwnProperty("runtimeUs"))
-                if (!$util.isInteger(message.runtimeUs) && !(message.runtimeUs && $util.isInteger(message.runtimeUs.low) && $util.isInteger(message.runtimeUs.high)))
-                    return "runtimeUs: integer|Long expected";
-            return null;
-        };
-
-        /**
-         * Creates a RpcResponse message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.RpcResponse
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.RpcResponse} RpcResponse
-         */
-        RpcResponse.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.RpcResponse)
-                return object;
-            let message = new $root.common.RpcResponse();
-            if (object.response != null)
-                if (typeof object.response === "string")
-                    $util.base64.decode(object.response, message.response = $util.newBuffer($util.base64.length(object.response)), 0);
-                else if (object.response.length >= 0)
-                    message.response = object.response;
-            if (object.error != null) {
-                if (typeof object.error !== "object")
-                    throw TypeError(".common.RpcResponse.error: object expected");
-                message.error = $root.error.Error.fromObject(object.error);
-            }
-            if (object.runtimeUs != null)
-                if ($util.Long)
-                    (message.runtimeUs = $util.Long.fromValue(object.runtimeUs)).unsigned = true;
-                else if (typeof object.runtimeUs === "string")
-                    message.runtimeUs = parseInt(object.runtimeUs, 10);
-                else if (typeof object.runtimeUs === "number")
-                    message.runtimeUs = object.runtimeUs;
-                else if (typeof object.runtimeUs === "object")
-                    message.runtimeUs = new $util.LongBits(object.runtimeUs.low >>> 0, object.runtimeUs.high >>> 0).toNumber(true);
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a RpcResponse message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.RpcResponse
-         * @static
-         * @param {common.RpcResponse} message RpcResponse
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        RpcResponse.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                if (options.bytes === String)
-                    object.response = "";
-                else {
-                    object.response = [];
-                    if (options.bytes !== Array)
-                        object.response = $util.newBuffer(object.response);
-                }
-                object.error = null;
-                if ($util.Long) {
-                    let long = new $util.Long(0, 0, true);
-                    object.runtimeUs = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.runtimeUs = options.longs === String ? "0" : 0;
-            }
-            if (message.response != null && message.hasOwnProperty("response"))
-                object.response = options.bytes === String ? $util.base64.encode(message.response, 0, message.response.length) : options.bytes === Array ? Array.prototype.slice.call(message.response) : message.response;
-            if (message.error != null && message.hasOwnProperty("error"))
-                object.error = $root.error.Error.toObject(message.error, options);
-            if (message.runtimeUs != null && message.hasOwnProperty("runtimeUs"))
-                if (typeof message.runtimeUs === "number")
-                    object.runtimeUs = options.longs === String ? String(message.runtimeUs) : message.runtimeUs;
-                else
-                    object.runtimeUs = options.longs === String ? $util.Long.prototype.toString.call(message.runtimeUs) : options.longs === Number ? new $util.LongBits(message.runtimeUs.low >>> 0, message.runtimeUs.high >>> 0).toNumber(true) : message.runtimeUs;
-            return object;
-        };
-
-        /**
-         * Converts this RpcResponse to JSON.
-         * @function toJSON
-         * @memberof common.RpcResponse
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        RpcResponse.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for RpcResponse
-         * @function getTypeUrl
-         * @memberof common.RpcResponse
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        RpcResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.RpcResponse";
-        };
-
-        return RpcResponse;
-    })();
-
-    /**
-     * CompressionAlgoPb enum.
-     * @name common.CompressionAlgoPb
-     * @enum {number}
-     * @property {number} Invalid=0 Invalid value
-     * @property {number} None=1 None value
-     * @property {number} Zstd=2 Zstd value
-     */
-    common.CompressionAlgoPb = (function() {
-        const valuesById = {}, values = Object.create(valuesById);
-        values[valuesById[0] = "Invalid"] = 0;
-        values[valuesById[1] = "None"] = 1;
-        values[valuesById[2] = "Zstd"] = 2;
-        return values;
-    })();
-
-    common.RpcCompressionInfo = (function() {
-
-        /**
-         * Properties of a RpcCompressionInfo.
-         * @memberof common
-         * @interface IRpcCompressionInfo
-         * @property {common.CompressionAlgoPb|null} [algo] RpcCompressionInfo algo
-         * @property {common.CompressionAlgoPb|null} [acceptedAlgo] RpcCompressionInfo acceptedAlgo
-         */
-
-        /**
-         * Constructs a new RpcCompressionInfo.
-         * @memberof common
-         * @classdesc Represents a RpcCompressionInfo.
-         * @implements IRpcCompressionInfo
-         * @constructor
-         * @param {common.IRpcCompressionInfo=} [properties] Properties to set
-         */
-        function RpcCompressionInfo(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * RpcCompressionInfo algo.
-         * @member {common.CompressionAlgoPb} algo
-         * @memberof common.RpcCompressionInfo
-         * @instance
-         */
-        RpcCompressionInfo.prototype.algo = 0;
-
-        /**
-         * RpcCompressionInfo acceptedAlgo.
-         * @member {common.CompressionAlgoPb} acceptedAlgo
-         * @memberof common.RpcCompressionInfo
-         * @instance
-         */
-        RpcCompressionInfo.prototype.acceptedAlgo = 0;
-
-        /**
-         * Creates a new RpcCompressionInfo instance using the specified properties.
-         * @function create
-         * @memberof common.RpcCompressionInfo
-         * @static
-         * @param {common.IRpcCompressionInfo=} [properties] Properties to set
-         * @returns {common.RpcCompressionInfo} RpcCompressionInfo instance
-         */
-        RpcCompressionInfo.create = function create(properties) {
-            return new RpcCompressionInfo(properties);
-        };
-
-        /**
-         * Encodes the specified RpcCompressionInfo message. Does not implicitly {@link common.RpcCompressionInfo.verify|verify} messages.
-         * @function encode
-         * @memberof common.RpcCompressionInfo
-         * @static
-         * @param {common.IRpcCompressionInfo} message RpcCompressionInfo message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        RpcCompressionInfo.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.algo != null && Object.hasOwnProperty.call(message, "algo"))
-                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.algo);
-            if (message.acceptedAlgo != null && Object.hasOwnProperty.call(message, "acceptedAlgo"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.acceptedAlgo);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified RpcCompressionInfo message, length delimited. Does not implicitly {@link common.RpcCompressionInfo.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.RpcCompressionInfo
-         * @static
-         * @param {common.IRpcCompressionInfo} message RpcCompressionInfo message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        RpcCompressionInfo.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a RpcCompressionInfo message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.RpcCompressionInfo
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.RpcCompressionInfo} RpcCompressionInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        RpcCompressionInfo.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.RpcCompressionInfo();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.algo = reader.int32();
-                        break;
-                    }
-                case 2: {
-                        message.acceptedAlgo = reader.int32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a RpcCompressionInfo message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.RpcCompressionInfo
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.RpcCompressionInfo} RpcCompressionInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        RpcCompressionInfo.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a RpcCompressionInfo message.
-         * @function verify
-         * @memberof common.RpcCompressionInfo
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        RpcCompressionInfo.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.algo != null && message.hasOwnProperty("algo"))
-                switch (message.algo) {
-                default:
-                    return "algo: enum value expected";
-                case 0:
-                case 1:
-                case 2:
-                    break;
-                }
-            if (message.acceptedAlgo != null && message.hasOwnProperty("acceptedAlgo"))
-                switch (message.acceptedAlgo) {
-                default:
-                    return "acceptedAlgo: enum value expected";
-                case 0:
-                case 1:
-                case 2:
-                    break;
-                }
-            return null;
-        };
-
-        /**
-         * Creates a RpcCompressionInfo message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.RpcCompressionInfo
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.RpcCompressionInfo} RpcCompressionInfo
-         */
-        RpcCompressionInfo.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.RpcCompressionInfo)
-                return object;
-            let message = new $root.common.RpcCompressionInfo();
-            switch (object.algo) {
-            default:
-                if (typeof object.algo === "number") {
-                    message.algo = object.algo;
-                    break;
-                }
-                break;
-            case "Invalid":
-            case 0:
-                message.algo = 0;
-                break;
-            case "None":
-            case 1:
-                message.algo = 1;
-                break;
-            case "Zstd":
-            case 2:
-                message.algo = 2;
-                break;
-            }
-            switch (object.acceptedAlgo) {
-            default:
-                if (typeof object.acceptedAlgo === "number") {
-                    message.acceptedAlgo = object.acceptedAlgo;
-                    break;
-                }
-                break;
-            case "Invalid":
-            case 0:
-                message.acceptedAlgo = 0;
-                break;
-            case "None":
-            case 1:
-                message.acceptedAlgo = 1;
-                break;
-            case "Zstd":
-            case 2:
-                message.acceptedAlgo = 2;
-                break;
-            }
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a RpcCompressionInfo message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.RpcCompressionInfo
-         * @static
-         * @param {common.RpcCompressionInfo} message RpcCompressionInfo
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        RpcCompressionInfo.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.algo = options.enums === String ? "Invalid" : 0;
-                object.acceptedAlgo = options.enums === String ? "Invalid" : 0;
-            }
-            if (message.algo != null && message.hasOwnProperty("algo"))
-                object.algo = options.enums === String ? $root.common.CompressionAlgoPb[message.algo] === undefined ? message.algo : $root.common.CompressionAlgoPb[message.algo] : message.algo;
-            if (message.acceptedAlgo != null && message.hasOwnProperty("acceptedAlgo"))
-                object.acceptedAlgo = options.enums === String ? $root.common.CompressionAlgoPb[message.acceptedAlgo] === undefined ? message.acceptedAlgo : $root.common.CompressionAlgoPb[message.acceptedAlgo] : message.acceptedAlgo;
-            return object;
-        };
-
-        /**
-         * Converts this RpcCompressionInfo to JSON.
-         * @function toJSON
-         * @memberof common.RpcCompressionInfo
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        RpcCompressionInfo.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for RpcCompressionInfo
-         * @function getTypeUrl
-         * @memberof common.RpcCompressionInfo
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        RpcCompressionInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.RpcCompressionInfo";
-        };
-
-        return RpcCompressionInfo;
-    })();
-
-    common.RpcPacket = (function() {
-
-        /**
-         * Properties of a RpcPacket.
-         * @memberof common
-         * @interface IRpcPacket
-         * @property {number|null} [fromPeer] RpcPacket fromPeer
-         * @property {number|null} [toPeer] RpcPacket toPeer
-         * @property {Long|null} [transactionId] RpcPacket transactionId
-         * @property {common.IRpcDescriptor|null} [descriptor] RpcPacket descriptor
-         * @property {Uint8Array|null} [body] RpcPacket body
-         * @property {boolean|null} [isRequest] RpcPacket isRequest
-         * @property {number|null} [totalPieces] RpcPacket totalPieces
-         * @property {number|null} [pieceIdx] RpcPacket pieceIdx
-         * @property {number|null} [traceId] RpcPacket traceId
-         * @property {common.IRpcCompressionInfo|null} [compressionInfo] RpcPacket compressionInfo
-         */
-
-        /**
-         * Constructs a new RpcPacket.
-         * @memberof common
-         * @classdesc Represents a RpcPacket.
-         * @implements IRpcPacket
-         * @constructor
-         * @param {common.IRpcPacket=} [properties] Properties to set
-         */
-        function RpcPacket(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * RpcPacket fromPeer.
-         * @member {number} fromPeer
-         * @memberof common.RpcPacket
-         * @instance
-         */
-        RpcPacket.prototype.fromPeer = 0;
-
-        /**
-         * RpcPacket toPeer.
-         * @member {number} toPeer
-         * @memberof common.RpcPacket
-         * @instance
-         */
-        RpcPacket.prototype.toPeer = 0;
-
-        /**
-         * RpcPacket transactionId.
-         * @member {Long} transactionId
-         * @memberof common.RpcPacket
-         * @instance
-         */
-        RpcPacket.prototype.transactionId = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
-
-        /**
-         * RpcPacket descriptor.
-         * @member {common.IRpcDescriptor|null|undefined} descriptor
-         * @memberof common.RpcPacket
-         * @instance
-         */
-        RpcPacket.prototype.descriptor = null;
-
-        /**
-         * RpcPacket body.
-         * @member {Uint8Array} body
-         * @memberof common.RpcPacket
-         * @instance
-         */
-        RpcPacket.prototype.body = $util.newBuffer([]);
-
-        /**
-         * RpcPacket isRequest.
-         * @member {boolean} isRequest
-         * @memberof common.RpcPacket
-         * @instance
-         */
-        RpcPacket.prototype.isRequest = false;
-
-        /**
-         * RpcPacket totalPieces.
-         * @member {number} totalPieces
-         * @memberof common.RpcPacket
-         * @instance
-         */
-        RpcPacket.prototype.totalPieces = 0;
-
-        /**
-         * RpcPacket pieceIdx.
-         * @member {number} pieceIdx
-         * @memberof common.RpcPacket
-         * @instance
-         */
-        RpcPacket.prototype.pieceIdx = 0;
-
-        /**
-         * RpcPacket traceId.
-         * @member {number} traceId
-         * @memberof common.RpcPacket
-         * @instance
-         */
-        RpcPacket.prototype.traceId = 0;
-
-        /**
-         * RpcPacket compressionInfo.
-         * @member {common.IRpcCompressionInfo|null|undefined} compressionInfo
-         * @memberof common.RpcPacket
-         * @instance
-         */
-        RpcPacket.prototype.compressionInfo = null;
-
-        /**
-         * Creates a new RpcPacket instance using the specified properties.
-         * @function create
-         * @memberof common.RpcPacket
-         * @static
-         * @param {common.IRpcPacket=} [properties] Properties to set
-         * @returns {common.RpcPacket} RpcPacket instance
-         */
-        RpcPacket.create = function create(properties) {
-            return new RpcPacket(properties);
-        };
-
-        /**
-         * Encodes the specified RpcPacket message. Does not implicitly {@link common.RpcPacket.verify|verify} messages.
-         * @function encode
-         * @memberof common.RpcPacket
-         * @static
-         * @param {common.IRpcPacket} message RpcPacket message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        RpcPacket.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.fromPeer != null && Object.hasOwnProperty.call(message, "fromPeer"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.fromPeer);
-            if (message.toPeer != null && Object.hasOwnProperty.call(message, "toPeer"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.toPeer);
-            if (message.transactionId != null && Object.hasOwnProperty.call(message, "transactionId"))
-                writer.uint32(/* id 3, wireType 0 =*/24).int64(message.transactionId);
-            if (message.descriptor != null && Object.hasOwnProperty.call(message, "descriptor"))
-                $root.common.RpcDescriptor.encode(message.descriptor, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-            if (message.body != null && Object.hasOwnProperty.call(message, "body"))
-                writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.body);
-            if (message.isRequest != null && Object.hasOwnProperty.call(message, "isRequest"))
-                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.isRequest);
-            if (message.totalPieces != null && Object.hasOwnProperty.call(message, "totalPieces"))
-                writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.totalPieces);
-            if (message.pieceIdx != null && Object.hasOwnProperty.call(message, "pieceIdx"))
-                writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.pieceIdx);
-            if (message.traceId != null && Object.hasOwnProperty.call(message, "traceId"))
-                writer.uint32(/* id 9, wireType 0 =*/72).int32(message.traceId);
-            if (message.compressionInfo != null && Object.hasOwnProperty.call(message, "compressionInfo"))
-                $root.common.RpcCompressionInfo.encode(message.compressionInfo, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
-            return writer;
-        };
-
-        /**
-         * Encodes the specified RpcPacket message, length delimited. Does not implicitly {@link common.RpcPacket.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.RpcPacket
-         * @static
-         * @param {common.IRpcPacket} message RpcPacket message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        RpcPacket.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a RpcPacket message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.RpcPacket
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.RpcPacket} RpcPacket
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        RpcPacket.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.RpcPacket();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.fromPeer = reader.uint32();
-                        break;
-                    }
-                case 2: {
-                        message.toPeer = reader.uint32();
-                        break;
-                    }
-                case 3: {
-                        message.transactionId = reader.int64();
-                        break;
-                    }
-                case 4: {
-                        message.descriptor = $root.common.RpcDescriptor.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 5: {
-                        message.body = reader.bytes();
-                        break;
-                    }
-                case 6: {
-                        message.isRequest = reader.bool();
-                        break;
-                    }
-                case 7: {
-                        message.totalPieces = reader.uint32();
-                        break;
-                    }
-                case 8: {
-                        message.pieceIdx = reader.uint32();
-                        break;
-                    }
-                case 9: {
-                        message.traceId = reader.int32();
-                        break;
-                    }
-                case 10: {
-                        message.compressionInfo = $root.common.RpcCompressionInfo.decode(reader, reader.uint32());
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a RpcPacket message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.RpcPacket
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.RpcPacket} RpcPacket
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        RpcPacket.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a RpcPacket message.
-         * @function verify
-         * @memberof common.RpcPacket
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        RpcPacket.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.fromPeer != null && message.hasOwnProperty("fromPeer"))
-                if (!$util.isInteger(message.fromPeer))
-                    return "fromPeer: integer expected";
-            if (message.toPeer != null && message.hasOwnProperty("toPeer"))
-                if (!$util.isInteger(message.toPeer))
-                    return "toPeer: integer expected";
-            if (message.transactionId != null && message.hasOwnProperty("transactionId"))
-                if (!$util.isInteger(message.transactionId) && !(message.transactionId && $util.isInteger(message.transactionId.low) && $util.isInteger(message.transactionId.high)))
-                    return "transactionId: integer|Long expected";
-            if (message.descriptor != null && message.hasOwnProperty("descriptor")) {
-                let error = $root.common.RpcDescriptor.verify(message.descriptor);
-                if (error)
-                    return "descriptor." + error;
-            }
-            if (message.body != null && message.hasOwnProperty("body"))
-                if (!(message.body && typeof message.body.length === "number" || $util.isString(message.body)))
-                    return "body: buffer expected";
-            if (message.isRequest != null && message.hasOwnProperty("isRequest"))
-                if (typeof message.isRequest !== "boolean")
-                    return "isRequest: boolean expected";
-            if (message.totalPieces != null && message.hasOwnProperty("totalPieces"))
-                if (!$util.isInteger(message.totalPieces))
-                    return "totalPieces: integer expected";
-            if (message.pieceIdx != null && message.hasOwnProperty("pieceIdx"))
-                if (!$util.isInteger(message.pieceIdx))
-                    return "pieceIdx: integer expected";
-            if (message.traceId != null && message.hasOwnProperty("traceId"))
-                if (!$util.isInteger(message.traceId))
-                    return "traceId: integer expected";
-            if (message.compressionInfo != null && message.hasOwnProperty("compressionInfo")) {
-                let error = $root.common.RpcCompressionInfo.verify(message.compressionInfo);
-                if (error)
-                    return "compressionInfo." + error;
-            }
-            return null;
-        };
-
-        /**
-         * Creates a RpcPacket message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.RpcPacket
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.RpcPacket} RpcPacket
-         */
-        RpcPacket.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.RpcPacket)
-                return object;
-            let message = new $root.common.RpcPacket();
-            if (object.fromPeer != null)
-                message.fromPeer = object.fromPeer >>> 0;
-            if (object.toPeer != null)
-                message.toPeer = object.toPeer >>> 0;
-            if (object.transactionId != null)
-                if ($util.Long)
-                    (message.transactionId = $util.Long.fromValue(object.transactionId)).unsigned = false;
-                else if (typeof object.transactionId === "string")
-                    message.transactionId = parseInt(object.transactionId, 10);
-                else if (typeof object.transactionId === "number")
-                    message.transactionId = object.transactionId;
-                else if (typeof object.transactionId === "object")
-                    message.transactionId = new $util.LongBits(object.transactionId.low >>> 0, object.transactionId.high >>> 0).toNumber();
-            if (object.descriptor != null) {
-                if (typeof object.descriptor !== "object")
-                    throw TypeError(".common.RpcPacket.descriptor: object expected");
-                message.descriptor = $root.common.RpcDescriptor.fromObject(object.descriptor);
-            }
-            if (object.body != null)
-                if (typeof object.body === "string")
-                    $util.base64.decode(object.body, message.body = $util.newBuffer($util.base64.length(object.body)), 0);
-                else if (object.body.length >= 0)
-                    message.body = object.body;
-            if (object.isRequest != null)
-                message.isRequest = Boolean(object.isRequest);
-            if (object.totalPieces != null)
-                message.totalPieces = object.totalPieces >>> 0;
-            if (object.pieceIdx != null)
-                message.pieceIdx = object.pieceIdx >>> 0;
-            if (object.traceId != null)
-                message.traceId = object.traceId | 0;
-            if (object.compressionInfo != null) {
-                if (typeof object.compressionInfo !== "object")
-                    throw TypeError(".common.RpcPacket.compressionInfo: object expected");
-                message.compressionInfo = $root.common.RpcCompressionInfo.fromObject(object.compressionInfo);
-            }
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a RpcPacket message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.RpcPacket
-         * @static
-         * @param {common.RpcPacket} message RpcPacket
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        RpcPacket.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.fromPeer = 0;
-                object.toPeer = 0;
-                if ($util.Long) {
-                    let long = new $util.Long(0, 0, false);
-                    object.transactionId = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.transactionId = options.longs === String ? "0" : 0;
-                object.descriptor = null;
-                if (options.bytes === String)
-                    object.body = "";
-                else {
-                    object.body = [];
-                    if (options.bytes !== Array)
-                        object.body = $util.newBuffer(object.body);
-                }
-                object.isRequest = false;
-                object.totalPieces = 0;
-                object.pieceIdx = 0;
-                object.traceId = 0;
-                object.compressionInfo = null;
-            }
-            if (message.fromPeer != null && message.hasOwnProperty("fromPeer"))
-                object.fromPeer = message.fromPeer;
-            if (message.toPeer != null && message.hasOwnProperty("toPeer"))
-                object.toPeer = message.toPeer;
-            if (message.transactionId != null && message.hasOwnProperty("transactionId"))
-                if (typeof message.transactionId === "number")
-                    object.transactionId = options.longs === String ? String(message.transactionId) : message.transactionId;
-                else
-                    object.transactionId = options.longs === String ? $util.Long.prototype.toString.call(message.transactionId) : options.longs === Number ? new $util.LongBits(message.transactionId.low >>> 0, message.transactionId.high >>> 0).toNumber() : message.transactionId;
-            if (message.descriptor != null && message.hasOwnProperty("descriptor"))
-                object.descriptor = $root.common.RpcDescriptor.toObject(message.descriptor, options);
-            if (message.body != null && message.hasOwnProperty("body"))
-                object.body = options.bytes === String ? $util.base64.encode(message.body, 0, message.body.length) : options.bytes === Array ? Array.prototype.slice.call(message.body) : message.body;
-            if (message.isRequest != null && message.hasOwnProperty("isRequest"))
-                object.isRequest = message.isRequest;
-            if (message.totalPieces != null && message.hasOwnProperty("totalPieces"))
-                object.totalPieces = message.totalPieces;
-            if (message.pieceIdx != null && message.hasOwnProperty("pieceIdx"))
-                object.pieceIdx = message.pieceIdx;
-            if (message.traceId != null && message.hasOwnProperty("traceId"))
-                object.traceId = message.traceId;
-            if (message.compressionInfo != null && message.hasOwnProperty("compressionInfo"))
-                object.compressionInfo = $root.common.RpcCompressionInfo.toObject(message.compressionInfo, options);
-            return object;
-        };
-
-        /**
-         * Converts this RpcPacket to JSON.
-         * @function toJSON
-         * @memberof common.RpcPacket
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        RpcPacket.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for RpcPacket
-         * @function getTypeUrl
-         * @memberof common.RpcPacket
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        RpcPacket.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.RpcPacket";
-        };
-
-        return RpcPacket;
-    })();
-
-    common.Void = (function() {
-
-        /**
-         * Properties of a Void.
-         * @memberof common
-         * @interface IVoid
-         */
-
-        /**
-         * Constructs a new Void.
-         * @memberof common
-         * @classdesc Represents a Void.
-         * @implements IVoid
-         * @constructor
-         * @param {common.IVoid=} [properties] Properties to set
-         */
-        function Void(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * Creates a new Void instance using the specified properties.
-         * @function create
-         * @memberof common.Void
-         * @static
-         * @param {common.IVoid=} [properties] Properties to set
-         * @returns {common.Void} Void instance
-         */
-        Void.create = function create(properties) {
-            return new Void(properties);
-        };
-
-        /**
-         * Encodes the specified Void message. Does not implicitly {@link common.Void.verify|verify} messages.
-         * @function encode
-         * @memberof common.Void
-         * @static
-         * @param {common.IVoid} message Void message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Void.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            return writer;
-        };
-
-        /**
-         * Encodes the specified Void message, length delimited. Does not implicitly {@link common.Void.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.Void
-         * @static
-         * @param {common.IVoid} message Void message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Void.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a Void message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.Void
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.Void} Void
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Void.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Void();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a Void message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.Void
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.Void} Void
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Void.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a Void message.
-         * @function verify
-         * @memberof common.Void
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        Void.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            return null;
-        };
-
-        /**
-         * Creates a Void message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.Void
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.Void} Void
-         */
-        Void.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.Void)
-                return object;
-            return new $root.common.Void();
-        };
-
-        /**
-         * Creates a plain object from a Void message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.Void
-         * @static
-         * @param {common.Void} message Void
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        Void.toObject = function toObject() {
-            return {};
-        };
-
-        /**
-         * Converts this Void to JSON.
-         * @function toJSON
-         * @memberof common.Void
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        Void.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for Void
-         * @function getTypeUrl
-         * @memberof common.Void
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        Void.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.Void";
-        };
-
-        return Void;
-    })();
-
-    common.UUID = (function() {
-
-        /**
-         * Properties of a UUID.
-         * @memberof common
-         * @interface IUUID
-         * @property {number|null} [part1] UUID part1
-         * @property {number|null} [part2] UUID part2
-         * @property {number|null} [part3] UUID part3
-         * @property {number|null} [part4] UUID part4
-         */
-
-        /**
-         * Constructs a new UUID.
-         * @memberof common
-         * @classdesc Represents a UUID.
-         * @implements IUUID
-         * @constructor
-         * @param {common.IUUID=} [properties] Properties to set
-         */
-        function UUID(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * UUID part1.
-         * @member {number} part1
-         * @memberof common.UUID
-         * @instance
-         */
-        UUID.prototype.part1 = 0;
-
-        /**
-         * UUID part2.
-         * @member {number} part2
-         * @memberof common.UUID
-         * @instance
-         */
-        UUID.prototype.part2 = 0;
-
-        /**
-         * UUID part3.
-         * @member {number} part3
-         * @memberof common.UUID
-         * @instance
-         */
-        UUID.prototype.part3 = 0;
-
-        /**
-         * UUID part4.
-         * @member {number} part4
-         * @memberof common.UUID
-         * @instance
-         */
-        UUID.prototype.part4 = 0;
-
-        /**
-         * Creates a new UUID instance using the specified properties.
-         * @function create
-         * @memberof common.UUID
-         * @static
-         * @param {common.IUUID=} [properties] Properties to set
-         * @returns {common.UUID} UUID instance
-         */
-        UUID.create = function create(properties) {
-            return new UUID(properties);
-        };
-
-        /**
-         * Encodes the specified UUID message. Does not implicitly {@link common.UUID.verify|verify} messages.
-         * @function encode
-         * @memberof common.UUID
-         * @static
-         * @param {common.IUUID} message UUID message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        UUID.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.part1 != null && Object.hasOwnProperty.call(message, "part1"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.part1);
-            if (message.part2 != null && Object.hasOwnProperty.call(message, "part2"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.part2);
-            if (message.part3 != null && Object.hasOwnProperty.call(message, "part3"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.part3);
-            if (message.part4 != null && Object.hasOwnProperty.call(message, "part4"))
-                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.part4);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified UUID message, length delimited. Does not implicitly {@link common.UUID.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.UUID
-         * @static
-         * @param {common.IUUID} message UUID message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        UUID.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a UUID message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.UUID
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.UUID} UUID
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        UUID.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.UUID();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.part1 = reader.uint32();
-                        break;
-                    }
-                case 2: {
-                        message.part2 = reader.uint32();
-                        break;
-                    }
-                case 3: {
-                        message.part3 = reader.uint32();
-                        break;
-                    }
-                case 4: {
-                        message.part4 = reader.uint32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a UUID message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.UUID
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.UUID} UUID
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        UUID.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a UUID message.
-         * @function verify
-         * @memberof common.UUID
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        UUID.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.part1 != null && message.hasOwnProperty("part1"))
-                if (!$util.isInteger(message.part1))
-                    return "part1: integer expected";
-            if (message.part2 != null && message.hasOwnProperty("part2"))
-                if (!$util.isInteger(message.part2))
-                    return "part2: integer expected";
-            if (message.part3 != null && message.hasOwnProperty("part3"))
-                if (!$util.isInteger(message.part3))
-                    return "part3: integer expected";
-            if (message.part4 != null && message.hasOwnProperty("part4"))
-                if (!$util.isInteger(message.part4))
-                    return "part4: integer expected";
-            return null;
-        };
-
-        /**
-         * Creates a UUID message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.UUID
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.UUID} UUID
-         */
-        UUID.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.UUID)
-                return object;
-            let message = new $root.common.UUID();
-            if (object.part1 != null)
-                message.part1 = object.part1 >>> 0;
-            if (object.part2 != null)
-                message.part2 = object.part2 >>> 0;
-            if (object.part3 != null)
-                message.part3 = object.part3 >>> 0;
-            if (object.part4 != null)
-                message.part4 = object.part4 >>> 0;
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a UUID message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.UUID
-         * @static
-         * @param {common.UUID} message UUID
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        UUID.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.part1 = 0;
-                object.part2 = 0;
-                object.part3 = 0;
-                object.part4 = 0;
-            }
-            if (message.part1 != null && message.hasOwnProperty("part1"))
-                object.part1 = message.part1;
-            if (message.part2 != null && message.hasOwnProperty("part2"))
-                object.part2 = message.part2;
-            if (message.part3 != null && message.hasOwnProperty("part3"))
-                object.part3 = message.part3;
-            if (message.part4 != null && message.hasOwnProperty("part4"))
-                object.part4 = message.part4;
-            return object;
-        };
-
-        /**
-         * Converts this UUID to JSON.
-         * @function toJSON
-         * @memberof common.UUID
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        UUID.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for UUID
-         * @function getTypeUrl
-         * @memberof common.UUID
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        UUID.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.UUID";
-        };
-
-        return UUID;
-    })();
-
-    /**
-     * NatType enum.
-     * @name common.NatType
-     * @enum {number}
-     * @property {number} Unknown=0 Unknown value
-     * @property {number} OpenInternet=1 OpenInternet value
-     * @property {number} NoPAT=2 NoPAT value
-     * @property {number} FullCone=3 FullCone value
-     * @property {number} Restricted=4 Restricted value
-     * @property {number} PortRestricted=5 PortRestricted value
-     * @property {number} Symmetric=6 Symmetric value
-     * @property {number} SymUdpFirewall=7 SymUdpFirewall value
-     * @property {number} SymmetricEasyInc=8 SymmetricEasyInc value
-     * @property {number} SymmetricEasyDec=9 SymmetricEasyDec value
-     */
-    common.NatType = (function() {
-        const valuesById = {}, values = Object.create(valuesById);
-        values[valuesById[0] = "Unknown"] = 0;
-        values[valuesById[1] = "OpenInternet"] = 1;
-        values[valuesById[2] = "NoPAT"] = 2;
-        values[valuesById[3] = "FullCone"] = 3;
-        values[valuesById[4] = "Restricted"] = 4;
-        values[valuesById[5] = "PortRestricted"] = 5;
-        values[valuesById[6] = "Symmetric"] = 6;
-        values[valuesById[7] = "SymUdpFirewall"] = 7;
-        values[valuesById[8] = "SymmetricEasyInc"] = 8;
-        values[valuesById[9] = "SymmetricEasyDec"] = 9;
-        return values;
-    })();
-
-    common.Ipv4Addr = (function() {
-
-        /**
-         * Properties of an Ipv4Addr.
-         * @memberof common
-         * @interface IIpv4Addr
-         * @property {number|null} [addr] Ipv4Addr addr
-         */
-
-        /**
-         * Constructs a new Ipv4Addr.
-         * @memberof common
-         * @classdesc Represents an Ipv4Addr.
-         * @implements IIpv4Addr
-         * @constructor
-         * @param {common.IIpv4Addr=} [properties] Properties to set
-         */
-        function Ipv4Addr(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * Ipv4Addr addr.
-         * @member {number} addr
-         * @memberof common.Ipv4Addr
-         * @instance
-         */
-        Ipv4Addr.prototype.addr = 0;
-
-        /**
-         * Creates a new Ipv4Addr instance using the specified properties.
-         * @function create
-         * @memberof common.Ipv4Addr
-         * @static
-         * @param {common.IIpv4Addr=} [properties] Properties to set
-         * @returns {common.Ipv4Addr} Ipv4Addr instance
-         */
-        Ipv4Addr.create = function create(properties) {
-            return new Ipv4Addr(properties);
-        };
-
-        /**
-         * Encodes the specified Ipv4Addr message. Does not implicitly {@link common.Ipv4Addr.verify|verify} messages.
-         * @function encode
-         * @memberof common.Ipv4Addr
-         * @static
-         * @param {common.IIpv4Addr} message Ipv4Addr message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Ipv4Addr.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.addr != null && Object.hasOwnProperty.call(message, "addr"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.addr);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified Ipv4Addr message, length delimited. Does not implicitly {@link common.Ipv4Addr.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.Ipv4Addr
-         * @static
-         * @param {common.IIpv4Addr} message Ipv4Addr message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Ipv4Addr.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes an Ipv4Addr message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.Ipv4Addr
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.Ipv4Addr} Ipv4Addr
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Ipv4Addr.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Ipv4Addr();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.addr = reader.uint32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes an Ipv4Addr message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.Ipv4Addr
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.Ipv4Addr} Ipv4Addr
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Ipv4Addr.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies an Ipv4Addr message.
-         * @function verify
-         * @memberof common.Ipv4Addr
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        Ipv4Addr.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.addr != null && message.hasOwnProperty("addr"))
-                if (!$util.isInteger(message.addr))
-                    return "addr: integer expected";
-            return null;
-        };
-
-        /**
-         * Creates an Ipv4Addr message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.Ipv4Addr
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.Ipv4Addr} Ipv4Addr
-         */
-        Ipv4Addr.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.Ipv4Addr)
-                return object;
-            let message = new $root.common.Ipv4Addr();
-            if (object.addr != null)
-                message.addr = object.addr >>> 0;
-            return message;
-        };
-
-        /**
-         * Creates a plain object from an Ipv4Addr message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.Ipv4Addr
-         * @static
-         * @param {common.Ipv4Addr} message Ipv4Addr
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        Ipv4Addr.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults)
-                object.addr = 0;
-            if (message.addr != null && message.hasOwnProperty("addr"))
-                object.addr = message.addr;
-            return object;
-        };
-
-        /**
-         * Converts this Ipv4Addr to JSON.
-         * @function toJSON
-         * @memberof common.Ipv4Addr
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        Ipv4Addr.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for Ipv4Addr
-         * @function getTypeUrl
-         * @memberof common.Ipv4Addr
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        Ipv4Addr.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.Ipv4Addr";
-        };
-
-        return Ipv4Addr;
-    })();
-
-    common.Ipv6Addr = (function() {
-
-        /**
-         * Properties of an Ipv6Addr.
-         * @memberof common
-         * @interface IIpv6Addr
-         * @property {number|null} [part1] Ipv6Addr part1
-         * @property {number|null} [part2] Ipv6Addr part2
-         * @property {number|null} [part3] Ipv6Addr part3
-         * @property {number|null} [part4] Ipv6Addr part4
-         */
-
-        /**
-         * Constructs a new Ipv6Addr.
-         * @memberof common
-         * @classdesc Represents an Ipv6Addr.
-         * @implements IIpv6Addr
-         * @constructor
-         * @param {common.IIpv6Addr=} [properties] Properties to set
-         */
-        function Ipv6Addr(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * Ipv6Addr part1.
-         * @member {number} part1
-         * @memberof common.Ipv6Addr
-         * @instance
-         */
-        Ipv6Addr.prototype.part1 = 0;
-
-        /**
-         * Ipv6Addr part2.
-         * @member {number} part2
-         * @memberof common.Ipv6Addr
-         * @instance
-         */
-        Ipv6Addr.prototype.part2 = 0;
-
-        /**
-         * Ipv6Addr part3.
-         * @member {number} part3
-         * @memberof common.Ipv6Addr
-         * @instance
-         */
-        Ipv6Addr.prototype.part3 = 0;
-
-        /**
-         * Ipv6Addr part4.
-         * @member {number} part4
-         * @memberof common.Ipv6Addr
-         * @instance
-         */
-        Ipv6Addr.prototype.part4 = 0;
-
-        /**
-         * Creates a new Ipv6Addr instance using the specified properties.
-         * @function create
-         * @memberof common.Ipv6Addr
-         * @static
-         * @param {common.IIpv6Addr=} [properties] Properties to set
-         * @returns {common.Ipv6Addr} Ipv6Addr instance
-         */
-        Ipv6Addr.create = function create(properties) {
-            return new Ipv6Addr(properties);
-        };
-
-        /**
-         * Encodes the specified Ipv6Addr message. Does not implicitly {@link common.Ipv6Addr.verify|verify} messages.
-         * @function encode
-         * @memberof common.Ipv6Addr
-         * @static
-         * @param {common.IIpv6Addr} message Ipv6Addr message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Ipv6Addr.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.part1 != null && Object.hasOwnProperty.call(message, "part1"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.part1);
-            if (message.part2 != null && Object.hasOwnProperty.call(message, "part2"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.part2);
-            if (message.part3 != null && Object.hasOwnProperty.call(message, "part3"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.part3);
-            if (message.part4 != null && Object.hasOwnProperty.call(message, "part4"))
-                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.part4);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified Ipv6Addr message, length delimited. Does not implicitly {@link common.Ipv6Addr.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.Ipv6Addr
-         * @static
-         * @param {common.IIpv6Addr} message Ipv6Addr message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Ipv6Addr.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes an Ipv6Addr message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.Ipv6Addr
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.Ipv6Addr} Ipv6Addr
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Ipv6Addr.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Ipv6Addr();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.part1 = reader.uint32();
-                        break;
-                    }
-                case 2: {
-                        message.part2 = reader.uint32();
-                        break;
-                    }
-                case 3: {
-                        message.part3 = reader.uint32();
-                        break;
-                    }
-                case 4: {
-                        message.part4 = reader.uint32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes an Ipv6Addr message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.Ipv6Addr
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.Ipv6Addr} Ipv6Addr
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Ipv6Addr.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies an Ipv6Addr message.
-         * @function verify
-         * @memberof common.Ipv6Addr
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        Ipv6Addr.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.part1 != null && message.hasOwnProperty("part1"))
-                if (!$util.isInteger(message.part1))
-                    return "part1: integer expected";
-            if (message.part2 != null && message.hasOwnProperty("part2"))
-                if (!$util.isInteger(message.part2))
-                    return "part2: integer expected";
-            if (message.part3 != null && message.hasOwnProperty("part3"))
-                if (!$util.isInteger(message.part3))
-                    return "part3: integer expected";
-            if (message.part4 != null && message.hasOwnProperty("part4"))
-                if (!$util.isInteger(message.part4))
-                    return "part4: integer expected";
-            return null;
-        };
-
-        /**
-         * Creates an Ipv6Addr message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.Ipv6Addr
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.Ipv6Addr} Ipv6Addr
-         */
-        Ipv6Addr.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.Ipv6Addr)
-                return object;
-            let message = new $root.common.Ipv6Addr();
-            if (object.part1 != null)
-                message.part1 = object.part1 >>> 0;
-            if (object.part2 != null)
-                message.part2 = object.part2 >>> 0;
-            if (object.part3 != null)
-                message.part3 = object.part3 >>> 0;
-            if (object.part4 != null)
-                message.part4 = object.part4 >>> 0;
-            return message;
-        };
-
-        /**
-         * Creates a plain object from an Ipv6Addr message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.Ipv6Addr
-         * @static
-         * @param {common.Ipv6Addr} message Ipv6Addr
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        Ipv6Addr.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.part1 = 0;
-                object.part2 = 0;
-                object.part3 = 0;
-                object.part4 = 0;
-            }
-            if (message.part1 != null && message.hasOwnProperty("part1"))
-                object.part1 = message.part1;
-            if (message.part2 != null && message.hasOwnProperty("part2"))
-                object.part2 = message.part2;
-            if (message.part3 != null && message.hasOwnProperty("part3"))
-                object.part3 = message.part3;
-            if (message.part4 != null && message.hasOwnProperty("part4"))
-                object.part4 = message.part4;
-            return object;
-        };
-
-        /**
-         * Converts this Ipv6Addr to JSON.
-         * @function toJSON
-         * @memberof common.Ipv6Addr
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        Ipv6Addr.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for Ipv6Addr
-         * @function getTypeUrl
-         * @memberof common.Ipv6Addr
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        Ipv6Addr.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.Ipv6Addr";
-        };
-
-        return Ipv6Addr;
-    })();
-
-    common.IpAddr = (function() {
-
-        /**
-         * Properties of an IpAddr.
-         * @memberof common
-         * @interface IIpAddr
-         * @property {common.IIpv4Addr|null} [ipv4] IpAddr ipv4
-         * @property {common.IIpv6Addr|null} [ipv6] IpAddr ipv6
-         */
-
-        /**
-         * Constructs a new IpAddr.
-         * @memberof common
-         * @classdesc Represents an IpAddr.
-         * @implements IIpAddr
-         * @constructor
-         * @param {common.IIpAddr=} [properties] Properties to set
-         */
-        function IpAddr(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * IpAddr ipv4.
-         * @member {common.IIpv4Addr|null|undefined} ipv4
-         * @memberof common.IpAddr
-         * @instance
-         */
-        IpAddr.prototype.ipv4 = null;
-
-        /**
-         * IpAddr ipv6.
-         * @member {common.IIpv6Addr|null|undefined} ipv6
-         * @memberof common.IpAddr
-         * @instance
-         */
-        IpAddr.prototype.ipv6 = null;
-
-        // OneOf field names bound to virtual getters and setters
-        let $oneOfFields;
-
-        /**
-         * IpAddr ip.
-         * @member {"ipv4"|"ipv6"|undefined} ip
-         * @memberof common.IpAddr
-         * @instance
-         */
-        Object.defineProperty(IpAddr.prototype, "ip", {
-            get: $util.oneOfGetter($oneOfFields = ["ipv4", "ipv6"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        /**
-         * Creates a new IpAddr instance using the specified properties.
-         * @function create
-         * @memberof common.IpAddr
-         * @static
-         * @param {common.IIpAddr=} [properties] Properties to set
-         * @returns {common.IpAddr} IpAddr instance
-         */
-        IpAddr.create = function create(properties) {
-            return new IpAddr(properties);
-        };
-
-        /**
-         * Encodes the specified IpAddr message. Does not implicitly {@link common.IpAddr.verify|verify} messages.
-         * @function encode
-         * @memberof common.IpAddr
-         * @static
-         * @param {common.IIpAddr} message IpAddr message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        IpAddr.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.ipv4 != null && Object.hasOwnProperty.call(message, "ipv4"))
-                $root.common.Ipv4Addr.encode(message.ipv4, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.ipv6 != null && Object.hasOwnProperty.call(message, "ipv6"))
-                $root.common.Ipv6Addr.encode(message.ipv6, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            return writer;
-        };
-
-        /**
-         * Encodes the specified IpAddr message, length delimited. Does not implicitly {@link common.IpAddr.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.IpAddr
-         * @static
-         * @param {common.IIpAddr} message IpAddr message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        IpAddr.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes an IpAddr message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.IpAddr
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.IpAddr} IpAddr
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        IpAddr.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.IpAddr();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.ipv4 = $root.common.Ipv4Addr.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 2: {
-                        message.ipv6 = $root.common.Ipv6Addr.decode(reader, reader.uint32());
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes an IpAddr message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.IpAddr
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.IpAddr} IpAddr
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        IpAddr.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies an IpAddr message.
-         * @function verify
-         * @memberof common.IpAddr
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        IpAddr.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            let properties = {};
-            if (message.ipv4 != null && message.hasOwnProperty("ipv4")) {
-                properties.ip = 1;
-                {
-                    let error = $root.common.Ipv4Addr.verify(message.ipv4);
-                    if (error)
-                        return "ipv4." + error;
-                }
-            }
-            if (message.ipv6 != null && message.hasOwnProperty("ipv6")) {
-                if (properties.ip === 1)
-                    return "ip: multiple values";
-                properties.ip = 1;
-                {
-                    let error = $root.common.Ipv6Addr.verify(message.ipv6);
-                    if (error)
-                        return "ipv6." + error;
-                }
-            }
-            return null;
-        };
-
-        /**
-         * Creates an IpAddr message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.IpAddr
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.IpAddr} IpAddr
-         */
-        IpAddr.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.IpAddr)
-                return object;
-            let message = new $root.common.IpAddr();
-            if (object.ipv4 != null) {
-                if (typeof object.ipv4 !== "object")
-                    throw TypeError(".common.IpAddr.ipv4: object expected");
-                message.ipv4 = $root.common.Ipv4Addr.fromObject(object.ipv4);
-            }
-            if (object.ipv6 != null) {
-                if (typeof object.ipv6 !== "object")
-                    throw TypeError(".common.IpAddr.ipv6: object expected");
-                message.ipv6 = $root.common.Ipv6Addr.fromObject(object.ipv6);
-            }
-            return message;
-        };
-
-        /**
-         * Creates a plain object from an IpAddr message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.IpAddr
-         * @static
-         * @param {common.IpAddr} message IpAddr
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        IpAddr.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (message.ipv4 != null && message.hasOwnProperty("ipv4")) {
-                object.ipv4 = $root.common.Ipv4Addr.toObject(message.ipv4, options);
-                if (options.oneofs)
-                    object.ip = "ipv4";
-            }
-            if (message.ipv6 != null && message.hasOwnProperty("ipv6")) {
-                object.ipv6 = $root.common.Ipv6Addr.toObject(message.ipv6, options);
-                if (options.oneofs)
-                    object.ip = "ipv6";
-            }
-            return object;
-        };
-
-        /**
-         * Converts this IpAddr to JSON.
-         * @function toJSON
-         * @memberof common.IpAddr
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        IpAddr.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for IpAddr
-         * @function getTypeUrl
-         * @memberof common.IpAddr
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        IpAddr.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.IpAddr";
-        };
-
-        return IpAddr;
-    })();
-
-    common.Ipv4Inet = (function() {
-
-        /**
-         * Properties of an Ipv4Inet.
-         * @memberof common
-         * @interface IIpv4Inet
-         * @property {common.IIpv4Addr|null} [address] Ipv4Inet address
-         * @property {number|null} [networkLength] Ipv4Inet networkLength
-         */
-
-        /**
-         * Constructs a new Ipv4Inet.
-         * @memberof common
-         * @classdesc Represents an Ipv4Inet.
-         * @implements IIpv4Inet
-         * @constructor
-         * @param {common.IIpv4Inet=} [properties] Properties to set
-         */
-        function Ipv4Inet(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * Ipv4Inet address.
-         * @member {common.IIpv4Addr|null|undefined} address
-         * @memberof common.Ipv4Inet
-         * @instance
-         */
-        Ipv4Inet.prototype.address = null;
-
-        /**
-         * Ipv4Inet networkLength.
-         * @member {number} networkLength
-         * @memberof common.Ipv4Inet
-         * @instance
-         */
-        Ipv4Inet.prototype.networkLength = 0;
-
-        /**
-         * Creates a new Ipv4Inet instance using the specified properties.
-         * @function create
-         * @memberof common.Ipv4Inet
-         * @static
-         * @param {common.IIpv4Inet=} [properties] Properties to set
-         * @returns {common.Ipv4Inet} Ipv4Inet instance
-         */
-        Ipv4Inet.create = function create(properties) {
-            return new Ipv4Inet(properties);
-        };
-
-        /**
-         * Encodes the specified Ipv4Inet message. Does not implicitly {@link common.Ipv4Inet.verify|verify} messages.
-         * @function encode
-         * @memberof common.Ipv4Inet
-         * @static
-         * @param {common.IIpv4Inet} message Ipv4Inet message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Ipv4Inet.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.address != null && Object.hasOwnProperty.call(message, "address"))
-                $root.common.Ipv4Addr.encode(message.address, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.networkLength != null && Object.hasOwnProperty.call(message, "networkLength"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.networkLength);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified Ipv4Inet message, length delimited. Does not implicitly {@link common.Ipv4Inet.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.Ipv4Inet
-         * @static
-         * @param {common.IIpv4Inet} message Ipv4Inet message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Ipv4Inet.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes an Ipv4Inet message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.Ipv4Inet
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.Ipv4Inet} Ipv4Inet
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Ipv4Inet.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Ipv4Inet();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.address = $root.common.Ipv4Addr.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 2: {
-                        message.networkLength = reader.uint32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes an Ipv4Inet message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.Ipv4Inet
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.Ipv4Inet} Ipv4Inet
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Ipv4Inet.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies an Ipv4Inet message.
-         * @function verify
-         * @memberof common.Ipv4Inet
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        Ipv4Inet.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.address != null && message.hasOwnProperty("address")) {
-                let error = $root.common.Ipv4Addr.verify(message.address);
-                if (error)
-                    return "address." + error;
-            }
-            if (message.networkLength != null && message.hasOwnProperty("networkLength"))
-                if (!$util.isInteger(message.networkLength))
-                    return "networkLength: integer expected";
-            return null;
-        };
-
-        /**
-         * Creates an Ipv4Inet message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.Ipv4Inet
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.Ipv4Inet} Ipv4Inet
-         */
-        Ipv4Inet.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.Ipv4Inet)
-                return object;
-            let message = new $root.common.Ipv4Inet();
-            if (object.address != null) {
-                if (typeof object.address !== "object")
-                    throw TypeError(".common.Ipv4Inet.address: object expected");
-                message.address = $root.common.Ipv4Addr.fromObject(object.address);
-            }
-            if (object.networkLength != null)
-                message.networkLength = object.networkLength >>> 0;
-            return message;
-        };
-
-        /**
-         * Creates a plain object from an Ipv4Inet message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.Ipv4Inet
-         * @static
-         * @param {common.Ipv4Inet} message Ipv4Inet
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        Ipv4Inet.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.address = null;
-                object.networkLength = 0;
-            }
-            if (message.address != null && message.hasOwnProperty("address"))
-                object.address = $root.common.Ipv4Addr.toObject(message.address, options);
-            if (message.networkLength != null && message.hasOwnProperty("networkLength"))
-                object.networkLength = message.networkLength;
-            return object;
-        };
-
-        /**
-         * Converts this Ipv4Inet to JSON.
-         * @function toJSON
-         * @memberof common.Ipv4Inet
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        Ipv4Inet.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for Ipv4Inet
-         * @function getTypeUrl
-         * @memberof common.Ipv4Inet
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        Ipv4Inet.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.Ipv4Inet";
-        };
-
-        return Ipv4Inet;
-    })();
-
-    common.Ipv6Inet = (function() {
-
-        /**
-         * Properties of an Ipv6Inet.
-         * @memberof common
-         * @interface IIpv6Inet
-         * @property {common.IIpv6Addr|null} [address] Ipv6Inet address
-         * @property {number|null} [networkLength] Ipv6Inet networkLength
-         */
-
-        /**
-         * Constructs a new Ipv6Inet.
-         * @memberof common
-         * @classdesc Represents an Ipv6Inet.
-         * @implements IIpv6Inet
-         * @constructor
-         * @param {common.IIpv6Inet=} [properties] Properties to set
-         */
-        function Ipv6Inet(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * Ipv6Inet address.
-         * @member {common.IIpv6Addr|null|undefined} address
-         * @memberof common.Ipv6Inet
-         * @instance
-         */
-        Ipv6Inet.prototype.address = null;
-
-        /**
-         * Ipv6Inet networkLength.
-         * @member {number} networkLength
-         * @memberof common.Ipv6Inet
-         * @instance
-         */
-        Ipv6Inet.prototype.networkLength = 0;
-
-        /**
-         * Creates a new Ipv6Inet instance using the specified properties.
-         * @function create
-         * @memberof common.Ipv6Inet
-         * @static
-         * @param {common.IIpv6Inet=} [properties] Properties to set
-         * @returns {common.Ipv6Inet} Ipv6Inet instance
-         */
-        Ipv6Inet.create = function create(properties) {
-            return new Ipv6Inet(properties);
-        };
-
-        /**
-         * Encodes the specified Ipv6Inet message. Does not implicitly {@link common.Ipv6Inet.verify|verify} messages.
-         * @function encode
-         * @memberof common.Ipv6Inet
-         * @static
-         * @param {common.IIpv6Inet} message Ipv6Inet message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Ipv6Inet.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.address != null && Object.hasOwnProperty.call(message, "address"))
-                $root.common.Ipv6Addr.encode(message.address, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.networkLength != null && Object.hasOwnProperty.call(message, "networkLength"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.networkLength);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified Ipv6Inet message, length delimited. Does not implicitly {@link common.Ipv6Inet.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.Ipv6Inet
-         * @static
-         * @param {common.IIpv6Inet} message Ipv6Inet message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Ipv6Inet.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes an Ipv6Inet message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.Ipv6Inet
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.Ipv6Inet} Ipv6Inet
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Ipv6Inet.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Ipv6Inet();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.address = $root.common.Ipv6Addr.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 2: {
-                        message.networkLength = reader.uint32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes an Ipv6Inet message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.Ipv6Inet
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.Ipv6Inet} Ipv6Inet
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Ipv6Inet.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies an Ipv6Inet message.
-         * @function verify
-         * @memberof common.Ipv6Inet
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        Ipv6Inet.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.address != null && message.hasOwnProperty("address")) {
-                let error = $root.common.Ipv6Addr.verify(message.address);
-                if (error)
-                    return "address." + error;
-            }
-            if (message.networkLength != null && message.hasOwnProperty("networkLength"))
-                if (!$util.isInteger(message.networkLength))
-                    return "networkLength: integer expected";
-            return null;
-        };
-
-        /**
-         * Creates an Ipv6Inet message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.Ipv6Inet
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.Ipv6Inet} Ipv6Inet
-         */
-        Ipv6Inet.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.Ipv6Inet)
-                return object;
-            let message = new $root.common.Ipv6Inet();
-            if (object.address != null) {
-                if (typeof object.address !== "object")
-                    throw TypeError(".common.Ipv6Inet.address: object expected");
-                message.address = $root.common.Ipv6Addr.fromObject(object.address);
-            }
-            if (object.networkLength != null)
-                message.networkLength = object.networkLength >>> 0;
-            return message;
-        };
-
-        /**
-         * Creates a plain object from an Ipv6Inet message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.Ipv6Inet
-         * @static
-         * @param {common.Ipv6Inet} message Ipv6Inet
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        Ipv6Inet.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.address = null;
-                object.networkLength = 0;
-            }
-            if (message.address != null && message.hasOwnProperty("address"))
-                object.address = $root.common.Ipv6Addr.toObject(message.address, options);
-            if (message.networkLength != null && message.hasOwnProperty("networkLength"))
-                object.networkLength = message.networkLength;
-            return object;
-        };
-
-        /**
-         * Converts this Ipv6Inet to JSON.
-         * @function toJSON
-         * @memberof common.Ipv6Inet
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        Ipv6Inet.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for Ipv6Inet
-         * @function getTypeUrl
-         * @memberof common.Ipv6Inet
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        Ipv6Inet.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.Ipv6Inet";
-        };
-
-        return Ipv6Inet;
-    })();
-
-    common.IpInet = (function() {
-
-        /**
-         * Properties of an IpInet.
-         * @memberof common
-         * @interface IIpInet
-         * @property {common.IIpv4Inet|null} [ipv4] IpInet ipv4
-         * @property {common.IIpv6Inet|null} [ipv6] IpInet ipv6
-         */
-
-        /**
-         * Constructs a new IpInet.
-         * @memberof common
-         * @classdesc Represents an IpInet.
-         * @implements IIpInet
-         * @constructor
-         * @param {common.IIpInet=} [properties] Properties to set
-         */
-        function IpInet(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * IpInet ipv4.
-         * @member {common.IIpv4Inet|null|undefined} ipv4
-         * @memberof common.IpInet
-         * @instance
-         */
-        IpInet.prototype.ipv4 = null;
-
-        /**
-         * IpInet ipv6.
-         * @member {common.IIpv6Inet|null|undefined} ipv6
-         * @memberof common.IpInet
-         * @instance
-         */
-        IpInet.prototype.ipv6 = null;
-
-        // OneOf field names bound to virtual getters and setters
-        let $oneOfFields;
-
-        /**
-         * IpInet ip.
-         * @member {"ipv4"|"ipv6"|undefined} ip
-         * @memberof common.IpInet
-         * @instance
-         */
-        Object.defineProperty(IpInet.prototype, "ip", {
-            get: $util.oneOfGetter($oneOfFields = ["ipv4", "ipv6"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        /**
-         * Creates a new IpInet instance using the specified properties.
-         * @function create
-         * @memberof common.IpInet
-         * @static
-         * @param {common.IIpInet=} [properties] Properties to set
-         * @returns {common.IpInet} IpInet instance
-         */
-        IpInet.create = function create(properties) {
-            return new IpInet(properties);
-        };
-
-        /**
-         * Encodes the specified IpInet message. Does not implicitly {@link common.IpInet.verify|verify} messages.
-         * @function encode
-         * @memberof common.IpInet
-         * @static
-         * @param {common.IIpInet} message IpInet message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        IpInet.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.ipv4 != null && Object.hasOwnProperty.call(message, "ipv4"))
-                $root.common.Ipv4Inet.encode(message.ipv4, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.ipv6 != null && Object.hasOwnProperty.call(message, "ipv6"))
-                $root.common.Ipv6Inet.encode(message.ipv6, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            return writer;
-        };
-
-        /**
-         * Encodes the specified IpInet message, length delimited. Does not implicitly {@link common.IpInet.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.IpInet
-         * @static
-         * @param {common.IIpInet} message IpInet message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        IpInet.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes an IpInet message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.IpInet
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.IpInet} IpInet
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        IpInet.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.IpInet();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.ipv4 = $root.common.Ipv4Inet.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 2: {
-                        message.ipv6 = $root.common.Ipv6Inet.decode(reader, reader.uint32());
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes an IpInet message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.IpInet
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.IpInet} IpInet
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        IpInet.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies an IpInet message.
-         * @function verify
-         * @memberof common.IpInet
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        IpInet.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            let properties = {};
-            if (message.ipv4 != null && message.hasOwnProperty("ipv4")) {
-                properties.ip = 1;
-                {
-                    let error = $root.common.Ipv4Inet.verify(message.ipv4);
-                    if (error)
-                        return "ipv4." + error;
-                }
-            }
-            if (message.ipv6 != null && message.hasOwnProperty("ipv6")) {
-                if (properties.ip === 1)
-                    return "ip: multiple values";
-                properties.ip = 1;
-                {
-                    let error = $root.common.Ipv6Inet.verify(message.ipv6);
-                    if (error)
-                        return "ipv6." + error;
-                }
-            }
-            return null;
-        };
-
-        /**
-         * Creates an IpInet message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.IpInet
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.IpInet} IpInet
-         */
-        IpInet.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.IpInet)
-                return object;
-            let message = new $root.common.IpInet();
-            if (object.ipv4 != null) {
-                if (typeof object.ipv4 !== "object")
-                    throw TypeError(".common.IpInet.ipv4: object expected");
-                message.ipv4 = $root.common.Ipv4Inet.fromObject(object.ipv4);
-            }
-            if (object.ipv6 != null) {
-                if (typeof object.ipv6 !== "object")
-                    throw TypeError(".common.IpInet.ipv6: object expected");
-                message.ipv6 = $root.common.Ipv6Inet.fromObject(object.ipv6);
-            }
-            return message;
-        };
-
-        /**
-         * Creates a plain object from an IpInet message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.IpInet
-         * @static
-         * @param {common.IpInet} message IpInet
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        IpInet.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (message.ipv4 != null && message.hasOwnProperty("ipv4")) {
-                object.ipv4 = $root.common.Ipv4Inet.toObject(message.ipv4, options);
-                if (options.oneofs)
-                    object.ip = "ipv4";
-            }
-            if (message.ipv6 != null && message.hasOwnProperty("ipv6")) {
-                object.ipv6 = $root.common.Ipv6Inet.toObject(message.ipv6, options);
-                if (options.oneofs)
-                    object.ip = "ipv6";
-            }
-            return object;
-        };
-
-        /**
-         * Converts this IpInet to JSON.
-         * @function toJSON
-         * @memberof common.IpInet
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        IpInet.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for IpInet
-         * @function getTypeUrl
-         * @memberof common.IpInet
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        IpInet.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.IpInet";
-        };
-
-        return IpInet;
-    })();
-
-    common.Url = (function() {
-
-        /**
-         * Properties of an Url.
-         * @memberof common
-         * @interface IUrl
-         * @property {string|null} [url] Url url
-         */
-
-        /**
-         * Constructs a new Url.
-         * @memberof common
-         * @classdesc Represents an Url.
-         * @implements IUrl
-         * @constructor
-         * @param {common.IUrl=} [properties] Properties to set
-         */
-        function Url(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * Url url.
-         * @member {string} url
-         * @memberof common.Url
-         * @instance
-         */
-        Url.prototype.url = "";
-
-        /**
-         * Creates a new Url instance using the specified properties.
-         * @function create
-         * @memberof common.Url
-         * @static
-         * @param {common.IUrl=} [properties] Properties to set
-         * @returns {common.Url} Url instance
-         */
-        Url.create = function create(properties) {
-            return new Url(properties);
-        };
-
-        /**
-         * Encodes the specified Url message. Does not implicitly {@link common.Url.verify|verify} messages.
-         * @function encode
-         * @memberof common.Url
-         * @static
-         * @param {common.IUrl} message Url message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Url.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.url != null && Object.hasOwnProperty.call(message, "url"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.url);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified Url message, length delimited. Does not implicitly {@link common.Url.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.Url
-         * @static
-         * @param {common.IUrl} message Url message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Url.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes an Url message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.Url
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.Url} Url
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Url.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Url();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.url = reader.string();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes an Url message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.Url
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.Url} Url
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Url.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies an Url message.
-         * @function verify
-         * @memberof common.Url
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        Url.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.url != null && message.hasOwnProperty("url"))
-                if (!$util.isString(message.url))
-                    return "url: string expected";
-            return null;
-        };
-
-        /**
-         * Creates an Url message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.Url
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.Url} Url
-         */
-        Url.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.Url)
-                return object;
-            let message = new $root.common.Url();
-            if (object.url != null)
-                message.url = String(object.url);
-            return message;
-        };
-
-        /**
-         * Creates a plain object from an Url message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.Url
-         * @static
-         * @param {common.Url} message Url
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        Url.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults)
-                object.url = "";
-            if (message.url != null && message.hasOwnProperty("url"))
-                object.url = message.url;
-            return object;
-        };
-
-        /**
-         * Converts this Url to JSON.
-         * @function toJSON
-         * @memberof common.Url
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        Url.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for Url
-         * @function getTypeUrl
-         * @memberof common.Url
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        Url.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.Url";
-        };
-
-        return Url;
-    })();
-
-    common.SocketAddr = (function() {
-
-        /**
-         * Properties of a SocketAddr.
-         * @memberof common
-         * @interface ISocketAddr
-         * @property {common.IIpv4Addr|null} [ipv4] SocketAddr ipv4
-         * @property {common.IIpv6Addr|null} [ipv6] SocketAddr ipv6
-         * @property {number|null} [port] SocketAddr port
-         */
-
-        /**
-         * Constructs a new SocketAddr.
-         * @memberof common
-         * @classdesc Represents a SocketAddr.
-         * @implements ISocketAddr
-         * @constructor
-         * @param {common.ISocketAddr=} [properties] Properties to set
-         */
-        function SocketAddr(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * SocketAddr ipv4.
-         * @member {common.IIpv4Addr|null|undefined} ipv4
-         * @memberof common.SocketAddr
-         * @instance
-         */
-        SocketAddr.prototype.ipv4 = null;
-
-        /**
-         * SocketAddr ipv6.
-         * @member {common.IIpv6Addr|null|undefined} ipv6
-         * @memberof common.SocketAddr
-         * @instance
-         */
-        SocketAddr.prototype.ipv6 = null;
-
-        /**
-         * SocketAddr port.
-         * @member {number} port
-         * @memberof common.SocketAddr
-         * @instance
-         */
-        SocketAddr.prototype.port = 0;
-
-        // OneOf field names bound to virtual getters and setters
-        let $oneOfFields;
-
-        /**
-         * SocketAddr ip.
-         * @member {"ipv4"|"ipv6"|undefined} ip
-         * @memberof common.SocketAddr
-         * @instance
-         */
-        Object.defineProperty(SocketAddr.prototype, "ip", {
-            get: $util.oneOfGetter($oneOfFields = ["ipv4", "ipv6"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        /**
-         * Creates a new SocketAddr instance using the specified properties.
-         * @function create
-         * @memberof common.SocketAddr
-         * @static
-         * @param {common.ISocketAddr=} [properties] Properties to set
-         * @returns {common.SocketAddr} SocketAddr instance
-         */
-        SocketAddr.create = function create(properties) {
-            return new SocketAddr(properties);
-        };
-
-        /**
-         * Encodes the specified SocketAddr message. Does not implicitly {@link common.SocketAddr.verify|verify} messages.
-         * @function encode
-         * @memberof common.SocketAddr
-         * @static
-         * @param {common.ISocketAddr} message SocketAddr message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        SocketAddr.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.ipv4 != null && Object.hasOwnProperty.call(message, "ipv4"))
-                $root.common.Ipv4Addr.encode(message.ipv4, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.ipv6 != null && Object.hasOwnProperty.call(message, "ipv6"))
-                $root.common.Ipv6Addr.encode(message.ipv6, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.port != null && Object.hasOwnProperty.call(message, "port"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.port);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified SocketAddr message, length delimited. Does not implicitly {@link common.SocketAddr.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.SocketAddr
-         * @static
-         * @param {common.ISocketAddr} message SocketAddr message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        SocketAddr.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a SocketAddr message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.SocketAddr
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.SocketAddr} SocketAddr
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        SocketAddr.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.SocketAddr();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.ipv4 = $root.common.Ipv4Addr.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 2: {
-                        message.ipv6 = $root.common.Ipv6Addr.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 3: {
-                        message.port = reader.uint32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a SocketAddr message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.SocketAddr
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.SocketAddr} SocketAddr
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        SocketAddr.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a SocketAddr message.
-         * @function verify
-         * @memberof common.SocketAddr
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        SocketAddr.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            let properties = {};
-            if (message.ipv4 != null && message.hasOwnProperty("ipv4")) {
-                properties.ip = 1;
-                {
-                    let error = $root.common.Ipv4Addr.verify(message.ipv4);
-                    if (error)
-                        return "ipv4." + error;
-                }
-            }
-            if (message.ipv6 != null && message.hasOwnProperty("ipv6")) {
-                if (properties.ip === 1)
-                    return "ip: multiple values";
-                properties.ip = 1;
-                {
-                    let error = $root.common.Ipv6Addr.verify(message.ipv6);
-                    if (error)
-                        return "ipv6." + error;
-                }
-            }
-            if (message.port != null && message.hasOwnProperty("port"))
-                if (!$util.isInteger(message.port))
-                    return "port: integer expected";
-            return null;
-        };
-
-        /**
-         * Creates a SocketAddr message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.SocketAddr
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.SocketAddr} SocketAddr
-         */
-        SocketAddr.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.SocketAddr)
-                return object;
-            let message = new $root.common.SocketAddr();
-            if (object.ipv4 != null) {
-                if (typeof object.ipv4 !== "object")
-                    throw TypeError(".common.SocketAddr.ipv4: object expected");
-                message.ipv4 = $root.common.Ipv4Addr.fromObject(object.ipv4);
-            }
-            if (object.ipv6 != null) {
-                if (typeof object.ipv6 !== "object")
-                    throw TypeError(".common.SocketAddr.ipv6: object expected");
-                message.ipv6 = $root.common.Ipv6Addr.fromObject(object.ipv6);
-            }
-            if (object.port != null)
-                message.port = object.port >>> 0;
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a SocketAddr message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.SocketAddr
-         * @static
-         * @param {common.SocketAddr} message SocketAddr
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        SocketAddr.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults)
-                object.port = 0;
-            if (message.ipv4 != null && message.hasOwnProperty("ipv4")) {
-                object.ipv4 = $root.common.Ipv4Addr.toObject(message.ipv4, options);
-                if (options.oneofs)
-                    object.ip = "ipv4";
-            }
-            if (message.ipv6 != null && message.hasOwnProperty("ipv6")) {
-                object.ipv6 = $root.common.Ipv6Addr.toObject(message.ipv6, options);
-                if (options.oneofs)
-                    object.ip = "ipv6";
-            }
-            if (message.port != null && message.hasOwnProperty("port"))
-                object.port = message.port;
-            return object;
-        };
-
-        /**
-         * Converts this SocketAddr to JSON.
-         * @function toJSON
-         * @memberof common.SocketAddr
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        SocketAddr.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for SocketAddr
-         * @function getTypeUrl
-         * @memberof common.SocketAddr
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        SocketAddr.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.SocketAddr";
-        };
-
-        return SocketAddr;
-    })();
-
-    common.TunnelInfo = (function() {
-
-        /**
-         * Properties of a TunnelInfo.
-         * @memberof common
-         * @interface ITunnelInfo
-         * @property {string|null} [tunnelType] TunnelInfo tunnelType
-         * @property {common.IUrl|null} [localAddr] TunnelInfo localAddr
-         * @property {common.IUrl|null} [remoteAddr] TunnelInfo remoteAddr
-         */
-
-        /**
-         * Constructs a new TunnelInfo.
-         * @memberof common
-         * @classdesc Represents a TunnelInfo.
-         * @implements ITunnelInfo
-         * @constructor
-         * @param {common.ITunnelInfo=} [properties] Properties to set
-         */
-        function TunnelInfo(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * TunnelInfo tunnelType.
-         * @member {string} tunnelType
-         * @memberof common.TunnelInfo
-         * @instance
-         */
-        TunnelInfo.prototype.tunnelType = "";
-
-        /**
-         * TunnelInfo localAddr.
-         * @member {common.IUrl|null|undefined} localAddr
-         * @memberof common.TunnelInfo
-         * @instance
-         */
-        TunnelInfo.prototype.localAddr = null;
-
-        /**
-         * TunnelInfo remoteAddr.
-         * @member {common.IUrl|null|undefined} remoteAddr
-         * @memberof common.TunnelInfo
-         * @instance
-         */
-        TunnelInfo.prototype.remoteAddr = null;
-
-        /**
-         * Creates a new TunnelInfo instance using the specified properties.
-         * @function create
-         * @memberof common.TunnelInfo
-         * @static
-         * @param {common.ITunnelInfo=} [properties] Properties to set
-         * @returns {common.TunnelInfo} TunnelInfo instance
-         */
-        TunnelInfo.create = function create(properties) {
-            return new TunnelInfo(properties);
-        };
-
-        /**
-         * Encodes the specified TunnelInfo message. Does not implicitly {@link common.TunnelInfo.verify|verify} messages.
-         * @function encode
-         * @memberof common.TunnelInfo
-         * @static
-         * @param {common.ITunnelInfo} message TunnelInfo message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        TunnelInfo.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.tunnelType != null && Object.hasOwnProperty.call(message, "tunnelType"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.tunnelType);
-            if (message.localAddr != null && Object.hasOwnProperty.call(message, "localAddr"))
-                $root.common.Url.encode(message.localAddr, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.remoteAddr != null && Object.hasOwnProperty.call(message, "remoteAddr"))
-                $root.common.Url.encode(message.remoteAddr, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            return writer;
-        };
-
-        /**
-         * Encodes the specified TunnelInfo message, length delimited. Does not implicitly {@link common.TunnelInfo.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.TunnelInfo
-         * @static
-         * @param {common.ITunnelInfo} message TunnelInfo message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        TunnelInfo.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a TunnelInfo message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.TunnelInfo
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.TunnelInfo} TunnelInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        TunnelInfo.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.TunnelInfo();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.tunnelType = reader.string();
-                        break;
-                    }
-                case 2: {
-                        message.localAddr = $root.common.Url.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 3: {
-                        message.remoteAddr = $root.common.Url.decode(reader, reader.uint32());
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a TunnelInfo message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.TunnelInfo
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.TunnelInfo} TunnelInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        TunnelInfo.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a TunnelInfo message.
-         * @function verify
-         * @memberof common.TunnelInfo
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        TunnelInfo.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.tunnelType != null && message.hasOwnProperty("tunnelType"))
-                if (!$util.isString(message.tunnelType))
-                    return "tunnelType: string expected";
-            if (message.localAddr != null && message.hasOwnProperty("localAddr")) {
-                let error = $root.common.Url.verify(message.localAddr);
-                if (error)
-                    return "localAddr." + error;
-            }
-            if (message.remoteAddr != null && message.hasOwnProperty("remoteAddr")) {
-                let error = $root.common.Url.verify(message.remoteAddr);
-                if (error)
-                    return "remoteAddr." + error;
-            }
-            return null;
-        };
-
-        /**
-         * Creates a TunnelInfo message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.TunnelInfo
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.TunnelInfo} TunnelInfo
-         */
-        TunnelInfo.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.TunnelInfo)
-                return object;
-            let message = new $root.common.TunnelInfo();
-            if (object.tunnelType != null)
-                message.tunnelType = String(object.tunnelType);
-            if (object.localAddr != null) {
-                if (typeof object.localAddr !== "object")
-                    throw TypeError(".common.TunnelInfo.localAddr: object expected");
-                message.localAddr = $root.common.Url.fromObject(object.localAddr);
-            }
-            if (object.remoteAddr != null) {
-                if (typeof object.remoteAddr !== "object")
-                    throw TypeError(".common.TunnelInfo.remoteAddr: object expected");
-                message.remoteAddr = $root.common.Url.fromObject(object.remoteAddr);
-            }
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a TunnelInfo message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.TunnelInfo
-         * @static
-         * @param {common.TunnelInfo} message TunnelInfo
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        TunnelInfo.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.tunnelType = "";
-                object.localAddr = null;
-                object.remoteAddr = null;
-            }
-            if (message.tunnelType != null && message.hasOwnProperty("tunnelType"))
-                object.tunnelType = message.tunnelType;
-            if (message.localAddr != null && message.hasOwnProperty("localAddr"))
-                object.localAddr = $root.common.Url.toObject(message.localAddr, options);
-            if (message.remoteAddr != null && message.hasOwnProperty("remoteAddr"))
-                object.remoteAddr = $root.common.Url.toObject(message.remoteAddr, options);
-            return object;
-        };
-
-        /**
-         * Converts this TunnelInfo to JSON.
-         * @function toJSON
-         * @memberof common.TunnelInfo
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        TunnelInfo.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for TunnelInfo
-         * @function getTypeUrl
-         * @memberof common.TunnelInfo
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        TunnelInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.TunnelInfo";
-        };
-
-        return TunnelInfo;
-    })();
-
-    common.StunInfo = (function() {
-
-        /**
-         * Properties of a StunInfo.
-         * @memberof common
-         * @interface IStunInfo
-         * @property {common.NatType|null} [udpNatType] StunInfo udpNatType
-         * @property {common.NatType|null} [tcpNatType] StunInfo tcpNatType
-         * @property {Long|null} [lastUpdateTime] StunInfo lastUpdateTime
-         * @property {Array.<string>|null} [publicIp] StunInfo publicIp
-         * @property {number|null} [minPort] StunInfo minPort
-         * @property {number|null} [maxPort] StunInfo maxPort
-         */
-
-        /**
-         * Constructs a new StunInfo.
-         * @memberof common
-         * @classdesc Represents a StunInfo.
-         * @implements IStunInfo
-         * @constructor
-         * @param {common.IStunInfo=} [properties] Properties to set
-         */
-        function StunInfo(properties) {
-            this.publicIp = [];
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * StunInfo udpNatType.
-         * @member {common.NatType} udpNatType
-         * @memberof common.StunInfo
-         * @instance
-         */
-        StunInfo.prototype.udpNatType = 0;
-
-        /**
-         * StunInfo tcpNatType.
-         * @member {common.NatType} tcpNatType
-         * @memberof common.StunInfo
-         * @instance
-         */
-        StunInfo.prototype.tcpNatType = 0;
-
-        /**
-         * StunInfo lastUpdateTime.
-         * @member {Long} lastUpdateTime
-         * @memberof common.StunInfo
-         * @instance
-         */
-        StunInfo.prototype.lastUpdateTime = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
-
-        /**
-         * StunInfo publicIp.
-         * @member {Array.<string>} publicIp
-         * @memberof common.StunInfo
-         * @instance
-         */
-        StunInfo.prototype.publicIp = $util.emptyArray;
-
-        /**
-         * StunInfo minPort.
-         * @member {number} minPort
-         * @memberof common.StunInfo
-         * @instance
-         */
-        StunInfo.prototype.minPort = 0;
-
-        /**
-         * StunInfo maxPort.
-         * @member {number} maxPort
-         * @memberof common.StunInfo
-         * @instance
-         */
-        StunInfo.prototype.maxPort = 0;
-
-        /**
-         * Creates a new StunInfo instance using the specified properties.
-         * @function create
-         * @memberof common.StunInfo
-         * @static
-         * @param {common.IStunInfo=} [properties] Properties to set
-         * @returns {common.StunInfo} StunInfo instance
-         */
-        StunInfo.create = function create(properties) {
-            return new StunInfo(properties);
-        };
-
-        /**
-         * Encodes the specified StunInfo message. Does not implicitly {@link common.StunInfo.verify|verify} messages.
-         * @function encode
-         * @memberof common.StunInfo
-         * @static
-         * @param {common.IStunInfo} message StunInfo message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        StunInfo.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.udpNatType != null && Object.hasOwnProperty.call(message, "udpNatType"))
-                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.udpNatType);
-            if (message.tcpNatType != null && Object.hasOwnProperty.call(message, "tcpNatType"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.tcpNatType);
-            if (message.lastUpdateTime != null && Object.hasOwnProperty.call(message, "lastUpdateTime"))
-                writer.uint32(/* id 3, wireType 0 =*/24).int64(message.lastUpdateTime);
-            if (message.publicIp != null && message.publicIp.length)
-                for (let i = 0; i < message.publicIp.length; ++i)
-                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.publicIp[i]);
-            if (message.minPort != null && Object.hasOwnProperty.call(message, "minPort"))
-                writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.minPort);
-            if (message.maxPort != null && Object.hasOwnProperty.call(message, "maxPort"))
-                writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.maxPort);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified StunInfo message, length delimited. Does not implicitly {@link common.StunInfo.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.StunInfo
-         * @static
-         * @param {common.IStunInfo} message StunInfo message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        StunInfo.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a StunInfo message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.StunInfo
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.StunInfo} StunInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        StunInfo.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.StunInfo();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.udpNatType = reader.int32();
-                        break;
-                    }
-                case 2: {
-                        message.tcpNatType = reader.int32();
-                        break;
-                    }
-                case 3: {
-                        message.lastUpdateTime = reader.int64();
-                        break;
-                    }
-                case 4: {
-                        if (!(message.publicIp && message.publicIp.length))
-                            message.publicIp = [];
-                        message.publicIp.push(reader.string());
-                        break;
-                    }
-                case 5: {
-                        message.minPort = reader.uint32();
-                        break;
-                    }
-                case 6: {
-                        message.maxPort = reader.uint32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a StunInfo message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.StunInfo
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.StunInfo} StunInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        StunInfo.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a StunInfo message.
-         * @function verify
-         * @memberof common.StunInfo
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        StunInfo.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.udpNatType != null && message.hasOwnProperty("udpNatType"))
-                switch (message.udpNatType) {
-                default:
-                    return "udpNatType: enum value expected";
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                    break;
-                }
-            if (message.tcpNatType != null && message.hasOwnProperty("tcpNatType"))
-                switch (message.tcpNatType) {
-                default:
-                    return "tcpNatType: enum value expected";
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                    break;
-                }
-            if (message.lastUpdateTime != null && message.hasOwnProperty("lastUpdateTime"))
-                if (!$util.isInteger(message.lastUpdateTime) && !(message.lastUpdateTime && $util.isInteger(message.lastUpdateTime.low) && $util.isInteger(message.lastUpdateTime.high)))
-                    return "lastUpdateTime: integer|Long expected";
-            if (message.publicIp != null && message.hasOwnProperty("publicIp")) {
-                if (!Array.isArray(message.publicIp))
-                    return "publicIp: array expected";
-                for (let i = 0; i < message.publicIp.length; ++i)
-                    if (!$util.isString(message.publicIp[i]))
-                        return "publicIp: string[] expected";
-            }
-            if (message.minPort != null && message.hasOwnProperty("minPort"))
-                if (!$util.isInteger(message.minPort))
-                    return "minPort: integer expected";
-            if (message.maxPort != null && message.hasOwnProperty("maxPort"))
-                if (!$util.isInteger(message.maxPort))
-                    return "maxPort: integer expected";
-            return null;
-        };
-
-        /**
-         * Creates a StunInfo message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.StunInfo
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.StunInfo} StunInfo
-         */
-        StunInfo.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.StunInfo)
-                return object;
-            let message = new $root.common.StunInfo();
-            switch (object.udpNatType) {
-            default:
-                if (typeof object.udpNatType === "number") {
-                    message.udpNatType = object.udpNatType;
-                    break;
-                }
-                break;
-            case "Unknown":
-            case 0:
-                message.udpNatType = 0;
-                break;
-            case "OpenInternet":
-            case 1:
-                message.udpNatType = 1;
-                break;
-            case "NoPAT":
-            case 2:
-                message.udpNatType = 2;
-                break;
-            case "FullCone":
-            case 3:
-                message.udpNatType = 3;
-                break;
-            case "Restricted":
-            case 4:
-                message.udpNatType = 4;
-                break;
-            case "PortRestricted":
-            case 5:
-                message.udpNatType = 5;
-                break;
-            case "Symmetric":
-            case 6:
-                message.udpNatType = 6;
-                break;
-            case "SymUdpFirewall":
-            case 7:
-                message.udpNatType = 7;
-                break;
-            case "SymmetricEasyInc":
-            case 8:
-                message.udpNatType = 8;
-                break;
-            case "SymmetricEasyDec":
-            case 9:
-                message.udpNatType = 9;
-                break;
-            }
-            switch (object.tcpNatType) {
-            default:
-                if (typeof object.tcpNatType === "number") {
-                    message.tcpNatType = object.tcpNatType;
-                    break;
-                }
-                break;
-            case "Unknown":
-            case 0:
-                message.tcpNatType = 0;
-                break;
-            case "OpenInternet":
-            case 1:
-                message.tcpNatType = 1;
-                break;
-            case "NoPAT":
-            case 2:
-                message.tcpNatType = 2;
-                break;
-            case "FullCone":
-            case 3:
-                message.tcpNatType = 3;
-                break;
-            case "Restricted":
-            case 4:
-                message.tcpNatType = 4;
-                break;
-            case "PortRestricted":
-            case 5:
-                message.tcpNatType = 5;
-                break;
-            case "Symmetric":
-            case 6:
-                message.tcpNatType = 6;
-                break;
-            case "SymUdpFirewall":
-            case 7:
-                message.tcpNatType = 7;
-                break;
-            case "SymmetricEasyInc":
-            case 8:
-                message.tcpNatType = 8;
-                break;
-            case "SymmetricEasyDec":
-            case 9:
-                message.tcpNatType = 9;
-                break;
-            }
-            if (object.lastUpdateTime != null)
-                if ($util.Long)
-                    (message.lastUpdateTime = $util.Long.fromValue(object.lastUpdateTime)).unsigned = false;
-                else if (typeof object.lastUpdateTime === "string")
-                    message.lastUpdateTime = parseInt(object.lastUpdateTime, 10);
-                else if (typeof object.lastUpdateTime === "number")
-                    message.lastUpdateTime = object.lastUpdateTime;
-                else if (typeof object.lastUpdateTime === "object")
-                    message.lastUpdateTime = new $util.LongBits(object.lastUpdateTime.low >>> 0, object.lastUpdateTime.high >>> 0).toNumber();
-            if (object.publicIp) {
-                if (!Array.isArray(object.publicIp))
-                    throw TypeError(".common.StunInfo.publicIp: array expected");
-                message.publicIp = [];
-                for (let i = 0; i < object.publicIp.length; ++i)
-                    message.publicIp[i] = String(object.publicIp[i]);
-            }
-            if (object.minPort != null)
-                message.minPort = object.minPort >>> 0;
-            if (object.maxPort != null)
-                message.maxPort = object.maxPort >>> 0;
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a StunInfo message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.StunInfo
-         * @static
-         * @param {common.StunInfo} message StunInfo
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        StunInfo.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.arrays || options.defaults)
-                object.publicIp = [];
-            if (options.defaults) {
-                object.udpNatType = options.enums === String ? "Unknown" : 0;
-                object.tcpNatType = options.enums === String ? "Unknown" : 0;
-                if ($util.Long) {
-                    let long = new $util.Long(0, 0, false);
-                    object.lastUpdateTime = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.lastUpdateTime = options.longs === String ? "0" : 0;
-                object.minPort = 0;
-                object.maxPort = 0;
-            }
-            if (message.udpNatType != null && message.hasOwnProperty("udpNatType"))
-                object.udpNatType = options.enums === String ? $root.common.NatType[message.udpNatType] === undefined ? message.udpNatType : $root.common.NatType[message.udpNatType] : message.udpNatType;
-            if (message.tcpNatType != null && message.hasOwnProperty("tcpNatType"))
-                object.tcpNatType = options.enums === String ? $root.common.NatType[message.tcpNatType] === undefined ? message.tcpNatType : $root.common.NatType[message.tcpNatType] : message.tcpNatType;
-            if (message.lastUpdateTime != null && message.hasOwnProperty("lastUpdateTime"))
-                if (typeof message.lastUpdateTime === "number")
-                    object.lastUpdateTime = options.longs === String ? String(message.lastUpdateTime) : message.lastUpdateTime;
-                else
-                    object.lastUpdateTime = options.longs === String ? $util.Long.prototype.toString.call(message.lastUpdateTime) : options.longs === Number ? new $util.LongBits(message.lastUpdateTime.low >>> 0, message.lastUpdateTime.high >>> 0).toNumber() : message.lastUpdateTime;
-            if (message.publicIp && message.publicIp.length) {
-                object.publicIp = [];
-                for (let j = 0; j < message.publicIp.length; ++j)
-                    object.publicIp[j] = message.publicIp[j];
-            }
-            if (message.minPort != null && message.hasOwnProperty("minPort"))
-                object.minPort = message.minPort;
-            if (message.maxPort != null && message.hasOwnProperty("maxPort"))
-                object.maxPort = message.maxPort;
-            return object;
-        };
-
-        /**
-         * Converts this StunInfo to JSON.
-         * @function toJSON
-         * @memberof common.StunInfo
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        StunInfo.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for StunInfo
-         * @function getTypeUrl
-         * @memberof common.StunInfo
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        StunInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.StunInfo";
-        };
-
-        return StunInfo;
-    })();
-
-    common.PeerFeatureFlag = (function() {
-
-        /**
-         * Properties of a PeerFeatureFlag.
-         * @memberof common
-         * @interface IPeerFeatureFlag
-         * @property {boolean|null} [isPublicServer] PeerFeatureFlag isPublicServer
-         * @property {boolean|null} [avoidRelayData] PeerFeatureFlag avoidRelayData
-         * @property {boolean|null} [kcpInput] PeerFeatureFlag kcpInput
-         * @property {boolean|null} [noRelayKcp] PeerFeatureFlag noRelayKcp
-         */
-
-        /**
-         * Constructs a new PeerFeatureFlag.
-         * @memberof common
-         * @classdesc Represents a PeerFeatureFlag.
-         * @implements IPeerFeatureFlag
-         * @constructor
-         * @param {common.IPeerFeatureFlag=} [properties] Properties to set
-         */
-        function PeerFeatureFlag(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * PeerFeatureFlag isPublicServer.
-         * @member {boolean} isPublicServer
-         * @memberof common.PeerFeatureFlag
-         * @instance
-         */
-        PeerFeatureFlag.prototype.isPublicServer = false;
-
-        /**
-         * PeerFeatureFlag avoidRelayData.
-         * @member {boolean} avoidRelayData
-         * @memberof common.PeerFeatureFlag
-         * @instance
-         */
-        PeerFeatureFlag.prototype.avoidRelayData = false;
-
-        /**
-         * PeerFeatureFlag kcpInput.
-         * @member {boolean} kcpInput
-         * @memberof common.PeerFeatureFlag
-         * @instance
-         */
-        PeerFeatureFlag.prototype.kcpInput = false;
-
-        /**
-         * PeerFeatureFlag noRelayKcp.
-         * @member {boolean} noRelayKcp
-         * @memberof common.PeerFeatureFlag
-         * @instance
-         */
-        PeerFeatureFlag.prototype.noRelayKcp = false;
-
-        /**
-         * Creates a new PeerFeatureFlag instance using the specified properties.
-         * @function create
-         * @memberof common.PeerFeatureFlag
-         * @static
-         * @param {common.IPeerFeatureFlag=} [properties] Properties to set
-         * @returns {common.PeerFeatureFlag} PeerFeatureFlag instance
-         */
-        PeerFeatureFlag.create = function create(properties) {
-            return new PeerFeatureFlag(properties);
-        };
-
-        /**
-         * Encodes the specified PeerFeatureFlag message. Does not implicitly {@link common.PeerFeatureFlag.verify|verify} messages.
-         * @function encode
-         * @memberof common.PeerFeatureFlag
-         * @static
-         * @param {common.IPeerFeatureFlag} message PeerFeatureFlag message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        PeerFeatureFlag.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.isPublicServer != null && Object.hasOwnProperty.call(message, "isPublicServer"))
-                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.isPublicServer);
-            if (message.avoidRelayData != null && Object.hasOwnProperty.call(message, "avoidRelayData"))
-                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.avoidRelayData);
-            if (message.kcpInput != null && Object.hasOwnProperty.call(message, "kcpInput"))
-                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.kcpInput);
-            if (message.noRelayKcp != null && Object.hasOwnProperty.call(message, "noRelayKcp"))
-                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.noRelayKcp);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified PeerFeatureFlag message, length delimited. Does not implicitly {@link common.PeerFeatureFlag.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.PeerFeatureFlag
-         * @static
-         * @param {common.IPeerFeatureFlag} message PeerFeatureFlag message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        PeerFeatureFlag.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a PeerFeatureFlag message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.PeerFeatureFlag
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.PeerFeatureFlag} PeerFeatureFlag
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        PeerFeatureFlag.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.PeerFeatureFlag();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.isPublicServer = reader.bool();
-                        break;
-                    }
-                case 2: {
-                        message.avoidRelayData = reader.bool();
-                        break;
-                    }
-                case 3: {
-                        message.kcpInput = reader.bool();
-                        break;
-                    }
-                case 4: {
-                        message.noRelayKcp = reader.bool();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a PeerFeatureFlag message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.PeerFeatureFlag
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.PeerFeatureFlag} PeerFeatureFlag
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        PeerFeatureFlag.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a PeerFeatureFlag message.
-         * @function verify
-         * @memberof common.PeerFeatureFlag
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        PeerFeatureFlag.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.isPublicServer != null && message.hasOwnProperty("isPublicServer"))
-                if (typeof message.isPublicServer !== "boolean")
-                    return "isPublicServer: boolean expected";
-            if (message.avoidRelayData != null && message.hasOwnProperty("avoidRelayData"))
-                if (typeof message.avoidRelayData !== "boolean")
-                    return "avoidRelayData: boolean expected";
-            if (message.kcpInput != null && message.hasOwnProperty("kcpInput"))
-                if (typeof message.kcpInput !== "boolean")
-                    return "kcpInput: boolean expected";
-            if (message.noRelayKcp != null && message.hasOwnProperty("noRelayKcp"))
-                if (typeof message.noRelayKcp !== "boolean")
-                    return "noRelayKcp: boolean expected";
-            return null;
-        };
-
-        /**
-         * Creates a PeerFeatureFlag message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.PeerFeatureFlag
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.PeerFeatureFlag} PeerFeatureFlag
-         */
-        PeerFeatureFlag.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.PeerFeatureFlag)
-                return object;
-            let message = new $root.common.PeerFeatureFlag();
-            if (object.isPublicServer != null)
-                message.isPublicServer = Boolean(object.isPublicServer);
-            if (object.avoidRelayData != null)
-                message.avoidRelayData = Boolean(object.avoidRelayData);
-            if (object.kcpInput != null)
-                message.kcpInput = Boolean(object.kcpInput);
-            if (object.noRelayKcp != null)
-                message.noRelayKcp = Boolean(object.noRelayKcp);
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a PeerFeatureFlag message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.PeerFeatureFlag
-         * @static
-         * @param {common.PeerFeatureFlag} message PeerFeatureFlag
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        PeerFeatureFlag.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.isPublicServer = false;
-                object.avoidRelayData = false;
-                object.kcpInput = false;
-                object.noRelayKcp = false;
-            }
-            if (message.isPublicServer != null && message.hasOwnProperty("isPublicServer"))
-                object.isPublicServer = message.isPublicServer;
-            if (message.avoidRelayData != null && message.hasOwnProperty("avoidRelayData"))
-                object.avoidRelayData = message.avoidRelayData;
-            if (message.kcpInput != null && message.hasOwnProperty("kcpInput"))
-                object.kcpInput = message.kcpInput;
-            if (message.noRelayKcp != null && message.hasOwnProperty("noRelayKcp"))
-                object.noRelayKcp = message.noRelayKcp;
-            return object;
-        };
-
-        /**
-         * Converts this PeerFeatureFlag to JSON.
-         * @function toJSON
-         * @memberof common.PeerFeatureFlag
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        PeerFeatureFlag.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for PeerFeatureFlag
-         * @function getTypeUrl
-         * @memberof common.PeerFeatureFlag
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        PeerFeatureFlag.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.PeerFeatureFlag";
-        };
-
-        return PeerFeatureFlag;
-    })();
-
-    /**
-     * SocketType enum.
-     * @name common.SocketType
-     * @enum {number}
-     * @property {number} TCP=0 TCP value
-     * @property {number} UDP=1 UDP value
-     */
-    common.SocketType = (function() {
-        const valuesById = {}, values = Object.create(valuesById);
-        values[valuesById[0] = "TCP"] = 0;
-        values[valuesById[1] = "UDP"] = 1;
-        return values;
-    })();
-
-    common.PortForwardConfigPb = (function() {
-
-        /**
-         * Properties of a PortForwardConfigPb.
-         * @memberof common
-         * @interface IPortForwardConfigPb
-         * @property {common.ISocketAddr|null} [bindAddr] PortForwardConfigPb bindAddr
-         * @property {common.ISocketAddr|null} [dstAddr] PortForwardConfigPb dstAddr
-         * @property {common.SocketType|null} [socketType] PortForwardConfigPb socketType
-         */
-
-        /**
-         * Constructs a new PortForwardConfigPb.
-         * @memberof common
-         * @classdesc Represents a PortForwardConfigPb.
-         * @implements IPortForwardConfigPb
-         * @constructor
-         * @param {common.IPortForwardConfigPb=} [properties] Properties to set
-         */
-        function PortForwardConfigPb(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * PortForwardConfigPb bindAddr.
-         * @member {common.ISocketAddr|null|undefined} bindAddr
-         * @memberof common.PortForwardConfigPb
-         * @instance
-         */
-        PortForwardConfigPb.prototype.bindAddr = null;
-
-        /**
-         * PortForwardConfigPb dstAddr.
-         * @member {common.ISocketAddr|null|undefined} dstAddr
-         * @memberof common.PortForwardConfigPb
-         * @instance
-         */
-        PortForwardConfigPb.prototype.dstAddr = null;
-
-        /**
-         * PortForwardConfigPb socketType.
-         * @member {common.SocketType} socketType
-         * @memberof common.PortForwardConfigPb
-         * @instance
-         */
-        PortForwardConfigPb.prototype.socketType = 0;
-
-        /**
-         * Creates a new PortForwardConfigPb instance using the specified properties.
-         * @function create
-         * @memberof common.PortForwardConfigPb
-         * @static
-         * @param {common.IPortForwardConfigPb=} [properties] Properties to set
-         * @returns {common.PortForwardConfigPb} PortForwardConfigPb instance
-         */
-        PortForwardConfigPb.create = function create(properties) {
-            return new PortForwardConfigPb(properties);
-        };
-
-        /**
-         * Encodes the specified PortForwardConfigPb message. Does not implicitly {@link common.PortForwardConfigPb.verify|verify} messages.
-         * @function encode
-         * @memberof common.PortForwardConfigPb
-         * @static
-         * @param {common.IPortForwardConfigPb} message PortForwardConfigPb message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        PortForwardConfigPb.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.bindAddr != null && Object.hasOwnProperty.call(message, "bindAddr"))
-                $root.common.SocketAddr.encode(message.bindAddr, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.dstAddr != null && Object.hasOwnProperty.call(message, "dstAddr"))
-                $root.common.SocketAddr.encode(message.dstAddr, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-            if (message.socketType != null && Object.hasOwnProperty.call(message, "socketType"))
-                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.socketType);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified PortForwardConfigPb message, length delimited. Does not implicitly {@link common.PortForwardConfigPb.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.PortForwardConfigPb
-         * @static
-         * @param {common.IPortForwardConfigPb} message PortForwardConfigPb message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        PortForwardConfigPb.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a PortForwardConfigPb message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.PortForwardConfigPb
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.PortForwardConfigPb} PortForwardConfigPb
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        PortForwardConfigPb.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.PortForwardConfigPb();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.bindAddr = $root.common.SocketAddr.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 2: {
-                        message.dstAddr = $root.common.SocketAddr.decode(reader, reader.uint32());
-                        break;
-                    }
-                case 3: {
-                        message.socketType = reader.int32();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a PortForwardConfigPb message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.PortForwardConfigPb
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.PortForwardConfigPb} PortForwardConfigPb
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        PortForwardConfigPb.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a PortForwardConfigPb message.
-         * @function verify
-         * @memberof common.PortForwardConfigPb
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        PortForwardConfigPb.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.bindAddr != null && message.hasOwnProperty("bindAddr")) {
-                let error = $root.common.SocketAddr.verify(message.bindAddr);
-                if (error)
-                    return "bindAddr." + error;
-            }
-            if (message.dstAddr != null && message.hasOwnProperty("dstAddr")) {
-                let error = $root.common.SocketAddr.verify(message.dstAddr);
-                if (error)
-                    return "dstAddr." + error;
-            }
-            if (message.socketType != null && message.hasOwnProperty("socketType"))
-                switch (message.socketType) {
-                default:
-                    return "socketType: enum value expected";
-                case 0:
-                case 1:
-                    break;
-                }
-            return null;
-        };
-
-        /**
-         * Creates a PortForwardConfigPb message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.PortForwardConfigPb
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.PortForwardConfigPb} PortForwardConfigPb
-         */
-        PortForwardConfigPb.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.PortForwardConfigPb)
-                return object;
-            let message = new $root.common.PortForwardConfigPb();
-            if (object.bindAddr != null) {
-                if (typeof object.bindAddr !== "object")
-                    throw TypeError(".common.PortForwardConfigPb.bindAddr: object expected");
-                message.bindAddr = $root.common.SocketAddr.fromObject(object.bindAddr);
-            }
-            if (object.dstAddr != null) {
-                if (typeof object.dstAddr !== "object")
-                    throw TypeError(".common.PortForwardConfigPb.dstAddr: object expected");
-                message.dstAddr = $root.common.SocketAddr.fromObject(object.dstAddr);
-            }
-            switch (object.socketType) {
-            default:
-                if (typeof object.socketType === "number") {
-                    message.socketType = object.socketType;
-                    break;
-                }
-                break;
-            case "TCP":
-            case 0:
-                message.socketType = 0;
-                break;
-            case "UDP":
-            case 1:
-                message.socketType = 1;
-                break;
-            }
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a PortForwardConfigPb message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.PortForwardConfigPb
-         * @static
-         * @param {common.PortForwardConfigPb} message PortForwardConfigPb
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        PortForwardConfigPb.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults) {
-                object.bindAddr = null;
-                object.dstAddr = null;
-                object.socketType = options.enums === String ? "TCP" : 0;
-            }
-            if (message.bindAddr != null && message.hasOwnProperty("bindAddr"))
-                object.bindAddr = $root.common.SocketAddr.toObject(message.bindAddr, options);
-            if (message.dstAddr != null && message.hasOwnProperty("dstAddr"))
-                object.dstAddr = $root.common.SocketAddr.toObject(message.dstAddr, options);
-            if (message.socketType != null && message.hasOwnProperty("socketType"))
-                object.socketType = options.enums === String ? $root.common.SocketType[message.socketType] === undefined ? message.socketType : $root.common.SocketType[message.socketType] : message.socketType;
-            return object;
-        };
-
-        /**
-         * Converts this PortForwardConfigPb to JSON.
-         * @function toJSON
-         * @memberof common.PortForwardConfigPb
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        PortForwardConfigPb.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for PortForwardConfigPb
-         * @function getTypeUrl
-         * @memberof common.PortForwardConfigPb
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        PortForwardConfigPb.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.PortForwardConfigPb";
-        };
-
-        return PortForwardConfigPb;
-    })();
-
-    common.ProxyDstInfo = (function() {
-
-        /**
-         * Properties of a ProxyDstInfo.
-         * @memberof common
-         * @interface IProxyDstInfo
-         * @property {common.ISocketAddr|null} [dstAddr] ProxyDstInfo dstAddr
-         */
-
-        /**
-         * Constructs a new ProxyDstInfo.
-         * @memberof common
-         * @classdesc Represents a ProxyDstInfo.
-         * @implements IProxyDstInfo
-         * @constructor
-         * @param {common.IProxyDstInfo=} [properties] Properties to set
-         */
-        function ProxyDstInfo(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * ProxyDstInfo dstAddr.
-         * @member {common.ISocketAddr|null|undefined} dstAddr
-         * @memberof common.ProxyDstInfo
-         * @instance
-         */
-        ProxyDstInfo.prototype.dstAddr = null;
-
-        /**
-         * Creates a new ProxyDstInfo instance using the specified properties.
-         * @function create
-         * @memberof common.ProxyDstInfo
-         * @static
-         * @param {common.IProxyDstInfo=} [properties] Properties to set
-         * @returns {common.ProxyDstInfo} ProxyDstInfo instance
-         */
-        ProxyDstInfo.create = function create(properties) {
-            return new ProxyDstInfo(properties);
-        };
-
-        /**
-         * Encodes the specified ProxyDstInfo message. Does not implicitly {@link common.ProxyDstInfo.verify|verify} messages.
-         * @function encode
-         * @memberof common.ProxyDstInfo
-         * @static
-         * @param {common.IProxyDstInfo} message ProxyDstInfo message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        ProxyDstInfo.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.dstAddr != null && Object.hasOwnProperty.call(message, "dstAddr"))
-                $root.common.SocketAddr.encode(message.dstAddr, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            return writer;
-        };
-
-        /**
-         * Encodes the specified ProxyDstInfo message, length delimited. Does not implicitly {@link common.ProxyDstInfo.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.ProxyDstInfo
-         * @static
-         * @param {common.IProxyDstInfo} message ProxyDstInfo message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        ProxyDstInfo.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a ProxyDstInfo message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.ProxyDstInfo
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.ProxyDstInfo} ProxyDstInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        ProxyDstInfo.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.ProxyDstInfo();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.dstAddr = $root.common.SocketAddr.decode(reader, reader.uint32());
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a ProxyDstInfo message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.ProxyDstInfo
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.ProxyDstInfo} ProxyDstInfo
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        ProxyDstInfo.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a ProxyDstInfo message.
-         * @function verify
-         * @memberof common.ProxyDstInfo
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        ProxyDstInfo.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (message.dstAddr != null && message.hasOwnProperty("dstAddr")) {
-                let error = $root.common.SocketAddr.verify(message.dstAddr);
-                if (error)
-                    return "dstAddr." + error;
-            }
-            return null;
-        };
-
-        /**
-         * Creates a ProxyDstInfo message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.ProxyDstInfo
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.ProxyDstInfo} ProxyDstInfo
-         */
-        ProxyDstInfo.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.ProxyDstInfo)
-                return object;
-            let message = new $root.common.ProxyDstInfo();
-            if (object.dstAddr != null) {
-                if (typeof object.dstAddr !== "object")
-                    throw TypeError(".common.ProxyDstInfo.dstAddr: object expected");
-                message.dstAddr = $root.common.SocketAddr.fromObject(object.dstAddr);
-            }
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a ProxyDstInfo message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.ProxyDstInfo
-         * @static
-         * @param {common.ProxyDstInfo} message ProxyDstInfo
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        ProxyDstInfo.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (options.defaults)
-                object.dstAddr = null;
-            if (message.dstAddr != null && message.hasOwnProperty("dstAddr"))
-                object.dstAddr = $root.common.SocketAddr.toObject(message.dstAddr, options);
-            return object;
-        };
-
-        /**
-         * Converts this ProxyDstInfo to JSON.
-         * @function toJSON
-         * @memberof common.ProxyDstInfo
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        ProxyDstInfo.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for ProxyDstInfo
-         * @function getTypeUrl
-         * @memberof common.ProxyDstInfo
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        ProxyDstInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.ProxyDstInfo";
-        };
-
-        return ProxyDstInfo;
-    })();
-
-    common.LimiterConfig = (function() {
-
-        /**
-         * Properties of a LimiterConfig.
-         * @memberof common
-         * @interface ILimiterConfig
-         * @property {Long|null} [burstRate] LimiterConfig burstRate
-         * @property {Long|null} [bps] LimiterConfig bps
-         * @property {Long|null} [fillDurationMs] LimiterConfig fillDurationMs
-         */
-
-        /**
-         * Constructs a new LimiterConfig.
-         * @memberof common
-         * @classdesc Represents a LimiterConfig.
-         * @implements ILimiterConfig
-         * @constructor
-         * @param {common.ILimiterConfig=} [properties] Properties to set
-         */
-        function LimiterConfig(properties) {
-            if (properties)
-                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null)
-                        this[keys[i]] = properties[keys[i]];
-        }
-
-        /**
-         * LimiterConfig burstRate.
-         * @member {Long|null|undefined} burstRate
-         * @memberof common.LimiterConfig
-         * @instance
-         */
-        LimiterConfig.prototype.burstRate = null;
-
-        /**
-         * LimiterConfig bps.
-         * @member {Long|null|undefined} bps
-         * @memberof common.LimiterConfig
-         * @instance
-         */
-        LimiterConfig.prototype.bps = null;
-
-        /**
-         * LimiterConfig fillDurationMs.
-         * @member {Long|null|undefined} fillDurationMs
-         * @memberof common.LimiterConfig
-         * @instance
-         */
-        LimiterConfig.prototype.fillDurationMs = null;
-
-        // OneOf field names bound to virtual getters and setters
-        let $oneOfFields;
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(LimiterConfig.prototype, "_burstRate", {
-            get: $util.oneOfGetter($oneOfFields = ["burstRate"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(LimiterConfig.prototype, "_bps", {
-            get: $util.oneOfGetter($oneOfFields = ["bps"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        Object.defineProperty(LimiterConfig.prototype, "_fillDurationMs", {
-            get: $util.oneOfGetter($oneOfFields = ["fillDurationMs"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        /**
-         * Creates a new LimiterConfig instance using the specified properties.
-         * @function create
-         * @memberof common.LimiterConfig
-         * @static
-         * @param {common.ILimiterConfig=} [properties] Properties to set
-         * @returns {common.LimiterConfig} LimiterConfig instance
-         */
-        LimiterConfig.create = function create(properties) {
-            return new LimiterConfig(properties);
-        };
-
-        /**
-         * Encodes the specified LimiterConfig message. Does not implicitly {@link common.LimiterConfig.verify|verify} messages.
-         * @function encode
-         * @memberof common.LimiterConfig
-         * @static
-         * @param {common.ILimiterConfig} message LimiterConfig message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        LimiterConfig.encode = function encode(message, writer) {
-            if (!writer)
-                writer = $Writer.create();
-            if (message.burstRate != null && Object.hasOwnProperty.call(message, "burstRate"))
-                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.burstRate);
-            if (message.bps != null && Object.hasOwnProperty.call(message, "bps"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.bps);
-            if (message.fillDurationMs != null && Object.hasOwnProperty.call(message, "fillDurationMs"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.fillDurationMs);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified LimiterConfig message, length delimited. Does not implicitly {@link common.LimiterConfig.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof common.LimiterConfig
-         * @static
-         * @param {common.ILimiterConfig} message LimiterConfig message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        LimiterConfig.encodeDelimited = function encodeDelimited(message, writer) {
-            return this.encode(message, writer).ldelim();
-        };
-
-        /**
-         * Decodes a LimiterConfig message from the specified reader or buffer.
-         * @function decode
-         * @memberof common.LimiterConfig
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {common.LimiterConfig} LimiterConfig
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        LimiterConfig.decode = function decode(reader, length, error) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.LimiterConfig();
-            while (reader.pos < end) {
-                let tag = reader.uint32();
-                if (tag === error)
-                    break;
-                switch (tag >>> 3) {
-                case 1: {
-                        message.burstRate = reader.uint64();
-                        break;
-                    }
-                case 2: {
-                        message.bps = reader.uint64();
-                        break;
-                    }
-                case 3: {
-                        message.fillDurationMs = reader.uint64();
-                        break;
-                    }
-                default:
-                    reader.skipType(tag & 7);
-                    break;
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Decodes a LimiterConfig message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof common.LimiterConfig
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {common.LimiterConfig} LimiterConfig
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        LimiterConfig.decodeDelimited = function decodeDelimited(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a LimiterConfig message.
-         * @function verify
-         * @memberof common.LimiterConfig
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        LimiterConfig.verify = function verify(message) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            let properties = {};
-            if (message.burstRate != null && message.hasOwnProperty("burstRate")) {
-                properties._burstRate = 1;
-                if (!$util.isInteger(message.burstRate) && !(message.burstRate && $util.isInteger(message.burstRate.low) && $util.isInteger(message.burstRate.high)))
-                    return "burstRate: integer|Long expected";
-            }
-            if (message.bps != null && message.hasOwnProperty("bps")) {
-                properties._bps = 1;
-                if (!$util.isInteger(message.bps) && !(message.bps && $util.isInteger(message.bps.low) && $util.isInteger(message.bps.high)))
-                    return "bps: integer|Long expected";
-            }
-            if (message.fillDurationMs != null && message.hasOwnProperty("fillDurationMs")) {
-                properties._fillDurationMs = 1;
-                if (!$util.isInteger(message.fillDurationMs) && !(message.fillDurationMs && $util.isInteger(message.fillDurationMs.low) && $util.isInteger(message.fillDurationMs.high)))
-                    return "fillDurationMs: integer|Long expected";
-            }
-            return null;
-        };
-
-        /**
-         * Creates a LimiterConfig message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof common.LimiterConfig
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {common.LimiterConfig} LimiterConfig
-         */
-        LimiterConfig.fromObject = function fromObject(object) {
-            if (object instanceof $root.common.LimiterConfig)
-                return object;
-            let message = new $root.common.LimiterConfig();
-            if (object.burstRate != null)
-                if ($util.Long)
-                    (message.burstRate = $util.Long.fromValue(object.burstRate)).unsigned = true;
-                else if (typeof object.burstRate === "string")
-                    message.burstRate = parseInt(object.burstRate, 10);
-                else if (typeof object.burstRate === "number")
-                    message.burstRate = object.burstRate;
-                else if (typeof object.burstRate === "object")
-                    message.burstRate = new $util.LongBits(object.burstRate.low >>> 0, object.burstRate.high >>> 0).toNumber(true);
-            if (object.bps != null)
-                if ($util.Long)
-                    (message.bps = $util.Long.fromValue(object.bps)).unsigned = true;
-                else if (typeof object.bps === "string")
-                    message.bps = parseInt(object.bps, 10);
-                else if (typeof object.bps === "number")
-                    message.bps = object.bps;
-                else if (typeof object.bps === "object")
-                    message.bps = new $util.LongBits(object.bps.low >>> 0, object.bps.high >>> 0).toNumber(true);
-            if (object.fillDurationMs != null)
-                if ($util.Long)
-                    (message.fillDurationMs = $util.Long.fromValue(object.fillDurationMs)).unsigned = true;
-                else if (typeof object.fillDurationMs === "string")
-                    message.fillDurationMs = parseInt(object.fillDurationMs, 10);
-                else if (typeof object.fillDurationMs === "number")
-                    message.fillDurationMs = object.fillDurationMs;
-                else if (typeof object.fillDurationMs === "object")
-                    message.fillDurationMs = new $util.LongBits(object.fillDurationMs.low >>> 0, object.fillDurationMs.high >>> 0).toNumber(true);
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a LimiterConfig message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof common.LimiterConfig
-         * @static
-         * @param {common.LimiterConfig} message LimiterConfig
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        LimiterConfig.toObject = function toObject(message, options) {
-            if (!options)
-                options = {};
-            let object = {};
-            if (message.burstRate != null && message.hasOwnProperty("burstRate")) {
-                if (typeof message.burstRate === "number")
-                    object.burstRate = options.longs === String ? String(message.burstRate) : message.burstRate;
-                else
-                    object.burstRate = options.longs === String ? $util.Long.prototype.toString.call(message.burstRate) : options.longs === Number ? new $util.LongBits(message.burstRate.low >>> 0, message.burstRate.high >>> 0).toNumber(true) : message.burstRate;
-                if (options.oneofs)
-                    object._burstRate = "burstRate";
-            }
-            if (message.bps != null && message.hasOwnProperty("bps")) {
-                if (typeof message.bps === "number")
-                    object.bps = options.longs === String ? String(message.bps) : message.bps;
-                else
-                    object.bps = options.longs === String ? $util.Long.prototype.toString.call(message.bps) : options.longs === Number ? new $util.LongBits(message.bps.low >>> 0, message.bps.high >>> 0).toNumber(true) : message.bps;
-                if (options.oneofs)
-                    object._bps = "bps";
-            }
-            if (message.fillDurationMs != null && message.hasOwnProperty("fillDurationMs")) {
-                if (typeof message.fillDurationMs === "number")
-                    object.fillDurationMs = options.longs === String ? String(message.fillDurationMs) : message.fillDurationMs;
-                else
-                    object.fillDurationMs = options.longs === String ? $util.Long.prototype.toString.call(message.fillDurationMs) : options.longs === Number ? new $util.LongBits(message.fillDurationMs.low >>> 0, message.fillDurationMs.high >>> 0).toNumber(true) : message.fillDurationMs;
-                if (options.oneofs)
-                    object._fillDurationMs = "fillDurationMs";
-            }
-            return object;
-        };
-
-        /**
-         * Converts this LimiterConfig to JSON.
-         * @function toJSON
-         * @memberof common.LimiterConfig
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        LimiterConfig.prototype.toJSON = function toJSON() {
-            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the default type url for LimiterConfig
-         * @function getTypeUrl
-         * @memberof common.LimiterConfig
-         * @static
-         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns {string} The default type url
-         */
-        LimiterConfig.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-            if (typeUrlPrefix === undefined) {
-                typeUrlPrefix = "type.googleapis.com";
-            }
-            return typeUrlPrefix + "/common.LimiterConfig";
-        };
-
-        return LimiterConfig;
-    })();
-
-    return common;
-})();
 
 export const error = $root.error = (() => {
 
@@ -8886,6 +2101,6479 @@ export const error = $root.error = (() => {
     return error;
 })();
 
+export const common = $root.common = (() => {
+
+    /**
+     * Namespace common.
+     * @exports common
+     * @namespace
+     */
+    const common = {};
+
+    common.FlagsInConfig = (function() {
+
+        /**
+         * Properties of a FlagsInConfig.
+         * @memberof common
+         * @interface IFlagsInConfig
+         * @property {string|null} [defaultProtocol] FlagsInConfig defaultProtocol
+         * @property {string|null} [devName] FlagsInConfig devName
+         * @property {boolean|null} [enableEncryption] FlagsInConfig enableEncryption
+         * @property {boolean|null} [enableIpv6] FlagsInConfig enableIpv6
+         * @property {number|null} [mtu] FlagsInConfig mtu
+         * @property {boolean|null} [latencyFirst] FlagsInConfig latencyFirst
+         * @property {boolean|null} [enableExitNode] FlagsInConfig enableExitNode
+         * @property {boolean|null} [noTun] FlagsInConfig noTun
+         * @property {boolean|null} [useSmoltcp] FlagsInConfig useSmoltcp
+         * @property {string|null} [relayNetworkWhitelist] FlagsInConfig relayNetworkWhitelist
+         * @property {boolean|null} [disableP2p] FlagsInConfig disableP2p
+         * @property {boolean|null} [relayAllPeerRpc] FlagsInConfig relayAllPeerRpc
+         * @property {boolean|null} [disableUdpHolePunching] FlagsInConfig disableUdpHolePunching
+         * @property {boolean|null} [multiThread] FlagsInConfig multiThread
+         * @property {common.CompressionAlgoPb|null} [dataCompressAlgo] FlagsInConfig dataCompressAlgo
+         * @property {boolean|null} [bindDevice] FlagsInConfig bindDevice
+         * @property {boolean|null} [enableKcpProxy] FlagsInConfig enableKcpProxy
+         * @property {boolean|null} [disableKcpInput] FlagsInConfig disableKcpInput
+         * @property {boolean|null} [disableRelayKcp] FlagsInConfig disableRelayKcp
+         * @property {boolean|null} [proxyForwardBySystem] FlagsInConfig proxyForwardBySystem
+         * @property {boolean|null} [acceptDns] FlagsInConfig acceptDns
+         * @property {boolean|null} [privateMode] FlagsInConfig privateMode
+         * @property {boolean|null} [enableQuicProxy] FlagsInConfig enableQuicProxy
+         * @property {boolean|null} [disableQuicInput] FlagsInConfig disableQuicInput
+         * @property {number|Long|null} [foreignRelayBpsLimit] FlagsInConfig foreignRelayBpsLimit
+         * @property {number|null} [multiThreadCount] FlagsInConfig multiThreadCount
+         * @property {boolean|null} [enableRelayForeignNetworkKcp] FlagsInConfig enableRelayForeignNetworkKcp
+         * @property {string|null} [encryptionAlgorithm] FlagsInConfig encryptionAlgorithm
+         * @property {boolean|null} [disableSymHolePunching] FlagsInConfig disableSymHolePunching
+         */
+
+        /**
+         * Constructs a new FlagsInConfig.
+         * @memberof common
+         * @classdesc Represents a FlagsInConfig.
+         * @implements IFlagsInConfig
+         * @constructor
+         * @param {common.IFlagsInConfig=} [properties] Properties to set
+         */
+        function FlagsInConfig(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * FlagsInConfig defaultProtocol.
+         * @member {string} defaultProtocol
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.defaultProtocol = "";
+
+        /**
+         * FlagsInConfig devName.
+         * @member {string} devName
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.devName = "";
+
+        /**
+         * FlagsInConfig enableEncryption.
+         * @member {boolean} enableEncryption
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.enableEncryption = false;
+
+        /**
+         * FlagsInConfig enableIpv6.
+         * @member {boolean} enableIpv6
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.enableIpv6 = false;
+
+        /**
+         * FlagsInConfig mtu.
+         * @member {number} mtu
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.mtu = 0;
+
+        /**
+         * FlagsInConfig latencyFirst.
+         * @member {boolean} latencyFirst
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.latencyFirst = false;
+
+        /**
+         * FlagsInConfig enableExitNode.
+         * @member {boolean} enableExitNode
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.enableExitNode = false;
+
+        /**
+         * FlagsInConfig noTun.
+         * @member {boolean} noTun
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.noTun = false;
+
+        /**
+         * FlagsInConfig useSmoltcp.
+         * @member {boolean} useSmoltcp
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.useSmoltcp = false;
+
+        /**
+         * FlagsInConfig relayNetworkWhitelist.
+         * @member {string} relayNetworkWhitelist
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.relayNetworkWhitelist = "";
+
+        /**
+         * FlagsInConfig disableP2p.
+         * @member {boolean} disableP2p
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.disableP2p = false;
+
+        /**
+         * FlagsInConfig relayAllPeerRpc.
+         * @member {boolean} relayAllPeerRpc
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.relayAllPeerRpc = false;
+
+        /**
+         * FlagsInConfig disableUdpHolePunching.
+         * @member {boolean} disableUdpHolePunching
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.disableUdpHolePunching = false;
+
+        /**
+         * FlagsInConfig multiThread.
+         * @member {boolean} multiThread
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.multiThread = false;
+
+        /**
+         * FlagsInConfig dataCompressAlgo.
+         * @member {common.CompressionAlgoPb} dataCompressAlgo
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.dataCompressAlgo = 0;
+
+        /**
+         * FlagsInConfig bindDevice.
+         * @member {boolean} bindDevice
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.bindDevice = false;
+
+        /**
+         * FlagsInConfig enableKcpProxy.
+         * @member {boolean} enableKcpProxy
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.enableKcpProxy = false;
+
+        /**
+         * FlagsInConfig disableKcpInput.
+         * @member {boolean} disableKcpInput
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.disableKcpInput = false;
+
+        /**
+         * FlagsInConfig disableRelayKcp.
+         * @member {boolean} disableRelayKcp
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.disableRelayKcp = false;
+
+        /**
+         * FlagsInConfig proxyForwardBySystem.
+         * @member {boolean} proxyForwardBySystem
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.proxyForwardBySystem = false;
+
+        /**
+         * FlagsInConfig acceptDns.
+         * @member {boolean} acceptDns
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.acceptDns = false;
+
+        /**
+         * FlagsInConfig privateMode.
+         * @member {boolean} privateMode
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.privateMode = false;
+
+        /**
+         * FlagsInConfig enableQuicProxy.
+         * @member {boolean} enableQuicProxy
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.enableQuicProxy = false;
+
+        /**
+         * FlagsInConfig disableQuicInput.
+         * @member {boolean} disableQuicInput
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.disableQuicInput = false;
+
+        /**
+         * FlagsInConfig foreignRelayBpsLimit.
+         * @member {number|Long} foreignRelayBpsLimit
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.foreignRelayBpsLimit = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * FlagsInConfig multiThreadCount.
+         * @member {number} multiThreadCount
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.multiThreadCount = 0;
+
+        /**
+         * FlagsInConfig enableRelayForeignNetworkKcp.
+         * @member {boolean} enableRelayForeignNetworkKcp
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.enableRelayForeignNetworkKcp = false;
+
+        /**
+         * FlagsInConfig encryptionAlgorithm.
+         * @member {string} encryptionAlgorithm
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.encryptionAlgorithm = "";
+
+        /**
+         * FlagsInConfig disableSymHolePunching.
+         * @member {boolean} disableSymHolePunching
+         * @memberof common.FlagsInConfig
+         * @instance
+         */
+        FlagsInConfig.prototype.disableSymHolePunching = false;
+
+        /**
+         * Creates a new FlagsInConfig instance using the specified properties.
+         * @function create
+         * @memberof common.FlagsInConfig
+         * @static
+         * @param {common.IFlagsInConfig=} [properties] Properties to set
+         * @returns {common.FlagsInConfig} FlagsInConfig instance
+         */
+        FlagsInConfig.create = function create(properties) {
+            return new FlagsInConfig(properties);
+        };
+
+        /**
+         * Encodes the specified FlagsInConfig message. Does not implicitly {@link common.FlagsInConfig.verify|verify} messages.
+         * @function encode
+         * @memberof common.FlagsInConfig
+         * @static
+         * @param {common.IFlagsInConfig} message FlagsInConfig message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FlagsInConfig.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.defaultProtocol != null && Object.hasOwnProperty.call(message, "defaultProtocol"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.defaultProtocol);
+            if (message.devName != null && Object.hasOwnProperty.call(message, "devName"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.devName);
+            if (message.enableEncryption != null && Object.hasOwnProperty.call(message, "enableEncryption"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.enableEncryption);
+            if (message.enableIpv6 != null && Object.hasOwnProperty.call(message, "enableIpv6"))
+                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.enableIpv6);
+            if (message.mtu != null && Object.hasOwnProperty.call(message, "mtu"))
+                writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.mtu);
+            if (message.latencyFirst != null && Object.hasOwnProperty.call(message, "latencyFirst"))
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.latencyFirst);
+            if (message.enableExitNode != null && Object.hasOwnProperty.call(message, "enableExitNode"))
+                writer.uint32(/* id 7, wireType 0 =*/56).bool(message.enableExitNode);
+            if (message.noTun != null && Object.hasOwnProperty.call(message, "noTun"))
+                writer.uint32(/* id 8, wireType 0 =*/64).bool(message.noTun);
+            if (message.useSmoltcp != null && Object.hasOwnProperty.call(message, "useSmoltcp"))
+                writer.uint32(/* id 9, wireType 0 =*/72).bool(message.useSmoltcp);
+            if (message.relayNetworkWhitelist != null && Object.hasOwnProperty.call(message, "relayNetworkWhitelist"))
+                writer.uint32(/* id 10, wireType 2 =*/82).string(message.relayNetworkWhitelist);
+            if (message.disableP2p != null && Object.hasOwnProperty.call(message, "disableP2p"))
+                writer.uint32(/* id 11, wireType 0 =*/88).bool(message.disableP2p);
+            if (message.relayAllPeerRpc != null && Object.hasOwnProperty.call(message, "relayAllPeerRpc"))
+                writer.uint32(/* id 12, wireType 0 =*/96).bool(message.relayAllPeerRpc);
+            if (message.disableUdpHolePunching != null && Object.hasOwnProperty.call(message, "disableUdpHolePunching"))
+                writer.uint32(/* id 13, wireType 0 =*/104).bool(message.disableUdpHolePunching);
+            if (message.multiThread != null && Object.hasOwnProperty.call(message, "multiThread"))
+                writer.uint32(/* id 15, wireType 0 =*/120).bool(message.multiThread);
+            if (message.dataCompressAlgo != null && Object.hasOwnProperty.call(message, "dataCompressAlgo"))
+                writer.uint32(/* id 16, wireType 0 =*/128).int32(message.dataCompressAlgo);
+            if (message.bindDevice != null && Object.hasOwnProperty.call(message, "bindDevice"))
+                writer.uint32(/* id 17, wireType 0 =*/136).bool(message.bindDevice);
+            if (message.enableKcpProxy != null && Object.hasOwnProperty.call(message, "enableKcpProxy"))
+                writer.uint32(/* id 18, wireType 0 =*/144).bool(message.enableKcpProxy);
+            if (message.disableKcpInput != null && Object.hasOwnProperty.call(message, "disableKcpInput"))
+                writer.uint32(/* id 19, wireType 0 =*/152).bool(message.disableKcpInput);
+            if (message.disableRelayKcp != null && Object.hasOwnProperty.call(message, "disableRelayKcp"))
+                writer.uint32(/* id 20, wireType 0 =*/160).bool(message.disableRelayKcp);
+            if (message.proxyForwardBySystem != null && Object.hasOwnProperty.call(message, "proxyForwardBySystem"))
+                writer.uint32(/* id 21, wireType 0 =*/168).bool(message.proxyForwardBySystem);
+            if (message.acceptDns != null && Object.hasOwnProperty.call(message, "acceptDns"))
+                writer.uint32(/* id 22, wireType 0 =*/176).bool(message.acceptDns);
+            if (message.privateMode != null && Object.hasOwnProperty.call(message, "privateMode"))
+                writer.uint32(/* id 23, wireType 0 =*/184).bool(message.privateMode);
+            if (message.enableQuicProxy != null && Object.hasOwnProperty.call(message, "enableQuicProxy"))
+                writer.uint32(/* id 24, wireType 0 =*/192).bool(message.enableQuicProxy);
+            if (message.disableQuicInput != null && Object.hasOwnProperty.call(message, "disableQuicInput"))
+                writer.uint32(/* id 25, wireType 0 =*/200).bool(message.disableQuicInput);
+            if (message.foreignRelayBpsLimit != null && Object.hasOwnProperty.call(message, "foreignRelayBpsLimit"))
+                writer.uint32(/* id 26, wireType 0 =*/208).uint64(message.foreignRelayBpsLimit);
+            if (message.multiThreadCount != null && Object.hasOwnProperty.call(message, "multiThreadCount"))
+                writer.uint32(/* id 27, wireType 0 =*/216).uint32(message.multiThreadCount);
+            if (message.enableRelayForeignNetworkKcp != null && Object.hasOwnProperty.call(message, "enableRelayForeignNetworkKcp"))
+                writer.uint32(/* id 28, wireType 0 =*/224).bool(message.enableRelayForeignNetworkKcp);
+            if (message.encryptionAlgorithm != null && Object.hasOwnProperty.call(message, "encryptionAlgorithm"))
+                writer.uint32(/* id 29, wireType 2 =*/234).string(message.encryptionAlgorithm);
+            if (message.disableSymHolePunching != null && Object.hasOwnProperty.call(message, "disableSymHolePunching"))
+                writer.uint32(/* id 30, wireType 0 =*/240).bool(message.disableSymHolePunching);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified FlagsInConfig message, length delimited. Does not implicitly {@link common.FlagsInConfig.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.FlagsInConfig
+         * @static
+         * @param {common.IFlagsInConfig} message FlagsInConfig message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FlagsInConfig.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a FlagsInConfig message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.FlagsInConfig
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.FlagsInConfig} FlagsInConfig
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FlagsInConfig.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.FlagsInConfig();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.defaultProtocol = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.devName = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.enableEncryption = reader.bool();
+                        break;
+                    }
+                case 4: {
+                        message.enableIpv6 = reader.bool();
+                        break;
+                    }
+                case 5: {
+                        message.mtu = reader.uint32();
+                        break;
+                    }
+                case 6: {
+                        message.latencyFirst = reader.bool();
+                        break;
+                    }
+                case 7: {
+                        message.enableExitNode = reader.bool();
+                        break;
+                    }
+                case 8: {
+                        message.noTun = reader.bool();
+                        break;
+                    }
+                case 9: {
+                        message.useSmoltcp = reader.bool();
+                        break;
+                    }
+                case 10: {
+                        message.relayNetworkWhitelist = reader.string();
+                        break;
+                    }
+                case 11: {
+                        message.disableP2p = reader.bool();
+                        break;
+                    }
+                case 12: {
+                        message.relayAllPeerRpc = reader.bool();
+                        break;
+                    }
+                case 13: {
+                        message.disableUdpHolePunching = reader.bool();
+                        break;
+                    }
+                case 15: {
+                        message.multiThread = reader.bool();
+                        break;
+                    }
+                case 16: {
+                        message.dataCompressAlgo = reader.int32();
+                        break;
+                    }
+                case 17: {
+                        message.bindDevice = reader.bool();
+                        break;
+                    }
+                case 18: {
+                        message.enableKcpProxy = reader.bool();
+                        break;
+                    }
+                case 19: {
+                        message.disableKcpInput = reader.bool();
+                        break;
+                    }
+                case 20: {
+                        message.disableRelayKcp = reader.bool();
+                        break;
+                    }
+                case 21: {
+                        message.proxyForwardBySystem = reader.bool();
+                        break;
+                    }
+                case 22: {
+                        message.acceptDns = reader.bool();
+                        break;
+                    }
+                case 23: {
+                        message.privateMode = reader.bool();
+                        break;
+                    }
+                case 24: {
+                        message.enableQuicProxy = reader.bool();
+                        break;
+                    }
+                case 25: {
+                        message.disableQuicInput = reader.bool();
+                        break;
+                    }
+                case 26: {
+                        message.foreignRelayBpsLimit = reader.uint64();
+                        break;
+                    }
+                case 27: {
+                        message.multiThreadCount = reader.uint32();
+                        break;
+                    }
+                case 28: {
+                        message.enableRelayForeignNetworkKcp = reader.bool();
+                        break;
+                    }
+                case 29: {
+                        message.encryptionAlgorithm = reader.string();
+                        break;
+                    }
+                case 30: {
+                        message.disableSymHolePunching = reader.bool();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a FlagsInConfig message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.FlagsInConfig
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.FlagsInConfig} FlagsInConfig
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FlagsInConfig.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a FlagsInConfig message.
+         * @function verify
+         * @memberof common.FlagsInConfig
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        FlagsInConfig.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.defaultProtocol != null && message.hasOwnProperty("defaultProtocol"))
+                if (!$util.isString(message.defaultProtocol))
+                    return "defaultProtocol: string expected";
+            if (message.devName != null && message.hasOwnProperty("devName"))
+                if (!$util.isString(message.devName))
+                    return "devName: string expected";
+            if (message.enableEncryption != null && message.hasOwnProperty("enableEncryption"))
+                if (typeof message.enableEncryption !== "boolean")
+                    return "enableEncryption: boolean expected";
+            if (message.enableIpv6 != null && message.hasOwnProperty("enableIpv6"))
+                if (typeof message.enableIpv6 !== "boolean")
+                    return "enableIpv6: boolean expected";
+            if (message.mtu != null && message.hasOwnProperty("mtu"))
+                if (!$util.isInteger(message.mtu))
+                    return "mtu: integer expected";
+            if (message.latencyFirst != null && message.hasOwnProperty("latencyFirst"))
+                if (typeof message.latencyFirst !== "boolean")
+                    return "latencyFirst: boolean expected";
+            if (message.enableExitNode != null && message.hasOwnProperty("enableExitNode"))
+                if (typeof message.enableExitNode !== "boolean")
+                    return "enableExitNode: boolean expected";
+            if (message.noTun != null && message.hasOwnProperty("noTun"))
+                if (typeof message.noTun !== "boolean")
+                    return "noTun: boolean expected";
+            if (message.useSmoltcp != null && message.hasOwnProperty("useSmoltcp"))
+                if (typeof message.useSmoltcp !== "boolean")
+                    return "useSmoltcp: boolean expected";
+            if (message.relayNetworkWhitelist != null && message.hasOwnProperty("relayNetworkWhitelist"))
+                if (!$util.isString(message.relayNetworkWhitelist))
+                    return "relayNetworkWhitelist: string expected";
+            if (message.disableP2p != null && message.hasOwnProperty("disableP2p"))
+                if (typeof message.disableP2p !== "boolean")
+                    return "disableP2p: boolean expected";
+            if (message.relayAllPeerRpc != null && message.hasOwnProperty("relayAllPeerRpc"))
+                if (typeof message.relayAllPeerRpc !== "boolean")
+                    return "relayAllPeerRpc: boolean expected";
+            if (message.disableUdpHolePunching != null && message.hasOwnProperty("disableUdpHolePunching"))
+                if (typeof message.disableUdpHolePunching !== "boolean")
+                    return "disableUdpHolePunching: boolean expected";
+            if (message.multiThread != null && message.hasOwnProperty("multiThread"))
+                if (typeof message.multiThread !== "boolean")
+                    return "multiThread: boolean expected";
+            if (message.dataCompressAlgo != null && message.hasOwnProperty("dataCompressAlgo"))
+                switch (message.dataCompressAlgo) {
+                default:
+                    return "dataCompressAlgo: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                    break;
+                }
+            if (message.bindDevice != null && message.hasOwnProperty("bindDevice"))
+                if (typeof message.bindDevice !== "boolean")
+                    return "bindDevice: boolean expected";
+            if (message.enableKcpProxy != null && message.hasOwnProperty("enableKcpProxy"))
+                if (typeof message.enableKcpProxy !== "boolean")
+                    return "enableKcpProxy: boolean expected";
+            if (message.disableKcpInput != null && message.hasOwnProperty("disableKcpInput"))
+                if (typeof message.disableKcpInput !== "boolean")
+                    return "disableKcpInput: boolean expected";
+            if (message.disableRelayKcp != null && message.hasOwnProperty("disableRelayKcp"))
+                if (typeof message.disableRelayKcp !== "boolean")
+                    return "disableRelayKcp: boolean expected";
+            if (message.proxyForwardBySystem != null && message.hasOwnProperty("proxyForwardBySystem"))
+                if (typeof message.proxyForwardBySystem !== "boolean")
+                    return "proxyForwardBySystem: boolean expected";
+            if (message.acceptDns != null && message.hasOwnProperty("acceptDns"))
+                if (typeof message.acceptDns !== "boolean")
+                    return "acceptDns: boolean expected";
+            if (message.privateMode != null && message.hasOwnProperty("privateMode"))
+                if (typeof message.privateMode !== "boolean")
+                    return "privateMode: boolean expected";
+            if (message.enableQuicProxy != null && message.hasOwnProperty("enableQuicProxy"))
+                if (typeof message.enableQuicProxy !== "boolean")
+                    return "enableQuicProxy: boolean expected";
+            if (message.disableQuicInput != null && message.hasOwnProperty("disableQuicInput"))
+                if (typeof message.disableQuicInput !== "boolean")
+                    return "disableQuicInput: boolean expected";
+            if (message.foreignRelayBpsLimit != null && message.hasOwnProperty("foreignRelayBpsLimit"))
+                if (!$util.isInteger(message.foreignRelayBpsLimit) && !(message.foreignRelayBpsLimit && $util.isInteger(message.foreignRelayBpsLimit.low) && $util.isInteger(message.foreignRelayBpsLimit.high)))
+                    return "foreignRelayBpsLimit: integer|Long expected";
+            if (message.multiThreadCount != null && message.hasOwnProperty("multiThreadCount"))
+                if (!$util.isInteger(message.multiThreadCount))
+                    return "multiThreadCount: integer expected";
+            if (message.enableRelayForeignNetworkKcp != null && message.hasOwnProperty("enableRelayForeignNetworkKcp"))
+                if (typeof message.enableRelayForeignNetworkKcp !== "boolean")
+                    return "enableRelayForeignNetworkKcp: boolean expected";
+            if (message.encryptionAlgorithm != null && message.hasOwnProperty("encryptionAlgorithm"))
+                if (!$util.isString(message.encryptionAlgorithm))
+                    return "encryptionAlgorithm: string expected";
+            if (message.disableSymHolePunching != null && message.hasOwnProperty("disableSymHolePunching"))
+                if (typeof message.disableSymHolePunching !== "boolean")
+                    return "disableSymHolePunching: boolean expected";
+            return null;
+        };
+
+        /**
+         * Creates a FlagsInConfig message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.FlagsInConfig
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.FlagsInConfig} FlagsInConfig
+         */
+        FlagsInConfig.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.FlagsInConfig)
+                return object;
+            let message = new $root.common.FlagsInConfig();
+            if (object.defaultProtocol != null)
+                message.defaultProtocol = String(object.defaultProtocol);
+            if (object.devName != null)
+                message.devName = String(object.devName);
+            if (object.enableEncryption != null)
+                message.enableEncryption = Boolean(object.enableEncryption);
+            if (object.enableIpv6 != null)
+                message.enableIpv6 = Boolean(object.enableIpv6);
+            if (object.mtu != null)
+                message.mtu = object.mtu >>> 0;
+            if (object.latencyFirst != null)
+                message.latencyFirst = Boolean(object.latencyFirst);
+            if (object.enableExitNode != null)
+                message.enableExitNode = Boolean(object.enableExitNode);
+            if (object.noTun != null)
+                message.noTun = Boolean(object.noTun);
+            if (object.useSmoltcp != null)
+                message.useSmoltcp = Boolean(object.useSmoltcp);
+            if (object.relayNetworkWhitelist != null)
+                message.relayNetworkWhitelist = String(object.relayNetworkWhitelist);
+            if (object.disableP2p != null)
+                message.disableP2p = Boolean(object.disableP2p);
+            if (object.relayAllPeerRpc != null)
+                message.relayAllPeerRpc = Boolean(object.relayAllPeerRpc);
+            if (object.disableUdpHolePunching != null)
+                message.disableUdpHolePunching = Boolean(object.disableUdpHolePunching);
+            if (object.multiThread != null)
+                message.multiThread = Boolean(object.multiThread);
+            switch (object.dataCompressAlgo) {
+            default:
+                if (typeof object.dataCompressAlgo === "number") {
+                    message.dataCompressAlgo = object.dataCompressAlgo;
+                    break;
+                }
+                break;
+            case "Invalid":
+            case 0:
+                message.dataCompressAlgo = 0;
+                break;
+            case "None":
+            case 1:
+                message.dataCompressAlgo = 1;
+                break;
+            case "Zstd":
+            case 2:
+                message.dataCompressAlgo = 2;
+                break;
+            }
+            if (object.bindDevice != null)
+                message.bindDevice = Boolean(object.bindDevice);
+            if (object.enableKcpProxy != null)
+                message.enableKcpProxy = Boolean(object.enableKcpProxy);
+            if (object.disableKcpInput != null)
+                message.disableKcpInput = Boolean(object.disableKcpInput);
+            if (object.disableRelayKcp != null)
+                message.disableRelayKcp = Boolean(object.disableRelayKcp);
+            if (object.proxyForwardBySystem != null)
+                message.proxyForwardBySystem = Boolean(object.proxyForwardBySystem);
+            if (object.acceptDns != null)
+                message.acceptDns = Boolean(object.acceptDns);
+            if (object.privateMode != null)
+                message.privateMode = Boolean(object.privateMode);
+            if (object.enableQuicProxy != null)
+                message.enableQuicProxy = Boolean(object.enableQuicProxy);
+            if (object.disableQuicInput != null)
+                message.disableQuicInput = Boolean(object.disableQuicInput);
+            if (object.foreignRelayBpsLimit != null)
+                if ($util.Long)
+                    (message.foreignRelayBpsLimit = $util.Long.fromValue(object.foreignRelayBpsLimit)).unsigned = true;
+                else if (typeof object.foreignRelayBpsLimit === "string")
+                    message.foreignRelayBpsLimit = parseInt(object.foreignRelayBpsLimit, 10);
+                else if (typeof object.foreignRelayBpsLimit === "number")
+                    message.foreignRelayBpsLimit = object.foreignRelayBpsLimit;
+                else if (typeof object.foreignRelayBpsLimit === "object")
+                    message.foreignRelayBpsLimit = new $util.LongBits(object.foreignRelayBpsLimit.low >>> 0, object.foreignRelayBpsLimit.high >>> 0).toNumber(true);
+            if (object.multiThreadCount != null)
+                message.multiThreadCount = object.multiThreadCount >>> 0;
+            if (object.enableRelayForeignNetworkKcp != null)
+                message.enableRelayForeignNetworkKcp = Boolean(object.enableRelayForeignNetworkKcp);
+            if (object.encryptionAlgorithm != null)
+                message.encryptionAlgorithm = String(object.encryptionAlgorithm);
+            if (object.disableSymHolePunching != null)
+                message.disableSymHolePunching = Boolean(object.disableSymHolePunching);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a FlagsInConfig message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.FlagsInConfig
+         * @static
+         * @param {common.FlagsInConfig} message FlagsInConfig
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        FlagsInConfig.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.defaultProtocol = "";
+                object.devName = "";
+                object.enableEncryption = false;
+                object.enableIpv6 = false;
+                object.mtu = 0;
+                object.latencyFirst = false;
+                object.enableExitNode = false;
+                object.noTun = false;
+                object.useSmoltcp = false;
+                object.relayNetworkWhitelist = "";
+                object.disableP2p = false;
+                object.relayAllPeerRpc = false;
+                object.disableUdpHolePunching = false;
+                object.multiThread = false;
+                object.dataCompressAlgo = options.enums === String ? "Invalid" : 0;
+                object.bindDevice = false;
+                object.enableKcpProxy = false;
+                object.disableKcpInput = false;
+                object.disableRelayKcp = false;
+                object.proxyForwardBySystem = false;
+                object.acceptDns = false;
+                object.privateMode = false;
+                object.enableQuicProxy = false;
+                object.disableQuicInput = false;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.foreignRelayBpsLimit = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.foreignRelayBpsLimit = options.longs === String ? "0" : 0;
+                object.multiThreadCount = 0;
+                object.enableRelayForeignNetworkKcp = false;
+                object.encryptionAlgorithm = "";
+                object.disableSymHolePunching = false;
+            }
+            if (message.defaultProtocol != null && message.hasOwnProperty("defaultProtocol"))
+                object.defaultProtocol = message.defaultProtocol;
+            if (message.devName != null && message.hasOwnProperty("devName"))
+                object.devName = message.devName;
+            if (message.enableEncryption != null && message.hasOwnProperty("enableEncryption"))
+                object.enableEncryption = message.enableEncryption;
+            if (message.enableIpv6 != null && message.hasOwnProperty("enableIpv6"))
+                object.enableIpv6 = message.enableIpv6;
+            if (message.mtu != null && message.hasOwnProperty("mtu"))
+                object.mtu = message.mtu;
+            if (message.latencyFirst != null && message.hasOwnProperty("latencyFirst"))
+                object.latencyFirst = message.latencyFirst;
+            if (message.enableExitNode != null && message.hasOwnProperty("enableExitNode"))
+                object.enableExitNode = message.enableExitNode;
+            if (message.noTun != null && message.hasOwnProperty("noTun"))
+                object.noTun = message.noTun;
+            if (message.useSmoltcp != null && message.hasOwnProperty("useSmoltcp"))
+                object.useSmoltcp = message.useSmoltcp;
+            if (message.relayNetworkWhitelist != null && message.hasOwnProperty("relayNetworkWhitelist"))
+                object.relayNetworkWhitelist = message.relayNetworkWhitelist;
+            if (message.disableP2p != null && message.hasOwnProperty("disableP2p"))
+                object.disableP2p = message.disableP2p;
+            if (message.relayAllPeerRpc != null && message.hasOwnProperty("relayAllPeerRpc"))
+                object.relayAllPeerRpc = message.relayAllPeerRpc;
+            if (message.disableUdpHolePunching != null && message.hasOwnProperty("disableUdpHolePunching"))
+                object.disableUdpHolePunching = message.disableUdpHolePunching;
+            if (message.multiThread != null && message.hasOwnProperty("multiThread"))
+                object.multiThread = message.multiThread;
+            if (message.dataCompressAlgo != null && message.hasOwnProperty("dataCompressAlgo"))
+                object.dataCompressAlgo = options.enums === String ? $root.common.CompressionAlgoPb[message.dataCompressAlgo] === undefined ? message.dataCompressAlgo : $root.common.CompressionAlgoPb[message.dataCompressAlgo] : message.dataCompressAlgo;
+            if (message.bindDevice != null && message.hasOwnProperty("bindDevice"))
+                object.bindDevice = message.bindDevice;
+            if (message.enableKcpProxy != null && message.hasOwnProperty("enableKcpProxy"))
+                object.enableKcpProxy = message.enableKcpProxy;
+            if (message.disableKcpInput != null && message.hasOwnProperty("disableKcpInput"))
+                object.disableKcpInput = message.disableKcpInput;
+            if (message.disableRelayKcp != null && message.hasOwnProperty("disableRelayKcp"))
+                object.disableRelayKcp = message.disableRelayKcp;
+            if (message.proxyForwardBySystem != null && message.hasOwnProperty("proxyForwardBySystem"))
+                object.proxyForwardBySystem = message.proxyForwardBySystem;
+            if (message.acceptDns != null && message.hasOwnProperty("acceptDns"))
+                object.acceptDns = message.acceptDns;
+            if (message.privateMode != null && message.hasOwnProperty("privateMode"))
+                object.privateMode = message.privateMode;
+            if (message.enableQuicProxy != null && message.hasOwnProperty("enableQuicProxy"))
+                object.enableQuicProxy = message.enableQuicProxy;
+            if (message.disableQuicInput != null && message.hasOwnProperty("disableQuicInput"))
+                object.disableQuicInput = message.disableQuicInput;
+            if (message.foreignRelayBpsLimit != null && message.hasOwnProperty("foreignRelayBpsLimit"))
+                if (typeof message.foreignRelayBpsLimit === "number")
+                    object.foreignRelayBpsLimit = options.longs === String ? String(message.foreignRelayBpsLimit) : message.foreignRelayBpsLimit;
+                else
+                    object.foreignRelayBpsLimit = options.longs === String ? $util.Long.prototype.toString.call(message.foreignRelayBpsLimit) : options.longs === Number ? new $util.LongBits(message.foreignRelayBpsLimit.low >>> 0, message.foreignRelayBpsLimit.high >>> 0).toNumber(true) : message.foreignRelayBpsLimit;
+            if (message.multiThreadCount != null && message.hasOwnProperty("multiThreadCount"))
+                object.multiThreadCount = message.multiThreadCount;
+            if (message.enableRelayForeignNetworkKcp != null && message.hasOwnProperty("enableRelayForeignNetworkKcp"))
+                object.enableRelayForeignNetworkKcp = message.enableRelayForeignNetworkKcp;
+            if (message.encryptionAlgorithm != null && message.hasOwnProperty("encryptionAlgorithm"))
+                object.encryptionAlgorithm = message.encryptionAlgorithm;
+            if (message.disableSymHolePunching != null && message.hasOwnProperty("disableSymHolePunching"))
+                object.disableSymHolePunching = message.disableSymHolePunching;
+            return object;
+        };
+
+        /**
+         * Converts this FlagsInConfig to JSON.
+         * @function toJSON
+         * @memberof common.FlagsInConfig
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        FlagsInConfig.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for FlagsInConfig
+         * @function getTypeUrl
+         * @memberof common.FlagsInConfig
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        FlagsInConfig.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.FlagsInConfig";
+        };
+
+        return FlagsInConfig;
+    })();
+
+    common.RpcDescriptor = (function() {
+
+        /**
+         * Properties of a RpcDescriptor.
+         * @memberof common
+         * @interface IRpcDescriptor
+         * @property {string|null} [domainName] RpcDescriptor domainName
+         * @property {string|null} [protoName] RpcDescriptor protoName
+         * @property {string|null} [serviceName] RpcDescriptor serviceName
+         * @property {number|null} [methodIndex] RpcDescriptor methodIndex
+         */
+
+        /**
+         * Constructs a new RpcDescriptor.
+         * @memberof common
+         * @classdesc Represents a RpcDescriptor.
+         * @implements IRpcDescriptor
+         * @constructor
+         * @param {common.IRpcDescriptor=} [properties] Properties to set
+         */
+        function RpcDescriptor(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RpcDescriptor domainName.
+         * @member {string} domainName
+         * @memberof common.RpcDescriptor
+         * @instance
+         */
+        RpcDescriptor.prototype.domainName = "";
+
+        /**
+         * RpcDescriptor protoName.
+         * @member {string} protoName
+         * @memberof common.RpcDescriptor
+         * @instance
+         */
+        RpcDescriptor.prototype.protoName = "";
+
+        /**
+         * RpcDescriptor serviceName.
+         * @member {string} serviceName
+         * @memberof common.RpcDescriptor
+         * @instance
+         */
+        RpcDescriptor.prototype.serviceName = "";
+
+        /**
+         * RpcDescriptor methodIndex.
+         * @member {number} methodIndex
+         * @memberof common.RpcDescriptor
+         * @instance
+         */
+        RpcDescriptor.prototype.methodIndex = 0;
+
+        /**
+         * Creates a new RpcDescriptor instance using the specified properties.
+         * @function create
+         * @memberof common.RpcDescriptor
+         * @static
+         * @param {common.IRpcDescriptor=} [properties] Properties to set
+         * @returns {common.RpcDescriptor} RpcDescriptor instance
+         */
+        RpcDescriptor.create = function create(properties) {
+            return new RpcDescriptor(properties);
+        };
+
+        /**
+         * Encodes the specified RpcDescriptor message. Does not implicitly {@link common.RpcDescriptor.verify|verify} messages.
+         * @function encode
+         * @memberof common.RpcDescriptor
+         * @static
+         * @param {common.IRpcDescriptor} message RpcDescriptor message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RpcDescriptor.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.domainName != null && Object.hasOwnProperty.call(message, "domainName"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.domainName);
+            if (message.protoName != null && Object.hasOwnProperty.call(message, "protoName"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.protoName);
+            if (message.serviceName != null && Object.hasOwnProperty.call(message, "serviceName"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.serviceName);
+            if (message.methodIndex != null && Object.hasOwnProperty.call(message, "methodIndex"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.methodIndex);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RpcDescriptor message, length delimited. Does not implicitly {@link common.RpcDescriptor.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.RpcDescriptor
+         * @static
+         * @param {common.IRpcDescriptor} message RpcDescriptor message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RpcDescriptor.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RpcDescriptor message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.RpcDescriptor
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.RpcDescriptor} RpcDescriptor
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RpcDescriptor.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.RpcDescriptor();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.domainName = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.protoName = reader.string();
+                        break;
+                    }
+                case 3: {
+                        message.serviceName = reader.string();
+                        break;
+                    }
+                case 4: {
+                        message.methodIndex = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RpcDescriptor message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.RpcDescriptor
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.RpcDescriptor} RpcDescriptor
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RpcDescriptor.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RpcDescriptor message.
+         * @function verify
+         * @memberof common.RpcDescriptor
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RpcDescriptor.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.domainName != null && message.hasOwnProperty("domainName"))
+                if (!$util.isString(message.domainName))
+                    return "domainName: string expected";
+            if (message.protoName != null && message.hasOwnProperty("protoName"))
+                if (!$util.isString(message.protoName))
+                    return "protoName: string expected";
+            if (message.serviceName != null && message.hasOwnProperty("serviceName"))
+                if (!$util.isString(message.serviceName))
+                    return "serviceName: string expected";
+            if (message.methodIndex != null && message.hasOwnProperty("methodIndex"))
+                if (!$util.isInteger(message.methodIndex))
+                    return "methodIndex: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a RpcDescriptor message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.RpcDescriptor
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.RpcDescriptor} RpcDescriptor
+         */
+        RpcDescriptor.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.RpcDescriptor)
+                return object;
+            let message = new $root.common.RpcDescriptor();
+            if (object.domainName != null)
+                message.domainName = String(object.domainName);
+            if (object.protoName != null)
+                message.protoName = String(object.protoName);
+            if (object.serviceName != null)
+                message.serviceName = String(object.serviceName);
+            if (object.methodIndex != null)
+                message.methodIndex = object.methodIndex >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RpcDescriptor message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.RpcDescriptor
+         * @static
+         * @param {common.RpcDescriptor} message RpcDescriptor
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RpcDescriptor.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.domainName = "";
+                object.protoName = "";
+                object.serviceName = "";
+                object.methodIndex = 0;
+            }
+            if (message.domainName != null && message.hasOwnProperty("domainName"))
+                object.domainName = message.domainName;
+            if (message.protoName != null && message.hasOwnProperty("protoName"))
+                object.protoName = message.protoName;
+            if (message.serviceName != null && message.hasOwnProperty("serviceName"))
+                object.serviceName = message.serviceName;
+            if (message.methodIndex != null && message.hasOwnProperty("methodIndex"))
+                object.methodIndex = message.methodIndex;
+            return object;
+        };
+
+        /**
+         * Converts this RpcDescriptor to JSON.
+         * @function toJSON
+         * @memberof common.RpcDescriptor
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RpcDescriptor.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RpcDescriptor
+         * @function getTypeUrl
+         * @memberof common.RpcDescriptor
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RpcDescriptor.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.RpcDescriptor";
+        };
+
+        return RpcDescriptor;
+    })();
+
+    common.RpcRequest = (function() {
+
+        /**
+         * Properties of a RpcRequest.
+         * @memberof common
+         * @interface IRpcRequest
+         * @property {common.IRpcDescriptor|null} [descriptor] RpcRequest descriptor
+         * @property {Uint8Array|null} [request] RpcRequest request
+         * @property {number|null} [timeoutMs] RpcRequest timeoutMs
+         */
+
+        /**
+         * Constructs a new RpcRequest.
+         * @memberof common
+         * @classdesc Represents a RpcRequest.
+         * @implements IRpcRequest
+         * @constructor
+         * @param {common.IRpcRequest=} [properties] Properties to set
+         */
+        function RpcRequest(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RpcRequest descriptor.
+         * @member {common.IRpcDescriptor|null|undefined} descriptor
+         * @memberof common.RpcRequest
+         * @instance
+         */
+        RpcRequest.prototype.descriptor = null;
+
+        /**
+         * RpcRequest request.
+         * @member {Uint8Array} request
+         * @memberof common.RpcRequest
+         * @instance
+         */
+        RpcRequest.prototype.request = $util.newBuffer([]);
+
+        /**
+         * RpcRequest timeoutMs.
+         * @member {number} timeoutMs
+         * @memberof common.RpcRequest
+         * @instance
+         */
+        RpcRequest.prototype.timeoutMs = 0;
+
+        /**
+         * Creates a new RpcRequest instance using the specified properties.
+         * @function create
+         * @memberof common.RpcRequest
+         * @static
+         * @param {common.IRpcRequest=} [properties] Properties to set
+         * @returns {common.RpcRequest} RpcRequest instance
+         */
+        RpcRequest.create = function create(properties) {
+            return new RpcRequest(properties);
+        };
+
+        /**
+         * Encodes the specified RpcRequest message. Does not implicitly {@link common.RpcRequest.verify|verify} messages.
+         * @function encode
+         * @memberof common.RpcRequest
+         * @static
+         * @param {common.IRpcRequest} message RpcRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RpcRequest.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.descriptor != null && Object.hasOwnProperty.call(message, "descriptor"))
+                $root.common.RpcDescriptor.encode(message.descriptor, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.request != null && Object.hasOwnProperty.call(message, "request"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.request);
+            if (message.timeoutMs != null && Object.hasOwnProperty.call(message, "timeoutMs"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.timeoutMs);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RpcRequest message, length delimited. Does not implicitly {@link common.RpcRequest.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.RpcRequest
+         * @static
+         * @param {common.IRpcRequest} message RpcRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RpcRequest.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RpcRequest message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.RpcRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.RpcRequest} RpcRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RpcRequest.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.RpcRequest();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.descriptor = $root.common.RpcDescriptor.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.request = reader.bytes();
+                        break;
+                    }
+                case 3: {
+                        message.timeoutMs = reader.int32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RpcRequest message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.RpcRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.RpcRequest} RpcRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RpcRequest.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RpcRequest message.
+         * @function verify
+         * @memberof common.RpcRequest
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RpcRequest.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.descriptor != null && message.hasOwnProperty("descriptor")) {
+                let error = $root.common.RpcDescriptor.verify(message.descriptor);
+                if (error)
+                    return "descriptor." + error;
+            }
+            if (message.request != null && message.hasOwnProperty("request"))
+                if (!(message.request && typeof message.request.length === "number" || $util.isString(message.request)))
+                    return "request: buffer expected";
+            if (message.timeoutMs != null && message.hasOwnProperty("timeoutMs"))
+                if (!$util.isInteger(message.timeoutMs))
+                    return "timeoutMs: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a RpcRequest message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.RpcRequest
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.RpcRequest} RpcRequest
+         */
+        RpcRequest.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.RpcRequest)
+                return object;
+            let message = new $root.common.RpcRequest();
+            if (object.descriptor != null) {
+                if (typeof object.descriptor !== "object")
+                    throw TypeError(".common.RpcRequest.descriptor: object expected");
+                message.descriptor = $root.common.RpcDescriptor.fromObject(object.descriptor);
+            }
+            if (object.request != null)
+                if (typeof object.request === "string")
+                    $util.base64.decode(object.request, message.request = $util.newBuffer($util.base64.length(object.request)), 0);
+                else if (object.request.length >= 0)
+                    message.request = object.request;
+            if (object.timeoutMs != null)
+                message.timeoutMs = object.timeoutMs | 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RpcRequest message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.RpcRequest
+         * @static
+         * @param {common.RpcRequest} message RpcRequest
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RpcRequest.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.descriptor = null;
+                if (options.bytes === String)
+                    object.request = "";
+                else {
+                    object.request = [];
+                    if (options.bytes !== Array)
+                        object.request = $util.newBuffer(object.request);
+                }
+                object.timeoutMs = 0;
+            }
+            if (message.descriptor != null && message.hasOwnProperty("descriptor"))
+                object.descriptor = $root.common.RpcDescriptor.toObject(message.descriptor, options);
+            if (message.request != null && message.hasOwnProperty("request"))
+                object.request = options.bytes === String ? $util.base64.encode(message.request, 0, message.request.length) : options.bytes === Array ? Array.prototype.slice.call(message.request) : message.request;
+            if (message.timeoutMs != null && message.hasOwnProperty("timeoutMs"))
+                object.timeoutMs = message.timeoutMs;
+            return object;
+        };
+
+        /**
+         * Converts this RpcRequest to JSON.
+         * @function toJSON
+         * @memberof common.RpcRequest
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RpcRequest.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RpcRequest
+         * @function getTypeUrl
+         * @memberof common.RpcRequest
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RpcRequest.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.RpcRequest";
+        };
+
+        return RpcRequest;
+    })();
+
+    common.RpcResponse = (function() {
+
+        /**
+         * Properties of a RpcResponse.
+         * @memberof common
+         * @interface IRpcResponse
+         * @property {Uint8Array|null} [response] RpcResponse response
+         * @property {error.IError|null} [error] RpcResponse error
+         * @property {number|Long|null} [runtimeUs] RpcResponse runtimeUs
+         */
+
+        /**
+         * Constructs a new RpcResponse.
+         * @memberof common
+         * @classdesc Represents a RpcResponse.
+         * @implements IRpcResponse
+         * @constructor
+         * @param {common.IRpcResponse=} [properties] Properties to set
+         */
+        function RpcResponse(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RpcResponse response.
+         * @member {Uint8Array} response
+         * @memberof common.RpcResponse
+         * @instance
+         */
+        RpcResponse.prototype.response = $util.newBuffer([]);
+
+        /**
+         * RpcResponse error.
+         * @member {error.IError|null|undefined} error
+         * @memberof common.RpcResponse
+         * @instance
+         */
+        RpcResponse.prototype.error = null;
+
+        /**
+         * RpcResponse runtimeUs.
+         * @member {number|Long} runtimeUs
+         * @memberof common.RpcResponse
+         * @instance
+         */
+        RpcResponse.prototype.runtimeUs = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Creates a new RpcResponse instance using the specified properties.
+         * @function create
+         * @memberof common.RpcResponse
+         * @static
+         * @param {common.IRpcResponse=} [properties] Properties to set
+         * @returns {common.RpcResponse} RpcResponse instance
+         */
+        RpcResponse.create = function create(properties) {
+            return new RpcResponse(properties);
+        };
+
+        /**
+         * Encodes the specified RpcResponse message. Does not implicitly {@link common.RpcResponse.verify|verify} messages.
+         * @function encode
+         * @memberof common.RpcResponse
+         * @static
+         * @param {common.IRpcResponse} message RpcResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RpcResponse.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.response != null && Object.hasOwnProperty.call(message, "response"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.response);
+            if (message.error != null && Object.hasOwnProperty.call(message, "error"))
+                $root.error.Error.encode(message.error, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            if (message.runtimeUs != null && Object.hasOwnProperty.call(message, "runtimeUs"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.runtimeUs);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RpcResponse message, length delimited. Does not implicitly {@link common.RpcResponse.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.RpcResponse
+         * @static
+         * @param {common.IRpcResponse} message RpcResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RpcResponse.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RpcResponse message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.RpcResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.RpcResponse} RpcResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RpcResponse.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.RpcResponse();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.response = reader.bytes();
+                        break;
+                    }
+                case 2: {
+                        message.error = $root.error.Error.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 3: {
+                        message.runtimeUs = reader.uint64();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RpcResponse message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.RpcResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.RpcResponse} RpcResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RpcResponse.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RpcResponse message.
+         * @function verify
+         * @memberof common.RpcResponse
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RpcResponse.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.response != null && message.hasOwnProperty("response"))
+                if (!(message.response && typeof message.response.length === "number" || $util.isString(message.response)))
+                    return "response: buffer expected";
+            if (message.error != null && message.hasOwnProperty("error")) {
+                let error = $root.error.Error.verify(message.error);
+                if (error)
+                    return "error." + error;
+            }
+            if (message.runtimeUs != null && message.hasOwnProperty("runtimeUs"))
+                if (!$util.isInteger(message.runtimeUs) && !(message.runtimeUs && $util.isInteger(message.runtimeUs.low) && $util.isInteger(message.runtimeUs.high)))
+                    return "runtimeUs: integer|Long expected";
+            return null;
+        };
+
+        /**
+         * Creates a RpcResponse message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.RpcResponse
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.RpcResponse} RpcResponse
+         */
+        RpcResponse.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.RpcResponse)
+                return object;
+            let message = new $root.common.RpcResponse();
+            if (object.response != null)
+                if (typeof object.response === "string")
+                    $util.base64.decode(object.response, message.response = $util.newBuffer($util.base64.length(object.response)), 0);
+                else if (object.response.length >= 0)
+                    message.response = object.response;
+            if (object.error != null) {
+                if (typeof object.error !== "object")
+                    throw TypeError(".common.RpcResponse.error: object expected");
+                message.error = $root.error.Error.fromObject(object.error);
+            }
+            if (object.runtimeUs != null)
+                if ($util.Long)
+                    (message.runtimeUs = $util.Long.fromValue(object.runtimeUs)).unsigned = true;
+                else if (typeof object.runtimeUs === "string")
+                    message.runtimeUs = parseInt(object.runtimeUs, 10);
+                else if (typeof object.runtimeUs === "number")
+                    message.runtimeUs = object.runtimeUs;
+                else if (typeof object.runtimeUs === "object")
+                    message.runtimeUs = new $util.LongBits(object.runtimeUs.low >>> 0, object.runtimeUs.high >>> 0).toNumber(true);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RpcResponse message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.RpcResponse
+         * @static
+         * @param {common.RpcResponse} message RpcResponse
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RpcResponse.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                if (options.bytes === String)
+                    object.response = "";
+                else {
+                    object.response = [];
+                    if (options.bytes !== Array)
+                        object.response = $util.newBuffer(object.response);
+                }
+                object.error = null;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, true);
+                    object.runtimeUs = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.runtimeUs = options.longs === String ? "0" : 0;
+            }
+            if (message.response != null && message.hasOwnProperty("response"))
+                object.response = options.bytes === String ? $util.base64.encode(message.response, 0, message.response.length) : options.bytes === Array ? Array.prototype.slice.call(message.response) : message.response;
+            if (message.error != null && message.hasOwnProperty("error"))
+                object.error = $root.error.Error.toObject(message.error, options);
+            if (message.runtimeUs != null && message.hasOwnProperty("runtimeUs"))
+                if (typeof message.runtimeUs === "number")
+                    object.runtimeUs = options.longs === String ? String(message.runtimeUs) : message.runtimeUs;
+                else
+                    object.runtimeUs = options.longs === String ? $util.Long.prototype.toString.call(message.runtimeUs) : options.longs === Number ? new $util.LongBits(message.runtimeUs.low >>> 0, message.runtimeUs.high >>> 0).toNumber(true) : message.runtimeUs;
+            return object;
+        };
+
+        /**
+         * Converts this RpcResponse to JSON.
+         * @function toJSON
+         * @memberof common.RpcResponse
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RpcResponse.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RpcResponse
+         * @function getTypeUrl
+         * @memberof common.RpcResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RpcResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.RpcResponse";
+        };
+
+        return RpcResponse;
+    })();
+
+    /**
+     * CompressionAlgoPb enum.
+     * @name common.CompressionAlgoPb
+     * @enum {number}
+     * @property {number} Invalid=0 Invalid value
+     * @property {number} None=1 None value
+     * @property {number} Zstd=2 Zstd value
+     */
+    common.CompressionAlgoPb = (function() {
+        const valuesById = {}, values = Object.create(valuesById);
+        values[valuesById[0] = "Invalid"] = 0;
+        values[valuesById[1] = "None"] = 1;
+        values[valuesById[2] = "Zstd"] = 2;
+        return values;
+    })();
+
+    common.RpcCompressionInfo = (function() {
+
+        /**
+         * Properties of a RpcCompressionInfo.
+         * @memberof common
+         * @interface IRpcCompressionInfo
+         * @property {common.CompressionAlgoPb|null} [algo] RpcCompressionInfo algo
+         * @property {common.CompressionAlgoPb|null} [acceptedAlgo] RpcCompressionInfo acceptedAlgo
+         */
+
+        /**
+         * Constructs a new RpcCompressionInfo.
+         * @memberof common
+         * @classdesc Represents a RpcCompressionInfo.
+         * @implements IRpcCompressionInfo
+         * @constructor
+         * @param {common.IRpcCompressionInfo=} [properties] Properties to set
+         */
+        function RpcCompressionInfo(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RpcCompressionInfo algo.
+         * @member {common.CompressionAlgoPb} algo
+         * @memberof common.RpcCompressionInfo
+         * @instance
+         */
+        RpcCompressionInfo.prototype.algo = 0;
+
+        /**
+         * RpcCompressionInfo acceptedAlgo.
+         * @member {common.CompressionAlgoPb} acceptedAlgo
+         * @memberof common.RpcCompressionInfo
+         * @instance
+         */
+        RpcCompressionInfo.prototype.acceptedAlgo = 0;
+
+        /**
+         * Creates a new RpcCompressionInfo instance using the specified properties.
+         * @function create
+         * @memberof common.RpcCompressionInfo
+         * @static
+         * @param {common.IRpcCompressionInfo=} [properties] Properties to set
+         * @returns {common.RpcCompressionInfo} RpcCompressionInfo instance
+         */
+        RpcCompressionInfo.create = function create(properties) {
+            return new RpcCompressionInfo(properties);
+        };
+
+        /**
+         * Encodes the specified RpcCompressionInfo message. Does not implicitly {@link common.RpcCompressionInfo.verify|verify} messages.
+         * @function encode
+         * @memberof common.RpcCompressionInfo
+         * @static
+         * @param {common.IRpcCompressionInfo} message RpcCompressionInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RpcCompressionInfo.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.algo != null && Object.hasOwnProperty.call(message, "algo"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.algo);
+            if (message.acceptedAlgo != null && Object.hasOwnProperty.call(message, "acceptedAlgo"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.acceptedAlgo);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RpcCompressionInfo message, length delimited. Does not implicitly {@link common.RpcCompressionInfo.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.RpcCompressionInfo
+         * @static
+         * @param {common.IRpcCompressionInfo} message RpcCompressionInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RpcCompressionInfo.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RpcCompressionInfo message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.RpcCompressionInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.RpcCompressionInfo} RpcCompressionInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RpcCompressionInfo.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.RpcCompressionInfo();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.algo = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.acceptedAlgo = reader.int32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RpcCompressionInfo message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.RpcCompressionInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.RpcCompressionInfo} RpcCompressionInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RpcCompressionInfo.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RpcCompressionInfo message.
+         * @function verify
+         * @memberof common.RpcCompressionInfo
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RpcCompressionInfo.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.algo != null && message.hasOwnProperty("algo"))
+                switch (message.algo) {
+                default:
+                    return "algo: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                    break;
+                }
+            if (message.acceptedAlgo != null && message.hasOwnProperty("acceptedAlgo"))
+                switch (message.acceptedAlgo) {
+                default:
+                    return "acceptedAlgo: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                    break;
+                }
+            return null;
+        };
+
+        /**
+         * Creates a RpcCompressionInfo message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.RpcCompressionInfo
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.RpcCompressionInfo} RpcCompressionInfo
+         */
+        RpcCompressionInfo.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.RpcCompressionInfo)
+                return object;
+            let message = new $root.common.RpcCompressionInfo();
+            switch (object.algo) {
+            default:
+                if (typeof object.algo === "number") {
+                    message.algo = object.algo;
+                    break;
+                }
+                break;
+            case "Invalid":
+            case 0:
+                message.algo = 0;
+                break;
+            case "None":
+            case 1:
+                message.algo = 1;
+                break;
+            case "Zstd":
+            case 2:
+                message.algo = 2;
+                break;
+            }
+            switch (object.acceptedAlgo) {
+            default:
+                if (typeof object.acceptedAlgo === "number") {
+                    message.acceptedAlgo = object.acceptedAlgo;
+                    break;
+                }
+                break;
+            case "Invalid":
+            case 0:
+                message.acceptedAlgo = 0;
+                break;
+            case "None":
+            case 1:
+                message.acceptedAlgo = 1;
+                break;
+            case "Zstd":
+            case 2:
+                message.acceptedAlgo = 2;
+                break;
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RpcCompressionInfo message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.RpcCompressionInfo
+         * @static
+         * @param {common.RpcCompressionInfo} message RpcCompressionInfo
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RpcCompressionInfo.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.algo = options.enums === String ? "Invalid" : 0;
+                object.acceptedAlgo = options.enums === String ? "Invalid" : 0;
+            }
+            if (message.algo != null && message.hasOwnProperty("algo"))
+                object.algo = options.enums === String ? $root.common.CompressionAlgoPb[message.algo] === undefined ? message.algo : $root.common.CompressionAlgoPb[message.algo] : message.algo;
+            if (message.acceptedAlgo != null && message.hasOwnProperty("acceptedAlgo"))
+                object.acceptedAlgo = options.enums === String ? $root.common.CompressionAlgoPb[message.acceptedAlgo] === undefined ? message.acceptedAlgo : $root.common.CompressionAlgoPb[message.acceptedAlgo] : message.acceptedAlgo;
+            return object;
+        };
+
+        /**
+         * Converts this RpcCompressionInfo to JSON.
+         * @function toJSON
+         * @memberof common.RpcCompressionInfo
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RpcCompressionInfo.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RpcCompressionInfo
+         * @function getTypeUrl
+         * @memberof common.RpcCompressionInfo
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RpcCompressionInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.RpcCompressionInfo";
+        };
+
+        return RpcCompressionInfo;
+    })();
+
+    common.RpcPacket = (function() {
+
+        /**
+         * Properties of a RpcPacket.
+         * @memberof common
+         * @interface IRpcPacket
+         * @property {number|null} [fromPeer] RpcPacket fromPeer
+         * @property {number|null} [toPeer] RpcPacket toPeer
+         * @property {number|Long|null} [transactionId] RpcPacket transactionId
+         * @property {common.IRpcDescriptor|null} [descriptor] RpcPacket descriptor
+         * @property {Uint8Array|null} [body] RpcPacket body
+         * @property {boolean|null} [isRequest] RpcPacket isRequest
+         * @property {number|null} [totalPieces] RpcPacket totalPieces
+         * @property {number|null} [pieceIdx] RpcPacket pieceIdx
+         * @property {number|null} [traceId] RpcPacket traceId
+         * @property {common.IRpcCompressionInfo|null} [compressionInfo] RpcPacket compressionInfo
+         */
+
+        /**
+         * Constructs a new RpcPacket.
+         * @memberof common
+         * @classdesc Represents a RpcPacket.
+         * @implements IRpcPacket
+         * @constructor
+         * @param {common.IRpcPacket=} [properties] Properties to set
+         */
+        function RpcPacket(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * RpcPacket fromPeer.
+         * @member {number} fromPeer
+         * @memberof common.RpcPacket
+         * @instance
+         */
+        RpcPacket.prototype.fromPeer = 0;
+
+        /**
+         * RpcPacket toPeer.
+         * @member {number} toPeer
+         * @memberof common.RpcPacket
+         * @instance
+         */
+        RpcPacket.prototype.toPeer = 0;
+
+        /**
+         * RpcPacket transactionId.
+         * @member {number|Long} transactionId
+         * @memberof common.RpcPacket
+         * @instance
+         */
+        RpcPacket.prototype.transactionId = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+        /**
+         * RpcPacket descriptor.
+         * @member {common.IRpcDescriptor|null|undefined} descriptor
+         * @memberof common.RpcPacket
+         * @instance
+         */
+        RpcPacket.prototype.descriptor = null;
+
+        /**
+         * RpcPacket body.
+         * @member {Uint8Array} body
+         * @memberof common.RpcPacket
+         * @instance
+         */
+        RpcPacket.prototype.body = $util.newBuffer([]);
+
+        /**
+         * RpcPacket isRequest.
+         * @member {boolean} isRequest
+         * @memberof common.RpcPacket
+         * @instance
+         */
+        RpcPacket.prototype.isRequest = false;
+
+        /**
+         * RpcPacket totalPieces.
+         * @member {number} totalPieces
+         * @memberof common.RpcPacket
+         * @instance
+         */
+        RpcPacket.prototype.totalPieces = 0;
+
+        /**
+         * RpcPacket pieceIdx.
+         * @member {number} pieceIdx
+         * @memberof common.RpcPacket
+         * @instance
+         */
+        RpcPacket.prototype.pieceIdx = 0;
+
+        /**
+         * RpcPacket traceId.
+         * @member {number} traceId
+         * @memberof common.RpcPacket
+         * @instance
+         */
+        RpcPacket.prototype.traceId = 0;
+
+        /**
+         * RpcPacket compressionInfo.
+         * @member {common.IRpcCompressionInfo|null|undefined} compressionInfo
+         * @memberof common.RpcPacket
+         * @instance
+         */
+        RpcPacket.prototype.compressionInfo = null;
+
+        /**
+         * Creates a new RpcPacket instance using the specified properties.
+         * @function create
+         * @memberof common.RpcPacket
+         * @static
+         * @param {common.IRpcPacket=} [properties] Properties to set
+         * @returns {common.RpcPacket} RpcPacket instance
+         */
+        RpcPacket.create = function create(properties) {
+            return new RpcPacket(properties);
+        };
+
+        /**
+         * Encodes the specified RpcPacket message. Does not implicitly {@link common.RpcPacket.verify|verify} messages.
+         * @function encode
+         * @memberof common.RpcPacket
+         * @static
+         * @param {common.IRpcPacket} message RpcPacket message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RpcPacket.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.fromPeer != null && Object.hasOwnProperty.call(message, "fromPeer"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.fromPeer);
+            if (message.toPeer != null && Object.hasOwnProperty.call(message, "toPeer"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.toPeer);
+            if (message.transactionId != null && Object.hasOwnProperty.call(message, "transactionId"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int64(message.transactionId);
+            if (message.descriptor != null && Object.hasOwnProperty.call(message, "descriptor"))
+                $root.common.RpcDescriptor.encode(message.descriptor, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+            if (message.body != null && Object.hasOwnProperty.call(message, "body"))
+                writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.body);
+            if (message.isRequest != null && Object.hasOwnProperty.call(message, "isRequest"))
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.isRequest);
+            if (message.totalPieces != null && Object.hasOwnProperty.call(message, "totalPieces"))
+                writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.totalPieces);
+            if (message.pieceIdx != null && Object.hasOwnProperty.call(message, "pieceIdx"))
+                writer.uint32(/* id 8, wireType 0 =*/64).uint32(message.pieceIdx);
+            if (message.traceId != null && Object.hasOwnProperty.call(message, "traceId"))
+                writer.uint32(/* id 9, wireType 0 =*/72).int32(message.traceId);
+            if (message.compressionInfo != null && Object.hasOwnProperty.call(message, "compressionInfo"))
+                $root.common.RpcCompressionInfo.encode(message.compressionInfo, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RpcPacket message, length delimited. Does not implicitly {@link common.RpcPacket.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.RpcPacket
+         * @static
+         * @param {common.IRpcPacket} message RpcPacket message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RpcPacket.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a RpcPacket message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.RpcPacket
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.RpcPacket} RpcPacket
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RpcPacket.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.RpcPacket();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.fromPeer = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.toPeer = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.transactionId = reader.int64();
+                        break;
+                    }
+                case 4: {
+                        message.descriptor = $root.common.RpcDescriptor.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 5: {
+                        message.body = reader.bytes();
+                        break;
+                    }
+                case 6: {
+                        message.isRequest = reader.bool();
+                        break;
+                    }
+                case 7: {
+                        message.totalPieces = reader.uint32();
+                        break;
+                    }
+                case 8: {
+                        message.pieceIdx = reader.uint32();
+                        break;
+                    }
+                case 9: {
+                        message.traceId = reader.int32();
+                        break;
+                    }
+                case 10: {
+                        message.compressionInfo = $root.common.RpcCompressionInfo.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a RpcPacket message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.RpcPacket
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.RpcPacket} RpcPacket
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RpcPacket.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RpcPacket message.
+         * @function verify
+         * @memberof common.RpcPacket
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RpcPacket.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.fromPeer != null && message.hasOwnProperty("fromPeer"))
+                if (!$util.isInteger(message.fromPeer))
+                    return "fromPeer: integer expected";
+            if (message.toPeer != null && message.hasOwnProperty("toPeer"))
+                if (!$util.isInteger(message.toPeer))
+                    return "toPeer: integer expected";
+            if (message.transactionId != null && message.hasOwnProperty("transactionId"))
+                if (!$util.isInteger(message.transactionId) && !(message.transactionId && $util.isInteger(message.transactionId.low) && $util.isInteger(message.transactionId.high)))
+                    return "transactionId: integer|Long expected";
+            if (message.descriptor != null && message.hasOwnProperty("descriptor")) {
+                let error = $root.common.RpcDescriptor.verify(message.descriptor);
+                if (error)
+                    return "descriptor." + error;
+            }
+            if (message.body != null && message.hasOwnProperty("body"))
+                if (!(message.body && typeof message.body.length === "number" || $util.isString(message.body)))
+                    return "body: buffer expected";
+            if (message.isRequest != null && message.hasOwnProperty("isRequest"))
+                if (typeof message.isRequest !== "boolean")
+                    return "isRequest: boolean expected";
+            if (message.totalPieces != null && message.hasOwnProperty("totalPieces"))
+                if (!$util.isInteger(message.totalPieces))
+                    return "totalPieces: integer expected";
+            if (message.pieceIdx != null && message.hasOwnProperty("pieceIdx"))
+                if (!$util.isInteger(message.pieceIdx))
+                    return "pieceIdx: integer expected";
+            if (message.traceId != null && message.hasOwnProperty("traceId"))
+                if (!$util.isInteger(message.traceId))
+                    return "traceId: integer expected";
+            if (message.compressionInfo != null && message.hasOwnProperty("compressionInfo")) {
+                let error = $root.common.RpcCompressionInfo.verify(message.compressionInfo);
+                if (error)
+                    return "compressionInfo." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RpcPacket message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.RpcPacket
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.RpcPacket} RpcPacket
+         */
+        RpcPacket.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.RpcPacket)
+                return object;
+            let message = new $root.common.RpcPacket();
+            if (object.fromPeer != null)
+                message.fromPeer = object.fromPeer >>> 0;
+            if (object.toPeer != null)
+                message.toPeer = object.toPeer >>> 0;
+            if (object.transactionId != null)
+                if ($util.Long)
+                    (message.transactionId = $util.Long.fromValue(object.transactionId)).unsigned = false;
+                else if (typeof object.transactionId === "string")
+                    message.transactionId = parseInt(object.transactionId, 10);
+                else if (typeof object.transactionId === "number")
+                    message.transactionId = object.transactionId;
+                else if (typeof object.transactionId === "object")
+                    message.transactionId = new $util.LongBits(object.transactionId.low >>> 0, object.transactionId.high >>> 0).toNumber();
+            if (object.descriptor != null) {
+                if (typeof object.descriptor !== "object")
+                    throw TypeError(".common.RpcPacket.descriptor: object expected");
+                message.descriptor = $root.common.RpcDescriptor.fromObject(object.descriptor);
+            }
+            if (object.body != null)
+                if (typeof object.body === "string")
+                    $util.base64.decode(object.body, message.body = $util.newBuffer($util.base64.length(object.body)), 0);
+                else if (object.body.length >= 0)
+                    message.body = object.body;
+            if (object.isRequest != null)
+                message.isRequest = Boolean(object.isRequest);
+            if (object.totalPieces != null)
+                message.totalPieces = object.totalPieces >>> 0;
+            if (object.pieceIdx != null)
+                message.pieceIdx = object.pieceIdx >>> 0;
+            if (object.traceId != null)
+                message.traceId = object.traceId | 0;
+            if (object.compressionInfo != null) {
+                if (typeof object.compressionInfo !== "object")
+                    throw TypeError(".common.RpcPacket.compressionInfo: object expected");
+                message.compressionInfo = $root.common.RpcCompressionInfo.fromObject(object.compressionInfo);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RpcPacket message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.RpcPacket
+         * @static
+         * @param {common.RpcPacket} message RpcPacket
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RpcPacket.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.fromPeer = 0;
+                object.toPeer = 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, false);
+                    object.transactionId = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.transactionId = options.longs === String ? "0" : 0;
+                object.descriptor = null;
+                if (options.bytes === String)
+                    object.body = "";
+                else {
+                    object.body = [];
+                    if (options.bytes !== Array)
+                        object.body = $util.newBuffer(object.body);
+                }
+                object.isRequest = false;
+                object.totalPieces = 0;
+                object.pieceIdx = 0;
+                object.traceId = 0;
+                object.compressionInfo = null;
+            }
+            if (message.fromPeer != null && message.hasOwnProperty("fromPeer"))
+                object.fromPeer = message.fromPeer;
+            if (message.toPeer != null && message.hasOwnProperty("toPeer"))
+                object.toPeer = message.toPeer;
+            if (message.transactionId != null && message.hasOwnProperty("transactionId"))
+                if (typeof message.transactionId === "number")
+                    object.transactionId = options.longs === String ? String(message.transactionId) : message.transactionId;
+                else
+                    object.transactionId = options.longs === String ? $util.Long.prototype.toString.call(message.transactionId) : options.longs === Number ? new $util.LongBits(message.transactionId.low >>> 0, message.transactionId.high >>> 0).toNumber() : message.transactionId;
+            if (message.descriptor != null && message.hasOwnProperty("descriptor"))
+                object.descriptor = $root.common.RpcDescriptor.toObject(message.descriptor, options);
+            if (message.body != null && message.hasOwnProperty("body"))
+                object.body = options.bytes === String ? $util.base64.encode(message.body, 0, message.body.length) : options.bytes === Array ? Array.prototype.slice.call(message.body) : message.body;
+            if (message.isRequest != null && message.hasOwnProperty("isRequest"))
+                object.isRequest = message.isRequest;
+            if (message.totalPieces != null && message.hasOwnProperty("totalPieces"))
+                object.totalPieces = message.totalPieces;
+            if (message.pieceIdx != null && message.hasOwnProperty("pieceIdx"))
+                object.pieceIdx = message.pieceIdx;
+            if (message.traceId != null && message.hasOwnProperty("traceId"))
+                object.traceId = message.traceId;
+            if (message.compressionInfo != null && message.hasOwnProperty("compressionInfo"))
+                object.compressionInfo = $root.common.RpcCompressionInfo.toObject(message.compressionInfo, options);
+            return object;
+        };
+
+        /**
+         * Converts this RpcPacket to JSON.
+         * @function toJSON
+         * @memberof common.RpcPacket
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RpcPacket.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for RpcPacket
+         * @function getTypeUrl
+         * @memberof common.RpcPacket
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        RpcPacket.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.RpcPacket";
+        };
+
+        return RpcPacket;
+    })();
+
+    common.Void = (function() {
+
+        /**
+         * Properties of a Void.
+         * @memberof common
+         * @interface IVoid
+         */
+
+        /**
+         * Constructs a new Void.
+         * @memberof common
+         * @classdesc Represents a Void.
+         * @implements IVoid
+         * @constructor
+         * @param {common.IVoid=} [properties] Properties to set
+         */
+        function Void(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new Void instance using the specified properties.
+         * @function create
+         * @memberof common.Void
+         * @static
+         * @param {common.IVoid=} [properties] Properties to set
+         * @returns {common.Void} Void instance
+         */
+        Void.create = function create(properties) {
+            return new Void(properties);
+        };
+
+        /**
+         * Encodes the specified Void message. Does not implicitly {@link common.Void.verify|verify} messages.
+         * @function encode
+         * @memberof common.Void
+         * @static
+         * @param {common.IVoid} message Void message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Void.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Void message, length delimited. Does not implicitly {@link common.Void.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.Void
+         * @static
+         * @param {common.IVoid} message Void message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Void.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Void message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.Void
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.Void} Void
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Void.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Void();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Void message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.Void
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.Void} Void
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Void.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Void message.
+         * @function verify
+         * @memberof common.Void
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Void.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a Void message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.Void
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.Void} Void
+         */
+        Void.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.Void)
+                return object;
+            return new $root.common.Void();
+        };
+
+        /**
+         * Creates a plain object from a Void message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.Void
+         * @static
+         * @param {common.Void} message Void
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Void.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this Void to JSON.
+         * @function toJSON
+         * @memberof common.Void
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Void.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Void
+         * @function getTypeUrl
+         * @memberof common.Void
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Void.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.Void";
+        };
+
+        return Void;
+    })();
+
+    common.UUID = (function() {
+
+        /**
+         * Properties of a UUID.
+         * @memberof common
+         * @interface IUUID
+         * @property {number|null} [part1] UUID part1
+         * @property {number|null} [part2] UUID part2
+         * @property {number|null} [part3] UUID part3
+         * @property {number|null} [part4] UUID part4
+         */
+
+        /**
+         * Constructs a new UUID.
+         * @memberof common
+         * @classdesc Represents a UUID.
+         * @implements IUUID
+         * @constructor
+         * @param {common.IUUID=} [properties] Properties to set
+         */
+        function UUID(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * UUID part1.
+         * @member {number} part1
+         * @memberof common.UUID
+         * @instance
+         */
+        UUID.prototype.part1 = 0;
+
+        /**
+         * UUID part2.
+         * @member {number} part2
+         * @memberof common.UUID
+         * @instance
+         */
+        UUID.prototype.part2 = 0;
+
+        /**
+         * UUID part3.
+         * @member {number} part3
+         * @memberof common.UUID
+         * @instance
+         */
+        UUID.prototype.part3 = 0;
+
+        /**
+         * UUID part4.
+         * @member {number} part4
+         * @memberof common.UUID
+         * @instance
+         */
+        UUID.prototype.part4 = 0;
+
+        /**
+         * Creates a new UUID instance using the specified properties.
+         * @function create
+         * @memberof common.UUID
+         * @static
+         * @param {common.IUUID=} [properties] Properties to set
+         * @returns {common.UUID} UUID instance
+         */
+        UUID.create = function create(properties) {
+            return new UUID(properties);
+        };
+
+        /**
+         * Encodes the specified UUID message. Does not implicitly {@link common.UUID.verify|verify} messages.
+         * @function encode
+         * @memberof common.UUID
+         * @static
+         * @param {common.IUUID} message UUID message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UUID.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.part1 != null && Object.hasOwnProperty.call(message, "part1"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.part1);
+            if (message.part2 != null && Object.hasOwnProperty.call(message, "part2"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.part2);
+            if (message.part3 != null && Object.hasOwnProperty.call(message, "part3"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.part3);
+            if (message.part4 != null && Object.hasOwnProperty.call(message, "part4"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.part4);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified UUID message, length delimited. Does not implicitly {@link common.UUID.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.UUID
+         * @static
+         * @param {common.IUUID} message UUID message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UUID.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a UUID message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.UUID
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.UUID} UUID
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UUID.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.UUID();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.part1 = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.part2 = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.part3 = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.part4 = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a UUID message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.UUID
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.UUID} UUID
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UUID.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a UUID message.
+         * @function verify
+         * @memberof common.UUID
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        UUID.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.part1 != null && message.hasOwnProperty("part1"))
+                if (!$util.isInteger(message.part1))
+                    return "part1: integer expected";
+            if (message.part2 != null && message.hasOwnProperty("part2"))
+                if (!$util.isInteger(message.part2))
+                    return "part2: integer expected";
+            if (message.part3 != null && message.hasOwnProperty("part3"))
+                if (!$util.isInteger(message.part3))
+                    return "part3: integer expected";
+            if (message.part4 != null && message.hasOwnProperty("part4"))
+                if (!$util.isInteger(message.part4))
+                    return "part4: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a UUID message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.UUID
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.UUID} UUID
+         */
+        UUID.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.UUID)
+                return object;
+            let message = new $root.common.UUID();
+            if (object.part1 != null)
+                message.part1 = object.part1 >>> 0;
+            if (object.part2 != null)
+                message.part2 = object.part2 >>> 0;
+            if (object.part3 != null)
+                message.part3 = object.part3 >>> 0;
+            if (object.part4 != null)
+                message.part4 = object.part4 >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a UUID message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.UUID
+         * @static
+         * @param {common.UUID} message UUID
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        UUID.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.part1 = 0;
+                object.part2 = 0;
+                object.part3 = 0;
+                object.part4 = 0;
+            }
+            if (message.part1 != null && message.hasOwnProperty("part1"))
+                object.part1 = message.part1;
+            if (message.part2 != null && message.hasOwnProperty("part2"))
+                object.part2 = message.part2;
+            if (message.part3 != null && message.hasOwnProperty("part3"))
+                object.part3 = message.part3;
+            if (message.part4 != null && message.hasOwnProperty("part4"))
+                object.part4 = message.part4;
+            return object;
+        };
+
+        /**
+         * Converts this UUID to JSON.
+         * @function toJSON
+         * @memberof common.UUID
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        UUID.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for UUID
+         * @function getTypeUrl
+         * @memberof common.UUID
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        UUID.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.UUID";
+        };
+
+        return UUID;
+    })();
+
+    /**
+     * NatType enum.
+     * @name common.NatType
+     * @enum {number}
+     * @property {number} Unknown=0 Unknown value
+     * @property {number} OpenInternet=1 OpenInternet value
+     * @property {number} NoPAT=2 NoPAT value
+     * @property {number} FullCone=3 FullCone value
+     * @property {number} Restricted=4 Restricted value
+     * @property {number} PortRestricted=5 PortRestricted value
+     * @property {number} Symmetric=6 Symmetric value
+     * @property {number} SymUdpFirewall=7 SymUdpFirewall value
+     * @property {number} SymmetricEasyInc=8 SymmetricEasyInc value
+     * @property {number} SymmetricEasyDec=9 SymmetricEasyDec value
+     */
+    common.NatType = (function() {
+        const valuesById = {}, values = Object.create(valuesById);
+        values[valuesById[0] = "Unknown"] = 0;
+        values[valuesById[1] = "OpenInternet"] = 1;
+        values[valuesById[2] = "NoPAT"] = 2;
+        values[valuesById[3] = "FullCone"] = 3;
+        values[valuesById[4] = "Restricted"] = 4;
+        values[valuesById[5] = "PortRestricted"] = 5;
+        values[valuesById[6] = "Symmetric"] = 6;
+        values[valuesById[7] = "SymUdpFirewall"] = 7;
+        values[valuesById[8] = "SymmetricEasyInc"] = 8;
+        values[valuesById[9] = "SymmetricEasyDec"] = 9;
+        return values;
+    })();
+
+    common.Ipv4Addr = (function() {
+
+        /**
+         * Properties of an Ipv4Addr.
+         * @memberof common
+         * @interface IIpv4Addr
+         * @property {number|null} [addr] Ipv4Addr addr
+         */
+
+        /**
+         * Constructs a new Ipv4Addr.
+         * @memberof common
+         * @classdesc Represents an Ipv4Addr.
+         * @implements IIpv4Addr
+         * @constructor
+         * @param {common.IIpv4Addr=} [properties] Properties to set
+         */
+        function Ipv4Addr(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Ipv4Addr addr.
+         * @member {number} addr
+         * @memberof common.Ipv4Addr
+         * @instance
+         */
+        Ipv4Addr.prototype.addr = 0;
+
+        /**
+         * Creates a new Ipv4Addr instance using the specified properties.
+         * @function create
+         * @memberof common.Ipv4Addr
+         * @static
+         * @param {common.IIpv4Addr=} [properties] Properties to set
+         * @returns {common.Ipv4Addr} Ipv4Addr instance
+         */
+        Ipv4Addr.create = function create(properties) {
+            return new Ipv4Addr(properties);
+        };
+
+        /**
+         * Encodes the specified Ipv4Addr message. Does not implicitly {@link common.Ipv4Addr.verify|verify} messages.
+         * @function encode
+         * @memberof common.Ipv4Addr
+         * @static
+         * @param {common.IIpv4Addr} message Ipv4Addr message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Ipv4Addr.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.addr != null && Object.hasOwnProperty.call(message, "addr"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.addr);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Ipv4Addr message, length delimited. Does not implicitly {@link common.Ipv4Addr.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.Ipv4Addr
+         * @static
+         * @param {common.IIpv4Addr} message Ipv4Addr message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Ipv4Addr.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an Ipv4Addr message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.Ipv4Addr
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.Ipv4Addr} Ipv4Addr
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Ipv4Addr.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Ipv4Addr();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.addr = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an Ipv4Addr message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.Ipv4Addr
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.Ipv4Addr} Ipv4Addr
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Ipv4Addr.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an Ipv4Addr message.
+         * @function verify
+         * @memberof common.Ipv4Addr
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Ipv4Addr.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.addr != null && message.hasOwnProperty("addr"))
+                if (!$util.isInteger(message.addr))
+                    return "addr: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates an Ipv4Addr message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.Ipv4Addr
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.Ipv4Addr} Ipv4Addr
+         */
+        Ipv4Addr.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.Ipv4Addr)
+                return object;
+            let message = new $root.common.Ipv4Addr();
+            if (object.addr != null)
+                message.addr = object.addr >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an Ipv4Addr message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.Ipv4Addr
+         * @static
+         * @param {common.Ipv4Addr} message Ipv4Addr
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Ipv4Addr.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults)
+                object.addr = 0;
+            if (message.addr != null && message.hasOwnProperty("addr"))
+                object.addr = message.addr;
+            return object;
+        };
+
+        /**
+         * Converts this Ipv4Addr to JSON.
+         * @function toJSON
+         * @memberof common.Ipv4Addr
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Ipv4Addr.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Ipv4Addr
+         * @function getTypeUrl
+         * @memberof common.Ipv4Addr
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Ipv4Addr.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.Ipv4Addr";
+        };
+
+        return Ipv4Addr;
+    })();
+
+    common.Ipv6Addr = (function() {
+
+        /**
+         * Properties of an Ipv6Addr.
+         * @memberof common
+         * @interface IIpv6Addr
+         * @property {number|null} [part1] Ipv6Addr part1
+         * @property {number|null} [part2] Ipv6Addr part2
+         * @property {number|null} [part3] Ipv6Addr part3
+         * @property {number|null} [part4] Ipv6Addr part4
+         */
+
+        /**
+         * Constructs a new Ipv6Addr.
+         * @memberof common
+         * @classdesc Represents an Ipv6Addr.
+         * @implements IIpv6Addr
+         * @constructor
+         * @param {common.IIpv6Addr=} [properties] Properties to set
+         */
+        function Ipv6Addr(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Ipv6Addr part1.
+         * @member {number} part1
+         * @memberof common.Ipv6Addr
+         * @instance
+         */
+        Ipv6Addr.prototype.part1 = 0;
+
+        /**
+         * Ipv6Addr part2.
+         * @member {number} part2
+         * @memberof common.Ipv6Addr
+         * @instance
+         */
+        Ipv6Addr.prototype.part2 = 0;
+
+        /**
+         * Ipv6Addr part3.
+         * @member {number} part3
+         * @memberof common.Ipv6Addr
+         * @instance
+         */
+        Ipv6Addr.prototype.part3 = 0;
+
+        /**
+         * Ipv6Addr part4.
+         * @member {number} part4
+         * @memberof common.Ipv6Addr
+         * @instance
+         */
+        Ipv6Addr.prototype.part4 = 0;
+
+        /**
+         * Creates a new Ipv6Addr instance using the specified properties.
+         * @function create
+         * @memberof common.Ipv6Addr
+         * @static
+         * @param {common.IIpv6Addr=} [properties] Properties to set
+         * @returns {common.Ipv6Addr} Ipv6Addr instance
+         */
+        Ipv6Addr.create = function create(properties) {
+            return new Ipv6Addr(properties);
+        };
+
+        /**
+         * Encodes the specified Ipv6Addr message. Does not implicitly {@link common.Ipv6Addr.verify|verify} messages.
+         * @function encode
+         * @memberof common.Ipv6Addr
+         * @static
+         * @param {common.IIpv6Addr} message Ipv6Addr message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Ipv6Addr.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.part1 != null && Object.hasOwnProperty.call(message, "part1"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.part1);
+            if (message.part2 != null && Object.hasOwnProperty.call(message, "part2"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.part2);
+            if (message.part3 != null && Object.hasOwnProperty.call(message, "part3"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.part3);
+            if (message.part4 != null && Object.hasOwnProperty.call(message, "part4"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.part4);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Ipv6Addr message, length delimited. Does not implicitly {@link common.Ipv6Addr.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.Ipv6Addr
+         * @static
+         * @param {common.IIpv6Addr} message Ipv6Addr message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Ipv6Addr.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an Ipv6Addr message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.Ipv6Addr
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.Ipv6Addr} Ipv6Addr
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Ipv6Addr.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Ipv6Addr();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.part1 = reader.uint32();
+                        break;
+                    }
+                case 2: {
+                        message.part2 = reader.uint32();
+                        break;
+                    }
+                case 3: {
+                        message.part3 = reader.uint32();
+                        break;
+                    }
+                case 4: {
+                        message.part4 = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an Ipv6Addr message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.Ipv6Addr
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.Ipv6Addr} Ipv6Addr
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Ipv6Addr.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an Ipv6Addr message.
+         * @function verify
+         * @memberof common.Ipv6Addr
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Ipv6Addr.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.part1 != null && message.hasOwnProperty("part1"))
+                if (!$util.isInteger(message.part1))
+                    return "part1: integer expected";
+            if (message.part2 != null && message.hasOwnProperty("part2"))
+                if (!$util.isInteger(message.part2))
+                    return "part2: integer expected";
+            if (message.part3 != null && message.hasOwnProperty("part3"))
+                if (!$util.isInteger(message.part3))
+                    return "part3: integer expected";
+            if (message.part4 != null && message.hasOwnProperty("part4"))
+                if (!$util.isInteger(message.part4))
+                    return "part4: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates an Ipv6Addr message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.Ipv6Addr
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.Ipv6Addr} Ipv6Addr
+         */
+        Ipv6Addr.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.Ipv6Addr)
+                return object;
+            let message = new $root.common.Ipv6Addr();
+            if (object.part1 != null)
+                message.part1 = object.part1 >>> 0;
+            if (object.part2 != null)
+                message.part2 = object.part2 >>> 0;
+            if (object.part3 != null)
+                message.part3 = object.part3 >>> 0;
+            if (object.part4 != null)
+                message.part4 = object.part4 >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an Ipv6Addr message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.Ipv6Addr
+         * @static
+         * @param {common.Ipv6Addr} message Ipv6Addr
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Ipv6Addr.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.part1 = 0;
+                object.part2 = 0;
+                object.part3 = 0;
+                object.part4 = 0;
+            }
+            if (message.part1 != null && message.hasOwnProperty("part1"))
+                object.part1 = message.part1;
+            if (message.part2 != null && message.hasOwnProperty("part2"))
+                object.part2 = message.part2;
+            if (message.part3 != null && message.hasOwnProperty("part3"))
+                object.part3 = message.part3;
+            if (message.part4 != null && message.hasOwnProperty("part4"))
+                object.part4 = message.part4;
+            return object;
+        };
+
+        /**
+         * Converts this Ipv6Addr to JSON.
+         * @function toJSON
+         * @memberof common.Ipv6Addr
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Ipv6Addr.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Ipv6Addr
+         * @function getTypeUrl
+         * @memberof common.Ipv6Addr
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Ipv6Addr.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.Ipv6Addr";
+        };
+
+        return Ipv6Addr;
+    })();
+
+    common.Ipv4Inet = (function() {
+
+        /**
+         * Properties of an Ipv4Inet.
+         * @memberof common
+         * @interface IIpv4Inet
+         * @property {common.IIpv4Addr|null} [address] Ipv4Inet address
+         * @property {number|null} [networkLength] Ipv4Inet networkLength
+         */
+
+        /**
+         * Constructs a new Ipv4Inet.
+         * @memberof common
+         * @classdesc Represents an Ipv4Inet.
+         * @implements IIpv4Inet
+         * @constructor
+         * @param {common.IIpv4Inet=} [properties] Properties to set
+         */
+        function Ipv4Inet(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Ipv4Inet address.
+         * @member {common.IIpv4Addr|null|undefined} address
+         * @memberof common.Ipv4Inet
+         * @instance
+         */
+        Ipv4Inet.prototype.address = null;
+
+        /**
+         * Ipv4Inet networkLength.
+         * @member {number} networkLength
+         * @memberof common.Ipv4Inet
+         * @instance
+         */
+        Ipv4Inet.prototype.networkLength = 0;
+
+        /**
+         * Creates a new Ipv4Inet instance using the specified properties.
+         * @function create
+         * @memberof common.Ipv4Inet
+         * @static
+         * @param {common.IIpv4Inet=} [properties] Properties to set
+         * @returns {common.Ipv4Inet} Ipv4Inet instance
+         */
+        Ipv4Inet.create = function create(properties) {
+            return new Ipv4Inet(properties);
+        };
+
+        /**
+         * Encodes the specified Ipv4Inet message. Does not implicitly {@link common.Ipv4Inet.verify|verify} messages.
+         * @function encode
+         * @memberof common.Ipv4Inet
+         * @static
+         * @param {common.IIpv4Inet} message Ipv4Inet message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Ipv4Inet.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.address != null && Object.hasOwnProperty.call(message, "address"))
+                $root.common.Ipv4Addr.encode(message.address, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.networkLength != null && Object.hasOwnProperty.call(message, "networkLength"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.networkLength);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Ipv4Inet message, length delimited. Does not implicitly {@link common.Ipv4Inet.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.Ipv4Inet
+         * @static
+         * @param {common.IIpv4Inet} message Ipv4Inet message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Ipv4Inet.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an Ipv4Inet message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.Ipv4Inet
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.Ipv4Inet} Ipv4Inet
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Ipv4Inet.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Ipv4Inet();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.address = $root.common.Ipv4Addr.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.networkLength = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an Ipv4Inet message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.Ipv4Inet
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.Ipv4Inet} Ipv4Inet
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Ipv4Inet.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an Ipv4Inet message.
+         * @function verify
+         * @memberof common.Ipv4Inet
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Ipv4Inet.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.address != null && message.hasOwnProperty("address")) {
+                let error = $root.common.Ipv4Addr.verify(message.address);
+                if (error)
+                    return "address." + error;
+            }
+            if (message.networkLength != null && message.hasOwnProperty("networkLength"))
+                if (!$util.isInteger(message.networkLength))
+                    return "networkLength: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates an Ipv4Inet message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.Ipv4Inet
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.Ipv4Inet} Ipv4Inet
+         */
+        Ipv4Inet.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.Ipv4Inet)
+                return object;
+            let message = new $root.common.Ipv4Inet();
+            if (object.address != null) {
+                if (typeof object.address !== "object")
+                    throw TypeError(".common.Ipv4Inet.address: object expected");
+                message.address = $root.common.Ipv4Addr.fromObject(object.address);
+            }
+            if (object.networkLength != null)
+                message.networkLength = object.networkLength >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an Ipv4Inet message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.Ipv4Inet
+         * @static
+         * @param {common.Ipv4Inet} message Ipv4Inet
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Ipv4Inet.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.address = null;
+                object.networkLength = 0;
+            }
+            if (message.address != null && message.hasOwnProperty("address"))
+                object.address = $root.common.Ipv4Addr.toObject(message.address, options);
+            if (message.networkLength != null && message.hasOwnProperty("networkLength"))
+                object.networkLength = message.networkLength;
+            return object;
+        };
+
+        /**
+         * Converts this Ipv4Inet to JSON.
+         * @function toJSON
+         * @memberof common.Ipv4Inet
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Ipv4Inet.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Ipv4Inet
+         * @function getTypeUrl
+         * @memberof common.Ipv4Inet
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Ipv4Inet.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.Ipv4Inet";
+        };
+
+        return Ipv4Inet;
+    })();
+
+    common.Ipv6Inet = (function() {
+
+        /**
+         * Properties of an Ipv6Inet.
+         * @memberof common
+         * @interface IIpv6Inet
+         * @property {common.IIpv6Addr|null} [address] Ipv6Inet address
+         * @property {number|null} [networkLength] Ipv6Inet networkLength
+         */
+
+        /**
+         * Constructs a new Ipv6Inet.
+         * @memberof common
+         * @classdesc Represents an Ipv6Inet.
+         * @implements IIpv6Inet
+         * @constructor
+         * @param {common.IIpv6Inet=} [properties] Properties to set
+         */
+        function Ipv6Inet(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Ipv6Inet address.
+         * @member {common.IIpv6Addr|null|undefined} address
+         * @memberof common.Ipv6Inet
+         * @instance
+         */
+        Ipv6Inet.prototype.address = null;
+
+        /**
+         * Ipv6Inet networkLength.
+         * @member {number} networkLength
+         * @memberof common.Ipv6Inet
+         * @instance
+         */
+        Ipv6Inet.prototype.networkLength = 0;
+
+        /**
+         * Creates a new Ipv6Inet instance using the specified properties.
+         * @function create
+         * @memberof common.Ipv6Inet
+         * @static
+         * @param {common.IIpv6Inet=} [properties] Properties to set
+         * @returns {common.Ipv6Inet} Ipv6Inet instance
+         */
+        Ipv6Inet.create = function create(properties) {
+            return new Ipv6Inet(properties);
+        };
+
+        /**
+         * Encodes the specified Ipv6Inet message. Does not implicitly {@link common.Ipv6Inet.verify|verify} messages.
+         * @function encode
+         * @memberof common.Ipv6Inet
+         * @static
+         * @param {common.IIpv6Inet} message Ipv6Inet message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Ipv6Inet.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.address != null && Object.hasOwnProperty.call(message, "address"))
+                $root.common.Ipv6Addr.encode(message.address, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.networkLength != null && Object.hasOwnProperty.call(message, "networkLength"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.networkLength);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Ipv6Inet message, length delimited. Does not implicitly {@link common.Ipv6Inet.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.Ipv6Inet
+         * @static
+         * @param {common.IIpv6Inet} message Ipv6Inet message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Ipv6Inet.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an Ipv6Inet message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.Ipv6Inet
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.Ipv6Inet} Ipv6Inet
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Ipv6Inet.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Ipv6Inet();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.address = $root.common.Ipv6Addr.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.networkLength = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an Ipv6Inet message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.Ipv6Inet
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.Ipv6Inet} Ipv6Inet
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Ipv6Inet.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an Ipv6Inet message.
+         * @function verify
+         * @memberof common.Ipv6Inet
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Ipv6Inet.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.address != null && message.hasOwnProperty("address")) {
+                let error = $root.common.Ipv6Addr.verify(message.address);
+                if (error)
+                    return "address." + error;
+            }
+            if (message.networkLength != null && message.hasOwnProperty("networkLength"))
+                if (!$util.isInteger(message.networkLength))
+                    return "networkLength: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates an Ipv6Inet message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.Ipv6Inet
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.Ipv6Inet} Ipv6Inet
+         */
+        Ipv6Inet.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.Ipv6Inet)
+                return object;
+            let message = new $root.common.Ipv6Inet();
+            if (object.address != null) {
+                if (typeof object.address !== "object")
+                    throw TypeError(".common.Ipv6Inet.address: object expected");
+                message.address = $root.common.Ipv6Addr.fromObject(object.address);
+            }
+            if (object.networkLength != null)
+                message.networkLength = object.networkLength >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an Ipv6Inet message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.Ipv6Inet
+         * @static
+         * @param {common.Ipv6Inet} message Ipv6Inet
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Ipv6Inet.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.address = null;
+                object.networkLength = 0;
+            }
+            if (message.address != null && message.hasOwnProperty("address"))
+                object.address = $root.common.Ipv6Addr.toObject(message.address, options);
+            if (message.networkLength != null && message.hasOwnProperty("networkLength"))
+                object.networkLength = message.networkLength;
+            return object;
+        };
+
+        /**
+         * Converts this Ipv6Inet to JSON.
+         * @function toJSON
+         * @memberof common.Ipv6Inet
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Ipv6Inet.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Ipv6Inet
+         * @function getTypeUrl
+         * @memberof common.Ipv6Inet
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Ipv6Inet.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.Ipv6Inet";
+        };
+
+        return Ipv6Inet;
+    })();
+
+    common.IpInet = (function() {
+
+        /**
+         * Properties of an IpInet.
+         * @memberof common
+         * @interface IIpInet
+         * @property {common.IIpv4Inet|null} [ipv4] IpInet ipv4
+         * @property {common.IIpv6Inet|null} [ipv6] IpInet ipv6
+         */
+
+        /**
+         * Constructs a new IpInet.
+         * @memberof common
+         * @classdesc Represents an IpInet.
+         * @implements IIpInet
+         * @constructor
+         * @param {common.IIpInet=} [properties] Properties to set
+         */
+        function IpInet(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * IpInet ipv4.
+         * @member {common.IIpv4Inet|null|undefined} ipv4
+         * @memberof common.IpInet
+         * @instance
+         */
+        IpInet.prototype.ipv4 = null;
+
+        /**
+         * IpInet ipv6.
+         * @member {common.IIpv6Inet|null|undefined} ipv6
+         * @memberof common.IpInet
+         * @instance
+         */
+        IpInet.prototype.ipv6 = null;
+
+        // OneOf field names bound to virtual getters and setters
+        let $oneOfFields;
+
+        /**
+         * IpInet ip.
+         * @member {"ipv4"|"ipv6"|undefined} ip
+         * @memberof common.IpInet
+         * @instance
+         */
+        Object.defineProperty(IpInet.prototype, "ip", {
+            get: $util.oneOfGetter($oneOfFields = ["ipv4", "ipv6"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new IpInet instance using the specified properties.
+         * @function create
+         * @memberof common.IpInet
+         * @static
+         * @param {common.IIpInet=} [properties] Properties to set
+         * @returns {common.IpInet} IpInet instance
+         */
+        IpInet.create = function create(properties) {
+            return new IpInet(properties);
+        };
+
+        /**
+         * Encodes the specified IpInet message. Does not implicitly {@link common.IpInet.verify|verify} messages.
+         * @function encode
+         * @memberof common.IpInet
+         * @static
+         * @param {common.IIpInet} message IpInet message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        IpInet.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.ipv4 != null && Object.hasOwnProperty.call(message, "ipv4"))
+                $root.common.Ipv4Inet.encode(message.ipv4, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.ipv6 != null && Object.hasOwnProperty.call(message, "ipv6"))
+                $root.common.Ipv6Inet.encode(message.ipv6, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified IpInet message, length delimited. Does not implicitly {@link common.IpInet.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.IpInet
+         * @static
+         * @param {common.IIpInet} message IpInet message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        IpInet.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an IpInet message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.IpInet
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.IpInet} IpInet
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        IpInet.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.IpInet();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.ipv4 = $root.common.Ipv4Inet.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.ipv6 = $root.common.Ipv6Inet.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an IpInet message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.IpInet
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.IpInet} IpInet
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        IpInet.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an IpInet message.
+         * @function verify
+         * @memberof common.IpInet
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        IpInet.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            let properties = {};
+            if (message.ipv4 != null && message.hasOwnProperty("ipv4")) {
+                properties.ip = 1;
+                {
+                    let error = $root.common.Ipv4Inet.verify(message.ipv4);
+                    if (error)
+                        return "ipv4." + error;
+                }
+            }
+            if (message.ipv6 != null && message.hasOwnProperty("ipv6")) {
+                if (properties.ip === 1)
+                    return "ip: multiple values";
+                properties.ip = 1;
+                {
+                    let error = $root.common.Ipv6Inet.verify(message.ipv6);
+                    if (error)
+                        return "ipv6." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates an IpInet message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.IpInet
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.IpInet} IpInet
+         */
+        IpInet.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.IpInet)
+                return object;
+            let message = new $root.common.IpInet();
+            if (object.ipv4 != null) {
+                if (typeof object.ipv4 !== "object")
+                    throw TypeError(".common.IpInet.ipv4: object expected");
+                message.ipv4 = $root.common.Ipv4Inet.fromObject(object.ipv4);
+            }
+            if (object.ipv6 != null) {
+                if (typeof object.ipv6 !== "object")
+                    throw TypeError(".common.IpInet.ipv6: object expected");
+                message.ipv6 = $root.common.Ipv6Inet.fromObject(object.ipv6);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an IpInet message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.IpInet
+         * @static
+         * @param {common.IpInet} message IpInet
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        IpInet.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (message.ipv4 != null && message.hasOwnProperty("ipv4")) {
+                object.ipv4 = $root.common.Ipv4Inet.toObject(message.ipv4, options);
+                if (options.oneofs)
+                    object.ip = "ipv4";
+            }
+            if (message.ipv6 != null && message.hasOwnProperty("ipv6")) {
+                object.ipv6 = $root.common.Ipv6Inet.toObject(message.ipv6, options);
+                if (options.oneofs)
+                    object.ip = "ipv6";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this IpInet to JSON.
+         * @function toJSON
+         * @memberof common.IpInet
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        IpInet.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for IpInet
+         * @function getTypeUrl
+         * @memberof common.IpInet
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        IpInet.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.IpInet";
+        };
+
+        return IpInet;
+    })();
+
+    common.Url = (function() {
+
+        /**
+         * Properties of an Url.
+         * @memberof common
+         * @interface IUrl
+         * @property {string|null} [url] Url url
+         */
+
+        /**
+         * Constructs a new Url.
+         * @memberof common
+         * @classdesc Represents an Url.
+         * @implements IUrl
+         * @constructor
+         * @param {common.IUrl=} [properties] Properties to set
+         */
+        function Url(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Url url.
+         * @member {string} url
+         * @memberof common.Url
+         * @instance
+         */
+        Url.prototype.url = "";
+
+        /**
+         * Creates a new Url instance using the specified properties.
+         * @function create
+         * @memberof common.Url
+         * @static
+         * @param {common.IUrl=} [properties] Properties to set
+         * @returns {common.Url} Url instance
+         */
+        Url.create = function create(properties) {
+            return new Url(properties);
+        };
+
+        /**
+         * Encodes the specified Url message. Does not implicitly {@link common.Url.verify|verify} messages.
+         * @function encode
+         * @memberof common.Url
+         * @static
+         * @param {common.IUrl} message Url message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Url.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.url != null && Object.hasOwnProperty.call(message, "url"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.url);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Url message, length delimited. Does not implicitly {@link common.Url.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.Url
+         * @static
+         * @param {common.IUrl} message Url message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Url.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an Url message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.Url
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.Url} Url
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Url.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.Url();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.url = reader.string();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an Url message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.Url
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.Url} Url
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Url.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an Url message.
+         * @function verify
+         * @memberof common.Url
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Url.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.url != null && message.hasOwnProperty("url"))
+                if (!$util.isString(message.url))
+                    return "url: string expected";
+            return null;
+        };
+
+        /**
+         * Creates an Url message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.Url
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.Url} Url
+         */
+        Url.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.Url)
+                return object;
+            let message = new $root.common.Url();
+            if (object.url != null)
+                message.url = String(object.url);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an Url message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.Url
+         * @static
+         * @param {common.Url} message Url
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Url.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults)
+                object.url = "";
+            if (message.url != null && message.hasOwnProperty("url"))
+                object.url = message.url;
+            return object;
+        };
+
+        /**
+         * Converts this Url to JSON.
+         * @function toJSON
+         * @memberof common.Url
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Url.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for Url
+         * @function getTypeUrl
+         * @memberof common.Url
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        Url.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.Url";
+        };
+
+        return Url;
+    })();
+
+    common.SocketAddr = (function() {
+
+        /**
+         * Properties of a SocketAddr.
+         * @memberof common
+         * @interface ISocketAddr
+         * @property {common.IIpv4Addr|null} [ipv4] SocketAddr ipv4
+         * @property {common.IIpv6Addr|null} [ipv6] SocketAddr ipv6
+         * @property {number|null} [port] SocketAddr port
+         */
+
+        /**
+         * Constructs a new SocketAddr.
+         * @memberof common
+         * @classdesc Represents a SocketAddr.
+         * @implements ISocketAddr
+         * @constructor
+         * @param {common.ISocketAddr=} [properties] Properties to set
+         */
+        function SocketAddr(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * SocketAddr ipv4.
+         * @member {common.IIpv4Addr|null|undefined} ipv4
+         * @memberof common.SocketAddr
+         * @instance
+         */
+        SocketAddr.prototype.ipv4 = null;
+
+        /**
+         * SocketAddr ipv6.
+         * @member {common.IIpv6Addr|null|undefined} ipv6
+         * @memberof common.SocketAddr
+         * @instance
+         */
+        SocketAddr.prototype.ipv6 = null;
+
+        /**
+         * SocketAddr port.
+         * @member {number} port
+         * @memberof common.SocketAddr
+         * @instance
+         */
+        SocketAddr.prototype.port = 0;
+
+        // OneOf field names bound to virtual getters and setters
+        let $oneOfFields;
+
+        /**
+         * SocketAddr ip.
+         * @member {"ipv4"|"ipv6"|undefined} ip
+         * @memberof common.SocketAddr
+         * @instance
+         */
+        Object.defineProperty(SocketAddr.prototype, "ip", {
+            get: $util.oneOfGetter($oneOfFields = ["ipv4", "ipv6"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new SocketAddr instance using the specified properties.
+         * @function create
+         * @memberof common.SocketAddr
+         * @static
+         * @param {common.ISocketAddr=} [properties] Properties to set
+         * @returns {common.SocketAddr} SocketAddr instance
+         */
+        SocketAddr.create = function create(properties) {
+            return new SocketAddr(properties);
+        };
+
+        /**
+         * Encodes the specified SocketAddr message. Does not implicitly {@link common.SocketAddr.verify|verify} messages.
+         * @function encode
+         * @memberof common.SocketAddr
+         * @static
+         * @param {common.ISocketAddr} message SocketAddr message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SocketAddr.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.ipv4 != null && Object.hasOwnProperty.call(message, "ipv4"))
+                $root.common.Ipv4Addr.encode(message.ipv4, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.ipv6 != null && Object.hasOwnProperty.call(message, "ipv6"))
+                $root.common.Ipv6Addr.encode(message.ipv6, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            if (message.port != null && Object.hasOwnProperty.call(message, "port"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.port);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SocketAddr message, length delimited. Does not implicitly {@link common.SocketAddr.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.SocketAddr
+         * @static
+         * @param {common.ISocketAddr} message SocketAddr message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SocketAddr.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SocketAddr message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.SocketAddr
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.SocketAddr} SocketAddr
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SocketAddr.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.SocketAddr();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.ipv4 = $root.common.Ipv4Addr.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.ipv6 = $root.common.Ipv6Addr.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 3: {
+                        message.port = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a SocketAddr message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.SocketAddr
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.SocketAddr} SocketAddr
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SocketAddr.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SocketAddr message.
+         * @function verify
+         * @memberof common.SocketAddr
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SocketAddr.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            let properties = {};
+            if (message.ipv4 != null && message.hasOwnProperty("ipv4")) {
+                properties.ip = 1;
+                {
+                    let error = $root.common.Ipv4Addr.verify(message.ipv4);
+                    if (error)
+                        return "ipv4." + error;
+                }
+            }
+            if (message.ipv6 != null && message.hasOwnProperty("ipv6")) {
+                if (properties.ip === 1)
+                    return "ip: multiple values";
+                properties.ip = 1;
+                {
+                    let error = $root.common.Ipv6Addr.verify(message.ipv6);
+                    if (error)
+                        return "ipv6." + error;
+                }
+            }
+            if (message.port != null && message.hasOwnProperty("port"))
+                if (!$util.isInteger(message.port))
+                    return "port: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a SocketAddr message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.SocketAddr
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.SocketAddr} SocketAddr
+         */
+        SocketAddr.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.SocketAddr)
+                return object;
+            let message = new $root.common.SocketAddr();
+            if (object.ipv4 != null) {
+                if (typeof object.ipv4 !== "object")
+                    throw TypeError(".common.SocketAddr.ipv4: object expected");
+                message.ipv4 = $root.common.Ipv4Addr.fromObject(object.ipv4);
+            }
+            if (object.ipv6 != null) {
+                if (typeof object.ipv6 !== "object")
+                    throw TypeError(".common.SocketAddr.ipv6: object expected");
+                message.ipv6 = $root.common.Ipv6Addr.fromObject(object.ipv6);
+            }
+            if (object.port != null)
+                message.port = object.port >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a SocketAddr message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.SocketAddr
+         * @static
+         * @param {common.SocketAddr} message SocketAddr
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SocketAddr.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults)
+                object.port = 0;
+            if (message.ipv4 != null && message.hasOwnProperty("ipv4")) {
+                object.ipv4 = $root.common.Ipv4Addr.toObject(message.ipv4, options);
+                if (options.oneofs)
+                    object.ip = "ipv4";
+            }
+            if (message.ipv6 != null && message.hasOwnProperty("ipv6")) {
+                object.ipv6 = $root.common.Ipv6Addr.toObject(message.ipv6, options);
+                if (options.oneofs)
+                    object.ip = "ipv6";
+            }
+            if (message.port != null && message.hasOwnProperty("port"))
+                object.port = message.port;
+            return object;
+        };
+
+        /**
+         * Converts this SocketAddr to JSON.
+         * @function toJSON
+         * @memberof common.SocketAddr
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SocketAddr.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for SocketAddr
+         * @function getTypeUrl
+         * @memberof common.SocketAddr
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        SocketAddr.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.SocketAddr";
+        };
+
+        return SocketAddr;
+    })();
+
+    common.TunnelInfo = (function() {
+
+        /**
+         * Properties of a TunnelInfo.
+         * @memberof common
+         * @interface ITunnelInfo
+         * @property {string|null} [tunnelType] TunnelInfo tunnelType
+         * @property {common.IUrl|null} [localAddr] TunnelInfo localAddr
+         * @property {common.IUrl|null} [remoteAddr] TunnelInfo remoteAddr
+         */
+
+        /**
+         * Constructs a new TunnelInfo.
+         * @memberof common
+         * @classdesc Represents a TunnelInfo.
+         * @implements ITunnelInfo
+         * @constructor
+         * @param {common.ITunnelInfo=} [properties] Properties to set
+         */
+        function TunnelInfo(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * TunnelInfo tunnelType.
+         * @member {string} tunnelType
+         * @memberof common.TunnelInfo
+         * @instance
+         */
+        TunnelInfo.prototype.tunnelType = "";
+
+        /**
+         * TunnelInfo localAddr.
+         * @member {common.IUrl|null|undefined} localAddr
+         * @memberof common.TunnelInfo
+         * @instance
+         */
+        TunnelInfo.prototype.localAddr = null;
+
+        /**
+         * TunnelInfo remoteAddr.
+         * @member {common.IUrl|null|undefined} remoteAddr
+         * @memberof common.TunnelInfo
+         * @instance
+         */
+        TunnelInfo.prototype.remoteAddr = null;
+
+        /**
+         * Creates a new TunnelInfo instance using the specified properties.
+         * @function create
+         * @memberof common.TunnelInfo
+         * @static
+         * @param {common.ITunnelInfo=} [properties] Properties to set
+         * @returns {common.TunnelInfo} TunnelInfo instance
+         */
+        TunnelInfo.create = function create(properties) {
+            return new TunnelInfo(properties);
+        };
+
+        /**
+         * Encodes the specified TunnelInfo message. Does not implicitly {@link common.TunnelInfo.verify|verify} messages.
+         * @function encode
+         * @memberof common.TunnelInfo
+         * @static
+         * @param {common.ITunnelInfo} message TunnelInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TunnelInfo.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.tunnelType != null && Object.hasOwnProperty.call(message, "tunnelType"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.tunnelType);
+            if (message.localAddr != null && Object.hasOwnProperty.call(message, "localAddr"))
+                $root.common.Url.encode(message.localAddr, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            if (message.remoteAddr != null && Object.hasOwnProperty.call(message, "remoteAddr"))
+                $root.common.Url.encode(message.remoteAddr, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified TunnelInfo message, length delimited. Does not implicitly {@link common.TunnelInfo.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.TunnelInfo
+         * @static
+         * @param {common.ITunnelInfo} message TunnelInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TunnelInfo.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a TunnelInfo message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.TunnelInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.TunnelInfo} TunnelInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TunnelInfo.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.TunnelInfo();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.tunnelType = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.localAddr = $root.common.Url.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 3: {
+                        message.remoteAddr = $root.common.Url.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a TunnelInfo message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.TunnelInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.TunnelInfo} TunnelInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TunnelInfo.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a TunnelInfo message.
+         * @function verify
+         * @memberof common.TunnelInfo
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        TunnelInfo.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.tunnelType != null && message.hasOwnProperty("tunnelType"))
+                if (!$util.isString(message.tunnelType))
+                    return "tunnelType: string expected";
+            if (message.localAddr != null && message.hasOwnProperty("localAddr")) {
+                let error = $root.common.Url.verify(message.localAddr);
+                if (error)
+                    return "localAddr." + error;
+            }
+            if (message.remoteAddr != null && message.hasOwnProperty("remoteAddr")) {
+                let error = $root.common.Url.verify(message.remoteAddr);
+                if (error)
+                    return "remoteAddr." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a TunnelInfo message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.TunnelInfo
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.TunnelInfo} TunnelInfo
+         */
+        TunnelInfo.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.TunnelInfo)
+                return object;
+            let message = new $root.common.TunnelInfo();
+            if (object.tunnelType != null)
+                message.tunnelType = String(object.tunnelType);
+            if (object.localAddr != null) {
+                if (typeof object.localAddr !== "object")
+                    throw TypeError(".common.TunnelInfo.localAddr: object expected");
+                message.localAddr = $root.common.Url.fromObject(object.localAddr);
+            }
+            if (object.remoteAddr != null) {
+                if (typeof object.remoteAddr !== "object")
+                    throw TypeError(".common.TunnelInfo.remoteAddr: object expected");
+                message.remoteAddr = $root.common.Url.fromObject(object.remoteAddr);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a TunnelInfo message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.TunnelInfo
+         * @static
+         * @param {common.TunnelInfo} message TunnelInfo
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        TunnelInfo.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.tunnelType = "";
+                object.localAddr = null;
+                object.remoteAddr = null;
+            }
+            if (message.tunnelType != null && message.hasOwnProperty("tunnelType"))
+                object.tunnelType = message.tunnelType;
+            if (message.localAddr != null && message.hasOwnProperty("localAddr"))
+                object.localAddr = $root.common.Url.toObject(message.localAddr, options);
+            if (message.remoteAddr != null && message.hasOwnProperty("remoteAddr"))
+                object.remoteAddr = $root.common.Url.toObject(message.remoteAddr, options);
+            return object;
+        };
+
+        /**
+         * Converts this TunnelInfo to JSON.
+         * @function toJSON
+         * @memberof common.TunnelInfo
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        TunnelInfo.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for TunnelInfo
+         * @function getTypeUrl
+         * @memberof common.TunnelInfo
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        TunnelInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.TunnelInfo";
+        };
+
+        return TunnelInfo;
+    })();
+
+    common.StunInfo = (function() {
+
+        /**
+         * Properties of a StunInfo.
+         * @memberof common
+         * @interface IStunInfo
+         * @property {common.NatType|null} [udpNatType] StunInfo udpNatType
+         * @property {common.NatType|null} [tcpNatType] StunInfo tcpNatType
+         * @property {number|Long|null} [lastUpdateTime] StunInfo lastUpdateTime
+         * @property {Array.<string>|null} [publicIp] StunInfo publicIp
+         * @property {number|null} [minPort] StunInfo minPort
+         * @property {number|null} [maxPort] StunInfo maxPort
+         */
+
+        /**
+         * Constructs a new StunInfo.
+         * @memberof common
+         * @classdesc Represents a StunInfo.
+         * @implements IStunInfo
+         * @constructor
+         * @param {common.IStunInfo=} [properties] Properties to set
+         */
+        function StunInfo(properties) {
+            this.publicIp = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * StunInfo udpNatType.
+         * @member {common.NatType} udpNatType
+         * @memberof common.StunInfo
+         * @instance
+         */
+        StunInfo.prototype.udpNatType = 0;
+
+        /**
+         * StunInfo tcpNatType.
+         * @member {common.NatType} tcpNatType
+         * @memberof common.StunInfo
+         * @instance
+         */
+        StunInfo.prototype.tcpNatType = 0;
+
+        /**
+         * StunInfo lastUpdateTime.
+         * @member {number|Long} lastUpdateTime
+         * @memberof common.StunInfo
+         * @instance
+         */
+        StunInfo.prototype.lastUpdateTime = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+        /**
+         * StunInfo publicIp.
+         * @member {Array.<string>} publicIp
+         * @memberof common.StunInfo
+         * @instance
+         */
+        StunInfo.prototype.publicIp = $util.emptyArray;
+
+        /**
+         * StunInfo minPort.
+         * @member {number} minPort
+         * @memberof common.StunInfo
+         * @instance
+         */
+        StunInfo.prototype.minPort = 0;
+
+        /**
+         * StunInfo maxPort.
+         * @member {number} maxPort
+         * @memberof common.StunInfo
+         * @instance
+         */
+        StunInfo.prototype.maxPort = 0;
+
+        /**
+         * Creates a new StunInfo instance using the specified properties.
+         * @function create
+         * @memberof common.StunInfo
+         * @static
+         * @param {common.IStunInfo=} [properties] Properties to set
+         * @returns {common.StunInfo} StunInfo instance
+         */
+        StunInfo.create = function create(properties) {
+            return new StunInfo(properties);
+        };
+
+        /**
+         * Encodes the specified StunInfo message. Does not implicitly {@link common.StunInfo.verify|verify} messages.
+         * @function encode
+         * @memberof common.StunInfo
+         * @static
+         * @param {common.IStunInfo} message StunInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        StunInfo.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.udpNatType != null && Object.hasOwnProperty.call(message, "udpNatType"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.udpNatType);
+            if (message.tcpNatType != null && Object.hasOwnProperty.call(message, "tcpNatType"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.tcpNatType);
+            if (message.lastUpdateTime != null && Object.hasOwnProperty.call(message, "lastUpdateTime"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int64(message.lastUpdateTime);
+            if (message.publicIp != null && message.publicIp.length)
+                for (let i = 0; i < message.publicIp.length; ++i)
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.publicIp[i]);
+            if (message.minPort != null && Object.hasOwnProperty.call(message, "minPort"))
+                writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.minPort);
+            if (message.maxPort != null && Object.hasOwnProperty.call(message, "maxPort"))
+                writer.uint32(/* id 6, wireType 0 =*/48).uint32(message.maxPort);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified StunInfo message, length delimited. Does not implicitly {@link common.StunInfo.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.StunInfo
+         * @static
+         * @param {common.IStunInfo} message StunInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        StunInfo.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a StunInfo message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.StunInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.StunInfo} StunInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        StunInfo.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.StunInfo();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.udpNatType = reader.int32();
+                        break;
+                    }
+                case 2: {
+                        message.tcpNatType = reader.int32();
+                        break;
+                    }
+                case 3: {
+                        message.lastUpdateTime = reader.int64();
+                        break;
+                    }
+                case 4: {
+                        if (!(message.publicIp && message.publicIp.length))
+                            message.publicIp = [];
+                        message.publicIp.push(reader.string());
+                        break;
+                    }
+                case 5: {
+                        message.minPort = reader.uint32();
+                        break;
+                    }
+                case 6: {
+                        message.maxPort = reader.uint32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a StunInfo message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.StunInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.StunInfo} StunInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        StunInfo.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a StunInfo message.
+         * @function verify
+         * @memberof common.StunInfo
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        StunInfo.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.udpNatType != null && message.hasOwnProperty("udpNatType"))
+                switch (message.udpNatType) {
+                default:
+                    return "udpNatType: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    break;
+                }
+            if (message.tcpNatType != null && message.hasOwnProperty("tcpNatType"))
+                switch (message.tcpNatType) {
+                default:
+                    return "tcpNatType: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    break;
+                }
+            if (message.lastUpdateTime != null && message.hasOwnProperty("lastUpdateTime"))
+                if (!$util.isInteger(message.lastUpdateTime) && !(message.lastUpdateTime && $util.isInteger(message.lastUpdateTime.low) && $util.isInteger(message.lastUpdateTime.high)))
+                    return "lastUpdateTime: integer|Long expected";
+            if (message.publicIp != null && message.hasOwnProperty("publicIp")) {
+                if (!Array.isArray(message.publicIp))
+                    return "publicIp: array expected";
+                for (let i = 0; i < message.publicIp.length; ++i)
+                    if (!$util.isString(message.publicIp[i]))
+                        return "publicIp: string[] expected";
+            }
+            if (message.minPort != null && message.hasOwnProperty("minPort"))
+                if (!$util.isInteger(message.minPort))
+                    return "minPort: integer expected";
+            if (message.maxPort != null && message.hasOwnProperty("maxPort"))
+                if (!$util.isInteger(message.maxPort))
+                    return "maxPort: integer expected";
+            return null;
+        };
+
+        /**
+         * Creates a StunInfo message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.StunInfo
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.StunInfo} StunInfo
+         */
+        StunInfo.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.StunInfo)
+                return object;
+            let message = new $root.common.StunInfo();
+            switch (object.udpNatType) {
+            default:
+                if (typeof object.udpNatType === "number") {
+                    message.udpNatType = object.udpNatType;
+                    break;
+                }
+                break;
+            case "Unknown":
+            case 0:
+                message.udpNatType = 0;
+                break;
+            case "OpenInternet":
+            case 1:
+                message.udpNatType = 1;
+                break;
+            case "NoPAT":
+            case 2:
+                message.udpNatType = 2;
+                break;
+            case "FullCone":
+            case 3:
+                message.udpNatType = 3;
+                break;
+            case "Restricted":
+            case 4:
+                message.udpNatType = 4;
+                break;
+            case "PortRestricted":
+            case 5:
+                message.udpNatType = 5;
+                break;
+            case "Symmetric":
+            case 6:
+                message.udpNatType = 6;
+                break;
+            case "SymUdpFirewall":
+            case 7:
+                message.udpNatType = 7;
+                break;
+            case "SymmetricEasyInc":
+            case 8:
+                message.udpNatType = 8;
+                break;
+            case "SymmetricEasyDec":
+            case 9:
+                message.udpNatType = 9;
+                break;
+            }
+            switch (object.tcpNatType) {
+            default:
+                if (typeof object.tcpNatType === "number") {
+                    message.tcpNatType = object.tcpNatType;
+                    break;
+                }
+                break;
+            case "Unknown":
+            case 0:
+                message.tcpNatType = 0;
+                break;
+            case "OpenInternet":
+            case 1:
+                message.tcpNatType = 1;
+                break;
+            case "NoPAT":
+            case 2:
+                message.tcpNatType = 2;
+                break;
+            case "FullCone":
+            case 3:
+                message.tcpNatType = 3;
+                break;
+            case "Restricted":
+            case 4:
+                message.tcpNatType = 4;
+                break;
+            case "PortRestricted":
+            case 5:
+                message.tcpNatType = 5;
+                break;
+            case "Symmetric":
+            case 6:
+                message.tcpNatType = 6;
+                break;
+            case "SymUdpFirewall":
+            case 7:
+                message.tcpNatType = 7;
+                break;
+            case "SymmetricEasyInc":
+            case 8:
+                message.tcpNatType = 8;
+                break;
+            case "SymmetricEasyDec":
+            case 9:
+                message.tcpNatType = 9;
+                break;
+            }
+            if (object.lastUpdateTime != null)
+                if ($util.Long)
+                    (message.lastUpdateTime = $util.Long.fromValue(object.lastUpdateTime)).unsigned = false;
+                else if (typeof object.lastUpdateTime === "string")
+                    message.lastUpdateTime = parseInt(object.lastUpdateTime, 10);
+                else if (typeof object.lastUpdateTime === "number")
+                    message.lastUpdateTime = object.lastUpdateTime;
+                else if (typeof object.lastUpdateTime === "object")
+                    message.lastUpdateTime = new $util.LongBits(object.lastUpdateTime.low >>> 0, object.lastUpdateTime.high >>> 0).toNumber();
+            if (object.publicIp) {
+                if (!Array.isArray(object.publicIp))
+                    throw TypeError(".common.StunInfo.publicIp: array expected");
+                message.publicIp = [];
+                for (let i = 0; i < object.publicIp.length; ++i)
+                    message.publicIp[i] = String(object.publicIp[i]);
+            }
+            if (object.minPort != null)
+                message.minPort = object.minPort >>> 0;
+            if (object.maxPort != null)
+                message.maxPort = object.maxPort >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a StunInfo message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.StunInfo
+         * @static
+         * @param {common.StunInfo} message StunInfo
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        StunInfo.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.publicIp = [];
+            if (options.defaults) {
+                object.udpNatType = options.enums === String ? "Unknown" : 0;
+                object.tcpNatType = options.enums === String ? "Unknown" : 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, false);
+                    object.lastUpdateTime = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.lastUpdateTime = options.longs === String ? "0" : 0;
+                object.minPort = 0;
+                object.maxPort = 0;
+            }
+            if (message.udpNatType != null && message.hasOwnProperty("udpNatType"))
+                object.udpNatType = options.enums === String ? $root.common.NatType[message.udpNatType] === undefined ? message.udpNatType : $root.common.NatType[message.udpNatType] : message.udpNatType;
+            if (message.tcpNatType != null && message.hasOwnProperty("tcpNatType"))
+                object.tcpNatType = options.enums === String ? $root.common.NatType[message.tcpNatType] === undefined ? message.tcpNatType : $root.common.NatType[message.tcpNatType] : message.tcpNatType;
+            if (message.lastUpdateTime != null && message.hasOwnProperty("lastUpdateTime"))
+                if (typeof message.lastUpdateTime === "number")
+                    object.lastUpdateTime = options.longs === String ? String(message.lastUpdateTime) : message.lastUpdateTime;
+                else
+                    object.lastUpdateTime = options.longs === String ? $util.Long.prototype.toString.call(message.lastUpdateTime) : options.longs === Number ? new $util.LongBits(message.lastUpdateTime.low >>> 0, message.lastUpdateTime.high >>> 0).toNumber() : message.lastUpdateTime;
+            if (message.publicIp && message.publicIp.length) {
+                object.publicIp = [];
+                for (let j = 0; j < message.publicIp.length; ++j)
+                    object.publicIp[j] = message.publicIp[j];
+            }
+            if (message.minPort != null && message.hasOwnProperty("minPort"))
+                object.minPort = message.minPort;
+            if (message.maxPort != null && message.hasOwnProperty("maxPort"))
+                object.maxPort = message.maxPort;
+            return object;
+        };
+
+        /**
+         * Converts this StunInfo to JSON.
+         * @function toJSON
+         * @memberof common.StunInfo
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        StunInfo.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for StunInfo
+         * @function getTypeUrl
+         * @memberof common.StunInfo
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        StunInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.StunInfo";
+        };
+
+        return StunInfo;
+    })();
+
+    common.PeerFeatureFlag = (function() {
+
+        /**
+         * Properties of a PeerFeatureFlag.
+         * @memberof common
+         * @interface IPeerFeatureFlag
+         * @property {boolean|null} [isPublicServer] PeerFeatureFlag isPublicServer
+         * @property {boolean|null} [avoidRelayData] PeerFeatureFlag avoidRelayData
+         * @property {boolean|null} [kcpInput] PeerFeatureFlag kcpInput
+         * @property {boolean|null} [noRelayKcp] PeerFeatureFlag noRelayKcp
+         */
+
+        /**
+         * Constructs a new PeerFeatureFlag.
+         * @memberof common
+         * @classdesc Represents a PeerFeatureFlag.
+         * @implements IPeerFeatureFlag
+         * @constructor
+         * @param {common.IPeerFeatureFlag=} [properties] Properties to set
+         */
+        function PeerFeatureFlag(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * PeerFeatureFlag isPublicServer.
+         * @member {boolean} isPublicServer
+         * @memberof common.PeerFeatureFlag
+         * @instance
+         */
+        PeerFeatureFlag.prototype.isPublicServer = false;
+
+        /**
+         * PeerFeatureFlag avoidRelayData.
+         * @member {boolean} avoidRelayData
+         * @memberof common.PeerFeatureFlag
+         * @instance
+         */
+        PeerFeatureFlag.prototype.avoidRelayData = false;
+
+        /**
+         * PeerFeatureFlag kcpInput.
+         * @member {boolean} kcpInput
+         * @memberof common.PeerFeatureFlag
+         * @instance
+         */
+        PeerFeatureFlag.prototype.kcpInput = false;
+
+        /**
+         * PeerFeatureFlag noRelayKcp.
+         * @member {boolean} noRelayKcp
+         * @memberof common.PeerFeatureFlag
+         * @instance
+         */
+        PeerFeatureFlag.prototype.noRelayKcp = false;
+
+        /**
+         * Creates a new PeerFeatureFlag instance using the specified properties.
+         * @function create
+         * @memberof common.PeerFeatureFlag
+         * @static
+         * @param {common.IPeerFeatureFlag=} [properties] Properties to set
+         * @returns {common.PeerFeatureFlag} PeerFeatureFlag instance
+         */
+        PeerFeatureFlag.create = function create(properties) {
+            return new PeerFeatureFlag(properties);
+        };
+
+        /**
+         * Encodes the specified PeerFeatureFlag message. Does not implicitly {@link common.PeerFeatureFlag.verify|verify} messages.
+         * @function encode
+         * @memberof common.PeerFeatureFlag
+         * @static
+         * @param {common.IPeerFeatureFlag} message PeerFeatureFlag message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        PeerFeatureFlag.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.isPublicServer != null && Object.hasOwnProperty.call(message, "isPublicServer"))
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.isPublicServer);
+            if (message.avoidRelayData != null && Object.hasOwnProperty.call(message, "avoidRelayData"))
+                writer.uint32(/* id 2, wireType 0 =*/16).bool(message.avoidRelayData);
+            if (message.kcpInput != null && Object.hasOwnProperty.call(message, "kcpInput"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.kcpInput);
+            if (message.noRelayKcp != null && Object.hasOwnProperty.call(message, "noRelayKcp"))
+                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.noRelayKcp);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified PeerFeatureFlag message, length delimited. Does not implicitly {@link common.PeerFeatureFlag.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.PeerFeatureFlag
+         * @static
+         * @param {common.IPeerFeatureFlag} message PeerFeatureFlag message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        PeerFeatureFlag.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a PeerFeatureFlag message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.PeerFeatureFlag
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.PeerFeatureFlag} PeerFeatureFlag
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        PeerFeatureFlag.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.PeerFeatureFlag();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.isPublicServer = reader.bool();
+                        break;
+                    }
+                case 2: {
+                        message.avoidRelayData = reader.bool();
+                        break;
+                    }
+                case 3: {
+                        message.kcpInput = reader.bool();
+                        break;
+                    }
+                case 4: {
+                        message.noRelayKcp = reader.bool();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a PeerFeatureFlag message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.PeerFeatureFlag
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.PeerFeatureFlag} PeerFeatureFlag
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        PeerFeatureFlag.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a PeerFeatureFlag message.
+         * @function verify
+         * @memberof common.PeerFeatureFlag
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        PeerFeatureFlag.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.isPublicServer != null && message.hasOwnProperty("isPublicServer"))
+                if (typeof message.isPublicServer !== "boolean")
+                    return "isPublicServer: boolean expected";
+            if (message.avoidRelayData != null && message.hasOwnProperty("avoidRelayData"))
+                if (typeof message.avoidRelayData !== "boolean")
+                    return "avoidRelayData: boolean expected";
+            if (message.kcpInput != null && message.hasOwnProperty("kcpInput"))
+                if (typeof message.kcpInput !== "boolean")
+                    return "kcpInput: boolean expected";
+            if (message.noRelayKcp != null && message.hasOwnProperty("noRelayKcp"))
+                if (typeof message.noRelayKcp !== "boolean")
+                    return "noRelayKcp: boolean expected";
+            return null;
+        };
+
+        /**
+         * Creates a PeerFeatureFlag message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.PeerFeatureFlag
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.PeerFeatureFlag} PeerFeatureFlag
+         */
+        PeerFeatureFlag.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.PeerFeatureFlag)
+                return object;
+            let message = new $root.common.PeerFeatureFlag();
+            if (object.isPublicServer != null)
+                message.isPublicServer = Boolean(object.isPublicServer);
+            if (object.avoidRelayData != null)
+                message.avoidRelayData = Boolean(object.avoidRelayData);
+            if (object.kcpInput != null)
+                message.kcpInput = Boolean(object.kcpInput);
+            if (object.noRelayKcp != null)
+                message.noRelayKcp = Boolean(object.noRelayKcp);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a PeerFeatureFlag message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.PeerFeatureFlag
+         * @static
+         * @param {common.PeerFeatureFlag} message PeerFeatureFlag
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        PeerFeatureFlag.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.isPublicServer = false;
+                object.avoidRelayData = false;
+                object.kcpInput = false;
+                object.noRelayKcp = false;
+            }
+            if (message.isPublicServer != null && message.hasOwnProperty("isPublicServer"))
+                object.isPublicServer = message.isPublicServer;
+            if (message.avoidRelayData != null && message.hasOwnProperty("avoidRelayData"))
+                object.avoidRelayData = message.avoidRelayData;
+            if (message.kcpInput != null && message.hasOwnProperty("kcpInput"))
+                object.kcpInput = message.kcpInput;
+            if (message.noRelayKcp != null && message.hasOwnProperty("noRelayKcp"))
+                object.noRelayKcp = message.noRelayKcp;
+            return object;
+        };
+
+        /**
+         * Converts this PeerFeatureFlag to JSON.
+         * @function toJSON
+         * @memberof common.PeerFeatureFlag
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        PeerFeatureFlag.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for PeerFeatureFlag
+         * @function getTypeUrl
+         * @memberof common.PeerFeatureFlag
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        PeerFeatureFlag.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.PeerFeatureFlag";
+        };
+
+        return PeerFeatureFlag;
+    })();
+
+    /**
+     * SocketType enum.
+     * @name common.SocketType
+     * @enum {number}
+     * @property {number} TCP=0 TCP value
+     * @property {number} UDP=1 UDP value
+     */
+    common.SocketType = (function() {
+        const valuesById = {}, values = Object.create(valuesById);
+        values[valuesById[0] = "TCP"] = 0;
+        values[valuesById[1] = "UDP"] = 1;
+        return values;
+    })();
+
+    common.PortForwardConfigPb = (function() {
+
+        /**
+         * Properties of a PortForwardConfigPb.
+         * @memberof common
+         * @interface IPortForwardConfigPb
+         * @property {common.ISocketAddr|null} [bindAddr] PortForwardConfigPb bindAddr
+         * @property {common.ISocketAddr|null} [dstAddr] PortForwardConfigPb dstAddr
+         * @property {common.SocketType|null} [socketType] PortForwardConfigPb socketType
+         */
+
+        /**
+         * Constructs a new PortForwardConfigPb.
+         * @memberof common
+         * @classdesc Represents a PortForwardConfigPb.
+         * @implements IPortForwardConfigPb
+         * @constructor
+         * @param {common.IPortForwardConfigPb=} [properties] Properties to set
+         */
+        function PortForwardConfigPb(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * PortForwardConfigPb bindAddr.
+         * @member {common.ISocketAddr|null|undefined} bindAddr
+         * @memberof common.PortForwardConfigPb
+         * @instance
+         */
+        PortForwardConfigPb.prototype.bindAddr = null;
+
+        /**
+         * PortForwardConfigPb dstAddr.
+         * @member {common.ISocketAddr|null|undefined} dstAddr
+         * @memberof common.PortForwardConfigPb
+         * @instance
+         */
+        PortForwardConfigPb.prototype.dstAddr = null;
+
+        /**
+         * PortForwardConfigPb socketType.
+         * @member {common.SocketType} socketType
+         * @memberof common.PortForwardConfigPb
+         * @instance
+         */
+        PortForwardConfigPb.prototype.socketType = 0;
+
+        /**
+         * Creates a new PortForwardConfigPb instance using the specified properties.
+         * @function create
+         * @memberof common.PortForwardConfigPb
+         * @static
+         * @param {common.IPortForwardConfigPb=} [properties] Properties to set
+         * @returns {common.PortForwardConfigPb} PortForwardConfigPb instance
+         */
+        PortForwardConfigPb.create = function create(properties) {
+            return new PortForwardConfigPb(properties);
+        };
+
+        /**
+         * Encodes the specified PortForwardConfigPb message. Does not implicitly {@link common.PortForwardConfigPb.verify|verify} messages.
+         * @function encode
+         * @memberof common.PortForwardConfigPb
+         * @static
+         * @param {common.IPortForwardConfigPb} message PortForwardConfigPb message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        PortForwardConfigPb.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.bindAddr != null && Object.hasOwnProperty.call(message, "bindAddr"))
+                $root.common.SocketAddr.encode(message.bindAddr, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            if (message.dstAddr != null && Object.hasOwnProperty.call(message, "dstAddr"))
+                $root.common.SocketAddr.encode(message.dstAddr, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            if (message.socketType != null && Object.hasOwnProperty.call(message, "socketType"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.socketType);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified PortForwardConfigPb message, length delimited. Does not implicitly {@link common.PortForwardConfigPb.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.PortForwardConfigPb
+         * @static
+         * @param {common.IPortForwardConfigPb} message PortForwardConfigPb message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        PortForwardConfigPb.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a PortForwardConfigPb message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.PortForwardConfigPb
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.PortForwardConfigPb} PortForwardConfigPb
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        PortForwardConfigPb.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.PortForwardConfigPb();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.bindAddr = $root.common.SocketAddr.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 2: {
+                        message.dstAddr = $root.common.SocketAddr.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 3: {
+                        message.socketType = reader.int32();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a PortForwardConfigPb message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.PortForwardConfigPb
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.PortForwardConfigPb} PortForwardConfigPb
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        PortForwardConfigPb.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a PortForwardConfigPb message.
+         * @function verify
+         * @memberof common.PortForwardConfigPb
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        PortForwardConfigPb.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.bindAddr != null && message.hasOwnProperty("bindAddr")) {
+                let error = $root.common.SocketAddr.verify(message.bindAddr);
+                if (error)
+                    return "bindAddr." + error;
+            }
+            if (message.dstAddr != null && message.hasOwnProperty("dstAddr")) {
+                let error = $root.common.SocketAddr.verify(message.dstAddr);
+                if (error)
+                    return "dstAddr." + error;
+            }
+            if (message.socketType != null && message.hasOwnProperty("socketType"))
+                switch (message.socketType) {
+                default:
+                    return "socketType: enum value expected";
+                case 0:
+                case 1:
+                    break;
+                }
+            return null;
+        };
+
+        /**
+         * Creates a PortForwardConfigPb message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.PortForwardConfigPb
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.PortForwardConfigPb} PortForwardConfigPb
+         */
+        PortForwardConfigPb.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.PortForwardConfigPb)
+                return object;
+            let message = new $root.common.PortForwardConfigPb();
+            if (object.bindAddr != null) {
+                if (typeof object.bindAddr !== "object")
+                    throw TypeError(".common.PortForwardConfigPb.bindAddr: object expected");
+                message.bindAddr = $root.common.SocketAddr.fromObject(object.bindAddr);
+            }
+            if (object.dstAddr != null) {
+                if (typeof object.dstAddr !== "object")
+                    throw TypeError(".common.PortForwardConfigPb.dstAddr: object expected");
+                message.dstAddr = $root.common.SocketAddr.fromObject(object.dstAddr);
+            }
+            switch (object.socketType) {
+            default:
+                if (typeof object.socketType === "number") {
+                    message.socketType = object.socketType;
+                    break;
+                }
+                break;
+            case "TCP":
+            case 0:
+                message.socketType = 0;
+                break;
+            case "UDP":
+            case 1:
+                message.socketType = 1;
+                break;
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a PortForwardConfigPb message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.PortForwardConfigPb
+         * @static
+         * @param {common.PortForwardConfigPb} message PortForwardConfigPb
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        PortForwardConfigPb.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.bindAddr = null;
+                object.dstAddr = null;
+                object.socketType = options.enums === String ? "TCP" : 0;
+            }
+            if (message.bindAddr != null && message.hasOwnProperty("bindAddr"))
+                object.bindAddr = $root.common.SocketAddr.toObject(message.bindAddr, options);
+            if (message.dstAddr != null && message.hasOwnProperty("dstAddr"))
+                object.dstAddr = $root.common.SocketAddr.toObject(message.dstAddr, options);
+            if (message.socketType != null && message.hasOwnProperty("socketType"))
+                object.socketType = options.enums === String ? $root.common.SocketType[message.socketType] === undefined ? message.socketType : $root.common.SocketType[message.socketType] : message.socketType;
+            return object;
+        };
+
+        /**
+         * Converts this PortForwardConfigPb to JSON.
+         * @function toJSON
+         * @memberof common.PortForwardConfigPb
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        PortForwardConfigPb.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for PortForwardConfigPb
+         * @function getTypeUrl
+         * @memberof common.PortForwardConfigPb
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        PortForwardConfigPb.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.PortForwardConfigPb";
+        };
+
+        return PortForwardConfigPb;
+    })();
+
+    common.ProxyDstInfo = (function() {
+
+        /**
+         * Properties of a ProxyDstInfo.
+         * @memberof common
+         * @interface IProxyDstInfo
+         * @property {common.ISocketAddr|null} [dstAddr] ProxyDstInfo dstAddr
+         */
+
+        /**
+         * Constructs a new ProxyDstInfo.
+         * @memberof common
+         * @classdesc Represents a ProxyDstInfo.
+         * @implements IProxyDstInfo
+         * @constructor
+         * @param {common.IProxyDstInfo=} [properties] Properties to set
+         */
+        function ProxyDstInfo(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * ProxyDstInfo dstAddr.
+         * @member {common.ISocketAddr|null|undefined} dstAddr
+         * @memberof common.ProxyDstInfo
+         * @instance
+         */
+        ProxyDstInfo.prototype.dstAddr = null;
+
+        /**
+         * Creates a new ProxyDstInfo instance using the specified properties.
+         * @function create
+         * @memberof common.ProxyDstInfo
+         * @static
+         * @param {common.IProxyDstInfo=} [properties] Properties to set
+         * @returns {common.ProxyDstInfo} ProxyDstInfo instance
+         */
+        ProxyDstInfo.create = function create(properties) {
+            return new ProxyDstInfo(properties);
+        };
+
+        /**
+         * Encodes the specified ProxyDstInfo message. Does not implicitly {@link common.ProxyDstInfo.verify|verify} messages.
+         * @function encode
+         * @memberof common.ProxyDstInfo
+         * @static
+         * @param {common.IProxyDstInfo} message ProxyDstInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ProxyDstInfo.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.dstAddr != null && Object.hasOwnProperty.call(message, "dstAddr"))
+                $root.common.SocketAddr.encode(message.dstAddr, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified ProxyDstInfo message, length delimited. Does not implicitly {@link common.ProxyDstInfo.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.ProxyDstInfo
+         * @static
+         * @param {common.IProxyDstInfo} message ProxyDstInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        ProxyDstInfo.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a ProxyDstInfo message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.ProxyDstInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.ProxyDstInfo} ProxyDstInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ProxyDstInfo.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.ProxyDstInfo();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.dstAddr = $root.common.SocketAddr.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a ProxyDstInfo message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.ProxyDstInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.ProxyDstInfo} ProxyDstInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        ProxyDstInfo.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a ProxyDstInfo message.
+         * @function verify
+         * @memberof common.ProxyDstInfo
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        ProxyDstInfo.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.dstAddr != null && message.hasOwnProperty("dstAddr")) {
+                let error = $root.common.SocketAddr.verify(message.dstAddr);
+                if (error)
+                    return "dstAddr." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a ProxyDstInfo message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.ProxyDstInfo
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.ProxyDstInfo} ProxyDstInfo
+         */
+        ProxyDstInfo.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.ProxyDstInfo)
+                return object;
+            let message = new $root.common.ProxyDstInfo();
+            if (object.dstAddr != null) {
+                if (typeof object.dstAddr !== "object")
+                    throw TypeError(".common.ProxyDstInfo.dstAddr: object expected");
+                message.dstAddr = $root.common.SocketAddr.fromObject(object.dstAddr);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a ProxyDstInfo message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.ProxyDstInfo
+         * @static
+         * @param {common.ProxyDstInfo} message ProxyDstInfo
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        ProxyDstInfo.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults)
+                object.dstAddr = null;
+            if (message.dstAddr != null && message.hasOwnProperty("dstAddr"))
+                object.dstAddr = $root.common.SocketAddr.toObject(message.dstAddr, options);
+            return object;
+        };
+
+        /**
+         * Converts this ProxyDstInfo to JSON.
+         * @function toJSON
+         * @memberof common.ProxyDstInfo
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        ProxyDstInfo.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for ProxyDstInfo
+         * @function getTypeUrl
+         * @memberof common.ProxyDstInfo
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        ProxyDstInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.ProxyDstInfo";
+        };
+
+        return ProxyDstInfo;
+    })();
+
+    common.LimiterConfig = (function() {
+
+        /**
+         * Properties of a LimiterConfig.
+         * @memberof common
+         * @interface ILimiterConfig
+         * @property {number|Long|null} [burstRate] LimiterConfig burstRate
+         * @property {number|Long|null} [bps] LimiterConfig bps
+         * @property {number|Long|null} [fillDurationMs] LimiterConfig fillDurationMs
+         */
+
+        /**
+         * Constructs a new LimiterConfig.
+         * @memberof common
+         * @classdesc Represents a LimiterConfig.
+         * @implements ILimiterConfig
+         * @constructor
+         * @param {common.ILimiterConfig=} [properties] Properties to set
+         */
+        function LimiterConfig(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * LimiterConfig burstRate.
+         * @member {number|Long|null|undefined} burstRate
+         * @memberof common.LimiterConfig
+         * @instance
+         */
+        LimiterConfig.prototype.burstRate = null;
+
+        /**
+         * LimiterConfig bps.
+         * @member {number|Long|null|undefined} bps
+         * @memberof common.LimiterConfig
+         * @instance
+         */
+        LimiterConfig.prototype.bps = null;
+
+        /**
+         * LimiterConfig fillDurationMs.
+         * @member {number|Long|null|undefined} fillDurationMs
+         * @memberof common.LimiterConfig
+         * @instance
+         */
+        LimiterConfig.prototype.fillDurationMs = null;
+
+        // OneOf field names bound to virtual getters and setters
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(LimiterConfig.prototype, "_burstRate", {
+            get: $util.oneOfGetter($oneOfFields = ["burstRate"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(LimiterConfig.prototype, "_bps", {
+            get: $util.oneOfGetter($oneOfFields = ["bps"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(LimiterConfig.prototype, "_fillDurationMs", {
+            get: $util.oneOfGetter($oneOfFields = ["fillDurationMs"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new LimiterConfig instance using the specified properties.
+         * @function create
+         * @memberof common.LimiterConfig
+         * @static
+         * @param {common.ILimiterConfig=} [properties] Properties to set
+         * @returns {common.LimiterConfig} LimiterConfig instance
+         */
+        LimiterConfig.create = function create(properties) {
+            return new LimiterConfig(properties);
+        };
+
+        /**
+         * Encodes the specified LimiterConfig message. Does not implicitly {@link common.LimiterConfig.verify|verify} messages.
+         * @function encode
+         * @memberof common.LimiterConfig
+         * @static
+         * @param {common.ILimiterConfig} message LimiterConfig message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        LimiterConfig.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.burstRate != null && Object.hasOwnProperty.call(message, "burstRate"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.burstRate);
+            if (message.bps != null && Object.hasOwnProperty.call(message, "bps"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.bps);
+            if (message.fillDurationMs != null && Object.hasOwnProperty.call(message, "fillDurationMs"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.fillDurationMs);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified LimiterConfig message, length delimited. Does not implicitly {@link common.LimiterConfig.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof common.LimiterConfig
+         * @static
+         * @param {common.ILimiterConfig} message LimiterConfig message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        LimiterConfig.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a LimiterConfig message from the specified reader or buffer.
+         * @function decode
+         * @memberof common.LimiterConfig
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {common.LimiterConfig} LimiterConfig
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        LimiterConfig.decode = function decode(reader, length, error) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.common.LimiterConfig();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                if (tag === error)
+                    break;
+                switch (tag >>> 3) {
+                case 1: {
+                        message.burstRate = reader.uint64();
+                        break;
+                    }
+                case 2: {
+                        message.bps = reader.uint64();
+                        break;
+                    }
+                case 3: {
+                        message.fillDurationMs = reader.uint64();
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a LimiterConfig message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof common.LimiterConfig
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {common.LimiterConfig} LimiterConfig
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        LimiterConfig.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a LimiterConfig message.
+         * @function verify
+         * @memberof common.LimiterConfig
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        LimiterConfig.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            let properties = {};
+            if (message.burstRate != null && message.hasOwnProperty("burstRate")) {
+                properties._burstRate = 1;
+                if (!$util.isInteger(message.burstRate) && !(message.burstRate && $util.isInteger(message.burstRate.low) && $util.isInteger(message.burstRate.high)))
+                    return "burstRate: integer|Long expected";
+            }
+            if (message.bps != null && message.hasOwnProperty("bps")) {
+                properties._bps = 1;
+                if (!$util.isInteger(message.bps) && !(message.bps && $util.isInteger(message.bps.low) && $util.isInteger(message.bps.high)))
+                    return "bps: integer|Long expected";
+            }
+            if (message.fillDurationMs != null && message.hasOwnProperty("fillDurationMs")) {
+                properties._fillDurationMs = 1;
+                if (!$util.isInteger(message.fillDurationMs) && !(message.fillDurationMs && $util.isInteger(message.fillDurationMs.low) && $util.isInteger(message.fillDurationMs.high)))
+                    return "fillDurationMs: integer|Long expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a LimiterConfig message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof common.LimiterConfig
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {common.LimiterConfig} LimiterConfig
+         */
+        LimiterConfig.fromObject = function fromObject(object) {
+            if (object instanceof $root.common.LimiterConfig)
+                return object;
+            let message = new $root.common.LimiterConfig();
+            if (object.burstRate != null)
+                if ($util.Long)
+                    (message.burstRate = $util.Long.fromValue(object.burstRate)).unsigned = true;
+                else if (typeof object.burstRate === "string")
+                    message.burstRate = parseInt(object.burstRate, 10);
+                else if (typeof object.burstRate === "number")
+                    message.burstRate = object.burstRate;
+                else if (typeof object.burstRate === "object")
+                    message.burstRate = new $util.LongBits(object.burstRate.low >>> 0, object.burstRate.high >>> 0).toNumber(true);
+            if (object.bps != null)
+                if ($util.Long)
+                    (message.bps = $util.Long.fromValue(object.bps)).unsigned = true;
+                else if (typeof object.bps === "string")
+                    message.bps = parseInt(object.bps, 10);
+                else if (typeof object.bps === "number")
+                    message.bps = object.bps;
+                else if (typeof object.bps === "object")
+                    message.bps = new $util.LongBits(object.bps.low >>> 0, object.bps.high >>> 0).toNumber(true);
+            if (object.fillDurationMs != null)
+                if ($util.Long)
+                    (message.fillDurationMs = $util.Long.fromValue(object.fillDurationMs)).unsigned = true;
+                else if (typeof object.fillDurationMs === "string")
+                    message.fillDurationMs = parseInt(object.fillDurationMs, 10);
+                else if (typeof object.fillDurationMs === "number")
+                    message.fillDurationMs = object.fillDurationMs;
+                else if (typeof object.fillDurationMs === "object")
+                    message.fillDurationMs = new $util.LongBits(object.fillDurationMs.low >>> 0, object.fillDurationMs.high >>> 0).toNumber(true);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a LimiterConfig message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof common.LimiterConfig
+         * @static
+         * @param {common.LimiterConfig} message LimiterConfig
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        LimiterConfig.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (message.burstRate != null && message.hasOwnProperty("burstRate")) {
+                if (typeof message.burstRate === "number")
+                    object.burstRate = options.longs === String ? String(message.burstRate) : message.burstRate;
+                else
+                    object.burstRate = options.longs === String ? $util.Long.prototype.toString.call(message.burstRate) : options.longs === Number ? new $util.LongBits(message.burstRate.low >>> 0, message.burstRate.high >>> 0).toNumber(true) : message.burstRate;
+                if (options.oneofs)
+                    object._burstRate = "burstRate";
+            }
+            if (message.bps != null && message.hasOwnProperty("bps")) {
+                if (typeof message.bps === "number")
+                    object.bps = options.longs === String ? String(message.bps) : message.bps;
+                else
+                    object.bps = options.longs === String ? $util.Long.prototype.toString.call(message.bps) : options.longs === Number ? new $util.LongBits(message.bps.low >>> 0, message.bps.high >>> 0).toNumber(true) : message.bps;
+                if (options.oneofs)
+                    object._bps = "bps";
+            }
+            if (message.fillDurationMs != null && message.hasOwnProperty("fillDurationMs")) {
+                if (typeof message.fillDurationMs === "number")
+                    object.fillDurationMs = options.longs === String ? String(message.fillDurationMs) : message.fillDurationMs;
+                else
+                    object.fillDurationMs = options.longs === String ? $util.Long.prototype.toString.call(message.fillDurationMs) : options.longs === Number ? new $util.LongBits(message.fillDurationMs.low >>> 0, message.fillDurationMs.high >>> 0).toNumber(true) : message.fillDurationMs;
+                if (options.oneofs)
+                    object._fillDurationMs = "fillDurationMs";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this LimiterConfig to JSON.
+         * @function toJSON
+         * @memberof common.LimiterConfig
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        LimiterConfig.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for LimiterConfig
+         * @function getTypeUrl
+         * @memberof common.LimiterConfig
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        LimiterConfig.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/common.LimiterConfig";
+        };
+
+        return LimiterConfig;
+    })();
+
+    return common;
+})();
+
 export const peer_rpc = $root.peer_rpc = (() => {
 
     /**
@@ -8912,7 +8600,7 @@ export const peer_rpc = $root.peer_rpc = (() => {
          * @property {number|null} [version] RoutePeerInfo version
          * @property {string|null} [easytierVersion] RoutePeerInfo easytierVersion
          * @property {common.IPeerFeatureFlag|null} [featureFlag] RoutePeerInfo featureFlag
-         * @property {Long|null} [peerRouteId] RoutePeerInfo peerRouteId
+         * @property {number|Long|null} [peerRouteId] RoutePeerInfo peerRouteId
          * @property {number|null} [networkLength] RoutePeerInfo networkLength
          * @property {number|null} [quicPort] RoutePeerInfo quicPort
          * @property {common.IIpv6Inet|null} [ipv6Addr] RoutePeerInfo ipv6Addr
@@ -9026,7 +8714,7 @@ export const peer_rpc = $root.peer_rpc = (() => {
 
         /**
          * RoutePeerInfo peerRouteId.
-         * @member {Long} peerRouteId
+         * @member {number|Long} peerRouteId
          * @memberof peer_rpc.RoutePeerInfo
          * @instance
          */
@@ -12122,7 +11810,7 @@ export const peer_rpc = $root.peer_rpc = (() => {
          * @memberof peer_rpc
          * @interface ISyncRouteInfoRequest
          * @property {number|null} [myPeerId] SyncRouteInfoRequest myPeerId
-         * @property {Long|null} [mySessionId] SyncRouteInfoRequest mySessionId
+         * @property {number|Long|null} [mySessionId] SyncRouteInfoRequest mySessionId
          * @property {boolean|null} [isInitiator] SyncRouteInfoRequest isInitiator
          * @property {peer_rpc.IRoutePeerInfos|null} [peerInfos] SyncRouteInfoRequest peerInfos
          * @property {peer_rpc.IRouteConnBitmap|null} [connBitmap] SyncRouteInfoRequest connBitmap
@@ -12154,7 +11842,7 @@ export const peer_rpc = $root.peer_rpc = (() => {
 
         /**
          * SyncRouteInfoRequest mySessionId.
-         * @member {Long} mySessionId
+         * @member {number|Long} mySessionId
          * @memberof peer_rpc.SyncRouteInfoRequest
          * @instance
          */
@@ -12486,7 +12174,7 @@ export const peer_rpc = $root.peer_rpc = (() => {
          * @memberof peer_rpc
          * @interface ISyncRouteInfoResponse
          * @property {boolean|null} [isInitiator] SyncRouteInfoResponse isInitiator
-         * @property {Long|null} [sessionId] SyncRouteInfoResponse sessionId
+         * @property {number|Long|null} [sessionId] SyncRouteInfoResponse sessionId
          * @property {peer_rpc.SyncRouteInfoError|null} [error] SyncRouteInfoResponse error
          */
 
@@ -12515,7 +12203,7 @@ export const peer_rpc = $root.peer_rpc = (() => {
 
         /**
          * SyncRouteInfoResponse sessionId.
-         * @member {Long} sessionId
+         * @member {number|Long} sessionId
          * @memberof peer_rpc.SyncRouteInfoResponse
          * @instance
          */
@@ -17216,7 +16904,7 @@ export const peer_rpc = $root.peer_rpc = (() => {
          * Properties of a GetGlobalPeerMapRequest.
          * @memberof peer_rpc
          * @interface IGetGlobalPeerMapRequest
-         * @property {Long|null} [digest] GetGlobalPeerMapRequest digest
+         * @property {number|Long|null} [digest] GetGlobalPeerMapRequest digest
          */
 
         /**
@@ -17236,7 +16924,7 @@ export const peer_rpc = $root.peer_rpc = (() => {
 
         /**
          * GetGlobalPeerMapRequest digest.
-         * @member {Long} digest
+         * @member {number|Long} digest
          * @memberof peer_rpc.GetGlobalPeerMapRequest
          * @instance
          */
@@ -17436,7 +17124,7 @@ export const peer_rpc = $root.peer_rpc = (() => {
          * @memberof peer_rpc
          * @interface IGetGlobalPeerMapResponse
          * @property {Object.<string,peer_rpc.IPeerInfoForGlobalMap>|null} [globalPeerMap] GetGlobalPeerMapResponse globalPeerMap
-         * @property {Long|null} [digest] GetGlobalPeerMapResponse digest
+         * @property {number|Long|null} [digest] GetGlobalPeerMapResponse digest
          */
 
         /**
@@ -17465,7 +17153,7 @@ export const peer_rpc = $root.peer_rpc = (() => {
 
         /**
          * GetGlobalPeerMapResponse digest.
-         * @member {Long|null|undefined} digest
+         * @member {number|Long|null|undefined} digest
          * @memberof peer_rpc.GetGlobalPeerMapResponse
          * @instance
          */
@@ -18441,7 +18129,7 @@ export const google = $root.google = (() => {
              * Properties of a Timestamp.
              * @memberof google.protobuf
              * @interface ITimestamp
-             * @property {Long|null} [seconds] Timestamp seconds
+             * @property {number|Long|null} [seconds] Timestamp seconds
              * @property {number|null} [nanos] Timestamp nanos
              */
 
@@ -18462,7 +18150,7 @@ export const google = $root.google = (() => {
 
             /**
              * Timestamp seconds.
-             * @member {Long} seconds
+             * @member {number|Long} seconds
              * @memberof google.protobuf.Timestamp
              * @instance
              */

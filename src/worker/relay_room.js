@@ -132,13 +132,7 @@ export class RelayRoom {
     }
 
     if (ws.peerId) {
-      const groupKey = ws.groupKey;
-      const removed = this.peerManager.removePeer(ws);
-      if (removed) {
-        try {
-          this.peerManager.broadcastRouteUpdate(this.types, groupKey);
-        } catch (_) { }
-      }
+      this.peerManager.removePeer(ws);
     }
   }
 

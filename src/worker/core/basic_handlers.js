@@ -1,7 +1,7 @@
 import { MAGIC, VERSION, MY_PEER_ID, PacketType } from './constants.js';
 import { createHeader } from './packet.js';
 import { getPeerManager } from './peer_manager.js';
-import { wrapPacket, randomU64String } from './crypto.js';
+import { wrapPacket } from './crypto.js';
 
 const WS_OPEN = (typeof WebSocket !== 'undefined' && WebSocket.OPEN) ? WebSocket.OPEN : 1;
 
@@ -71,25 +71,9 @@ export function handleHandshake(ws, header, payload, types) {
     const respBuffer = types.HandshakeRequest.encode(respPayload).finish();
     const respHeader = createHeader(MY_PEER_ID, req.myPeerId, PacketType.HandShake, respBuffer.length);
     ws.send(Buffer.concat([respHeader, Buffer.from(respBuffer)]));
-    if (!ws.serverSessionId) {
-      ws.serverSessionId = randomU64String();
-    }
-    if (ws.weAreInitiator === undefined) {
-      ws.weAreInitiator = false;
-    }
-
-    // 握手刚完成时主动推一次全量路由，让新连入节点尽快拿到房间视图。
-    setTimeout(() => {
-      try {
-        if (ws.readyState === WS_OPEN) {
-          const pm = getPeerManager();
-          pm.pushRouteUpdateTo(req.myPeerId, ws, types, { forceFull: true });
-          pm.broadcastRouteUpdate(types, ws.groupKey, req.myPeerId, { forceFull: false });
-        }
-      } catch (e) {
-        console.error(`Failed to push initial route update to ${req.myPeerId}:`, e.message);
-      }
-    }, 50);
+    // 握手完成后只标记会话需要同步，由 session scheduler 按统一节奏发包。
+    pm.syncPeerNow(ws.groupKey, req.myPeerId, 'handshake_initial', { forceFull: true });
+    pm.syncGroupNow(ws.groupKey, 'handshake_broadcast', { excludePeerId: req.myPeerId });
 
   } catch (e) {
     console.error('Handshake error:', e);
@@ -120,11 +104,6 @@ export function handleForwarding(sourceWs, header, fullMessage, types) {
     } catch (e) {
       console.error(`Forward to ${targetPeerId} failed: ${e.message}`);
       pm.removePeer(targetWs);
-      try {
-        pm.broadcastRouteUpdate(types, srcGroup);
-      } catch (err) {
-        console.error(`Broadcast after forward failure failed: ${err.message}`);
-      }
     }
   }
 }

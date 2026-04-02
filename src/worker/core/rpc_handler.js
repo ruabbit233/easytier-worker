@@ -1,7 +1,7 @@
 import { MY_PEER_ID, PacketType } from './constants.js';
 import { createHeader } from './packet.js';
 import { getPeerManager } from './peer_manager.js';
-import { wrapPacket, randomU64String, sha256 } from './crypto.js';
+import { wrapPacket, sha256 } from './crypto.js';
 import { compressRpcBody, decompressRpcBody } from './compress.js';
 import { loadProtos } from './protos.js';
 
@@ -400,7 +400,9 @@ export function handleRpcResp(ws, header, payload, types) {
         const resp = types.SyncRouteInfoResponse.decode(rpcRespBody);
         const sessionId = resp && resp.sessionId ? resp.sessionId : null;
         if (sessionId && ws && ws.groupKey !== undefined) {
-          pm().onRouteSessionAck(ws.groupKey, header.fromPeerId, sessionId, ws.weAreInitiator);
+          pm().onRouteSessionAck(ws.groupKey, header.fromPeerId, sessionId, {
+            dstIsInitiator: resp.isInitiator,
+          });
           console.log(`RpcResp SyncRouteInfoResponse from=${header.fromPeerId} sessionId=${sessionId} acked`);
         }
       } catch (e) {
@@ -424,15 +426,9 @@ export function handleRpcResp(ws, header, payload, types) {
 
 function handleSyncRouteInfo(ws, fromPeerId, reqRpcPacket, syncReq, types) {
   const groupKey = ws && ws.groupKey ? String(ws.groupKey) : '';
-
-  if (!ws.serverSessionId) {
-    ws.serverSessionId = randomU64String();
-  }
-
-  if (syncReq && typeof syncReq.isInitiator === 'boolean') {
-    ws.weAreInitiator = !syncReq.isInitiator;
-  }
-  pm().onRouteSessionAck(groupKey, fromPeerId, syncReq.mySessionId, ws.weAreInitiator);
+  const session = pm().onRouteSessionAck(groupKey, fromPeerId, syncReq.mySessionId, {
+    dstIsInitiator: syncReq.isInitiator,
+  });
 
   let hasNewPeers = false;
   if (syncReq.peerInfos && syncReq.peerInfos.items) {
@@ -451,8 +447,8 @@ function handleSyncRouteInfo(ws, fromPeerId, reqRpcPacket, syncReq, types) {
   }
 
   const respPayload = {
-    isInitiator: !syncReq.isInitiator,
-    sessionId: ws.serverSessionId
+    isInitiator: !!session.weAreInitiator,
+    sessionId: session.mySessionId
   };
   const respBytes = types.SyncRouteInfoResponse.encode(respPayload).finish();
   if (reqRpcPacket.compressionInfo && reqRpcPacket.compressionInfo.algo > 1) {
@@ -468,24 +464,5 @@ function handleSyncRouteInfo(ws, fromPeerId, reqRpcPacket, syncReq, types) {
     // 这里不再抛出，尽量让后续流程还能继续推进。
   }
 
-  // ACK 之后只在确实存在增量时再补发同步，避免双方因空更新或全量回推形成高频往返。
-  try {
-    const pushed = pm().pushRouteUpdateTo(fromPeerId, ws, types, { forceFull: false });
-    if (pushed) {
-      console.log(`Successfully pushed incremental route update to peer ${fromPeerId}`);
-    } else {
-      console.log(`No incremental route update needed for peer ${fromPeerId}`);
-    }
-  } catch (e) {
-    console.error(`Failed to push route update to peer ${fromPeerId}:`, e);
-  }
-
-  if (hasNewPeers) {
-    try {
-      pm().broadcastRouteUpdate(types, groupKey, fromPeerId, { forceFull: false });
-      console.log(`Successfully broadcast route update for group ${groupKey}`);
-    } catch (e) {
-      console.error(`Failed to broadcast route update for group ${groupKey}:`, e);
-    }
-  }
+  pm().syncGroupNow(groupKey, hasNewPeers ? 'sync_route_info:new_peer' : 'sync_route_info');
 }

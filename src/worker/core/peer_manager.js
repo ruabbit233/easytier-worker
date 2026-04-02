@@ -102,12 +102,27 @@ export class PeerManager {
     this.myInfo = null; // 延迟初始化，避免模块加载阶段就生成随机值
     this.sessionTtlMs = Number(process.env.EASYTIER_SESSION_TTL_MS || 3 * 60 * 1000);
     this.lastSessionCleanup = 0;
+    this.routeSyncIntervalMs = Number(process.env.EASYTIER_ROUTE_SYNC_INTERVAL_MS || 1000);
+    this.routeInitiatorSyncIntervalMs = Number(process.env.EASYTIER_ROUTE_INITIATOR_SYNC_INTERVAL_MS || 10_000);
+    this.routeSyncTimer = null;
 
     this.pureP2PMode = (process.env.EASYTIER_DISABLE_RELAY === '1');
   }
 
   setTypes(types) {
     this.types = types;
+    this.ensureRouteSyncScheduler();
+  }
+
+  ensureRouteSyncScheduler() {
+    if (this.routeSyncTimer || typeof setInterval !== 'function') return;
+    this.routeSyncTimer = setInterval(() => {
+      try {
+        this.runRouteSessionTasks();
+      } catch (e) {
+        console.error(`route session scheduler failed: ${e.message}`);
+      }
+    }, this.routeSyncIntervalMs);
   }
 
   ensureMyInfo() {
@@ -154,6 +169,7 @@ export class PeerManager {
     const myInfo = this.ensureMyInfo();
     myInfo.version = (myInfo.version || 0) + 1;
     myInfo.lastUpdate = { seconds: Math.floor(Date.now() / 1000), nanos: 0 };
+    this.syncNow('my_info_changed');
   }
 
   _getPeerConnVersionMap(groupKey, create = false) {
@@ -258,10 +274,17 @@ export class PeerManager {
     let s = g.get(peerId);
     if (!s && create) {
       s = {
-        mySessionId: null,
+        mySessionId: randomU64String(),
         dstSessionId: null,
         dstSessionIdKey: '',
         weAreInitiator: false,
+        dstIsInitiator: false,
+        needSyncInitiatorInfo: false,
+        dirty: false,
+        forceFullPending: false,
+        lastDirtyReason: '',
+        lastSyncAt: 0,
+        lastInitiatorSyncAt: 0,
         peerInfoVerMap: new Map(),
         connBitmapVerMap: new Map(),
         foreignNetVer: 0,
@@ -273,6 +296,60 @@ export class PeerManager {
     }
     if (s) s.lastTouch = Date.now();
     return s;
+  }
+
+  ensureRouteSession(groupKey, peerId) {
+    return this._getSession(groupKey, peerId, true);
+  }
+
+  getRouteSession(groupKey, peerId) {
+    return this._getSession(groupKey, peerId, false);
+  }
+
+  _clearSessionSyncState(session) {
+    session.peerInfoVerMap.clear();
+    session.connBitmapVerMap.clear();
+    session.foreignNetVer = 0;
+    session.lastConnBitmapSig = null;
+    session.lastForeignNetworkSig = null;
+  }
+
+  _markSessionDirty(session, reason, opts = {}) {
+    if (!session) return;
+    session.dirty = true;
+    session.lastTouch = Date.now();
+    session.lastDirtyReason = String(reason || '');
+    if (opts.forceFull) {
+      session.forceFullPending = true;
+    }
+    if (opts.needSyncInitiatorInfo) {
+      session.needSyncInitiatorInfo = true;
+    }
+  }
+
+  syncPeerNow(groupKey, peerId, reason, opts = {}) {
+    const session = this._getSession(groupKey, peerId, true);
+    this._markSessionDirty(session, reason, opts);
+    return session;
+  }
+
+  syncGroupNow(groupKey, reason, opts = {}) {
+    const peers = this._getPeersMap(groupKey, false);
+    if (!peers) return;
+    for (const peerId of peers.keys()) {
+      if (opts.excludePeerId !== undefined && peerId === opts.excludePeerId) continue;
+      this.syncPeerNow(groupKey, peerId, reason, opts);
+    }
+  }
+
+  syncNow(reason, opts = {}) {
+    if (opts.groupKey !== undefined) {
+      this.syncGroupNow(opts.groupKey, reason, opts);
+      return;
+    }
+    for (const groupKey of this.peersByGroup.keys()) {
+      this.syncGroupNow(groupKey, reason, opts);
+    }
   }
 
   cleanupSessions(nowTs = Date.now()) {
@@ -288,20 +365,89 @@ export class PeerManager {
     }
   }
 
-  onRouteSessionAck(groupKey, peerId, theirSessionId, weAreInitiator) {
+  onRouteSessionAck(groupKey, peerId, theirSessionId, opts = {}) {
     const s = this._getSession(groupKey, peerId, true);
     const nextSessionIdKey = sessionIdToKey(theirSessionId);
     if (s.dstSessionIdKey !== nextSessionIdKey) {
-      s.peerInfoVerMap.clear();
-      s.connBitmapVerMap.clear();
-      s.foreignNetVer = 0;
-      s.lastConnBitmapSig = null;
-      s.lastForeignNetworkSig = null;
+      this._clearSessionSyncState(s);
+      s.forceFullPending = true;
+      s.dirty = true;
     }
     s.dstSessionId = theirSessionId;
     s.dstSessionIdKey = nextSessionIdKey;
-    if (typeof weAreInitiator === 'boolean') {
-      s.weAreInitiator = weAreInitiator;
+    if (typeof opts.weAreInitiator === 'boolean') {
+      s.weAreInitiator = opts.weAreInitiator;
+    }
+    if (typeof opts.dstIsInitiator === 'boolean') {
+      s.dstIsInitiator = opts.dstIsInitiator;
+    }
+    s.lastTouch = Date.now();
+    return s;
+  }
+
+  updateInitiatorFlag(groupKey, peerId, isInitiator) {
+    const session = this._getSession(groupKey, peerId, true);
+    const next = !!isInitiator;
+    if (session.weAreInitiator === next) return session;
+    session.weAreInitiator = next;
+    session.needSyncInitiatorInfo = true;
+    session.dirty = true;
+    session.lastDirtyReason = 'initiator_flag_changed';
+    session.lastTouch = Date.now();
+    return session;
+  }
+
+  maintainGroupInitiator(groupKey) {
+    const peers = this.listPeerIdsInGroup(groupKey).sort((a, b) => Number(a) - Number(b));
+    if (peers.length === 0) return;
+
+    const initiatorCandidates = peers.filter((peerId) => {
+      const session = this._getSession(groupKey, peerId, true);
+      return !session.dstIsInitiator;
+    });
+    const chosenPeerId = (initiatorCandidates[0] !== undefined ? initiatorCandidates[0] : peers[0]);
+
+    for (const peerId of peers) {
+      this.updateInitiatorFlag(groupKey, peerId, peerId === chosenPeerId);
+    }
+  }
+
+  runRouteSessionTasks(now = Date.now()) {
+    if (!this.types) return;
+    this.cleanupSessions(now);
+
+    for (const [groupKey, peers] of this.peersByGroup.entries()) {
+      this.maintainGroupInitiator(groupKey);
+      for (const [peerId, ws] of peers.entries()) {
+        if (!ws || ws.readyState !== WS_OPEN) continue;
+
+        const session = this._getSession(groupKey, peerId, true);
+        const syncAsInitiator = session.weAreInitiator
+          && (now - (session.lastInitiatorSyncAt || 0) >= this.routeInitiatorSyncIntervalMs);
+        const allowEmpty = syncAsInitiator || session.needSyncInitiatorInfo;
+        const shouldSync = session.forceFullPending || session.dirty || allowEmpty;
+        if (!shouldSync) continue;
+
+        const result = this.pushRouteUpdateTo(peerId, ws, this.types, {
+          forceFull: session.forceFullPending,
+          allowEmpty,
+        });
+
+        if (result === 'sent') {
+          session.dirty = false;
+          session.forceFullPending = false;
+          session.needSyncInitiatorInfo = false;
+          session.lastSyncAt = now;
+          if (syncAsInitiator) {
+            session.lastInitiatorSyncAt = now;
+          }
+        } else if (result === 'noop') {
+          session.dirty = false;
+          if (syncAsInitiator) {
+            session.lastInitiatorSyncAt = now;
+          }
+        }
+      }
     }
   }
 
@@ -310,8 +456,11 @@ export class PeerManager {
     const peers = this._getPeersMap(groupKey, true);
     const isNewPeer = !peers.has(peerId);
     peers.set(peerId, ws);
+    this._getSession(groupKey, peerId, true);
     if (isNewPeer) {
       this.bumpAllPeerConnVersions(groupKey);
+      this.syncPeerNow(groupKey, peerId, 'peer_added_initial', { forceFull: true });
+      this.syncGroupNow(groupKey, 'peer_added_broadcast', { excludePeerId: peerId });
     }
   }
 
@@ -334,6 +483,7 @@ export class PeerManager {
 
     if (wasPresent && peers && peers.size > 0) {
       this.bumpAllPeerConnVersions(groupKey);
+      this.syncGroupNow(groupKey, 'peer_removed');
     }
 
     if (peers && peers.size === 0) {
@@ -361,10 +511,16 @@ export class PeerManager {
 
   updatePeerInfo(groupKey, peerId, info) {
     const infos = this._getPeerInfosMap(groupKey, true);
+    const prev = infos.get(peerId);
+    const prevVersion = prev && typeof prev.version === 'number' ? prev.version : 0;
+    const nextVersion = info && typeof info.version === 'number' ? info.version : 0;
     const isNew = !infos.has(peerId);
     infos.set(peerId, info);
     if (isNew) {
       this.bumpAllPeerConnVersions(groupKey);
+    }
+    if (isNew || nextVersion > prevVersion) {
+      this.syncGroupNow(groupKey, isNew ? 'peer_info_added' : 'peer_info_updated');
     }
 
     if (this.allowVirtualIP && !this.ipConfiguredByEnv && this.ipAutoAssigned) {
@@ -403,35 +559,21 @@ export class PeerManager {
   broadcastRouteUpdate(types, groupKey, excludePeerId, opts = {}) {
     const forceFull = opts.forceFull !== undefined ? !!opts.forceFull : true;
     if (groupKey !== undefined) {
-      const peers = this._getPeersMap(groupKey, false);
-      if (!peers) return;
-      for (const [peerId, ws] of peers.entries()) {
-        if (peerId === excludePeerId) continue;
-        if (ws.readyState === WS_OPEN) {
-          this.pushRouteUpdateTo(peerId, ws, types, { forceFull });
-        }
-      }
+      this.syncGroupNow(groupKey, 'broadcast_route_update', { forceFull, excludePeerId });
       return;
     }
-    for (const [gk, peers] of this.peersByGroup.entries()) {
-      for (const [peerId, ws] of peers.entries()) {
-        if (peerId === excludePeerId) continue;
-        if (ws.readyState === WS_OPEN) {
-          this.pushRouteUpdateTo(peerId, ws, types, { forceFull });
-        }
-      }
-    }
+    this.syncNow('broadcast_route_update', { forceFull, excludePeerId });
   }
 
   pushRouteUpdateTo(targetPeerId, ws, types, opts = {}) {
     const forceFull = !!opts.forceFull;
+    const allowEmpty = !!opts.allowEmpty;
     const groupKey = ws && ws.groupKey ? String(ws.groupKey) : '';
     const session = this._getSession(groupKey, targetPeerId, true);
     const myInfo = this.ensureMyInfo();
-    if (!ws.serverSessionId) {
-      ws.serverSessionId = randomU64String();
+    if (!ws || ws.readyState !== WS_OPEN) {
+      return 'error';
     }
-    session.mySessionId = ws.serverSessionId;
     const forceFullLocal = forceFull || !session.dstSessionId; // 尚未握手完成时默认发全量
 
     const allPeers = new Set(this.listPeerIdsInGroup(groupKey));
@@ -544,22 +686,17 @@ export class PeerManager {
     if (!t) {
       throw new Error('PeerManager types not set');
     }
-    const rawPeerInfos = peerInfosItems.length > 0
-      ? peerInfosItems.map(info => t.RoutePeerInfo.encode(info).finish())
-      : null;
-
     const reqPayload = {
       myPeerId: MY_PEER_ID,
-      mySessionId: ws.serverSessionId,
-      isInitiator: !!ws.weAreInitiator,
+      mySessionId: session.mySessionId,
+      isInitiator: !!session.weAreInitiator,
       peerInfos: peerInfosItems.length > 0 ? { items: peerInfosItems } : null,
-      rawPeerInfos: rawPeerInfos,
       connBitmap: connBitmap,
       foreignNetworkInfos: foreignNetworkInfos
     };
 
-    if (!forceFullLocal && !reqPayload.peerInfos && !reqPayload.connBitmap && !reqPayload.foreignNetworkInfos) {
-      return false;
+    if (!forceFullLocal && !reqPayload.peerInfos && !reqPayload.connBitmap && !reqPayload.foreignNetworkInfos && !allowEmpty) {
+      return 'noop';
     }
 
     const reqBytes = t.SyncRouteInfoRequest.encode(reqPayload).finish();
@@ -587,10 +724,10 @@ export class PeerManager {
     const rpcPacketBytes = t.RpcPacket.encode(rpcReqPacket).finish();
     try {
       ws.send(wrapPacket(createHeader, MY_PEER_ID, targetPeerId, PacketType.RpcReq, rpcPacketBytes, ws));
-      return true;
+      return 'sent';
     } catch (e) {
       // 连接可能刚好关闭，这里吞掉异常，交给上层连接管理处理。
-      return false;
+      return 'error';
     }
   }
 }
