@@ -1,10 +1,15 @@
-# EasyTier WebSocket Relay for Cloudflare Workers
+# easytier-worker
 
 ## 项目简介
 
-该项目是 EasyTier 的第三方服务端实现。EasyTier 是一个去中心化 P2P 组网程序，官方代码使用 Rust 实现。本项目使用 Cloudflare Worker + Durable Object 实现了 JavaScript 版本的 WebSocket 服务端，支持网络转发与 P2P 打洞信息交换。
+`easytier-worker` 是基于 `IceSoulHanxi/easytier-ws-relay` 分叉出来的 EasyTier WebSocket Relay。
 
-项目使用 Claude 进行开发，目前处于早期阶段，还存在很多问题，欢迎提交代码或 issue。
+它保留了原项目基于 Cloudflare Workers + Durable Objects 的实现方式，同时把项目名、部署配置和基础运维入口整理成了更适合长期继续优化的形态。
+
+当前这个 fork 的初始目标是：
+
+- 保持和 `easytier-ws-relay` 的兼容思路
+- 方便继续增加连接稳定性、可观测性和管理能力
 
 > **注意：本项目仅供学习交流使用**
 
@@ -29,7 +34,7 @@
 1. 克隆项目仓库：
 ```bash
 git clone <your-repo-url>
-cd easytier-ws-relay
+cd easytier-worker
 ```
 
 2. 安装依赖：
@@ -54,7 +59,6 @@ wrangler login
 ### 启动开发服务器
 
 ```bash
-# 启动本地开发服务器
 pnpm run dev
 # 或者
 wrangler dev --ip 0.0.0.0
@@ -73,45 +77,29 @@ wrangler dev
 ### 部署命令
 
 ```bash
-# 部署到 Cloudflare Workers
 wrangler deploy
 ```
 
 ### 配置说明
 
-项目使用 [wrangler.toml](file:///Users/runner/work/easytier/easytier/easytier-v3/easytier-ws-relay/wrangler.toml#L0-L0) 文件进行配置，主要配置项包括：
+项目使用 `wrangler.toml` 文件进行配置，主要配置项包括：
 
-- [name](file:///Users/runner/work/easytier/easytier/easytier-v3/easytier/src/cli/main.rs#L0-L0): Worker 名称
-- [main](file:///Users/runner/work/easytier/easytier/easytier-v3/easytier/src/cli/main.rs#L0-L0): 入口文件路径
-- [compatibility_date](file:///Users/runner/work/easytier/easytier/easytier-v3/easytier/src/cli/main.rs#L0-L0): 兼容性日期
+- `name`: Worker 名称
+- `main`: 入口文件路径
+- `compatibility_date`: 兼容性日期
 - Durable Objects 配置
 - 环境变量配置
 
 ## 项目结构
 
-```
-easytier-ws-relay/
+```text
+easytier-worker/
 ├── protos/                 # Protocol Buffers 定义
-│   ├── google
-│   │   └── protobuf
-│   │       └── timestamp.proto
-│   ├── common.proto        # 通用协议定义
-│   ├── error.proto         # 错误协议定义
-│   └── peer_rpc.proto      # 对等节点 RPC 协议定义
 ├── src/
 │   ├── worker/             # Worker 实现
 │   │   ├── core/           # Worker 核心功能
-│   │   │   ├── basic_handlers.js   # 基础处理器
-│   │   │   ├── compress.js         # 压缩功能
-│   │   │   ├── constants.js        # 常量定义
-│   │   │   ├── crypto.js           # 加密功能
-│   │   │   ├── packet.js           # 数据包处理
-│   │   │   ├── peer_manager.js     # 对等节点管理
-│   │   │   ├── protos.js           # Protobuf 相关功能
-│   │   │   ├── protos_generated.js # Protobuf 生成的代码
-│   │   │   └── rpc_handler.js      # RPC 处理器
-│   │   └── relay_room.js           # 中继房间实现
-│   └── worker.js                   # Worker 入口文件
+│   │   └── relay_room.js   # 中继房间实现
+│   └── worker.js           # Worker 入口文件
 ├── package.json            # 项目配置
 ├── wrangler.toml           # Cloudflare Workers 配置
 └── README.md               # 项目说明
@@ -123,59 +111,38 @@ easytier-ws-relay/
 - 基于 Room 的连接管理
 - 使用 Protobuf 进行高效序列化
 - 消息加密与完整性保护
-- 客户端状态管理与心跳维持
 - RPC 请求/响应处理机制
+- `/healthz` 与 `/info` 基础信息接口
+- 可配置的心跳间隔与连接超时
 
-## 纯 P2P 模式
+## 可配置项
 
 在 `wrangler.toml` 的 `[vars]` 中配置：
+
+- `WS_PATH`: WebSocket 路径，默认 `ws`
 - `EASYTIER_DISABLE_RELAY`: `"1"` 开启纯 P2P，默认 `"0"`
 - `EASYTIER_COMPRESS_RPC`: `"0"` 关闭 RPC 压缩（调试用），默认 `"1"`
-
-修改完配置后按正常方式运行 `wrangler dev` 或部署即可生效。
-
-## Durable Object 地区配置
-
-Durable Object 默认会根据请求来源自动选择最近的地区部署。如需指定地区，可在 `wrangler.toml` 的 `[vars]` 中配置：
-
-- `LOCATION_HINT`: Durable Object 的位置提示，可选值如下：
-
-| 参数 | 地区 |
-|------|------|
-| `wnam` | 西部地区（北美） |
-| `enam` | 东部地区（北美） |
-| `sam` | 南美洲 |
-| `weur` | 西欧 |
-| `eeur` | 东欧 |
-| `apac` | 亚太地区（默认） |
-| `oc` | 大洋洲 |
-| `afr` | 非洲 |
-| `me` | 中东 |
-
-> 详细说明请参考 [Cloudflare 官方文档](https://developers.cloudflare.com/durable-objects/reference/data-location/#supported-locations-1)
+- `LOCATION_HINT`: Durable Object 地区提示，默认 `apac`
+- `EASYTIER_HEARTBEAT_INTERVAL`: 心跳发送间隔，默认 `25000`
+- `EASYTIER_CONNECTION_TIMEOUT`: 连接超时阈值，默认 `60000`
 
 修改完配置后按正常方式运行 `wrangler dev` 或部署即可生效。
 
 ## 客户端连接说明
 
-部署后，EasyTier 客户端连接地址需要添加路径 `/ws`。
+部署后，EasyTier 客户端连接地址需要添加路径 `/ws`，实际路径由 `WS_PATH` 控制。
 
-默认情况下，WebSocket路径为`/ws`，该路径可以在`wrangler.toml`中通过`WS_PATH`变量进行自定义。
+easytier 中端口号使用 `0` 表示使用协议默认端口，`ws` 对应 `80`，`wss` 对应 `443`。
 
-easytier中端口号使用0为使用协议默认端口，ws对应80，wss对应443。
-
-开发模式:
-```
+开发模式：
+```text
 ws://your-network-ip:0/ws
 ```
-部署后:
-```
+
+部署后：
+```text
 wss://your-deployment.workers.dev:0/ws
 ```
-
-## 贡献
-
-欢迎提交 Issue 和 Pull Request 来改进本项目。
 
 ## 许可证
 

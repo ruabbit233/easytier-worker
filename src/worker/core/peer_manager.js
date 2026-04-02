@@ -57,7 +57,7 @@ function makeStubPeerInfo(peerId, networkLength) {
     instId: makeInstId(),
     cost: 1,
     hostname: "",
-    easytierVersion: "cf-ws-relay",
+    easytierVersion: "easytier-worker",
     featureFlag: { isPublicServer: false, avoidRelayData: false, kcpInput: false, noRelayKcp: false },
     networkLength: Number(networkLength || 24),
     peerRouteId: randomU64String(),
@@ -103,7 +103,7 @@ export class PeerManager {
         noRelayKcp: false
       },
       networkLength: Number(process.env.EASYTIER_NETWORK_LENGTH || 24),
-      easytierVersion: process.env.EASYTIER_VERSION || "cf-ws-relay",
+      easytierVersion: process.env.EASYTIER_VERSION || "easytier-worker",
       lastUpdate: { seconds: Math.floor(Date.now() / 1000), nanos: 0 },
       hostname: process.env.EASYTIER_HOSTNAME || "PublicServer_WorkerRelay",
       udpStunInfo: 0,
