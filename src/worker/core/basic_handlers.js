@@ -84,7 +84,7 @@ export function handleHandshake(ws, header, payload, types) {
         if (ws.readyState === WS_OPEN) {
           const pm = getPeerManager();
           pm.pushRouteUpdateTo(req.myPeerId, ws, types, { forceFull: true });
-          pm.broadcastRouteUpdate(types, ws.groupKey, req.myPeerId, { forceFull: true });
+          pm.broadcastRouteUpdate(types, ws.groupKey, req.myPeerId, { forceFull: false });
         }
       } catch (e) {
         console.error(`Failed to push initial route update to ${req.myPeerId}:`, e.message);

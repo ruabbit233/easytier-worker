@@ -66,6 +66,26 @@ function makeStubPeerInfo(peerId, networkLength) {
   };
 }
 
+function sessionIdToKey(value) {
+  if (value === null || value === undefined) return '';
+
+  if (typeof value === 'string' || typeof value === 'number' || typeof value === 'bigint') {
+    return String(value);
+  }
+
+  if (value && typeof value === 'object' && value.constructor && value.constructor.name === 'Long') {
+    return value.toString();
+  }
+
+  if (value && typeof value === 'object' && typeof value.low === 'number' && typeof value.high === 'number') {
+    const low = BigInt(value.low >>> 0);
+    const high = BigInt(value.high >>> 0);
+    return ((high << 32n) | low).toString();
+  }
+
+  return String(value);
+}
+
 export class PeerManager {
   constructor() {
     this.peersByGroup = new Map(); // groupKey -> Map(peerId -> ws)，维护在线连接
@@ -239,12 +259,14 @@ export class PeerManager {
       s = {
         mySessionId: null,
         dstSessionId: null,
+        dstSessionIdKey: '',
         weAreInitiator: false,
         peerInfoVerMap: new Map(),
         connBitmapVerMap: new Map(),
         foreignNetVer: 0,
         lastTouch: Date.now(),
         lastConnBitmapSig: null,
+        lastForeignNetworkSig: null,
       };
       g.set(peerId, s);
     }
@@ -267,13 +289,16 @@ export class PeerManager {
 
   onRouteSessionAck(groupKey, peerId, theirSessionId, weAreInitiator) {
     const s = this._getSession(groupKey, peerId, true);
-    if (s.dstSessionId !== theirSessionId) {
+    const nextSessionIdKey = sessionIdToKey(theirSessionId);
+    if (s.dstSessionIdKey !== nextSessionIdKey) {
       s.peerInfoVerMap.clear();
       s.connBitmapVerMap.clear();
       s.foreignNetVer = 0;
       s.lastConnBitmapSig = null;
+      s.lastForeignNetworkSig = null;
     }
     s.dstSessionId = theirSessionId;
+    s.dstSessionIdKey = nextSessionIdKey;
     if (typeof weAreInitiator === 'boolean') {
       s.weAreInitiator = weAreInitiator;
     }
@@ -487,17 +512,24 @@ export class PeerManager {
     const foreignNetworkInfos = (() => {
       const mode = (process.env.EASYTIER_HANDSHAKE_MODE || 'foreign').toLowerCase();
       if (mode === 'same' || mode === 'same_network') return null;
-      // 默认按“公网中继网络”模式回传一份 foreign network 视图。
+      const foreignPeerIds = Array.from(allPeers).sort((a, b) => Number(a) - Number(b));
+      const networkName = process.env.EASYTIER_PUBLIC_SERVER_NETWORK_NAME || 'dev-websocket-relay';
+      const sig = `${networkName}|${foreignPeerIds.join(',')}`;
+      if (!forceFullLocal && sig === session.lastForeignNetworkSig) {
+        return null;
+      }
+      // 默认按“公网中继网络”模式回传一份 foreign network 视图，但只在内容变化时发送。
       const version = session.foreignNetVer + 1;
       session.foreignNetVer = version;
+      session.lastForeignNetworkSig = sig;
       return {
         infos: [{
           key: {
             peerId: MY_PEER_ID,
-            networkName: process.env.EASYTIER_PUBLIC_SERVER_NETWORK_NAME || 'dev-websocket-relay'
+            networkName
           },
           value: {
-            foreignPeerIds: Array.from(allPeers),
+            foreignPeerIds,
             lastUpdate: { seconds: Math.floor(Date.now() / 1000), nanos: 0 },
             version,
             networkSecretDigest: Buffer.alloc(32),
@@ -525,6 +557,10 @@ export class PeerManager {
       foreignNetworkInfos: foreignNetworkInfos
     };
 
+    if (!forceFullLocal && !reqPayload.peerInfos && !reqPayload.connBitmap && !reqPayload.foreignNetworkInfos) {
+      return false;
+    }
+
     const reqBytes = t.SyncRouteInfoRequest.encode(reqPayload).finish();
     const rpcRequestPayload = { request: reqBytes, timeoutMs: 5000 };
     const rpcRequestBytes = t.RpcRequest.encode(rpcRequestPayload).finish();
@@ -550,8 +586,10 @@ export class PeerManager {
     const rpcPacketBytes = t.RpcPacket.encode(rpcReqPacket).finish();
     try {
       ws.send(wrapPacket(createHeader, MY_PEER_ID, targetPeerId, PacketType.RpcReq, rpcPacketBytes, ws));
+      return true;
     } catch (e) {
       // 连接可能刚好关闭，这里吞掉异常，交给上层连接管理处理。
+      return false;
     }
   }
 }

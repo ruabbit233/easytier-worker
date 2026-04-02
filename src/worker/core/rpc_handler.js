@@ -468,17 +468,21 @@ function handleSyncRouteInfo(ws, fromPeerId, reqRpcPacket, syncReq, types) {
     // 这里不再抛出，尽量让后续流程还能继续推进。
   }
 
-  // ACK 之后再把当前 Worker 视角下的路由信息推回去，行为上对齐节点端实现。
+  // ACK 之后只在确实存在增量时再补发同步，避免双方因空更新或全量回推形成高频往返。
   try {
-    pm().pushRouteUpdateTo(fromPeerId, ws, types, { forceFull: true });
-    console.log(`Successfully pushed route update to peer ${fromPeerId}`);
+    const pushed = pm().pushRouteUpdateTo(fromPeerId, ws, types, { forceFull: false });
+    if (pushed) {
+      console.log(`Successfully pushed incremental route update to peer ${fromPeerId}`);
+    } else {
+      console.log(`No incremental route update needed for peer ${fromPeerId}`);
+    }
   } catch (e) {
     console.error(`Failed to push route update to peer ${fromPeerId}:`, e);
   }
 
   if (hasNewPeers) {
     try {
-      pm().broadcastRouteUpdate(types, groupKey, fromPeerId, { forceFull: true });
+      pm().broadcastRouteUpdate(types, groupKey, fromPeerId, { forceFull: false });
       console.log(`Successfully broadcast route update for group ${groupKey}`);
     } catch (e) {
       console.error(`Failed to broadcast route update for group ${groupKey}:`, e);
