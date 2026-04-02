@@ -51,7 +51,7 @@ export class RelayRoom {
     this._initSocket(webSocket);
   }
 
-  async webSocketMessage(ws, message) {
+  webSocketMessage(ws, message) {
     try {
       let buffer = null;
       if (message instanceof ArrayBuffer) {

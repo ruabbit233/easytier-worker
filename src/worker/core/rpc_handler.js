@@ -2,7 +2,7 @@ import { MY_PEER_ID, PacketType } from './constants.js';
 import { createHeader } from './packet.js';
 import { getPeerManager } from './peer_manager.js';
 import { wrapPacket, randomU64String, sha256 } from './crypto.js';
-import { gzipMaybe, gunzipMaybe, isCompressionAvailable } from './compress.js';
+import { compressRpcBody, decompressRpcBody } from './compress.js';
 import { loadProtos } from './protos.js';
 
 // 把 transactionId 统一转换成 protobuf 可稳定编码的 int64 形式。
@@ -133,17 +133,11 @@ function sendRpcResponse(ws, toPeerId, reqRpcPacket, types, responseBodyBytes) {
     console.error(`sendRpcResponse aborted: socket not open (readyState=${ws ? ws.readyState : 'nil'}) toPeer=${toPeerId}`);
     return;
   }
-  const compressEnabled = process.env.EASYTIER_COMPRESS_RPC !== '0';
-  let responseBody = responseBodyBytes;
-  let compressionInfo = { algo: 1, acceptedAlgo: 1 };
-  if (compressEnabled && responseBodyBytes && responseBodyBytes.length > 256 && isCompressionAvailable()) {
-    try {
-      responseBody = gzipMaybe(responseBodyBytes);
-      compressionInfo = { algo: 2, acceptedAlgo: 1 };
-    } catch (e) {
-      console.warn(`Compress rpc response failed: ${e.message}`);
-    }
-  }
+  const requestedAcceptedAlgo = reqRpcPacket?.compressionInfo?.acceptedAlgo;
+  const { body: responseBody, compressionInfo } = compressRpcBody(responseBodyBytes, {
+    enabled: process.env.EASYTIER_COMPRESS_RPC !== '0',
+    preferredAlgo: requestedAcceptedAlgo,
+  });
 
   const rpcResponsePayload = {
     response: responseBody,
@@ -241,12 +235,15 @@ export function handleRpcReq(ws, header, payload, types) {
     }
     console.log(`handleRpcReq: from=${header.fromPeerId} transactionId=${txIdValue} (${txIdType}) ${txIdDetails} raw=${JSON.stringify(txId)}`);
 
-    if (rpcPacket.compressionInfo && rpcPacket.compressionInfo.algo > 1 && isCompressionAvailable()) {
+    if (rpcPacket.compressionInfo) {
       try {
-        rpcPacket.body = gunzipMaybe(rpcPacket.body);
-        rpcPacket.compressionInfo.algo = 1;
+        rpcPacket.body = decompressRpcBody(
+          rpcPacket.body,
+          rpcPacket.compressionInfo,
+          `rpc request from ${header.fromPeerId}`
+        );
       } catch (e) {
-        console.error(`RpcPacket decompress failed from ${header.fromPeerId}: ${e.message}`);
+        console.error(e.message);
         return;
       }
     }
@@ -372,12 +369,15 @@ export function handleRpcResp(ws, header, payload, types) {
       txIdDetails = '';
     }
     console.log(`handleRpcResp: transactionId=${txIdValue} (${txIdType}) ${txIdDetails} raw=${JSON.stringify(txId)}`);
-    if (rpcPacket.compressionInfo && rpcPacket.compressionInfo.algo > 1 && isCompressionAvailable()) {
+    if (rpcPacket.compressionInfo) {
       try {
-        rpcPacket.body = gunzipMaybe(rpcPacket.body);
-        rpcPacket.compressionInfo.algo = 1;
+        rpcPacket.body = decompressRpcBody(
+          rpcPacket.body,
+          rpcPacket.compressionInfo,
+          `rpc response from ${header.fromPeerId}`
+        );
       } catch (e) {
-        console.error(`RpcResp decompress failed from ${header.fromPeerId}: ${e.message}`);
+        console.error(e.message);
         return;
       }
     }
@@ -456,7 +456,7 @@ function handleSyncRouteInfo(ws, fromPeerId, reqRpcPacket, syncReq, types) {
   };
   const respBytes = types.SyncRouteInfoResponse.encode(respPayload).finish();
   if (reqRpcPacket.compressionInfo && reqRpcPacket.compressionInfo.algo > 1) {
-    console.warn(`Client sent COMPRESSED RPC body (Algo: ${reqRpcPacket.compressionInfo.algo}). We might have failed to decode it correctly if we didn't decompress.`);
+    console.log(`Client sent compressed RPC body (algo=${reqRpcPacket.compressionInfo.algo}); decoded successfully before handling.`);
   }
 
   // 先回 ACK，避免客户端因为等待超时而认为本次路由同步失败。

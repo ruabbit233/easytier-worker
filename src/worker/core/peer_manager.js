@@ -2,6 +2,7 @@ import { Buffer } from 'buffer';
 import { MY_PEER_ID, PacketType } from './constants.js';
 import { createHeader } from './packet.js';
 import { wrapPacket, randomU64String } from './crypto.js';
+import { getSupportedRpcCompressionInfo } from './compress.js';
 
 const WS_OPEN = 1; // Cloudflare Workers 运行时里 WebSocket.OPEN 的常量值
 
@@ -580,7 +581,7 @@ export class PeerManager {
       totalPieces: 1,
       pieceIdx: 0,
       traceId: 0,
-      compressionInfo: { algo: 1, acceptedAlgo: 1 }
+      compressionInfo: getSupportedRpcCompressionInfo()
     };
 
     const rpcPacketBytes = t.RpcPacket.encode(rpcReqPacket).finish();
