@@ -128,13 +128,13 @@ function buildPeerCenterResponseMap(groupKey, state) {
   return out;
 }
 
-function sendRpcResponse(ws, toPeerId, reqRpcPacket, types, responseBodyBytes) {
+async function sendRpcResponse(ws, toPeerId, reqRpcPacket, types, responseBodyBytes) {
   if (!ws || ws.readyState !== 1) { // WebSocket 仍未处于可发送状态
     console.error(`sendRpcResponse aborted: socket not open (readyState=${ws ? ws.readyState : 'nil'}) toPeer=${toPeerId}`);
     return;
   }
   const requestedAcceptedAlgo = reqRpcPacket?.compressionInfo?.acceptedAlgo;
-  const { body: responseBody, compressionInfo } = compressRpcBody(responseBodyBytes, {
+  const { body: responseBody, compressionInfo } = await compressRpcBody(responseBodyBytes, {
     enabled: process.env.EASYTIER_COMPRESS_RPC !== '0',
     preferredAlgo: requestedAcceptedAlgo,
   });
@@ -200,7 +200,7 @@ function sendRpcResponse(ws, toPeerId, reqRpcPacket, types, responseBodyBytes) {
   }
 }
 
-export function handleRpcReq(ws, header, payload, types) {
+export async function handleRpcReq(ws, header, payload, types) {
   try {
     const rpcPacket = types.RpcPacket.decode(payload);
 
@@ -237,7 +237,7 @@ export function handleRpcReq(ws, header, payload, types) {
 
     if (rpcPacket.compressionInfo) {
       try {
-        rpcPacket.body = decompressRpcBody(
+        rpcPacket.body = await decompressRpcBody(
           rpcPacket.body,
           rpcPacket.compressionInfo,
           `rpc request from ${header.fromPeerId}`
@@ -281,7 +281,7 @@ export function handleRpcReq(ws, header, payload, types) {
         state.digest = calcPeerCenterDigestFromMap(snapshot);
 
         const respBytes = types.ReportPeersResponse.encode({}).finish();
-        sendRpcResponse(ws, header.fromPeerId, rpcPacket, types, respBytes);
+        await sendRpcResponse(ws, header.fromPeerId, rpcPacket, types, respBytes);
         return;
       }
 
@@ -291,7 +291,7 @@ export function handleRpcReq(ws, header, payload, types) {
         const reqDigest = req.digest !== undefined && req.digest !== null ? String(req.digest) : '0';
         if (reqDigest === state.digest && reqDigest !== '0') {
           const respBytes = types.GetGlobalPeerMapResponse.encode({}).finish();
-          sendRpcResponse(ws, header.fromPeerId, rpcPacket, types, respBytes);
+          await sendRpcResponse(ws, header.fromPeerId, rpcPacket, types, respBytes);
           return;
         }
 
@@ -301,7 +301,7 @@ export function handleRpcReq(ws, header, payload, types) {
           globalPeerMap: snapshot,
           digest: state.digest,
         }).finish();
-        sendRpcResponse(ws, header.fromPeerId, rpcPacket, types, respBytes);
+        await sendRpcResponse(ws, header.fromPeerId, rpcPacket, types, respBytes);
         return;
       }
 
@@ -320,7 +320,7 @@ export function handleRpcReq(ws, header, payload, types) {
       const hasForeignNet = !!req.foreignNetworkInfos;
       console.log(`SyncRouteInfo details: SessionID=${req.mySessionId}, Initiator=${req.isInitiator}, PeerInfosCount=${peerInfosCount}, HasConnBitmap=${hasConnBitmap}, HasForeignNet=${hasForeignNet}`);
       if (descriptor.methodIndex === 0 || descriptor.methodIndex === 1) {
-        handleSyncRouteInfo(ws, fromPeerId, rpcPacket, req, types);
+        await handleSyncRouteInfo(ws, fromPeerId, rpcPacket, req, types);
         return;
       }
       console.log(`Unhandled OspfRouteRpc methodIndex=${descriptor.methodIndex}`);
@@ -334,7 +334,7 @@ export function handleRpcReq(ws, header, payload, types) {
   }
 }
 
-export function handleRpcResp(ws, header, payload, types) {
+export async function handleRpcResp(ws, header, payload, types) {
   try {
     console.log(`RpcResp <- from=${header.fromPeerId} to=${header.toPeerId} len=${payload.length} packetType=${header.packetType} forwardCounter=${header.forwardCounter}`);
     const rpcPacket = types.RpcPacket.decode(payload);
@@ -371,7 +371,7 @@ export function handleRpcResp(ws, header, payload, types) {
     console.log(`handleRpcResp: transactionId=${txIdValue} (${txIdType}) ${txIdDetails} raw=${JSON.stringify(txId)}`);
     if (rpcPacket.compressionInfo) {
       try {
-        rpcPacket.body = decompressRpcBody(
+        rpcPacket.body = await decompressRpcBody(
           rpcPacket.body,
           rpcPacket.compressionInfo,
           `rpc response from ${header.fromPeerId}`
@@ -424,7 +424,7 @@ export function handleRpcResp(ws, header, payload, types) {
   }
 }
 
-function handleSyncRouteInfo(ws, fromPeerId, reqRpcPacket, syncReq, types) {
+async function handleSyncRouteInfo(ws, fromPeerId, reqRpcPacket, syncReq, types) {
   const groupKey = ws && ws.groupKey ? String(ws.groupKey) : '';
   const session = pm().onRouteSessionAck(groupKey, fromPeerId, syncReq.mySessionId, {
     dstIsInitiator: syncReq.isInitiator,
@@ -457,7 +457,7 @@ function handleSyncRouteInfo(ws, fromPeerId, reqRpcPacket, syncReq, types) {
 
   // 先回 ACK，避免客户端因为等待超时而认为本次路由同步失败。
   try {
-    sendRpcResponse(ws, fromPeerId, reqRpcPacket, types, respBytes);
+    await sendRpcResponse(ws, fromPeerId, reqRpcPacket, types, respBytes);
     console.log(`Sent SyncRouteInfoResponse to peer ${fromPeerId}, transactionId=${reqRpcPacket.transactionId}`);
   } catch (e) {
     console.error(`CRITICAL: Failed to send SyncRouteInfoResponse to peer ${fromPeerId}: ${e.message}`);

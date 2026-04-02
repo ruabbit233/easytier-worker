@@ -1,5 +1,4 @@
 import { Buffer } from 'buffer';
-import { Zstd } from '@hpcc-js/wasm-zstd';
 
 // 对齐 EasyTier v2.4.5 的语义：
 // CompressionAlgoPb.None = 1, CompressionAlgoPb.Zstd = 2。
@@ -7,29 +6,50 @@ export const RPC_COMPRESSION_NONE = 1;
 export const RPC_COMPRESSION_ZSTD = 2;
 
 const DEFAULT_ZSTD_LEVEL = Number(process.env.EASYTIER_ZSTD_LEVEL || 3);
+const IS_WORKERS_RUNTIME = typeof WebSocketPair !== 'undefined';
+const ZSTD_ENABLED = process.env.EASYTIER_COMPRESS_RPC !== '0';
 
-let zstd = null;
+let zstdApi = null;
 let zstdLoadError = null;
+const zstdInitPromise = ZSTD_ENABLED
+  ? (async () => {
+    if (IS_WORKERS_RUNTIME) {
+      const { loadWorkerCompatibleZstd } = await import('./zstd_bokuweb_worker_loader.js');
+      zstdApi = await loadWorkerCompatibleZstd();
+    } else {
+      const zstd = await import('@bokuweb/zstd-wasm');
+      await zstd.init();
+      zstdApi = {
+        compress: zstd.compress,
+        decompress: zstd.decompress,
+      };
+    }
+    return zstdApi;
+  })().catch((e) => {
+    zstdLoadError = e;
+    console.warn(`[compress] failed to load @bokuweb/zstd-wasm, RPC compression will fall back to None: ${e.message}`);
+    return null;
+  })
+  : Promise.resolve(null);
 
-try {
-  zstd = await Zstd.load();
-} catch (e) {
-  zstdLoadError = e;
-  console.warn(`[compress] failed to load @hpcc-js/wasm-zstd, RPC compression will fall back to None: ${e.message}`);
+async function ensureZstdLoaded() {
+  if (zstdApi) return zstdApi;
+  if (zstdLoadError) return null;
+  return zstdInitPromise;
 }
 
 export function isZstdAvailable() {
-  return !!zstd;
+  return !!zstdApi;
 }
 
 export function getSupportedRpcCompressionInfo() {
   return {
     algo: RPC_COMPRESSION_NONE,
-    acceptedAlgo: isZstdAvailable() ? RPC_COMPRESSION_ZSTD : RPC_COMPRESSION_NONE,
+    acceptedAlgo: (ZSTD_ENABLED && !zstdLoadError) ? RPC_COMPRESSION_ZSTD : RPC_COMPRESSION_NONE,
   };
 }
 
-export function compressRpcBody(data, opts = {}) {
+export async function compressRpcBody(data, opts = {}) {
   const enabled = opts.enabled !== undefined ? !!opts.enabled : true;
   const minBytes = opts.minBytes !== undefined ? Number(opts.minBytes) : 256;
   const level = opts.level !== undefined ? Number(opts.level) : DEFAULT_ZSTD_LEVEL;
@@ -41,13 +61,23 @@ export function compressRpcBody(data, opts = {}) {
     return { body: input, compressionInfo: supported };
   }
 
-  if (preferredAlgo !== RPC_COMPRESSION_ZSTD || !isZstdAvailable()) {
+  if (preferredAlgo !== RPC_COMPRESSION_ZSTD) {
     return { body: input, compressionInfo: supported };
   }
 
+  const api = await ensureZstdLoaded();
+  if (!api) {
+    return {
+      body: input,
+      compressionInfo: {
+        algo: RPC_COMPRESSION_NONE,
+        acceptedAlgo: RPC_COMPRESSION_NONE,
+      },
+    };
+  }
+
   try {
-    const resolvedLevel = Math.max(zstd.minCLevel(), Math.min(zstd.maxCLevel(), level));
-    const compressed = zstd.compress(input, resolvedLevel);
+    const compressed = api.compress(input, level);
     return {
       body: Buffer.from(compressed),
       compressionInfo: {
@@ -61,7 +91,7 @@ export function compressRpcBody(data, opts = {}) {
   }
 }
 
-export function decompressRpcBody(data, compressionInfo, context = 'rpc') {
+export async function decompressRpcBody(data, compressionInfo, context = 'rpc') {
   const algo = compressionInfo && typeof compressionInfo.algo === 'number'
     ? compressionInfo.algo
     : RPC_COMPRESSION_NONE;
@@ -75,13 +105,14 @@ export function decompressRpcBody(data, compressionInfo, context = 'rpc') {
     throw new Error(`Unsupported ${context} compression algo=${algo}`);
   }
 
-  if (!isZstdAvailable()) {
+  const api = await ensureZstdLoaded();
+  if (!api) {
     const reason = zstdLoadError ? `: ${zstdLoadError.message}` : '';
-    throw new Error(`Zstd requested for ${context}, but @hpcc-js/wasm-zstd is unavailable${reason}`);
+    throw new Error(`Zstd requested for ${context}, but @bokuweb/zstd-wasm is unavailable${reason}`);
   }
 
   try {
-    const decompressed = zstd.decompress(input);
+    const decompressed = api.decompress(input);
     return Buffer.from(decompressed);
   } catch (e) {
     throw new Error(`Zstd decompress failed for ${context}: ${e.message}`);

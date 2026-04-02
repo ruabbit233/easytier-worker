@@ -51,7 +51,7 @@ export class RelayRoom {
     this._initSocket(webSocket);
   }
 
-  webSocketMessage(ws, message) {
+  async webSocketMessage(ws, message) {
     try {
       let buffer = null;
       if (message instanceof ArrayBuffer) {
@@ -92,18 +92,18 @@ export class RelayRoom {
             // 保留占位分支，不做处理。
           }
           if (header.toPeerId === undefined || header.toPeerId === null) {
-            handleRpcReq(ws, header, payload, this.types);
+            await handleRpcReq(ws, header, payload, this.types);
             break;
           }
           if (header.toPeerId === MY_PEER_ID) {
-            handleRpcReq(ws, header, payload, this.types);
+            await handleRpcReq(ws, header, payload, this.types);
             break;
           }
           handleForwarding(ws, header, buffer, this.types);
           break;
         case PacketType.RpcResp:
           if (header.toPeerId === undefined || header.toPeerId === null || header.toPeerId === MY_PEER_ID) {
-            handleRpcResp(ws, header, payload, this.types);
+            await handleRpcResp(ws, header, payload, this.types);
             break;
           }
           // 响应目标不是当前 Worker，就继续在房间内转发给对应 Peer。
