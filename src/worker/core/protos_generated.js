@@ -1,7 +1,7 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
 // 本文件由 `.proto` 自动生成，主要职责是提供 protobuf 编解码类型。
 // 如果需要改协议说明，请优先修改 `protos/*.proto`，再重新生成本文件。
-import * as $protobuf from "protobufjs/minimal";
+import $protobuf from "protobufjs/minimal.js";
 
 // protobuf 运行时常用别名
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;

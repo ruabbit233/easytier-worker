@@ -1,6 +1,6 @@
 // 需要先配置 long.js，再加载 protobuf 生成代码，否则 int64 会解析不稳定。
 import Long from 'long';
-import * as protobuf from 'protobufjs/minimal';
+import protobuf from 'protobufjs/minimal.js';
 
 // 显式告诉 protobufjs 使用 long.js 处理 64 位整数。
 protobuf.util.Long = Long;

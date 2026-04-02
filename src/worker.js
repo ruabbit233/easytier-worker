@@ -1,6 +1,6 @@
 // EasyTier WebSocket Relay 的 Cloudflare Worker 入口。
 // 这里必须使用 ES Module 写法，Durable Object 才能正常导出和绑定。
-import { RelayRoom } from './worker/relay_room';
+import { RelayRoom } from './worker/relay_room.js';
 
 export { RelayRoom };
 
